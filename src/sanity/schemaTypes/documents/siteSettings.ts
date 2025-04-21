@@ -25,9 +25,48 @@ export default defineType({
       type: 'image',
     }),
     defineField({
-      name: 'contactInfo',
+      name: 'contact',
       title: 'Contact Information',
-      type: 'contactInfo',
+      type: 'object',
+      fields: [
+        {
+          name: 'email',
+          title: 'Email Address',
+          type: 'string',
+          validation: Rule => Rule.email(),
+        },
+        {
+          name: 'phone',
+          title: 'Phone Number',
+          type: 'string',
+        },
+        {
+          name: 'address',
+          title: 'Address',
+          type: 'object',
+          fields: [
+            { name: 'street', title: 'Street', type: 'string' },
+            { name: 'city', title: 'City', type: 'string' },
+            { name: 'state', title: 'State', type: 'string' },
+            { name: 'zip', title: 'ZIP Code', type: 'string' },
+            { name: 'country', title: 'Country', type: 'string' },
+          ],
+        },
+        {
+          name: 'businessHours',
+          title: 'Business Hours',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                { name: 'days', title: 'Days', type: 'string' },
+                { name: 'hours', title: 'Hours', type: 'string' },
+              ],
+            },
+          ],
+        },
+      ],
     }),
     defineField({
       name: 'socialLinks',

@@ -12,20 +12,28 @@ export async function fetchWithFallback<T>(
   fallbackData: T,
   options: FetchOptions = {}
 ): Promise<T> {
-  const { useFallback = false, tags = [], cache = 'force-cache' } = options
+  const { useFallback = false, tags = [], cache = 'no-store' } = options
 
   if (useFallback) {
     return fallbackData
   }
 
   try {
-    const data = await client.fetch<T>(query, {}, { 
+    console.log('Fetching Sanity data with query:', query)
+    const data = await client.fetch<T>(query, {}, {
       cache,
       next: { tags }
     })
-    return data || fallbackData
+
+    if (!data) {
+      console.log('No data returned from Sanity, using fallback')
+      return fallbackData
+    }
+
+    console.log('Sanity data fetched successfully:', data)
+    return data
   } catch (error) {
-    console.error('Error fetching data:', error)
+    console.error('Error fetching data from Sanity:', error)
     return fallbackData
   }
 }

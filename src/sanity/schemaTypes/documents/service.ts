@@ -1,13 +1,13 @@
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: 'account',
-  title: 'Accounts',
+  name: 'service',
+  title: 'Services',
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'name',
+      title: 'Service Name',
       type: 'string',
       validation: Rule => Rule.required(),
     }),
@@ -16,7 +16,7 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'title',
+        source: 'name',
         maxLength: 96,
       },
       validation: Rule => Rule.required(),
@@ -29,26 +29,18 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: 'icon',
+      title: 'Service Icon',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'price',
-      title: 'Price',
+      title: 'Starting Price',
       type: 'number',
-      validation: Rule => Rule.required().min(0),
-    }),
-    defineField({
-      name: 'images',
-      title: 'Account Images',
-      type: 'array',
-      of: [
-        {
-          type: 'image',
-          options: { hotspot: true },
-        },
-      ],
-    }),
-    defineField({
-      name: 'metrics',
-      title: 'Account Metrics',
-      type: 'accountMetrics',
+      validation: Rule => Rule.min(0),
     }),
     defineField({
       name: 'description',
@@ -59,19 +51,21 @@ export default defineType({
       name: 'features',
       title: 'Features',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'title', type: 'string', title: 'Title' },
+            { name: 'description', type: 'text', title: 'Description' },
+            { name: 'included', type: 'boolean', title: 'Included' },
+          ],
+        },
+      ],
     }),
     defineField({
-      name: 'isAvailable',
-      title: 'Available',
-      type: 'boolean',
-      initialValue: true,
-    }),
-    defineField({
-      name: 'isFeatured',
-      title: 'Featured',
-      type: 'boolean',
-      initialValue: false,
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
     }),
   ],
 })

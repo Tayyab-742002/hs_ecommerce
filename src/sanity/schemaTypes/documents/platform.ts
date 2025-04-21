@@ -44,22 +44,23 @@ export default defineType({
     }),
     defineField({
       name: 'features',
-      title: 'Platform Features',
+      title: 'Key Features',
       type: 'array',
-      of: [{ type: 'platformFeature' }],
-    }),
-    defineField({
-      name: 'accountCategories',
-      title: 'Account Categories',
-      type: 'array',
-      of: [{ type: 'string' }],
-      options: {
-        list: [
-          { title: 'New', value: 'new' },
-          { title: 'Aged', value: 'aged' },
-          { title: 'Professional', value: 'professional' },
-        ],
-      },
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'title', type: 'string', title: 'Title' },
+            { name: 'description', type: 'text', title: 'Description' },
+            {
+              name: 'icon',
+              type: 'image',
+              title: 'Icon',
+              options: { hotspot: true },
+            },
+          ],
+        },
+      ],
     }),
     defineField({
       name: 'seo',
@@ -68,7 +69,7 @@ export default defineType({
     }),
     defineField({
       name: 'order',
-      title: 'Order',
+      title: 'Display Order',
       type: 'number',
       hidden: true,
     }),

@@ -1,5 +1,3 @@
 export * from './platforms'
 export * from './accounts'
-export * from './testimonials'
-export * from './services'
-export * from './site-settings'
+

@@ -12,18 +12,6 @@ export default defineType({
       validation: Rule => Rule.min(0),
     }),
     defineField({
-      name: 'following',
-      title: 'Following Count',
-      type: 'number',
-      validation: Rule => Rule.min(0),
-    }),
-    defineField({
-      name: 'posts',
-      title: 'Posts Count',
-      type: 'number',
-      validation: Rule => Rule.min(0),
-    }),
-    defineField({
       name: 'engagement',
       title: 'Engagement Rate',
       type: 'number',
