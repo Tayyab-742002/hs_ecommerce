@@ -13,6 +13,9 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Menu, Phone, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { ThemeToggle } from "./ThemeToggle";
+import { ThemeSelector } from "@/components/theme-selector";
+import { SearchDialog } from "@/components/ui/search-dialog";
 
 const platforms = [
   {
@@ -50,7 +53,7 @@ const platforms = [
 const services = [
   {
     title: "Virtual Assistant Services",
-    href: "/services/virtual-assistant",
+    href: "/services/va-services",
     description: "Professional VA services for all major e-commerce platforms",
     icon: "👥",
     subServices: [
@@ -59,11 +62,11 @@ const services = [
       { name: "eBay VA Services", icon: "🌐" },
       { name: "TikTok VA Services", icon: "📱" },
       { name: "Etsy VA Services", icon: "🎨" },
-    ]
+    ],
   },
   {
     title: "Account Reinstatement",
-    href: "/services/account-reinstatement",
+    href: "/services/reinstatement",
     description: "Professional help to recover blocked or suspended accounts",
     icon: "🔄",
     subServices: [
@@ -72,7 +75,7 @@ const services = [
       { name: "eBay Account Recovery", icon: "🌐" },
       { name: "TikTok Account Recovery", icon: "📱" },
       { name: "Etsy Account Recovery", icon: "🎨" },
-    ]
+    ],
   },
 ];
 
@@ -166,8 +169,14 @@ export default function Header() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        {/* Desktop Contact Numbers */}
+        {/* Desktop Contact Numbers and Theme Toggle */}
         <div className="hidden lg:flex items-center space-x-4">
+          <SearchDialog />
+          <div className="flex items-center gap-2">
+            <ThemeSelector />
+            <ThemeToggle />
+          </div>
+
           <div className="flex flex-col items-end text-sm">
             <a href="tel:+923010510316" className="flex items-center space-x-1 hover:text-primary transition-colors">
               <Phone className="h-3 w-3" />
@@ -184,7 +193,10 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu */}
-        <div className="lg:hidden">
+        <div className="lg:hidden flex items-center gap-2">
+          <SearchDialog />
+          <ThemeToggle />
+
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="lg:hidden">
@@ -192,71 +204,114 @@ export default function Header() {
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <div className="flex flex-col space-y-4 mt-8">
+            <SheetContent side="right" className="pr-0">
+              <div className="px-7">
                 <Link
                   href="/"
-                  className="flex items-center space-x-2 text-foreground hover:text-primary transition-colors"
+                  className="flex items-center"
+                  onClick={(e) => {
+                    // Close sheet on clicking the logo
+                    const closeButton = document.querySelector(
+                      '[data-state="open"] button[data-ui="close"]'
+                    ) as HTMLButtonElement;
+                    closeButton?.click();
+                  }}
                 >
-                  <span className="text-lg font-medium">Home</span>
+                  <Image
+                    src="/logo.svg"
+                    alt="H&S Ecommerce Logo"
+                    width={32}
+                    height={32}
+                    className="dark:invert"
+                  />
+                  <span className="ml-2 font-semibold text-lg">H&S Ecommerce</span>
                 </Link>
-
-                {/* Mobile Platforms Section */}
-                <div className="space-y-3">
-                  <h2 className="text-lg font-medium">Platforms</h2>
-                  <div className="grid gap-2">
-                    {platforms.map((platform) => (
-                      <Link
-                        key={platform.title}
-                        href={platform.href}
-                        className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        <span>{platform.icon}</span>
-                        <span>{platform.title}</span>
-                      </Link>
-                    ))}
-                  </div>
+              </div>
+              <div className="mt-8 px-7">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-medium text-lg">Menu</h3>
+                  <ThemeSelector />
                 </div>
-
-                {/* Mobile Services Section */}
-                <div className="space-y-3">
-                  <h2 className="text-lg font-medium">Services</h2>
-                  <div className="grid gap-2">
-                    {services.map((service) => (
-                      <Link
-                        key={service.title}
-                        href={service.href}
-                        className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        <span>{service.icon}</span>
-                        <span>{service.title}</span>
-                      </Link>
-                    ))}
+                <div className="mt-2 flex flex-col space-y-3">
+                  <Link
+                    href="/"
+                    className="rounded-md px-4 py-2 hover:bg-accent transition-colors"
+                    onClick={(e) => {
+                      const closeButton = document.querySelector(
+                        '[data-state="open"] button[data-ui="close"]'
+                      ) as HTMLButtonElement;
+                      closeButton?.click();
+                    }}
+                  >
+                    Home
+                  </Link>
+                  <div className="px-4 py-2">
+                    <h4 className="font-medium mb-2">Platforms</h4>
+                    <div className="ml-4 flex flex-col space-y-2">
+                      {platforms.map((platform) => (
+                        <Link
+                          key={platform.title}
+                          href={platform.href}
+                          className="text-sm flex items-center space-x-2 hover:text-primary transition-colors"
+                          onClick={(e) => {
+                            const closeButton = document.querySelector(
+                              '[data-state="open"] button[data-ui="close"]'
+                            ) as HTMLButtonElement;
+                            closeButton?.click();
+                          }}
+                        >
+                          <span>{platform.icon}</span>
+                          <span>{platform.title}</span>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
+                  <div className="px-4 py-2">
+                    <h4 className="font-medium mb-2">Services</h4>
+                    <div className="ml-4 flex flex-col space-y-2">
+                      {services.map((service) => (
+                        <Link
+                          key={service.title}
+                          href={service.href}
+                          className="text-sm flex items-center space-x-2 hover:text-primary transition-colors"
+                          onClick={(e) => {
+                            const closeButton = document.querySelector(
+                              '[data-state="open"] button[data-ui="close"]'
+                            ) as HTMLButtonElement;
+                            closeButton?.click();
+                          }}
+                        >
+                          <span>{service.icon}</span>
+                          <span>{service.title}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                  <Link
+                    href="/contact"
+                    className="rounded-md px-4 py-2 hover:bg-accent transition-colors"
+                    onClick={(e) => {
+                      const closeButton = document.querySelector(
+                        '[data-state="open"] button[data-ui="close"]'
+                      ) as HTMLButtonElement;
+                      closeButton?.click();
+                    }}
+                  >
+                    Contact
+                  </Link>
                 </div>
-
-                {/* Mobile Contact Numbers */}
-                <div className="space-y-3 pt-4 border-t">
-                  <h2 className="text-lg font-medium">Contact Us</h2>
-                  <div className="space-y-2">
-                    <a
-                      href="tel:+923010510316"
-                      className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      <Phone className="h-4 w-4" />
-                      <span>+92 301 0510316</span>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-7 border-t">
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col space-y-1 text-sm">
+                    <a href="tel:+923010510316" className="hover:text-primary transition-colors">
+                      +92 301 0510316
                     </a>
-                    <a
-                      href="tel:+447955426807"
-                      className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      <Phone className="h-4 w-4" />
-                      <span>+44 7955 426807</span>
+                    <a href="tel:+447955426807" className="hover:text-primary transition-colors">
+                      +44 7955 426807
                     </a>
                   </div>
-                  <Button className="w-full mt-4" asChild>
-                    <Link href="/contact">Contact Us</Link>
-                  </Button>
+                  <Button>Contact Us</Button>
                 </div>
               </div>
             </SheetContent>
@@ -282,19 +337,13 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="flex items-center space-x-2">
-            {icon && <span className="text-xl">{icon}</span>}
-            <span className="text-sm font-medium leading-none">{title}</span>
+          <div className="flex items-center gap-2">
+            {icon && <span className="text-lg">{icon}</span>}
+            <div className="text-sm font-medium leading-none">{title}</div>
           </div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-2">
-            {children}
-          </p>
+          {children && <div className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</div>}
         </a>
       </NavigationMenuLink>
     </li>
   );
 });
-ListItem.displayName = "ListItem";
-
-
-
