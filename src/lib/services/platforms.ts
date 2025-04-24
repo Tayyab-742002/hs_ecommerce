@@ -27,6 +27,7 @@ export async function getPlatforms(options = { useFallback: false }) {
       },
       order
     },
+    accountCategories,
     order
   }`
 
@@ -61,6 +62,23 @@ export async function getPlatformBySlug(slug: string, options = { useFallback: f
         }
       },
       order
+    },
+    accountCategories,
+    vaServices[] {
+      title,
+      description,
+      price,
+      icon {
+        asset-> {
+          url
+        }
+      }
+    },
+    accountRequirementFields[] {
+      label,
+      fieldType,
+      options,
+      required
     }
   }`
 

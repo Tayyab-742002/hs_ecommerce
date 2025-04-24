@@ -1,6 +1,8 @@
 import { getAccounts } from '@/lib/services/accounts'
 import { AccountCard } from '@/components/accounts/AccountCard'
 
+export const revalidate = 60;
+
 export default async function AccountsPage() {
   const accounts = await getAccounts({ useFallback: true })
 

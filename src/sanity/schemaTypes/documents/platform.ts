@@ -22,6 +22,12 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: 'color',
+      title: 'Platform Color',
+      type: 'string',
+      description: 'CSS variable for the platform color (e.g., var(--color-amazon))',
+    }),
+    defineField({
       name: 'logo',
       title: 'Platform Logo',
       type: 'image',
@@ -58,6 +64,75 @@ export default defineType({
               title: 'Icon',
               options: { hotspot: true },
             },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'accountCategories',
+      title: 'Account Categories',
+      description: 'Types of accounts available for this platform (seller, buyer, etc.)',
+      type: 'array',
+      of: [{ type: 'string' }],
+      options: {
+        list: [
+          { title: 'Seller', value: 'seller' },
+          { title: 'Buyer', value: 'buyer' },
+          { title: 'Business', value: 'business' },
+          { title: 'Professional', value: 'professional' },
+          { title: 'Verified', value: 'verified' },
+        ],
+      },
+    }),
+    defineField({
+      name: 'vaServices',
+      title: 'Virtual Assistant Services',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'title', type: 'string', title: 'Service Title' },
+            { name: 'description', type: 'text', title: 'Service Description' },
+            { name: 'price', type: 'string', title: 'Price' },
+            {
+              name: 'icon',
+              type: 'image',
+              title: 'Service Icon',
+              options: { hotspot: true },
+            },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'accountRequirementFields',
+      title: 'Account Requirement Form Fields',
+      description: 'Custom fields for the account requirements form',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'label', type: 'string', title: 'Field Label' },
+            { name: 'fieldType', type: 'string', title: 'Field Type', 
+              options: {
+                list: [
+                  { title: 'Text', value: 'text' },
+                  { title: 'Select', value: 'select' },
+                  { title: 'Checkbox', value: 'checkbox' },
+                  { title: 'Textarea', value: 'textarea' },
+                ],
+              } 
+            },
+            { 
+              name: 'options', 
+              type: 'array', 
+              title: 'Options (for Select fields)',
+              of: [{ type: 'string' }],
+              hidden: ({ parent }) => parent?.fieldType !== 'select',
+            },
+            { name: 'required', type: 'boolean', title: 'Required Field' },
           ],
         },
       ],
