@@ -59,7 +59,7 @@ export function Loading({
       <div className={`${sizeMap[size]} rounded-full border-4 border-t-transparent ${borderColor} animate-spin`} />
       {text && (
         <motion.p 
-          className={`${textSizeMap[size]} text-gray-600 dark:text-gray-300`}
+          className={`${textSizeMap[size]} text-foreground`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}

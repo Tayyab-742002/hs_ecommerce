@@ -120,7 +120,7 @@ export function FeaturedPlatforms({ platforms }: FeaturedPlatformsProps) {
 
           <motion.p
             variants={itemVariants}
-            className="text-gray-500 dark:text-gray-400 text-lg max-w-3xl mx-auto"
+            className="text-foreground/70 text-lg max-w-3xl mx-auto"
           >
             We provide specialized accounts and expert services for all major
             e-commerce marketplaces
@@ -242,7 +242,7 @@ export function FeaturedPlatforms({ platforms }: FeaturedPlatformsProps) {
 
                 {/* Platform info */}
                 <div className="p-6">
-                  <p className="text-gray-600 dark:text-gray-300 mb-8">
+                  <p className="text-foreground/80 mb-8">
                     {getPlainTextDescription(currentPlatform.description)}
                   </p>
 
@@ -264,7 +264,7 @@ export function FeaturedPlatforms({ platforms }: FeaturedPlatformsProps) {
                               {feature.title}
                             </h4>
                             {feature.description && (
-                              <p className="text-sm text-gray-500 dark:text-gray-400">
+                              <p className="text-sm text-foreground/70">
                                 {feature.description}
                               </p>
                             )}
@@ -286,7 +286,7 @@ export function FeaturedPlatforms({ platforms }: FeaturedPlatformsProps) {
                         >
                           {stat.value}
                         </div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">
+                        <div className="text-sm text-foreground/70">
                           {stat.label}
                         </div>
                       </div>

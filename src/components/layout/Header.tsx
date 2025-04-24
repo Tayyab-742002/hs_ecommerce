@@ -15,8 +15,6 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Menu, Phone, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { ThemeToggle } from "./ThemeToggle";
-import { ThemeSelector } from "@/components/theme-selector";
 
 const platforms = [
   {
@@ -83,7 +81,7 @@ const services = [
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo and Brand Name */}
         <Link href="/" className="flex items-center space-x-3 transition-opacity hover:opacity-90">
           <Image
@@ -172,11 +170,6 @@ export default function Header() {
 
         {/* Desktop Contact Numbers and Theme Toggle */}
         <div className="hidden lg:flex items-center space-x-4">
-          <div className="flex items-center gap-2">
-            <ThemeSelector />
-            <ThemeToggle />
-          </div>
-
           <div className="flex flex-col items-end text-sm">
             <a href="tel:+923010510316" className="flex items-center space-x-1 hover:text-primary transition-colors">
               <Phone className="h-3 w-3" />
@@ -194,133 +187,155 @@ export default function Header() {
 
         {/* Mobile Menu */}
         <div className="lg:hidden flex items-center gap-2">
-          <ThemeToggle />
-
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="lg:hidden">
-                <Menu className="h-5 w-5" />
+                <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="pr-0">
-              <div className="px-7">
-                <Link
-                  href="/"
-                  className="flex items-center"
-                  onClick={(e) => {
-                    // Close sheet on clicking the logo
-                    const closeButton = document.querySelector(
-                      '[data-state="open"] button[data-ui="close"]'
-                    ) as HTMLButtonElement;
-                    closeButton?.click();
-                  }}
-                >
-                  <Image
-                    src="/logo.svg"
-                    alt="H&S Ecommerce Logo"
-                    width={32}
-                    height={32}
-                    className="dark:invert"
-                  />
-                  <span className="ml-2 font-semibold text-lg">H&S Ecommerce</span>
-                </Link>
-              </div>
-              <div className="mt-8 px-7">
-                <div className="flex justify-between items-center">
-                  <h3 className="font-medium text-lg">Menu</h3>
-                  <ThemeSelector />
-                </div>
-                <div className="mt-2 flex flex-col space-y-3">
+            <SheetContent side="left" className="pl-2 pr-0 overflow-y-auto">
+              <div className="flex flex-col h-full">
+                <div className="mb-6 pt-2">
                   <Link
                     href="/"
-                    className="rounded-md px-4 py-2 hover:bg-accent transition-colors"
-                    onClick={(e) => {
+                    className="flex items-center space-x-2"
+                    onClick={() => {
                       const closeButton = document.querySelector(
-                        '[data-state="open"] button[data-ui="close"]'
+                        '[data-state="open"] button[aria-label="Close"]'
                       ) as HTMLButtonElement;
                       closeButton?.click();
                     }}
                   >
-                    Home
+                    <Image
+                      src="/logo.svg"
+                      alt="H&S Ecommerce Logo"
+                      width={32}
+                      height={32}
+                      className="dark:invert"
+                    />
+                    <span className="font-semibold text-lg">H&S Ecommerce</span>
                   </Link>
-                  <div className="px-4 py-2">
-                    <h4 className="font-medium mb-2">Platforms</h4>
-                    <div className="ml-4 flex flex-col space-y-2">
+                </div>
+
+                <nav className="flex-1 space-y-6">
+                  <div>
+                    <div className="px-3 mb-2">
+                      <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+                        Main
+                      </h3>
+                    </div>
+                    <Link
+                      href="/"
+                      className="flex items-center space-x-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent transition-colors w-full"
+                      onClick={() => {
+                        const closeButton = document.querySelector(
+                          '[data-state="open"] button[aria-label="Close"]'
+                        ) as HTMLButtonElement;
+                        closeButton?.click();
+                      }}
+                    >
+                      <span className="text-primary">🏠</span>
+                      <span>Home</span>
+                    </Link>
+                  </div>
+
+                  <div>
+                    <div className="px-3 mb-2">
+                      <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+                        Platforms
+                      </h3>
+                    </div>
+                    <div className="flex flex-col space-y-1">
                       {platforms.map((platform) => (
                         <Link
                           key={platform.title}
                           href={platform.href}
-                          className="flex items-center space-x-2 rounded-md px-3 py-1.5 hover:bg-accent transition-colors"
-                          onClick={(e) => {
+                          className="flex items-center space-x-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent transition-colors"
+                          onClick={() => {
                             const closeButton = document.querySelector(
-                              '[data-state="open"] button[data-ui="close"]'
+                              '[data-state="open"] button[aria-label="Close"]'
                             ) as HTMLButtonElement;
                             closeButton?.click();
                           }}
                         >
-                          <span>{platform.icon}</span>
+                          <span className="text-primary">{platform.icon}</span>
                           <span>{platform.title}</span>
                         </Link>
                       ))}
                     </div>
                   </div>
-                  <div className="px-4 py-2">
-                    <h4 className="font-medium mb-2">Services</h4>
-                    <div className="ml-4 flex flex-col space-y-2">
+
+                  <div>
+                    <div className="px-3 mb-2">
+                      <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+                        Services
+                      </h3>
+                    </div>
+                    <div className="flex flex-col space-y-1">
                       {services.map((service) => (
                         <Link
                           key={service.title}
                           href={service.href}
-                          className="flex items-center space-x-2 rounded-md px-3 py-1.5 hover:bg-accent transition-colors"
-                          onClick={(e) => {
+                          className="flex items-center space-x-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent transition-colors"
+                          onClick={() => {
                             const closeButton = document.querySelector(
-                              '[data-state="open"] button[data-ui="close"]'
+                              '[data-state="open"] button[aria-label="Close"]'
                             ) as HTMLButtonElement;
                             closeButton?.click();
                           }}
                         >
-                          <span>{service.icon}</span>
+                          <span className="text-primary">{service.icon}</span>
                           <span>{service.title}</span>
                         </Link>
                       ))}
                     </div>
                   </div>
-                  <Link
-                    href="/contact"
-                    className="rounded-md px-4 py-2 hover:bg-accent transition-colors"
-                    onClick={(e) => {
-                      const closeButton = document.querySelector(
-                        '[data-state="open"] button[data-ui="close"]'
-                      ) as HTMLButtonElement;
-                      closeButton?.click();
-                    }}
-                  >
-                    Contact
-                  </Link>
-                </div>
-                <div className="mt-8 space-y-2">
-                  <h4 className="font-medium">Contact</h4>
-                  <div className="space-y-2 ml-4">
+
+                  <div>
+                    <div className="px-3 mb-2">
+                      <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+                        Support
+                      </h3>
+                    </div>
+                    <Link
+                      href="/contact"
+                      className="flex items-center space-x-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent transition-colors"
+                      onClick={() => {
+                        const closeButton = document.querySelector(
+                          '[data-state="open"] button[aria-label="Close"]'
+                        ) as HTMLButtonElement;
+                        closeButton?.click();
+                      }}
+                    >
+                      <span className="text-primary">📞</span>
+                      <span>Contact Us</span>
+                    </Link>
+                  </div>
+                </nav>
+
+                <div className="mt-auto py-4 border-t">
+                  <div className="px-3 mb-2">
+                    <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+                      Contact
+                    </h3>
+                  </div>
+                  <div className="space-y-2 px-3">
                     <a
                       href="tel:+923010510316"
-                      className="flex items-center space-x-2 hover:text-primary transition-colors"
+                      className="flex items-center space-x-2 py-1 hover:text-primary transition-colors"
                     >
                       <Phone className="h-4 w-4" />
-                      <span>+92 301 0510316</span>
+                      <span className="text-sm">+92 301 0510316</span>
                     </a>
                     <a
                       href="tel:+447955426807"
-                      className="flex items-center space-x-2 hover:text-primary transition-colors"
+                      className="flex items-center space-x-2 py-1 hover:text-primary transition-colors"
                     >
                       <Phone className="h-4 w-4" />
-                      <span>+44 7955 426807</span>
+                      <span className="text-sm">+44 7955 426807</span>
                     </a>
                   </div>
-                </div>
-                <div className="pt-4">
-                  {/* Mobile Navigation */}
-                  {/* This component doesn't need an explicit X close button since Sheet provides that */}
                 </div>
               </div>
             </SheetContent>

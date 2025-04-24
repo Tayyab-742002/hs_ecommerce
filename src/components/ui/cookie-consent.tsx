@@ -57,7 +57,7 @@ export function CookieConsent() {
                 
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold mb-1">Cookie Consent</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  <p className="text-foreground/80 text-sm">
                     We use cookies to enhance your browsing experience, serve personalized ads, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. Read our{' '}
                     <Link href="/privacy" className="text-primary hover:underline">
                       Privacy Policy
@@ -68,7 +68,7 @@ export function CookieConsent() {
                 
                 <button 
                   onClick={declineCookies}
-                  className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 md:hidden"
+                  className="text-foreground/70 hover:text-foreground md:hidden"
                   aria-label="Close cookie banner"
                 >
                   <X className="h-5 w-5" />

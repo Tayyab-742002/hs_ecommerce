@@ -56,7 +56,7 @@ export function Testimonials() {
 
   return (
     <section className="py-24 bg-background">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -77,7 +77,7 @@ export function Testimonials() {
           
           <motion.p 
             variants={itemVariants}
-            className="text-gray-500 dark:text-gray-400 text-lg max-w-3xl mx-auto"
+            className="text-foreground/70 text-lg max-w-3xl mx-auto"
           >
             Hear from satisfied sellers who have grown their businesses with our accounts, VA services, and reinstatement solutions.
           </motion.p>
@@ -101,7 +101,7 @@ export function Testimonials() {
               className="bg-card rounded-2xl p-8 border border-border shadow-lg relative"
             >
               {/* Quote mark decoration */}
-              <div className="absolute top-6 right-6 text-6xl text-gray-200 dark:text-gray-700 font-serif">
+              <div className="absolute top-6 right-6 text-6xl text-muted dark:text-gray-700 font-serif">
                 &quot;
               </div>
               
@@ -119,7 +119,7 @@ export function Testimonials() {
                     className="object-contain"
                   />
                 </div>
-                <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                <span className="text-sm font-medium text-foreground/70">
                   {testimonial.platformName}
                 </span>
               </div>
@@ -150,7 +150,7 @@ export function Testimonials() {
                 </div>
                 <div>
                   <h4 className="font-semibold">{testimonial.author}</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{testimonial.title}</p>
+                  <p className="text-sm text-foreground/70">{testimonial.title}</p>
                 </div>
               </div>
             </motion.div>

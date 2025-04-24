@@ -56,8 +56,8 @@ export function PageHeader({
   }
 
   return (
-    <div className={`w-full bg-gray-50 dark:bg-gray-900 ${sizeClasses[size]} ${className}`}>
-      <div className="container mx-auto px-4">
+    <div className={`w-full bg-background ${sizeClasses[size]} ${className}`}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {showBreadcrumbs && <Breadcrumb />}
         
         <motion.div
