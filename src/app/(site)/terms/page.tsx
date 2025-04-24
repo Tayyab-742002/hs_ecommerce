@@ -14,17 +14,17 @@ export default function TermsOfServicePage() {
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto prose dark:prose-invert">
           <p>
-            Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the website and services operated by H&S Ecommerce Agency ("us", "we", "our").
+            Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the website and services operated by H&amp;S Ecommerce Agency ("us", "we", "our").
           </p>
           
           <h2>Agreement to Terms</h2>
           <p>
-            By accessing or using our services, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access our services.
+            By accessing or using the services offered by H&amp;S Ecommerce Agency (&quot;Company&quot;, &quot;we&quot;, &quot;us&quot;, &quot;our&quot;), you agree to comply with and be bound by these Terms of Service (&quot;Terms&quot;). If you do not agree to these Terms, please do not use our services.
           </p>
           
           <h2>Services Description</h2>
           <p>
-            H&S Ecommerce Agency provides services related to e-commerce platforms including Amazon, eBay, Walmart, TikTok, and Etsy. Our services include but are not limited to:
+            H&amp;S Ecommerce Agency provides services related to e-commerce platforms including Amazon, eBay, Walmart, TikTok, and Etsy. Our services include but are not limited to:
           </p>
           <ul>
             <li>Provision of seller and buyer accounts for various e-commerce platforms</li>
@@ -67,12 +67,12 @@ export default function TermsOfServicePage() {
           
           <h2>Intellectual Property</h2>
           <p>
-            The Service and its original content, features, and functionality are and will remain the exclusive property of H&S Ecommerce Agency and its licensors. The Service is protected by copyright, trademark, and other laws of both the United States and foreign countries.
+            The Service and its original content, features, and functionality are and will remain the exclusive property of H&amp;S Ecommerce Agency and its licensors. The Service is protected by copyright, trademark, and other laws of both the United States and foreign countries.
           </p>
           
           <h2>Limitation of Liability</h2>
           <p>
-            In no event shall H&S Ecommerce Agency, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:
+            In no event shall H&amp;S Ecommerce Agency, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:
           </p>
           <ul>
             <li>Your access to or use of or inability to access or use the Service</li>

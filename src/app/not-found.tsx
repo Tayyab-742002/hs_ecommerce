@@ -17,9 +17,11 @@ export default function NotFound() {
 
           <h1 className="text-4xl font-bold mb-4">Page Not Found</h1>
           
-          <p className="text-gray-600 dark:text-gray-300 mb-8">
-            We couldn't find the page you're looking for. It might have been moved, deleted, or never existed.
-          </p>
+          <div className="mt-6 text-center">
+            <p className="text-gray-600 text-lg mb-6">
+              The page you&apos;re looking for doesn&apos;t exist or has been moved.
+            </p>
+          </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild className="gap-2">

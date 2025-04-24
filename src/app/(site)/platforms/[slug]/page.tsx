@@ -1,27 +1,28 @@
 export const revalidate = 60;
 
-import { getPlatformBySlug } from "@/lib/services/platforms";
-import { getAccountsByPlatform } from "@/lib/services/accounts";
-import { getReinstatementServicesByPlatform } from "@/lib/services/reinstatement";
-import { AccountCard } from "@/components/accounts/AccountCard";
-import { PriceInquiryForm } from "@/components/accounts/PriceInquiryForm";
-import { RequirementsForm } from "@/components/accounts/RequirementsForm";
-import { VAServiceCard } from "@/components/services/VAServiceCard";
-import { ReinstatementCard } from "@/components/services/ReinstatementCard";
-import { PageHeader } from "@/components/layout/PageHeader";
-import { PlatformBadgeGroup } from "@/components/ui/platform-badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Button } from "@/components/ui/button";
-import { CheckCircle, Users, Shield, BarChart } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { ContactInfo } from "@/components/platforms/ContactInfo";
-import { Platform } from "@/types/platform";
+import { getPlatformBySlug } from '@/lib/services/platforms'
+import { getAccountsByPlatform } from '@/lib/services/accounts'
+import { getReinstatementServicesByPlatform } from '@/lib/services/reinstatement'
+import { AccountCard } from '@/components/accounts/AccountCard'
+import { PriceInquiryForm } from '@/components/accounts/PriceInquiryForm'
+import { RequirementsForm } from '@/components/accounts/RequirementsForm'
+import { VAServiceCard } from '@/components/services/VAServiceCard'
+import { ReinstatementCard } from '@/components/services/ReinstatementCard'
+import { PageHeader } from '@/components/layout/PageHeader'
+import { PlatformBadgeGroup } from '@/components/ui/platform-badge'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Button } from '@/components/ui/button'
+import { CheckCircle, Users, Shield, BarChart } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { ContactInfo } from '@/components/platforms/ContactInfo'
+import { Platform, Account, ReinstatementService } from '@/types'
+import { FormField } from '@/types/form'
 
 // Function to convert portable text to plain text for descriptions
 const getPlainTextDescription = (portableText?: any[]) => {
   if (!portableText || !Array.isArray(portableText)) {
-    return "";
+    return '';
   }
 
   return portableText
@@ -35,17 +36,24 @@ const getPlainTextDescription = (portableText?: any[]) => {
     .join(" ");
 };
 
-export default async function PlatformPage({
-  params: { slug },
-}: {
-  params: { slug: string };
-}) {
-  const platform: Platform = await getPlatformBySlug(slug);
-  const accounts = await getAccountsByPlatform(platform._id);
-  const reinstatementServices = await getReinstatementServicesByPlatform(
-    platform._id
-  );
+type Props = {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
 
+export default async function PlatformPage({ params, searchParams }: Props) {
+  const { slug } = params;
+  const platformData = await getPlatformBySlug(slug);
+  const accountsData = await getAccountsByPlatform(platformData._id);
+  const reinstatementServicesData = await getReinstatementServicesByPlatform(
+    platformData._id
+  );
+  
+  // Type assertions to match our defined types
+  const platform = platformData as unknown as Platform;
+  const accounts = accountsData as unknown as Account[];
+  const reinstatementServices = reinstatementServicesData as unknown as ReinstatementService[];
+  
   // Get platform description as plain text
   const description =
     getPlainTextDescription(platform.description) ||
@@ -121,50 +129,54 @@ export default async function PlatformPage({
           {/* Overview Tab */}
           <TabsContent value="overview" className="space-y-8">
             {/* Platform Features */}
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-              {platform.features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="p-6 bg-card rounded-xl border border-border shadow-sm"
-                >
-                  <div className="flex gap-4">
-                    <div
-                      className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
-                      style={{
-                        background: `var(--color-${platform.name.toLowerCase()})20`,
-                      }}
-                    >
-                      {feature.icon ? (
-                        <Image
-                          src={feature.icon.asset.url}
-                          alt={feature.title}
-                          width={24}
-                          height={24}
-                          className="object-contain"
-                        />
-                      ) : (
-                        <CheckCircle
-                          className="w-6 h-6"
-                          style={{
-                            color: `var(--color-${platform.name.toLowerCase()})`,
-                          }}
-                        />
-                      )}
-                    </div>
+            <div className="mt-16">
+              <h2 className="text-2xl font-bold mb-6">Key Features</h2>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                {(platform.features || []).map((feature, index) => (
+                  <div
+                    key={index}
+                    className="p-6 bg-card rounded-xl border border-border shadow-sm"
+                  >
+                    <div className="flex gap-4">
+                      <div
+                        className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+                        style={{
+                          background: `var(--color-${platform.name.toLowerCase()})20`,
+                        }}
+                      >
+                        {feature.icon ? (
+                          <Image
+                            src={feature.icon.asset.url}
+                            alt={feature.title}
+                            width={24}
+                            height={24}
+                            className="object-contain"
+                          />
+                        ) : (
+                          <CheckCircle
+                            className="w-6 h-6"
+                            style={{
+                              color: `var(--color-${platform.name.toLowerCase()})`,
+                            }}
+                          />
+                        )}
+                      </div>
 
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">
-                        {feature.title}
-                      </h3>
-                      {feature.description && (
-                        <p className="text-gray-500 dark:text-gray-400">
-                          {feature.description}
-                        </p>
-                      )}
+                      <div>
+                        <h3 className="text-xl font-semibold mb-2">
+                          {feature.title}
+                        </h3>
+                        {feature.description && (
+                          <p className="text-gray-500 dark:text-gray-400">
+                            {feature.description}
+                          </p>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
             {/* Key Benefits */}
@@ -325,7 +337,10 @@ export default async function PlatformPage({
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {accounts.map((account) => (
-                    <AccountCard key={account._id} account={account} />
+                    <AccountCard 
+                      key={account._id} 
+                      account={account as any} 
+                    />
                   ))}
                 </div>
               </>
@@ -335,8 +350,7 @@ export default async function PlatformPage({
                   No Accounts Available
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400 mb-6">
-                  We currently don't have any {platform.name} accounts in stock.
-                  Please check back later or contact us for custom orders.
+                  Don&apos;t see what you&apos;re looking for? Contact us for more information about our {platform.name} services.
                 </p>
                 <Button asChild>
                   <Link
@@ -368,8 +382,17 @@ export default async function PlatformPage({
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {platform.vaServices.map((service, index) => (
-                    <VAServiceCard key={index} service={service} />
+                  {(platform.vaServices || []).map((service, index) => (
+                    <VAServiceCard
+                      key={index}
+                      service={{
+                        ...service,
+                        // Ensure all required properties exist
+                        description: service.description || "",
+                        price: service.price || "Contact for pricing",
+                        platformName: platform.name
+                      }}
+                    />
                   ))}
                 </div>
               </div>
@@ -379,7 +402,7 @@ export default async function PlatformPage({
                   VA Services Coming Soon
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400 max-w-lg mx-auto">
-                  We're currently developing specialized VA services for{" "}
+                  We&apos;re currently developing specialized VA services for{" "}
                   {platform.name}. Contact us to discuss your needs.
                 </p>
               </div>
@@ -441,18 +464,9 @@ export default async function PlatformPage({
               background: `linear-gradient(to bottom, var(--color-${platform.name.toLowerCase()})10, transparent)`,
             }}
           >
-            <RequirementsForm
-              platformName={platform.name}
-              fields={(platform.accountRequirementFields || []).map(
-                (field) => ({
-                  ...field,
-                  fieldType: field.fieldType as
-                    | "text"
-                    | "select"
-                    | "checkbox"
-                    | "textarea",
-                })
-              )}
+            <RequirementsForm 
+              platformName={platform.name} 
+              fields={(platform.accountRequirementFields || []) as FormField[]}
             />
           </div>
         </div>

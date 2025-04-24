@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto prose dark:prose-invert">
           <p>
-            At H&S Ecommerce Agency, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
+            At H&amp;S Ecommerce Agency, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
           </p>
           
           <h2>Information We Collect</h2>
@@ -55,7 +55,11 @@ export default function PrivacyPolicyPage() {
           <p>
             We may use third-party services such as Google Analytics, payment processors, and marketing platforms that collect, monitor, and analyze this information to help us improve our service.
           </p>
-          
+          <ul>
+            <li className="mb-2">
+              H&amp;S Ecommerce Agency may use third-party service providers to help us operate our business and the site or administer activities on our behalf, such as sending out newsletters or surveys. We may share your information with these third parties for those limited purposes.
+            </li>
+          </ul>
           <h2>Data Security</h2>
           <p>
             We have implemented appropriate technical and organizational security measures designed to protect the security of any personal information we process. However, please also remember that we cannot guarantee that the internet itself is 100% secure.

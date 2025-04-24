@@ -14,6 +14,12 @@ export const dynamic = 'force-static'
 
 export { metadata, viewport } from 'next-sanity/studio'
 
-export default function StudioPage() {
+type Props = {
+  params: { tool: string[] }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export default function StudioPage({ params, searchParams }: Props) {
+  const { tool } = params;
   return <NextStudio config={config} />
 }

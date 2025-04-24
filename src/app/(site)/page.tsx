@@ -1,25 +1,20 @@
 import { Hero } from "@/components/pages/home/hero";
-
 import { ServicesShowcase } from "@/components/pages/home/services-showcase";
 import { PlatformsOverview } from "@/components/pages/home/platforms-overview";
 import { StatsSection } from "@/components/pages/home/stats-section";
 import { Testimonials } from "@/components/pages/home/testimonials";
-
 import { FAQSection } from "@/components/pages/home/faq-section";
 import { WhyChooseUs } from "@/components/pages/home/why-choose-us";
 import { CTASection } from "@/components/pages/home/cta-section";
 import { getHomePageData } from "@/lib/services/home";
-import { getPlatforms } from "@/lib/services/platforms";
-
 
 export default async function Home() {
   try {
-    const [{ hero }, platforms] = await Promise.all([
+    const [{ hero }] = await Promise.all([
       getHomePageData(),
-      getPlatforms(),
     ]);
 
-    // console.log("Fetched home data:", { hero, platforms });
+    // console.log("Fetched home data:", { hero });
 
     return (
       <div className="flex flex-col min-h-screen">

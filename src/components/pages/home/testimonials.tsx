@@ -102,7 +102,7 @@ export function Testimonials() {
             >
               {/* Quote mark decoration */}
               <div className="absolute top-6 right-6 text-6xl text-gray-200 dark:text-gray-700 font-serif">
-                "
+                &quot;
               </div>
               
               {/* Platform logo */}
@@ -136,9 +136,9 @@ export function Testimonials() {
               </div>
               
               {/* Quote */}
-              <p className="text-gray-700 dark:text-gray-300 mb-6 relative z-10">
-                "{testimonial.quote}"
-              </p>
+              <blockquote className="border-l-4 pl-4 italic text-lg font-medium">
+                &quot;{testimonial.quote}&quot;
+              </blockquote>
               
               {/* Author info */}
               <div className="flex items-center mt-auto">

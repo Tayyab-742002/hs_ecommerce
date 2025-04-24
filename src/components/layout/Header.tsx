@@ -7,9 +7,9 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
+  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -317,6 +317,10 @@ export default function Header() {
                       <span>+44 7955 426807</span>
                     </a>
                   </div>
+                </div>
+                <div className="pt-4">
+                  {/* Mobile Navigation */}
+                  {/* This component doesn't need an explicit X close button since Sheet provides that */}
                 </div>
               </div>
             </SheetContent>

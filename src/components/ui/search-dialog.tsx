@@ -11,14 +11,13 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import Image from 'next/image'
 
 interface SearchResult {
   id: string
   title: string
   description: string
   url: string
-  type: 'platform' | 'account' | 'service' | 'va' | 'reinstatement'
+  type: "platform" | "account" | "service" | "va" | "reinstatement" | string
   icon?: React.ReactNode
   platformName?: string
   platformIcon?: string
@@ -238,7 +237,9 @@ export function SearchDialog() {
                   </div>
                 ) : searchQuery ? (
                   <div className="p-8 text-center">
-                    <p className="text-muted-foreground">No results found for "{searchQuery}"</p>
+                    <div className="text-sm text-gray-500 dark:text-gray-400 py-6">
+                      No results found for &quot;{searchQuery}&quot;
+                    </div>
                     <p className="text-sm text-muted-foreground mt-1">Try searching for platforms, services, or account types</p>
                   </div>
                 ) : (

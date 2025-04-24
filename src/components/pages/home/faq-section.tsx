@@ -124,7 +124,7 @@ export function FAQSection() {
             variants={itemVariants}
             className="text-muted-foreground text-lg max-w-3xl mx-auto"
           >
-            Find answers to commonly asked questions about our services. If you can't find what you're looking for, feel free to contact us.
+            Find answers to commonly asked questions about our services. If you can&apos;t find what you&apos;re looking for, feel free to contact us.
           </motion.p>
         </motion.div>
 
@@ -191,7 +191,7 @@ export function FAQSection() {
           className="mt-16 text-center"
         >
           <p className="text-muted-foreground mb-6">
-            Still have questions? We're here to help.
+            Still have questions? We&apos;re here to help.
           </p>
           <Button 
             asChild 

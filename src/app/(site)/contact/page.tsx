@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button'
 
 export const revalidate = 60;
@@ -268,7 +267,7 @@ export default function ContactPage() {
               </Button>
 
               <p className="text-sm text-gray-500 mt-2">
-                We'll get back to you within 24 hours.
+                We&apos;ll get back to you within 24 hours.
               </p>
             </form>
           </div>

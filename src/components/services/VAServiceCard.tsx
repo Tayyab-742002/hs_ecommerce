@@ -7,17 +7,13 @@ import { useState } from 'react'
 import { PlatformBadge } from '@/components/ui/platform-badge'
 import { useColorScheme } from '@/providers/theme-provider'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog'
+import { VAService as GlobalVAService } from '@/types'
 
-interface VAService {
-  title: string
-  description: string
-  price: string
-  platformName?: string
-  icon?: {
-    asset: {
-      url: string
-    }
-  }
+// Local interface that extends the global one but makes certain fields required for this component
+interface VAService extends Omit<GlobalVAService, 'description' | 'price'> {
+  description: string; // Required in this component
+  price: string; // Required in this component
+  platformName?: string; // Added back this missing property
 }
 
 export function VAServiceCard({ service }: { service: VAService }) {

@@ -5,13 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useColorScheme } from "@/providers/theme-provider";
 import { PlatformBadge } from "@/components/ui/platform-badge";
 import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
-
-interface FormField {
-  label: string;
-  fieldType: "text" | "select" | "checkbox" | "textarea";
-  options?: string[];
-  required: boolean;
-}
+import { FormField } from "@/types/form";
 
 interface RequirementsFormProps {
   platformName: string;

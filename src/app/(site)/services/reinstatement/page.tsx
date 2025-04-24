@@ -10,8 +10,8 @@ export default async function ReinstatementServicesPage() {
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto text-center mb-12">
         <h1 className="text-4xl font-bold mb-4">Account Reinstatement Services</h1>
-        <p className="text-xl text-gray-600">
-          Get your suspended or blocked marketplace accounts back online with our specialized reinstatement services
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          We help sellers get their suspended accounts back with our expert-led reinstatement services. Don&apos;t let a suspension end your e-commerce journey.
         </p>
       </div>
 

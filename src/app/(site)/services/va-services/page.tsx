@@ -1,37 +1,15 @@
-import { getPlatforms } from '@/lib/services/platforms'
 import { VAServiceCard } from '@/components/services/VAServiceCard'
 import Image from 'next/image'
 import Link from 'next/link'
-
-interface VAService {
-  title: string
-  description: string
-  price: string
-  icon?: {
-    asset: {
-      url: string
-    }
-  }
-}
-
-interface Platform {
-  _id: string
-  name: string
-  slug: string
-  logo?: {
-    asset: {
-      url: string
-    }
-  }
-  vaServices?: VAService[]
-}
+import { getPlatforms } from '@/lib/services/platforms'
+import { Platform, VAService } from '@/types'
 
 export const revalidate = 60;
 
 export default async function VAServicesPage() {
-  const platforms : Platform[] = await getPlatforms()
-  const platformsWithServices = platforms.filter(p => p.vaServices && p.vaServices.length > 0)
-
+  const platforms = await getPlatforms()
+  const typedPlatforms = platforms as unknown as Platform[]
+  
   // Define common VA services if no platform has services defined yet
   const commonVAServices = [
     {
@@ -71,6 +49,22 @@ export default async function VAServicesPage() {
       icon: null
     }
   ]
+
+  // Add a fallback VA service for platforms with no services
+  const platformsWithFallbackServices = typedPlatforms.map(platform => {
+    if (!platform.vaServices || platform.vaServices.length === 0) {
+      return {
+        ...platform,
+        vaServices: [{
+          title: `${platform.name} Virtual Assistant Services`,
+          description: `Professional virtual assistant services for ${platform.name} sellers.`,
+          price: 'Contact for pricing',
+          icon: undefined
+        }]
+      };
+    }
+    return platform;
+  });
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -135,9 +129,9 @@ export default async function VAServicesPage() {
         </div>
       </div>
 
-      {platformsWithServices.length > 0 ? (
+      {platformsWithFallbackServices.length > 0 ? (
         <>
-          {platformsWithServices.map((platform) => (
+          {platformsWithFallbackServices.map((platform) => (
             <div key={platform._id} className="mb-16">
               <div className="flex items-center mb-6">
                 {platform.logo && (
@@ -154,7 +148,18 @@ export default async function VAServicesPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {platform.vaServices?.map((service: VAService, index: number) => (
-                  <VAServiceCard key={index} service={service} />
+                  <div className="space-y-4" key={index}>
+                    {service && (
+                      <VAServiceCard 
+                        service={{
+                          ...service,
+                          // Ensure all required properties exist
+                          description: service.description || "",
+                          price: service.price || "Contact for pricing"
+                        }} 
+                      />
+                    )}
+                  </div>
                 ))}
               </div>
 
