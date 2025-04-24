@@ -13,7 +13,7 @@ export default async function PlatformsPage() {
         {platforms.map((platform) => (
           <Link 
             key={platform._id}
-            href={`/platforms/${platform.slug}`}
+            href={`/platforms/${platform.slug.current}`}
             className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
           >
             {platform.logo && (
