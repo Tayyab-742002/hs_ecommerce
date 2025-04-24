@@ -41,7 +41,7 @@ export function CTASection() {
     <section className="py-24 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-background to-card/80"></div>
+        <div className="absolute inset-0 bg-background"></div>
         <div
           className="absolute -top-24 -right-24 w-96 h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-10"
           style={{ background: getPlatformGradient('eBay') }}
