@@ -1,10 +1,10 @@
 import { Hero } from "@/components/pages/home/hero";
-import { FeaturedPlatforms } from "@/components/pages/home/featured-platforms";
+
 import { ServicesShowcase } from "@/components/pages/home/services-showcase";
 import { PlatformsOverview } from "@/components/pages/home/platforms-overview";
 import { StatsSection } from "@/components/pages/home/stats-section";
 import { Testimonials } from "@/components/pages/home/testimonials";
-import { CustomerLogos } from "@/components/pages/home/customer-logos";
+
 import { FAQSection } from "@/components/pages/home/faq-section";
 import { WhyChooseUs } from "@/components/pages/home/why-choose-us";
 import { CTASection } from "@/components/pages/home/cta-section";

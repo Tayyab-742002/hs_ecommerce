@@ -1,65 +1,72 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { useColorScheme } from '@/providers/theme-provider'
-import { PlatformBadge } from '@/components/ui/platform-badge'
-import { Loader2, CheckCircle, AlertCircle } from 'lucide-react'
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { useColorScheme } from "@/providers/theme-provider";
+import { PlatformBadge } from "@/components/ui/platform-badge";
+import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
 
 interface PriceInquiryFormProps {
-  platformName: string
-  accountType?: string
+  platformName: string;
+  accountType?: string;
 }
 
-export function PriceInquiryForm({ platformName, accountType }: PriceInquiryFormProps) {
-  const { getPlatformColor, getPlatformGradient } = useColorScheme()
-  const platformColor = getPlatformColor(platformName)
-  
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [error, setError] = useState('')
+export function PriceInquiryForm({
+  platformName,
+  accountType,
+}: PriceInquiryFormProps) {
+  const { getPlatformColor, getPlatformGradient } = useColorScheme();
+  const platformColor = getPlatformColor(platformName);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setError('')
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError("");
 
     try {
       // Here you would integrate with your backend API or email service
       // For now, we'll just simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      
-      setIsSubmitted(true)
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      setIsSubmitted(true);
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-      })
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
     } catch (err) {
-      setError('An error occurred while submitting your inquiry. Please try again.')
-      console.error('Form submission error:', err)
+      setError(
+        "An error occurred while submitting your inquiry. Please try again."
+      );
+      console.error("Form submission error:", err);
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   if (isSubmitted) {
     return (
       <div className="bg-card border border-border rounded-lg p-6">
         <div className="text-center mb-4">
-          <div 
+          <div
             className="w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4"
             style={{ backgroundColor: `var(--color-success)20` }}
           >
@@ -67,13 +74,14 @@ export function PriceInquiryForm({ platformName, accountType }: PriceInquiryForm
           </div>
           <h3 className="text-xl font-semibold mb-2">Thank You!</h3>
           <p className="text-gray-500 dark:text-gray-400 mb-6">
-            Your inquiry has been received. We'll get back to you shortly with pricing information.
+            Your inquiry has been received. We'll get back to you shortly with
+            pricing information.
           </p>
         </div>
-        
+
         <div className="flex justify-center">
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             onClick={() => setIsSubmitted(false)}
             size="sm"
             style={{ borderColor: platformColor, color: platformColor }}
@@ -82,37 +90,40 @@ export function PriceInquiryForm({ platformName, accountType }: PriceInquiryForm
           </Button>
         </div>
       </div>
-    )
+    );
   }
 
   return (
     <div className="bg-card border border-border rounded-lg">
       <div className="p-6">
         <div className="flex items-center gap-3 mb-6">
-          <PlatformBadge 
-            platformName={platformName} 
-            size="md" 
-            variant="filled" 
+          <PlatformBadge
+            platformName={platformName}
+            size="md"
+            variant="filled"
           />
-          <h3 className="text-xl font-semibold">
-            Pricing Request
-          </h3>
+          <h3 className="text-xl font-semibold">Pricing Request</h3>
         </div>
-        
+
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-          Request pricing for {platformName} {accountType ? `${accountType} accounts` : 'accounts'} and our expert team will get back to you within 24 hours.
+          Request pricing for {platformName}{" "}
+          {accountType ? `${accountType} accounts` : "accounts"} and our expert
+          team will get back to you within 24 hours.
         </p>
-        
+
         {error && (
-          <div 
+          <div
             className="p-3 rounded-md mb-6 flex items-center gap-2"
-            style={{ backgroundColor: `var(--color-destructive)10`, color: 'var(--color-destructive)' }}
+            style={{
+              backgroundColor: `var(--color-destructive)10`,
+              color: "var(--color-destructive)",
+            }}
           >
             <AlertCircle className="h-5 w-5 flex-shrink-0" />
             <span className="text-sm">{error}</span>
           </div>
         )}
-        
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="name" className="block text-sm font-medium mb-1.5">
@@ -126,10 +137,10 @@ export function PriceInquiryForm({ platformName, accountType }: PriceInquiryForm
               value={formData.name}
               onChange={handleChange}
               className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
-              style={{ focusRing: platformColor }}
+              style={{ "--ring": platformColor } as React.CSSProperties}
             />
           </div>
-          
+
           <div>
             <label htmlFor="email" className="block text-sm font-medium mb-1.5">
               Email Address *
@@ -142,10 +153,10 @@ export function PriceInquiryForm({ platformName, accountType }: PriceInquiryForm
               value={formData.email}
               onChange={handleChange}
               className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
-              style={{ focusRing: platformColor }}
+              style={{ "--ring": platformColor } as React.CSSProperties}
             />
           </div>
-          
+
           <div>
             <label htmlFor="phone" className="block text-sm font-medium mb-1.5">
               Phone Number (WhatsApp preferred)
@@ -157,12 +168,15 @@ export function PriceInquiryForm({ platformName, accountType }: PriceInquiryForm
               value={formData.phone}
               onChange={handleChange}
               className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
-              style={{ focusRing: platformColor }}
+              style={{ "--ring": platformColor } as React.CSSProperties}
             />
           </div>
-          
+
           <div>
-            <label htmlFor="message" className="block text-sm font-medium mb-1.5">
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium mb-1.5"
+            >
               Additional Information
             </label>
             <textarea
@@ -172,13 +186,13 @@ export function PriceInquiryForm({ platformName, accountType }: PriceInquiryForm
               value={formData.message}
               onChange={handleChange}
               className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
-              style={{ focusRing: platformColor }}
+              style={{ "--ring": platformColor } as React.CSSProperties}
               placeholder="Any specific requirements or questions..."
             />
           </div>
-          
-          <Button 
-            type="submit" 
+
+          <Button
+            type="submit"
             disabled={isSubmitting}
             className="w-full py-2.5 text-white"
             style={{ background: getPlatformGradient(platformName) }}
@@ -189,15 +203,16 @@ export function PriceInquiryForm({ platformName, accountType }: PriceInquiryForm
                 Processing...
               </span>
             ) : (
-              'Request Pricing'
+              "Request Pricing"
             )}
           </Button>
-          
+
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-3 text-center">
-            We respect your privacy and will handle your information according to our privacy policy.
+            We respect your privacy and will handle your information according
+            to our privacy policy.
           </p>
         </form>
       </div>
     </div>
-  )
+  );
 }

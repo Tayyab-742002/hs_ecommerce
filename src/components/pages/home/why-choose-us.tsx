@@ -5,7 +5,7 @@ import { ShieldCheck, Clock, HeadphonesIcon, Globe, Award, ThumbsUp } from 'luci
 import { useColorScheme } from '@/providers/theme-provider'
 
 export function WhyChooseUs() {
-  const { getPlatformColor, getPlatformGradient } = useColorScheme()
+  const { getPlatformColor } = useColorScheme()
 
 
   const containerVariants = {

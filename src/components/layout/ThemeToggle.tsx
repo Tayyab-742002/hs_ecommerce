@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { useColorScheme } from '@/providers/theme-provider'
 
 export function ThemeToggle() {
-  const { theme, setTheme, isDark } = useColorScheme()
+  const {  setTheme, isDark } = useColorScheme()
   const [mounted, setMounted] = useState(false)
 
   // Avoid hydration mismatch by only rendering after component is mounted
@@ -16,8 +16,8 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <Button 
-        variant="ghost" 
+      <Button
+        variant="ghost"
         size="icon"
         className="opacity-0"
         aria-label="Toggle theme"

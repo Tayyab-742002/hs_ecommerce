@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { useColorScheme } from '@/providers/theme-provider'
-import { Laptop, Moon, Paintbrush, Settings, Sun, X } from 'lucide-react'
+import { Laptop, Moon,  Sun, X } from 'lucide-react'
 
 export function FloatingThemeToggle() {
   const [isOpen, setIsOpen] = useState(false)
@@ -37,28 +37,28 @@ export function FloatingThemeToggle() {
                 <X className="h-4 w-4" />
               </Button>
             </div>
-            
+
             <div className="grid grid-cols-3 gap-2">
-              <ThemeButton 
-                icon={<Sun className="h-5 w-5" />} 
-                name="Light" 
+              <ThemeButton
+                icon={<Sun className="h-5 w-5" />}
+                name="Light"
                 active={theme === 'light'}
                 onClick={() => setTheme('light')}
               />
-              <ThemeButton 
-                icon={<Moon className="h-5 w-5" />} 
-                name="Dark" 
+              <ThemeButton
+                icon={<Moon className="h-5 w-5" />}
+                name="Dark"
                 active={theme === 'dark'}
                 onClick={() => setTheme('dark')}
               />
-              <ThemeButton 
-                icon={<Laptop className="h-5 w-5" />} 
-                name="System" 
+              <ThemeButton
+                icon={<Laptop className="h-5 w-5" />}
+                name="System"
                 active={theme === 'system'}
                 onClick={() => setTheme('system')}
               />
             </div>
-            
+
             <div className="mt-4 pt-3 border-t border-border">
               <p className="text-xs text-muted-foreground">
                 Toggle between light, dark, and system preference themes for optimal viewing experience.
@@ -88,15 +88,15 @@ export function FloatingThemeToggle() {
   )
 }
 
-function ThemeButton({ 
-  icon, 
-  name, 
-  active, 
-  onClick 
-}: { 
-  icon: React.ReactNode; 
-  name: string; 
-  active: boolean; 
+function ThemeButton({
+  icon,
+  name,
+  active,
+  onClick
+}: {
+  icon: React.ReactNode;
+  name: string;
+  active: boolean;
   onClick: () => void;
 }) {
   return (

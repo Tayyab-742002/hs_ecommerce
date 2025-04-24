@@ -6,7 +6,7 @@ import { useColorScheme } from '@/providers/theme-provider'
 import { useEffect, useState } from 'react'
 
 export function ThemeToggle() {
-  const { theme, setTheme, isDark } = useColorScheme()
+  const {  setTheme, isDark } = useColorScheme()
   const [mounted, setMounted] = useState(false)
 
   // Avoid hydration mismatch by waiting for mount

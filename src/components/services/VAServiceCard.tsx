@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { Shield, X } from 'lucide-react'
+import { Shield } from 'lucide-react'
 import { useState } from 'react'
 import { PlatformBadge } from '@/components/ui/platform-badge'
 import { useColorScheme } from '@/providers/theme-provider'
@@ -23,7 +23,7 @@ interface VAService {
 export function VAServiceCard({ service }: { service: VAService }) {
   const [open, setOpen] = useState(false)
   const { getPlatformColor, getPlatformGradient } = useColorScheme()
-  
+
   // Default to primary color if platform is not specified
   const platformName = service.platformName || 'primary'
   const platformColor = getPlatformColor(platformName)
@@ -34,7 +34,7 @@ export function VAServiceCard({ service }: { service: VAService }) {
       <div className="p-6">
         <div className="flex items-center gap-4 mb-5">
           {service.icon ? (
-            <div 
+            <div
               className="w-12 h-12 rounded-lg flex items-center justify-center shadow-sm"
               style={{ background: `${platformColor}15` }}
             >
@@ -47,12 +47,12 @@ export function VAServiceCard({ service }: { service: VAService }) {
               />
             </div>
           ) : (
-            <div 
+            <div
               className="w-12 h-12 flex items-center justify-center rounded-lg shadow-sm"
               style={{ background: `${platformColor}15` }}
             >
-              <Shield 
-                className="w-6 h-6" 
+              <Shield
+                className="w-6 h-6"
                 style={{ color: platformColor }}
               />
             </div>
@@ -60,10 +60,10 @@ export function VAServiceCard({ service }: { service: VAService }) {
           <div>
             <h3 className="text-lg font-semibold">{service.title}</h3>
             {service.platformName && (
-              <PlatformBadge 
-                platformName={service.platformName} 
-                size="sm" 
-                variant="subtle" 
+              <PlatformBadge
+                platformName={service.platformName}
+                size="sm"
+                variant="subtle"
                 withName={true}
               />
             )}
@@ -75,13 +75,13 @@ export function VAServiceCard({ service }: { service: VAService }) {
         </p>
 
         <div className="flex items-center justify-between mt-6 pt-4 border-t border-border">
-          <div 
+          <div
             className="text-xl font-bold"
             style={{ color: platformColor }}
           >
             {service.price}
           </div>
-          <Button 
+          <Button
             onClick={() => setOpen(true)}
             className="text-white"
             style={{ background: platformGradient }}
@@ -101,20 +101,20 @@ export function VAServiceCard({ service }: { service: VAService }) {
               <p className="text-gray-500 dark:text-gray-400 text-sm">
                 Please contact us via WhatsApp or phone to discuss this service. Our team is available 24/7 to assist you.
               </p>
-              
+
               <div className="space-y-3 mt-2">
-                <a 
-                  href="https://wa.me/923010510316" 
+                <a
+                  href="https://wa.me/923010510316"
                   className="flex items-center p-3 rounded-lg transition-all"
-                  style={{ 
+                  style={{
                     background: `var(--color-success)20`,
                     color: 'var(--color-success)'
                   }}
                   onMouseOver={(e) => e.currentTarget.style.opacity = '0.9'}
                   onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
                 >
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     className="w-5 h-5 mr-3"
                     fill="currentColor"
@@ -123,18 +123,18 @@ export function VAServiceCard({ service }: { service: VAService }) {
                   </svg>
                   +92 301 0510316 (WhatsApp)
                 </a>
-                
-                <a 
-                  href="tel:+447955426807" 
+
+                <a
+                  href="tel:+447955426807"
                   className="flex items-center p-3 rounded-lg transition-all"
-                  style={{ 
+                  style={{
                     background: `var(--color-info)20`,
                     color: 'var(--color-info)'
                   }}
                   onMouseOver={(e) => e.currentTarget.style.opacity = '0.9'}
                   onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
                 >
-                  <svg 
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="none"
@@ -150,9 +150,9 @@ export function VAServiceCard({ service }: { service: VAService }) {
                 </a>
               </div>
             </div>
-            
+
             <DialogFooter>
-              <Button 
+              <Button
                 onClick={() => setOpen(false)}
                 style={{ background: platformGradient }}
               >
