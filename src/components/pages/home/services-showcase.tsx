@@ -5,8 +5,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, ShoppingCart, UserCheck, LineChart, ShieldCheck } from 'lucide-react'
+import { useColorScheme } from '@/providers/theme-provider'
 
 export function ServicesShowcase() {
+  const { getPlatformColor, getPlatformGradient } = useColorScheme()
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -33,38 +36,34 @@ export function ServicesShowcase() {
       title: "Account Services",
       description: "We provide professional seller and buyer accounts for all major e-commerce platforms, verified and ready to use.",
       icon: <ShoppingCart className="w-6 h-6" />,
-      iconBg: "bg-blue-100 dark:bg-blue-900",
-      iconColor: "text-blue-600 dark:text-blue-400",
+      platform: 'Amazon',
       link: "/platforms"
     },
     {
       title: "VA Services",
       description: "Our experienced virtual assistants help manage your e-commerce business operations, listings, and customer service.",
       icon: <UserCheck className="w-6 h-6" />,
-      iconBg: "bg-green-100 dark:bg-green-900",
-      iconColor: "text-green-600 dark:text-green-400",
+      platform: 'eBay',
       link: "/services/va-services"
     },
     {
       title: "Performance Optimization",
       description: "Improve your store's performance with our specialized optimization services for all marketplace platforms.",
       icon: <LineChart className="w-6 h-6" />,
-      iconBg: "bg-purple-100 dark:bg-purple-900",
-      iconColor: "text-purple-600 dark:text-purple-400",
+      platform: 'TikTok',
       link: "/services/va-services"
     },
     {
       title: "Account Reinstatement",
       description: "Get your suspended or blocked accounts back online with our specialized reinstatement services.",
       icon: <ShieldCheck className="w-6 h-6" />,
-      iconBg: "bg-orange-100 dark:bg-orange-900",
-      iconColor: "text-orange-600 dark:text-orange-400",
+      platform: 'Walmart',
       link: "/services/reinstatement"
     }
   ]
 
   return (
-    <section className="py-24 bg-white dark:bg-gray-900">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <motion.div
           initial="hidden"
@@ -73,7 +72,7 @@ export function ServicesShowcase() {
           variants={containerVariants}
           className="text-center mb-16"
         >
-          <motion.div variants={itemVariants} className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+          <motion.div variants={itemVariants} className="inline-flex items-center px-4 py-1.5 rounded-full border border-border bg-card/80 backdrop-blur-sm text-sm font-medium mb-4">
             Our Comprehensive Services
           </motion.div>
           
@@ -86,7 +85,7 @@ export function ServicesShowcase() {
           
           <motion.p 
             variants={itemVariants}
-            className="text-gray-600 dark:text-gray-300 text-lg max-w-3xl mx-auto"
+            className="text-muted-foreground text-lg max-w-3xl mx-auto"
           >
             From account setup to management and optimization, we provide end-to-end services to help you succeed on Amazon, eBay, Walmart, TikTok, and Etsy.
           </motion.p>
@@ -101,18 +100,31 @@ export function ServicesShowcase() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
-              className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700 group hover:shadow-xl transition-all duration-300"
+              className="bg-card rounded-2xl p-8 border border-border group hover:shadow-xl transition-all duration-300"
+              style={{ 
+                borderColor: `${getPlatformColor(service.platform)}30`,
+                boxShadow: `0 4px 20px ${getPlatformColor(service.platform)}05`
+              }}
             >
               <div className="flex items-start gap-5">
-                <div className={`${service.iconBg} p-4 rounded-xl ${service.iconColor}`}>
+                <div className="p-4 rounded-xl" 
+                  style={{ 
+                    backgroundColor: `${getPlatformColor(service.platform)}10`,
+                    color: getPlatformColor(service.platform)
+                  }}
+                >
                   {service.icon}
                 </div>
                 
                 <div className="flex-1">
                   <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">{service.description}</p>
+                  <p className="text-muted-foreground mb-4">{service.description}</p>
                   
-                  <Link href={service.link} className="inline-flex items-center text-primary font-medium group-hover:underline">
+                  <Link 
+                    href={service.link} 
+                    className="inline-flex items-center font-medium group-hover:underline"
+                    style={{ color: getPlatformColor(service.platform) }}
+                  >
                     Learn more <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
@@ -130,13 +142,13 @@ export function ServicesShowcase() {
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
         >
           <motion.div variants={itemVariants} className="order-2 lg:order-1">
-            <div className="bg-primary/10 inline-block px-4 py-1.5 rounded-full text-primary text-sm font-medium mb-4">
+            <div className="inline-block px-4 py-1.5 rounded-full border border-border bg-card/80 backdrop-blur-sm text-sm font-medium mb-4">
               Most Popular Service
             </div>
             
             <h3 className="text-2xl md:text-3xl font-bold mb-6">Account Reinstatement Service</h3>
             
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
+            <p className="text-muted-foreground mb-6">
               Getting your account suspended can be devastating for your business. Our specialized team helps you get back online fast with our proven reinstatement process.
             </p>
             
@@ -149,17 +161,27 @@ export function ServicesShowcase() {
                 "Average 75-85% success rate across platforms"
               ].map((item, index) => (
                 <li key={index} className="flex items-start">
-                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mt-1 mr-3">
-                    <svg className="w-3 h-3 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <div className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-1 mr-3"
+                    style={{ 
+                      backgroundColor: `${getPlatformColor('Amazon')}20`,
+                      color: getPlatformColor('Amazon')
+                    }}
+                  >
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
-                  <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                  <span className="text-muted-foreground">{item}</span>
                 </li>
               ))}
             </ul>
             
-            <Button asChild size="lg" className="rounded-full px-8">
+            <Button 
+              asChild 
+              size="lg" 
+              className="rounded-full px-8 text-white"
+              style={{ background: getPlatformGradient('Amazon') }}
+            >
               <Link href="/services/reinstatement">
                 Learn More <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
@@ -179,7 +201,7 @@ export function ServicesShowcase() {
               
               <div className="absolute bottom-6 left-6 right-6 text-white">
                 <div className="flex items-center gap-4 mb-2">
-                  <div className="bg-green-500 w-3 h-3 rounded-full"></div>
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: getPlatformColor('Amazon') }}></div>
                   <span className="font-medium">Success Rate: 75-85%</span>
                 </div>
                 <h4 className="text-xl font-bold mb-2">Get Your Account Back</h4>
@@ -188,8 +210,10 @@ export function ServicesShowcase() {
             </div>
             
             {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full -z-10"></div>
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/10 rounded-full -z-10"></div>
+            <div className="absolute -top-4 -right-4 w-24 h-24 rounded-full -z-10" 
+              style={{ backgroundColor: `${getPlatformColor('Walmart')}15` }}></div>
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-full -z-10"
+              style={{ backgroundColor: `${getPlatformColor('eBay')}15` }}></div>
           </motion.div>
         </motion.div>
       </div>

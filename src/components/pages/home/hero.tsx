@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { useColorScheme } from '@/providers/theme-provider'
 
 interface HeroProps {
   heading?: string
@@ -29,13 +30,17 @@ export function Hero({
     link: "/platforms"
   }
 }: HeroProps) {
+  const { getPlatformColor, getPlatformGradient } = useColorScheme()
+
+  const platforms = ['Amazon', 'eBay', 'Walmart', 'TikTok', 'Etsy']
+
   return (
     <section className="relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-dark opacity-95"></div>
-        <div className="absolute -left-32 -top-32 w-96 h-96 rounded-full bg-accent/20 filter blur-3xl"></div>
-        <div className="absolute -right-32 top-1/3 w-96 h-96 rounded-full bg-primary/20 filter blur-3xl"></div>
+        <div className="absolute inset-0 bg-background opacity-95"></div>
+        <div className="absolute -left-32 -top-32 w-96 h-96 rounded-full bg-primary/10 filter blur-3xl"></div>
+        <div className="absolute -right-32 top-1/3 w-96 h-96 rounded-full bg-primary/5 filter blur-3xl"></div>
       </div>
 
       <div className="container relative z-10 mx-auto px-4 py-16 md:py-24 lg:py-32">
@@ -47,31 +52,36 @@ export function Hero({
             transition={{ duration: 0.6 }}
             className="order-2 lg:order-1"
           >
-            <div className="inline-flex px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
+            <div className="inline-flex px-4 py-1.5 rounded-full border border-border bg-card/80 backdrop-blur-sm text-sm font-medium mb-6">
               Premium eCommerce Agency
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-primary">
-              {heading}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              <span className="text-foreground">{heading.split(' ').slice(0, -2).join(' ')} </span>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(to right, var(--color-amazon), var(--color-ebay), var(--color-walmart))' }}>
+                {heading.split(' ').slice(-2).join(' ')}
+              </span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 dark:text-gray-300 mb-8 max-w-xl">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
               {subheading}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="px-8 rounded-full bg-primary hover:bg-primary/90 text-white" asChild>
+              <Button size="lg" className="px-8 rounded-full text-white" asChild
+                style={{ background: getPlatformGradient('Amazon') }}
+              >
                 <Link href={cta.link}>
                   {cta.text} <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" className="px-8 rounded-full border-gray-600 hover:bg-background/20" asChild>
+              <Button variant="outline" size="lg" className="px-8 rounded-full" asChild>
                 <Link href="/contact">
                   Contact Us
                 </Link>
               </Button>
             </div>
 
-            {/* Floating badges */}
-            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3">
-              {['Amazon', 'eBay', 'Walmart', 'TikTok', 'Etsy'].map((platform, i) => (
+            {/* Platform badges */}
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+              {platforms.map((platform, i) => (
                 <motion.div
                   key={platform}
                   initial={{ opacity: 0, y: 20 }}
@@ -83,9 +93,9 @@ export function Hero({
                       duration: 0.5 
                     } 
                   }}
-                  className="flex items-center gap-2 text-sm p-2 rounded-lg bg-background/50 backdrop-blur-sm border border-border/50"
+                  className="flex items-center gap-2 text-sm p-2 rounded-lg bg-card/80 backdrop-blur-sm border border-border"
                 >
-                  <div className={`w-3 h-3 rounded-full bg-${platform.toLowerCase()}`}></div>
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: getPlatformColor(platform) }}></div>
                   <span>{platform}</span>
                 </motion.div>
               ))}
@@ -122,25 +132,26 @@ export function Hero({
                       duration: 5,
                       ease: "easeInOut"
                     }}
-                    className="absolute top-16 right-4 w-80 h-64 md:w-96 md:h-72 bg-gradient-primary p-1 rounded-2xl shadow-2xl rotate-3 z-20"
+                    className="absolute top-16 right-4 w-80 h-64 md:w-96 md:h-72 rounded-2xl shadow-2xl rotate-3 z-20"
+                    style={{ background: getPlatformGradient('Amazon') }}
                   >
-                    <div className="w-full h-full bg-background rounded-xl p-4 flex flex-col">
+                    <div className="w-full h-full bg-card rounded-xl p-4 flex flex-col">
                       <div className="flex justify-between items-center mb-4">
                         <div className="flex space-x-1">
-                          <div className="w-3 h-3 bg-error rounded-full"></div>
+                          <div className="w-3 h-3 bg-destructive rounded-full"></div>
                           <div className="w-3 h-3 bg-warning rounded-full"></div>
                           <div className="w-3 h-3 bg-success rounded-full"></div>
                         </div>
-                        <div className="h-4 w-40 bg-gray-800 rounded-md"></div>
+                        <div className="h-4 w-40 bg-muted rounded-md"></div>
                       </div>
                       <div className="flex gap-4 flex-1">
-                        <div className="w-20 bg-gray-800 rounded-md"></div>
+                        <div className="w-20 bg-muted rounded-md"></div>
                         <div className="flex-1 space-y-3">
-                          <div className="h-4 bg-gray-800 rounded-md w-full"></div>
-                          <div className="h-4 bg-gray-800 rounded-md w-4/5"></div>
-                          <div className="h-4 bg-gray-800 rounded-md w-3/4"></div>
-                          <div className="h-4 bg-gray-800 rounded-md w-4/5"></div>
-                          <div className="h-20 bg-primary/20 rounded-md w-full mt-6"></div>
+                          <div className="h-4 bg-muted rounded-md w-full"></div>
+                          <div className="h-4 bg-muted rounded-md w-4/5"></div>
+                          <div className="h-4 bg-muted rounded-md w-3/4"></div>
+                          <div className="h-4 bg-muted rounded-md w-4/5"></div>
+                          <div className="h-20 rounded-md w-full mt-6" style={{ backgroundColor: 'var(--color-amazon)20' }}></div>
                         </div>
                       </div>
                     </div>
@@ -157,19 +168,20 @@ export function Hero({
                       ease: "easeInOut",
                       delay: 0.5
                     }}
-                    className="absolute top-[45%] -left-4 w-64 h-56 md:w-72 md:h-64 bg-gradient-to-tr from-accent to-accent/70 p-1 rounded-2xl shadow-2xl -rotate-6 z-10"
+                    className="absolute top-[45%] -left-4 w-64 h-56 md:w-72 md:h-64 rounded-2xl shadow-2xl -rotate-6 z-10"
+                    style={{ background: getPlatformGradient('Walmart') }}
                   >
-                    <div className="w-full h-full bg-background rounded-xl p-4 flex flex-col">
+                    <div className="w-full h-full bg-card rounded-xl p-4 flex flex-col">
                       <div className="flex justify-between items-center mb-4">
-                        <div className="h-6 w-20 bg-accent/20 rounded-md"></div>
-                        <div className="h-6 w-6 bg-accent/20 rounded-full"></div>
+                        <div className="h-6 w-20 rounded-md" style={{ backgroundColor: 'var(--color-walmart)20' }}></div>
+                        <div className="h-6 w-6 rounded-full" style={{ backgroundColor: 'var(--color-walmart)20' }}></div>
                       </div>
                       <div className="space-y-3 flex-1">
-                        <div className="h-4 bg-gray-800 rounded-md w-full"></div>
-                        <div className="h-4 bg-gray-800 rounded-md w-5/6"></div>
-                        <div className="h-10 bg-accent/20 rounded-md w-full mt-2"></div>
-                        <div className="h-10 bg-accent/20 rounded-md w-full"></div>
-                        <div className="h-10 bg-accent/20 rounded-md w-full"></div>
+                        <div className="h-4 bg-muted rounded-md w-full"></div>
+                        <div className="h-4 bg-muted rounded-md w-5/6"></div>
+                        <div className="h-10 rounded-md w-full mt-2" style={{ backgroundColor: 'var(--color-walmart)20' }}></div>
+                        <div className="h-10 rounded-md w-full" style={{ backgroundColor: 'var(--color-walmart)20' }}></div>
+                        <div className="h-10 rounded-md w-full" style={{ backgroundColor: 'var(--color-walmart)20' }}></div>
                       </div>
                     </div>
                   </motion.div>
@@ -185,18 +197,19 @@ export function Hero({
                       ease: "easeInOut",
                       delay: 1
                     }}
-                    className="absolute bottom-8 left-1/4 w-52 h-40 md:w-60 md:h-48 bg-gradient-to-bl from-primary to-primary/60 p-1 rounded-2xl shadow-2xl rotate-12 z-30"
+                    className="absolute bottom-8 left-1/4 w-52 h-40 md:w-60 md:h-48 rounded-2xl shadow-2xl rotate-12 z-30"
+                    style={{ background: getPlatformGradient('eBay') }}
                   >
-                    <div className="w-full h-full bg-background rounded-xl p-3 flex flex-col">
+                    <div className="w-full h-full bg-card rounded-xl p-3 flex flex-col">
                       <div className="flex space-x-2 mb-2">
-                        <div className="h-8 w-8 bg-primary/20 rounded-full"></div>
-                        <div className="h-8 flex-1 bg-gray-800 rounded-md"></div>
+                        <div className="h-8 w-8 rounded-full" style={{ backgroundColor: 'var(--color-ebay)20' }}></div>
+                        <div className="h-8 flex-1 bg-muted rounded-md"></div>
                       </div>
                       <div className="space-y-2 flex-1">
-                        <div className="h-16 bg-primary/20 rounded-md w-full"></div>
+                        <div className="h-16 rounded-md w-full" style={{ backgroundColor: 'var(--color-ebay)20' }}></div>
                         <div className="flex gap-2">
-                          <div className="h-6 flex-1 bg-gray-800 rounded-md"></div>
-                          <div className="h-6 w-16 bg-primary/30 rounded-md"></div>
+                          <div className="h-6 flex-1 bg-muted rounded-md"></div>
+                          <div className="h-6 w-16 rounded-md" style={{ backgroundColor: 'var(--color-ebay)30' }}></div>
                         </div>
                       </div>
                     </div>
@@ -208,7 +221,7 @@ export function Hero({
             {/* Animated glow effect */}
             <motion.div
               animate={{ 
-                opacity: [0.5, 0.8, 0.5],
+                opacity: [0.2, 0.4, 0.2],
                 scale: [1, 1.05, 1]
               }}
               transition={{ 
@@ -216,7 +229,8 @@ export function Hero({
                 duration: 4,
                 ease: "easeInOut"
               }}
-              className="absolute -inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 filter blur-2xl rounded-full z-0"
+              className="absolute -inset-0 filter blur-2xl rounded-full z-0"
+              style={{ background: 'linear-gradient(135deg, var(--color-amazon)20, var(--color-ebay)20, var(--color-walmart)20)' }}
             />
           </motion.div>
         </div>

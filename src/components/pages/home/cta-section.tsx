@@ -3,9 +3,12 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, CheckCircle } from 'lucide-react'
+import { useColorScheme } from '@/providers/theme-provider'
 
 export function CTASection() {
+  const { getPlatformColor, getPlatformGradient } = useColorScheme()
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -27,13 +30,26 @@ export function CTASection() {
     }
   }
 
+  // Features with associated platforms for styling
+  const features = [
+    { text: "Quick Setup", platform: "Amazon" },
+    { text: "Professional Support", platform: "eBay" },
+    { text: "All Countries Available", platform: "Walmart" }
+  ]
+
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden -z-10">
-        <div className="absolute inset-0 bg-gradient-primary opacity-10"></div>
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-primary rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-background to-card/80"></div>
+        <div 
+          className="absolute -top-24 -right-24 w-96 h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-10"
+          style={{ background: getPlatformGradient('eBay') }}
+        ></div>
+        <div 
+          className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full mix-blend-multiply filter blur-3xl opacity-10"
+          style={{ background: getPlatformGradient('Amazon') }}
+        ></div>
       </div>
       
       {/* Main content */}
@@ -54,7 +70,7 @@ export function CTASection() {
           
           <motion.p 
             variants={itemVariants}
-            className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
+            className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto"
           >
             Get started with our professional accounts, VA services, and reinstatement solutions for Amazon, eBay, Walmart, TikTok, and Etsy.
           </motion.p>
@@ -63,13 +79,24 @@ export function CTASection() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button size="lg" asChild className="rounded-full text-base px-8 py-6 h-auto">
+            <Button 
+              size="lg" 
+              asChild 
+              className="rounded-full text-base px-8 py-6 h-auto text-white"
+              style={{ background: getPlatformGradient('Amazon') }}
+            >
               <Link href="/contact">
                 Contact Us Now <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             
-            <Button size="lg" variant="outline" asChild className="rounded-full text-base px-8 py-6 h-auto">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              asChild 
+              className="rounded-full text-base px-8 py-6 h-auto border-2 backdrop-blur-sm"
+              style={{ borderColor: `${getPlatformColor('eBay')}40`, color: getPlatformColor('eBay') }}
+            >
               <Link href="/platforms">
                 Explore Platforms
               </Link>
@@ -78,73 +105,32 @@ export function CTASection() {
           
           <motion.div 
             variants={itemVariants}
-            className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-gray-500 dark:text-gray-400"
+            className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-muted-foreground"
           >
-            <div className="flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5"
-                style={{ color: 'var(--color-success)' }}
-              >
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-              </svg>
-              <span>Quick Setup</span>
-            </div>
-            
-            <div className="flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5"
-                style={{ color: 'var(--color-success)' }}
-              >
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-              </svg>
-              <span>Professional Support</span>
-            </div>
-            
-            <div className="flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5"
-                style={{ color: 'var(--color-success)' }}
-              >
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-              </svg>
-              <span>All Countries Available</span>
-            </div>
+            {features.map((feature, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <CheckCircle 
+                  className="w-5 h-5" 
+                  style={{ color: getPlatformColor(feature.platform) }}
+                />
+                <span>{feature.text}</span>
+              </div>
+            ))}
           </motion.div>
           
           <motion.div 
             variants={itemVariants}
             className="mt-16 flex flex-col sm:flex-row justify-center items-center gap-4"
           >
-            <p className="text-gray-600 dark:text-gray-400 font-medium">Contact us directly:</p>
+            <p className="text-muted-foreground font-medium">Contact us directly:</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
                 href="https://wa.me/923010510316" 
                 className="flex items-center justify-center gap-2 px-5 py-2 rounded-lg transition-colors"
-                style={{ background: 'var(--color-success)', color: 'white' }}
+                style={{ 
+                  background: `linear-gradient(to right, ${getPlatformColor('TikTok')}90, ${getPlatformColor('TikTok')}70)`, 
+                  color: 'white' 
+                }}
                 onMouseOver={(e) => e.currentTarget.style.opacity = '0.9'}
                 onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
               >
@@ -162,7 +148,10 @@ export function CTASection() {
               <a 
                 href="tel:+447955426807" 
                 className="flex items-center justify-center gap-2 px-5 py-2 rounded-lg transition-colors"
-                style={{ background: 'var(--color-info)', color: 'white' }}
+                style={{ 
+                  background: `linear-gradient(to right, ${getPlatformColor('Etsy')}90, ${getPlatformColor('Etsy')}70)`, 
+                  color: 'white' 
+                }}
                 onMouseOver={(e) => e.currentTarget.style.opacity = '0.9'}
                 onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
               >

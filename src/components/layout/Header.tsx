@@ -15,7 +15,6 @@ import { Menu, Phone, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ThemeToggle } from "./ThemeToggle";
 import { ThemeSelector } from "@/components/theme-selector";
-import { SearchDialog } from "@/components/ui/search-dialog";
 
 const platforms = [
   {
@@ -171,7 +170,6 @@ export default function Header() {
 
         {/* Desktop Contact Numbers and Theme Toggle */}
         <div className="hidden lg:flex items-center space-x-4">
-          <SearchDialog />
           <div className="flex items-center gap-2">
             <ThemeSelector />
             <ThemeToggle />
@@ -194,7 +192,6 @@ export default function Header() {
 
         {/* Mobile Menu */}
         <div className="lg:hidden flex items-center gap-2">
-          <SearchDialog />
           <ThemeToggle />
 
           <Sheet>
@@ -252,7 +249,7 @@ export default function Header() {
                         <Link
                           key={platform.title}
                           href={platform.href}
-                          className="text-sm flex items-center space-x-2 hover:text-primary transition-colors"
+                          className="flex items-center space-x-2 rounded-md px-3 py-1.5 hover:bg-accent transition-colors"
                           onClick={(e) => {
                             const closeButton = document.querySelector(
                               '[data-state="open"] button[data-ui="close"]'
@@ -273,7 +270,7 @@ export default function Header() {
                         <Link
                           key={service.title}
                           href={service.href}
-                          className="text-sm flex items-center space-x-2 hover:text-primary transition-colors"
+                          className="flex items-center space-x-2 rounded-md px-3 py-1.5 hover:bg-accent transition-colors"
                           onClick={(e) => {
                             const closeButton = document.querySelector(
                               '[data-state="open"] button[data-ui="close"]'
@@ -300,18 +297,24 @@ export default function Header() {
                     Contact
                   </Link>
                 </div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-7 border-t">
-                <div className="flex items-center justify-between">
-                  <div className="flex flex-col space-y-1 text-sm">
-                    <a href="tel:+923010510316" className="hover:text-primary transition-colors">
-                      +92 301 0510316
+                <div className="mt-8 space-y-2">
+                  <h4 className="font-medium">Contact</h4>
+                  <div className="space-y-2 ml-4">
+                    <a
+                      href="tel:+923010510316"
+                      className="flex items-center space-x-2 hover:text-primary transition-colors"
+                    >
+                      <Phone className="h-4 w-4" />
+                      <span>+92 301 0510316</span>
                     </a>
-                    <a href="tel:+447955426807" className="hover:text-primary transition-colors">
-                      +44 7955 426807
+                    <a
+                      href="tel:+447955426807"
+                      className="flex items-center space-x-2 hover:text-primary transition-colors"
+                    >
+                      <Phone className="h-4 w-4" />
+                      <span>+44 7955 426807</span>
                     </a>
                   </div>
-                  <Button>Contact Us</Button>
                 </div>
               </div>
             </SheetContent>
@@ -337,11 +340,13 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="flex items-center gap-2">
-            {icon && <span className="text-lg">{icon}</span>}
-            <div className="text-sm font-medium leading-none">{title}</div>
+          <div className="flex items-center gap-2 text-sm font-medium leading-none">
+            {icon && <span>{icon}</span>}
+            <span>{title}</span>
           </div>
-          {children && <div className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</div>}
+          <div className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </div>
         </a>
       </NavigationMenuLink>
     </li>

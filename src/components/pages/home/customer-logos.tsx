@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useColorScheme } from '@/providers/theme-provider'
 
 interface CustomerLogosProps {
   title?: string
@@ -18,6 +19,11 @@ export function CustomerLogos({
   description = "Join thousands of successful e-commerce businesses using our professional services",
   logos
 }: CustomerLogosProps) {
+  const { getPlatformColor, getPlatformGradient } = useColorScheme()
+  
+  // Platform colors for logo placeholders
+  const platforms = ['Amazon', 'eBay', 'Walmart', 'TikTok', 'Etsy']
+  
   // Default logos if none provided
   const defaultLogos = [
     // These would be replaced with actual customer logos
@@ -52,14 +58,25 @@ export function CustomerLogos({
   }
 
   // Create a placeholder component since we're not using real images
-  const LogoPlaceholder = ({ name }: { name: string }) => (
-    <div className="bg-gray-100 dark:bg-gray-800 h-16 rounded-lg flex items-center justify-center px-6">
-      <span className="text-gray-500 dark:text-gray-400 font-semibold">{name}</span>
-    </div>
-  )
+  const LogoPlaceholder = ({ name, index }: { name: string, index: number }) => {
+    const platform = platforms[index % platforms.length]
+    const color = getPlatformColor(platform)
+    
+    return (
+      <div 
+        className="h-16 rounded-lg flex items-center justify-center px-6 border border-border backdrop-blur-sm transition-all duration-300 hover:shadow-md"
+        style={{
+          background: `linear-gradient(135deg, ${color}05, ${color}10)`,
+          borderColor: `${color}20`
+        }}
+      >
+        <span className="font-medium" style={{ color: color }}>{name}</span>
+      </div>
+    )
+  }
 
   return (
-    <section className="py-16 bg-white dark:bg-gray-900">
+    <section className="py-16 bg-background/50">
       <div className="container mx-auto px-4">
         <motion.div
           initial="hidden"
@@ -77,7 +94,7 @@ export function CustomerLogos({
           
           <motion.p 
             variants={itemVariants}
-            className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            className="text-muted-foreground max-w-2xl mx-auto"
           >
             {description}
           </motion.p>
@@ -98,7 +115,7 @@ export function CustomerLogos({
             >
               {logo.url.includes('/images/brands/') ? (
                 // Use placeholder for demo purposes since we don't have real images
-                <LogoPlaceholder name={logo.name} />
+                <LogoPlaceholder name={logo.name} index={index} />
               ) : (
                 <div className="h-16 relative w-full">
                   <Image
@@ -112,6 +129,20 @@ export function CustomerLogos({
             </motion.div>
           ))}
         </motion.div>
+      </div>
+      
+      {/* Decorative elements */}
+      <div className="relative mt-16">
+        <div className="absolute inset-0 overflow-hidden">
+          <div 
+            className="absolute -top-[100px] -right-[100px] w-[300px] h-[300px] rounded-full blur-3xl opacity-10"
+            style={{ background: getPlatformGradient('Amazon') }}
+          ></div>
+          <div 
+            className="absolute -bottom-[150px] -left-[150px] w-[350px] h-[350px] rounded-full blur-3xl opacity-10"
+            style={{ background: getPlatformGradient('eBay') }}
+          ></div>
+        </div>
       </div>
     </section>
   )
