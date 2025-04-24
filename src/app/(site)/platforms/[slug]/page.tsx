@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import { getPlatformBySlug } from '@/lib/services/platforms'
 import { getAccountsByPlatform } from '@/lib/services/accounts'
 import { getReinstatementServicesByPlatform } from '@/lib/services/reinstatement'

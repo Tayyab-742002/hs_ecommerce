@@ -1,5 +1,7 @@
 import { PageHeader } from '@/components/layout/PageHeader'
 
+export const revalidate = 60;
+
 export default function TermsOfServicePage() {
   return (
     <div className="flex flex-col">

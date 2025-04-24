@@ -26,6 +26,8 @@ interface Platform {
   vaServices?: VAService[]
 }
 
+export const revalidate = 60;
+
 export default async function VAServicesPage() {
   const platforms = await getPlatforms()
   const platformsWithServices = platforms.filter(p => p.vaServices && p.vaServices.length > 0)

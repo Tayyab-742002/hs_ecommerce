@@ -1,6 +1,8 @@
 import { getReinstatementServices } from '@/lib/services/reinstatement'
 import { ReinstatementCard } from '@/components/services/ReinstatementCard'
 
+export const revalidate = 60;
+
 export default async function ReinstatementServicesPage() {
   const services = await getReinstatementServices()
 

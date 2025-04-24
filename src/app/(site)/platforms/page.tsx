@@ -2,6 +2,8 @@ import { getPlatforms } from '@/lib/services/platforms'
 import Image from 'next/image'
 import Link from 'next/link'
 
+export const revalidate = 60;
+
 export default async function PlatformsPage() {
   const platforms = await getPlatforms()
 
@@ -23,6 +25,8 @@ export default async function PlatformsPage() {
                   alt={platform.name}
                   width={64}
                   height={64}
+                  sizes="64px"
+                  priority
                   className="rounded-full"
                 />
               </div>

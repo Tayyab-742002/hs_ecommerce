@@ -2,6 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
+export const revalidate = 60;
+
 export default function ContactPage() {
   return (
     <div className="container mx-auto px-4 py-8">
