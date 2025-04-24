@@ -14,13 +14,13 @@ export default function ContactPage() {
             Get in touch with our team for personalized assistance
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
-            <div className="bg-white p-8 rounded-lg shadow-md">
+            <div className="bg-card p-8 rounded-lg shadow-md">
               <h2 className="text-2xl font-semibold mb-6">Contact Information</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex">
                   <div className="flex-shrink-0 mr-4">
@@ -53,12 +53,12 @@ export default function ContactPage() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex">
                   <div className="flex-shrink-0 mr-4">
                     <div className="bg-green-100 p-3 rounded-full">
-                      <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         className="w-6 h-6 text-green-600"
                         fill="currentColor"
@@ -172,7 +172,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-lg shadow-md">
+            <div className="bg-card p-8 rounded-lg shadow-md">
               <h2 className="text-2xl font-semibold mb-6">Business Hours</h2>
               <ul className="space-y-3">
                 <li className="flex justify-between">
@@ -192,7 +192,7 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white p-8 rounded-lg shadow-md">
+          <div className="bg-card p-8 rounded-lg shadow-md">
             <h2 className="text-2xl font-semibold mb-6">Send Us a Message</h2>
             <form className="space-y-4">
               <div>
@@ -207,7 +207,7 @@ export default function ContactPage() {
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                   Email Address *
@@ -220,7 +220,7 @@ export default function ContactPage() {
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
                   Phone Number *
@@ -233,7 +233,7 @@ export default function ContactPage() {
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
                   Subject
@@ -241,7 +241,7 @@ export default function ContactPage() {
                 <select
                   id="subject"
                   name="subject"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full bg-card px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 >
                   <option value="general">General Inquiry</option>
                   <option value="accounts">Marketplace Accounts</option>
@@ -250,7 +250,7 @@ export default function ContactPage() {
                   <option value="other">Other</option>
                 </select>
               </div>
-              
+
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                   Your Message *
@@ -263,11 +263,11 @@ export default function ContactPage() {
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 ></textarea>
               </div>
-              
+
               <Button type="submit" className="w-full py-6 text-base">
                 Send Message
               </Button>
-              
+
               <p className="text-sm text-gray-500 mt-2">
                 We'll get back to you within 24 hours.
               </p>

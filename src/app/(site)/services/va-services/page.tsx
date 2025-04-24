@@ -29,7 +29,7 @@ interface Platform {
 export const revalidate = 60;
 
 export default async function VAServicesPage() {
-  const platforms = await getPlatforms()
+  const platforms : Platform[] = await getPlatforms()
   const platformsWithServices = platforms.filter(p => p.vaServices && p.vaServices.length > 0)
 
   // Define common VA services if no platform has services defined yet
@@ -81,9 +81,9 @@ export default async function VAServicesPage() {
         </p>
       </div>
 
-      <div className="max-w-3xl mx-auto mb-12 bg-white p-8 rounded-lg shadow-md">
+      <div className="max-w-3xl mx-auto mb-12 bg-card p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-semibold mb-4">Why Choose Our VA Services?</h2>
-        
+
         <div className="grid md:grid-cols-2 gap-6">
           <div className="flex items-start">
             <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
@@ -96,7 +96,7 @@ export default async function VAServicesPage() {
               <p className="text-gray-600">Our VAs have platform-specific expertise and training</p>
             </div>
           </div>
-          
+
           <div className="flex items-start">
             <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-primary">
@@ -108,7 +108,7 @@ export default async function VAServicesPage() {
               <p className="text-gray-600">Significantly lower than hiring full-time staff</p>
             </div>
           </div>
-          
+
           <div className="flex items-start">
             <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-primary">
@@ -120,7 +120,7 @@ export default async function VAServicesPage() {
               <p className="text-gray-600">Scale up or down based on your business needs</p>
             </div>
           </div>
-          
+
           <div className="flex items-start">
             <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-primary">
@@ -151,15 +151,15 @@ export default async function VAServicesPage() {
                 )}
                 <h2 className="text-2xl font-bold">{platform.name} VA Services</h2>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {platform.vaServices?.map((service, index) => (
+                {platform.vaServices?.map((service: VAService, index: number) => (
                   <VAServiceCard key={index} service={service} />
                 ))}
               </div>
-              
+
               <div className="mt-6 text-center">
-                <Link 
+                <Link
                   href={`/platforms/${platform.slug}`}
                   className="inline-block px-6 py-3 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors"
                 >
@@ -173,29 +173,29 @@ export default async function VAServicesPage() {
         // Fallback content if no platform has VA services yet
         <div className="mb-16">
           <h2 className="text-2xl font-bold mb-6">Our Virtual Assistant Services</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {commonVAServices.map((service, index) => (
-              <VAServiceCard key={index} service={service} />
+              <VAServiceCard key={index} service={{...service, icon: undefined}} />
             ))}
           </div>
         </div>
       )}
-      
+
       <div className="max-w-3xl mx-auto mt-16 p-8 bg-primary/5 rounded-lg">
         <h2 className="text-2xl font-semibold mb-4 text-center">Custom VA Service Packages</h2>
         <p className="text-gray-600 mb-6 text-center">
           Need a specialized VA service not listed here? We can create custom packages tailored to your specific business needs.
         </p>
-        
+
         <div className="text-center">
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <a 
-              href="https://wa.me/923010510316" 
+            <a
+              href="https://wa.me/923010510316"
               className="flex items-center p-4 bg-green-500 text-white rounded-lg hover:bg-green-600"
             >
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 className="w-6 h-6 mr-2"
                 fill="currentColor"
@@ -204,12 +204,12 @@ export default async function VAServicesPage() {
               </svg>
               +92 301 0510316 (WhatsApp)
             </a>
-            
-            <a 
-              href="tel:+447955426807" 
+
+            <a
+              href="tel:+447955426807"
               className="flex items-center p-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
             >
-              <svg 
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="none"

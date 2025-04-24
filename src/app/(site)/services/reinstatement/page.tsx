@@ -15,9 +15,9 @@ export default async function ReinstatementServicesPage() {
         </p>
       </div>
 
-      <div className="max-w-3xl mx-auto mb-12 bg-white p-8 rounded-lg shadow-md">
+      <div className="max-w-3xl mx-auto mb-12 bg-card p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-semibold mb-4">How Our Reinstatement Process Works</h2>
-        
+
         <div className="space-y-6">
           <div className="flex items-start">
             <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 mr-4">
@@ -28,7 +28,7 @@ export default async function ReinstatementServicesPage() {
               <p className="text-gray-600">We analyze your account suspension details and identify the specific violation or issue that led to the suspension.</p>
             </div>
           </div>
-          
+
           <div className="flex items-start">
             <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 mr-4">
               <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">2</span>
@@ -38,7 +38,7 @@ export default async function ReinstatementServicesPage() {
               <p className="text-gray-600">Our experts develop a tailored reinstatement strategy based on the platform's policies and your specific situation.</p>
             </div>
           </div>
-          
+
           <div className="flex items-start">
             <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 mr-4">
               <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">3</span>
@@ -48,7 +48,7 @@ export default async function ReinstatementServicesPage() {
               <p className="text-gray-600">We create a professional Plan of Action (POA) or appeal letter addressing all concerns raised by the marketplace.</p>
             </div>
           </div>
-          
+
           <div className="flex items-start">
             <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 mr-4">
               <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">4</span>
@@ -58,7 +58,7 @@ export default async function ReinstatementServicesPage() {
               <p className="text-gray-600">We submit the appeal and handle all communication with the platform until your account is reinstated.</p>
             </div>
           </div>
-          
+
           <div className="flex items-start">
             <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 mr-4">
               <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">5</span>
@@ -76,20 +76,20 @@ export default async function ReinstatementServicesPage() {
           <ReinstatementCard key={service._id} service={service} />
         ))}
       </div>
-      
+
       <div className="mt-16 text-center">
         <h2 className="text-2xl font-semibold mb-4">Need Urgent Account Reinstatement?</h2>
         <p className="text-gray-600 mb-6">
           Contact us immediately for expedited service
         </p>
-        
+
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-          <a 
-            href="https://wa.me/923010510316" 
+          <a
+            href="https://wa.me/923010510316"
             className="flex items-center p-4 bg-green-500 text-white rounded-lg hover:bg-green-600"
           >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               className="w-6 h-6 mr-2"
               fill="currentColor"
@@ -98,12 +98,12 @@ export default async function ReinstatementServicesPage() {
             </svg>
             +92 301 0510316 (WhatsApp)
           </a>
-          
-          <a 
-            href="tel:+447955426807" 
+
+          <a
+            href="tel:+447955426807"
             className="flex items-center p-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
           >
-            <svg 
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="none"

@@ -8,7 +8,7 @@ import { useColorScheme } from '@/providers/theme-provider'
 
 export function CTASection() {
   const { getPlatformColor, getPlatformGradient } = useColorScheme()
-  
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -42,16 +42,16 @@ export function CTASection() {
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-background to-card/80"></div>
-        <div 
+        <div
           className="absolute -top-24 -right-24 w-96 h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-10"
           style={{ background: getPlatformGradient('eBay') }}
         ></div>
-        <div 
+        <div
           className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full mix-blend-multiply filter blur-3xl opacity-10"
           style={{ background: getPlatformGradient('Amazon') }}
         ></div>
       </div>
-      
+
       {/* Main content */}
       <div className="container mx-auto px-4">
         <motion.div
@@ -61,81 +61,81 @@ export function CTASection() {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center"
         >
-          <motion.h2 
+          <motion.h2
             variants={itemVariants}
             className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
           >
             Ready to Grow Your E-commerce Business?
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             variants={itemVariants}
             className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto"
           >
             Get started with our professional accounts, VA services, and reinstatement solutions for Amazon, eBay, Walmart, TikTok, and Etsy.
           </motion.p>
-          
-          <motion.div 
+
+          <motion.div
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button 
-              size="lg" 
-              asChild 
-              className="rounded-full text-base px-8 py-6 h-auto text-white"
+            <Button
+              size="lg"
+              asChild
+              className="rounded-full text-base px-8  text-white"
               style={{ background: getPlatformGradient('Amazon') }}
             >
               <Link href="/contact">
                 Contact Us Now <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            
-            <Button 
-              size="lg" 
-              variant="outline" 
-              asChild 
-              className="rounded-full text-base px-8 py-6 h-auto border-2 backdrop-blur-sm"
-              style={{ borderColor: `${getPlatformColor('eBay')}40`, color: getPlatformColor('eBay') }}
+
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="rounded-full text-base px-8  border-2 backdrop-blur-sm"
+              style={{ borderColor: `${getPlatformColor('etsy')}40`, color: getPlatformColor('etsy') }}
             >
               <Link href="/platforms">
                 Explore Platforms
               </Link>
             </Button>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             variants={itemVariants}
             className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-muted-foreground"
           >
             {features.map((feature, index) => (
               <div key={index} className="flex items-center gap-2">
-                <CheckCircle 
-                  className="w-5 h-5" 
+                <CheckCircle
+                  className="w-5 h-5"
                   style={{ color: getPlatformColor(feature.platform) }}
                 />
                 <span>{feature.text}</span>
               </div>
             ))}
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             variants={itemVariants}
             className="mt-16 flex flex-col sm:flex-row justify-center items-center gap-4"
           >
             <p className="text-muted-foreground font-medium">Contact us directly:</p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a 
-                href="https://wa.me/923010510316" 
+              <a
+                href="https://wa.me/923010510316"
                 className="flex items-center justify-center gap-2 px-5 py-2 rounded-lg transition-colors"
-                style={{ 
-                  background: `linear-gradient(to right, ${getPlatformColor('TikTok')}90, ${getPlatformColor('TikTok')}70)`, 
-                  color: 'white' 
+                style={{
+                  background: `linear-gradient(to right, ${getPlatformColor('TikTok')}90, ${getPlatformColor('TikTok')}70)`,
+                  color: 'white'
                 }}
                 onMouseOver={(e) => e.currentTarget.style.opacity = '0.9'}
                 onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
               >
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   className="w-5 h-5"
                   fill="currentColor"
@@ -144,18 +144,18 @@ export function CTASection() {
                 </svg>
                 +92 301 0510316
               </a>
-              
-              <a 
-                href="tel:+447955426807" 
+
+              <a
+                href="tel:+447955426807"
                 className="flex items-center justify-center gap-2 px-5 py-2 rounded-lg transition-colors"
-                style={{ 
-                  background: `linear-gradient(to right, ${getPlatformColor('Etsy')}90, ${getPlatformColor('Etsy')}70)`, 
-                  color: 'white' 
+                style={{
+                  background: `linear-gradient(to right, ${getPlatformColor('Etsy')}90, ${getPlatformColor('Etsy')}70)`,
+                  color: 'white'
                 }}
                 onMouseOver={(e) => e.currentTarget.style.opacity = '0.9'}
                 onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
               >
-                <svg 
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="none"

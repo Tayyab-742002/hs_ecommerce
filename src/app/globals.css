@@ -71,7 +71,7 @@
   --muted-foreground: oklch(0.7 0 0);
 
   /* Accent with a slight warmth for visual interest */
-  --accent: oklch(0.35 0.06 30);
+  --accent: oklch(0.22 0.02 280);
   --accent-foreground: oklch(0.97 0 0);
 
   /* Destructive with rich red */
@@ -86,9 +86,9 @@
 
   /* Chart colors with gradual hue shift for data visualization */
   --chart-1: oklch(0.45 0.05 280);
-  --chart-2: oklch(0.50 0.08 300);
-  --chart-3: oklch(0.55 0.10 320);
-  --chart-4: oklch(0.60 0.12 340);
+  --chart-2: oklch(0.5 0.08 300);
+  --chart-3: oklch(0.55 0.1 320);
+  --chart-4: oklch(0.6 0.12 340);
   --chart-5: oklch(0.65 0.15 360);
 
   /* Sidebar with slight contrast from main background */
@@ -100,7 +100,6 @@
   --sidebar-accent-foreground: oklch(0.97 0 0);
   --sidebar-border: oklch(0.25 0.01 280);
   --sidebar-ring: oklch(0.45 0.05 280);
-
 }
 
 /* Light mode theme with charcoal grey accents */
@@ -143,26 +142,38 @@
   /* Brand colors */
   --color-brand-primary: var(--primary);
   --color-brand-secondary: var(--secondary);
-  
+
   /* Platform-specific colors - easily customizable */
   --color-amazon: oklch(0.55 0.18 140);
-  --color-ebay: oklch(0.60 0.20 90);
+  --color-ebay: oklch(0.6 0.2 90);
   --color-walmart: oklch(0.55 0.22 240);
-  --color-tiktok: oklch(0.50 0.26 330);
-  --color-etsy: oklch(0.60 0.19 30);
-  
+  --color-tiktok: oklch(0.5 0.26 330);
+  --color-etsy: oklch(0.6 0.19 30);
+
   /* Service-specific colors */
-  --color-va-services: oklch(0.60 0.10 280);
+  --color-va-services: oklch(0.6 0.1 280);
   --color-reinstatement: oklch(0.55 0.15 30);
-  
+
   /* Gradient backgrounds */
-  --gradient-primary: linear-gradient(135deg, oklch(0.45 0.05 280) 0%, oklch(0.35 0.03 260) 100%);
-  --gradient-dark: linear-gradient(135deg, oklch(0.15 0.01 280) 0%, oklch(0.10 0.01 260) 100%);
-  --gradient-light: linear-gradient(135deg, oklch(0.95 0.02 280) 0%, oklch(0.90 0.02 260) 100%);
-  
+  --gradient-primary: linear-gradient(
+    135deg,
+    oklch(0.45 0.05 280) 0%,
+    oklch(0.35 0.03 260) 100%
+  );
+  --gradient-dark: linear-gradient(
+    135deg,
+    oklch(0.15 0.01 280) 0%,
+    oklch(0.1 0.01 260) 100%
+  );
+  --gradient-light: linear-gradient(
+    135deg,
+    oklch(0.95 0.02 280) 0%,
+    oklch(0.9 0.02 260) 100%
+  );
+
   /* Status colors */
-  --color-success: oklch(0.60 0.15 150);
-  --color-warning: oklch(0.70 0.18 85);
+  --color-success: oklch(0.6 0.15 150);
+  --color-warning: oklch(0.7 0.18 85);
   --color-error: oklch(0.65 0.25 25);
   --color-info: oklch(0.65 0.12 240);
 }
@@ -201,31 +212,73 @@
   }
 
   /* Utility classes for platform-specific colors */
-  .text-amazon { color: var(--color-amazon); }
-  .text-ebay { color: var(--color-ebay); }
-  .text-walmart { color: var(--color-walmart); }
-  .text-tiktok { color: var(--color-tiktok); }
-  .text-etsy { color: var(--color-etsy); }
-  
-  .bg-amazon { background-color: var(--color-amazon); }
-  .bg-ebay { background-color: var(--color-ebay); }
-  .bg-walmart { background-color: var(--color-walmart); }
-  .bg-tiktok { background-color: var(--color-tiktok); }
-  .bg-etsy { background-color: var(--color-etsy); }
-  
+  .text-amazon {
+    color: var(--color-amazon);
+  }
+  .text-ebay {
+    color: var(--color-ebay);
+  }
+  .text-walmart {
+    color: var(--color-walmart);
+  }
+  .text-tiktok {
+    color: var(--color-tiktok);
+  }
+  .text-etsy {
+    color: var(--color-etsy);
+  }
+
+  .bg-amazon {
+    background-color: var(--color-amazon);
+  }
+  .bg-ebay {
+    background-color: var(--color-ebay);
+  }
+  .bg-walmart {
+    background-color: var(--color-walmart);
+  }
+  .bg-tiktok {
+    background-color: var(--color-tiktok);
+  }
+  .bg-etsy {
+    background-color: var(--color-etsy);
+  }
+
   /* Gradient backgrounds */
-  .bg-gradient-primary { background: var(--gradient-primary); }
-  .bg-gradient-dark { background: var(--gradient-dark); }
-  .bg-gradient-light { background: var(--gradient-light); }
-  
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  .bg-gradient-dark {
+    background: var(--gradient-dark);
+  }
+  .bg-gradient-light {
+    background: var(--gradient-light);
+  }
+
   /* Status colors */
-  .text-success { color: var(--color-success); }
-  .text-warning { color: var(--color-warning); }
-  .text-error { color: var(--color-error); }
-  .text-info { color: var(--color-info); }
-  
-  .bg-success { background-color: var(--color-success); }
-  .bg-warning { background-color: var(--color-warning); }
-  .bg-error { background-color: var(--color-error); }
-  .bg-info { background-color: var(--color-info); }
+  .text-success {
+    color: var(--color-success);
+  }
+  .text-warning {
+    color: var(--color-warning);
+  }
+  .text-error {
+    color: var(--color-error);
+  }
+  .text-info {
+    color: var(--color-info);
+  }
+
+  .bg-success {
+    background-color: var(--color-success);
+  }
+  .bg-warning {
+    background-color: var(--color-warning);
+  }
+  .bg-error {
+    background-color: var(--color-error);
+  }
+  .bg-info {
+    background-color: var(--color-info);
+  }
 }

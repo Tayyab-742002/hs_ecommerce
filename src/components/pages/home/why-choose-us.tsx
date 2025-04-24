@@ -6,9 +6,8 @@ import { useColorScheme } from '@/providers/theme-provider'
 
 export function WhyChooseUs() {
   const { getPlatformColor, getPlatformGradient } = useColorScheme()
-  
-  const platforms = ['Amazon', 'eBay', 'Walmart', 'TikTok', 'Etsy']
-  
+
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -70,7 +69,7 @@ export function WhyChooseUs() {
   ]
 
   return (
-    <section className="py-24 bg-muted/30">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <motion.div
           initial="hidden"
@@ -82,15 +81,15 @@ export function WhyChooseUs() {
           <motion.div variants={itemVariants} className="inline-flex items-center px-4 py-1.5 rounded-full border border-border bg-card/80 backdrop-blur-sm text-sm font-medium mb-4">
             Our Advantages
           </motion.div>
-          
-          <motion.h2 
+
+          <motion.h2
             variants={itemVariants}
             className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
           >
             Why Choose H&S Ecommerce
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             variants={itemVariants}
             className="text-muted-foreground text-lg max-w-3xl mx-auto"
           >
@@ -109,30 +108,30 @@ export function WhyChooseUs() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="bg-card rounded-xl p-8 shadow-lg border border-border flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300"
-              style={{ 
+              className="bg-card rounded-xl p-8 shadow-lg  flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300"
+              style={{
                 borderColor: `${getPlatformColor(feature.platform)}30`,
                 boxShadow: `0 4px 20px ${getPlatformColor(feature.platform)}10`
               }}
             >
               <div className="p-4 rounded-full mb-6"
-                style={{ 
+                style={{
                   backgroundColor: `${getPlatformColor(feature.platform)}10`,
                   color: getPlatformColor(feature.platform)
                 }}
               >
                 {feature.icon}
               </div>
-              
+
               <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
-              
+
               <p className="text-muted-foreground">
                 {feature.description}
               </p>
             </motion.div>
           ))}
         </motion.div>
-        
+
         {/* Additional trust indicators */}
         <motion.div
           variants={containerVariants}
@@ -151,16 +150,16 @@ export function WhyChooseUs() {
               <rect width="100%" height="100%" fill="url(#grid)" />
             </svg>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
             <motion.div variants={itemVariants} className="text-center">
-              <div className="text-4xl font-bold mb-2" 
+              <div className="text-4xl font-bold mb-2"
                 style={{ color: getPlatformColor('Amazon') }}>
                 5+ Years
               </div>
               <p className="text-muted-foreground">Industry Experience</p>
             </motion.div>
-            
+
             <motion.div variants={itemVariants} className="text-center">
               <div className="text-4xl font-bold mb-2"
                 style={{ color: getPlatformColor('eBay') }}>
@@ -168,7 +167,7 @@ export function WhyChooseUs() {
               </div>
               <p className="text-muted-foreground">Satisfied Clients</p>
             </motion.div>
-            
+
             <motion.div variants={itemVariants} className="text-center">
               <div className="text-4xl font-bold mb-2"
                 style={{ color: getPlatformColor('Walmart') }}>

@@ -8,15 +8,15 @@ export default async function PlatformsPage() {
   const platforms = await getPlatforms()
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 ">
       <h1 className="text-3xl font-bold mb-8">Our Platforms</h1>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {platforms.map((platform) => (
-          <Link 
+          <Link
             key={platform._id}
-            href={`/platforms/${platform.slug.current}`}
-            className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            href={`/platforms/${platform.slug}`}
+            className="block p-6  rounded-lg shadow-md hover:shadow-lg transition-shadow bg-card"
           >
             {platform.logo && (
               <div className="mb-4">
@@ -31,11 +31,11 @@ export default async function PlatformsPage() {
                 />
               </div>
             )}
-            
+
             <h2 className="text-xl font-semibold mb-2">{platform.name}</h2>
-            
+
             <div className="space-y-2">
-              {platform.features.slice(0, 3).map((feature, index) => (
+              {platform?.features?.slice(0, 3).map((feature, index) => (
                 <div key={index} className="flex items-center text-sm text-gray-600">
                   <span className="mr-2">•</span>
                   {feature.title}

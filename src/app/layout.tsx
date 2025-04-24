@@ -15,28 +15,33 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "H&S Ecommerce Agency | Amazon, eBay, Walmart, TikTok & Etsy Services",
-  description: "Professional e-commerce services: seller & buyer accounts, VA services, and account reinstatement for Amazon, eBay, Walmart, TikTok, and Etsy.",
-  keywords: "ecommerce agency, amazon seller accounts, ebay accounts, walmart seller, tiktok shop, etsy seller, virtual assistant services, account reinstatement",
+  description:
+    "Professional e-commerce services: seller & buyer accounts, VA services, and account reinstatement for Amazon, eBay, Walmart, TikTok, and Etsy.",
+  keywords:
+    "ecommerce agency, amazon seller accounts, ebay accounts, walmart seller, tiktok shop, etsy seller, virtual assistant services, account reinstatement",
   authors: [{ name: "H&S Ecommerce Agency" }],
   creator: "H&S Ecommerce Agency",
   publisher: "H&S Ecommerce Agency",
-  metadataBase: new URL('https://www.hsecommerce.com'),
+  metadataBase: new URL("https://www.hsecommerce.com"),
   alternates: {
-    canonical: '/',
+    canonical: "/",
   },
   openGraph: {
-    title: "H&S Ecommerce Agency | Amazon, eBay, Walmart, TikTok & Etsy Services",
-    description: "Professional e-commerce services: seller & buyer accounts, VA services, and account reinstatement for Amazon, eBay, Walmart, TikTok, and Etsy.",
-    url: 'https://www.hsecommerce.com',
-    siteName: 'H&S Ecommerce Agency',
-    locale: 'en_US',
-    type: 'website',
+    title:
+      "H&S Ecommerce Agency | Amazon, eBay, Walmart, TikTok & Etsy Services",
+    description:
+      "Professional e-commerce services: seller & buyer accounts, VA services, and account reinstatement for Amazon, eBay, Walmart, TikTok, and Etsy.",
+    url: "https://www.hsecommerce.com",
+    siteName: "H&S Ecommerce Agency",
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: "H&S Ecommerce Agency",
-    description: "Professional e-commerce services for Amazon, eBay, Walmart, TikTok, and Etsy.",
-    creator: '@hsecommerce',
+    description:
+      "Professional e-commerce services for Amazon, eBay, Walmart, TikTok, and Etsy.",
+    creator: "@hsecommerce",
   },
   robots: {
     index: true,
@@ -54,12 +59,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
       </body>
