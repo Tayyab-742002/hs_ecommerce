@@ -1,13 +1,81 @@
-import { Button } from '@/components/ui/button'
+"use client";
 
-export const revalidate = 60;
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "general",
+    message: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/send-contact-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message");
+      }
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "general",
+        message: "",
+      });
+
+      alert("Message sent successfully!");
+    } catch (error) {
+      console.error("Error sending message:", error);
+      alert("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Contact H&S Ecommerce Agency</h1>
+          <h1 className="text-4xl font-bold mb-4">
+            Contact H&S Ecommerce Agency
+          </h1>
           <p className="text-xl text-gray-600">
             Get in touch with our team for personalized assistance
           </p>
@@ -17,7 +85,9 @@ export default function ContactPage() {
           {/* Contact Information */}
           <div className="space-y-8">
             <div className="bg-card p-8 rounded-lg shadow-md">
-              <h2 className="text-2xl font-semibold mb-6">Contact Information</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                Contact Information
+              </h2>
 
               <div className="space-y-6">
                 <div className="flex">
@@ -40,12 +110,18 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-lg font-medium mb-1">Phone Numbers</h3>
                     <p className="text-gray-600 mb-1">
-                      <a href="tel:+923010510316" className="hover:text-primary">
+                      <a
+                        href="tel:+923010510316"
+                        className="hover:text-primary"
+                      >
                         +92 301 0510316
                       </a>
                     </p>
                     <p className="text-gray-600">
-                      <a href="tel:+447955426807" className="hover:text-primary">
+                      <a
+                        href="tel:+447955426807"
+                        className="hover:text-primary"
+                      >
                         +44 7955 426807
                       </a>
                     </p>
@@ -68,7 +144,10 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-lg font-medium mb-1">WhatsApp</h3>
                     <p className="text-gray-600">
-                      <a href="https://wa.me/923010510316" className="hover:text-primary">
+                      <a
+                        href="https://wa.me/923010510316"
+                        className="hover:text-primary"
+                      >
                         +92 301 0510316
                       </a>
                     </p>
@@ -96,7 +175,10 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-lg font-medium mb-1">Email</h3>
                     <p className="text-gray-600">
-                      <a href="mailto:contact@hsecommerce.com" className="hover:text-primary">
+                      <a
+                        href="mailto:contact@hsecommerce.com"
+                        className="hover:text-primary"
+                      >
                         contact@hsecommerce.com
                       </a>
                     </p>
@@ -192,9 +274,12 @@ export default function ContactPage() {
           {/* Contact Form */}
           <div className="bg-card p-8 rounded-lg shadow-md">
             <h2 className="text-2xl font-semibold mb-6">Send Us a Message</h2>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Your Name *
                 </label>
                 <input
@@ -202,12 +287,17 @@ export default function ContactPage() {
                   name="name"
                   type="text"
                   required
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Email Address *
                 </label>
                 <input
@@ -215,12 +305,17 @@ export default function ContactPage() {
                   name="email"
                   type="email"
                   required
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Phone Number *
                 </label>
                 <input
@@ -228,29 +323,41 @@ export default function ContactPage() {
                   name="phone"
                   type="tel"
                   required
+                  value={formData.phone}
+                  onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Subject
                 </label>
                 <select
                   id="subject"
                   name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                   className="w-full bg-card px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 >
                   <option value="general">General Inquiry</option>
                   <option value="accounts">Marketplace Accounts</option>
-                  <option value="va-services">Virtual Assistant Services</option>
+                  <option value="va-services">
+                    Virtual Assistant Services
+                  </option>
                   <option value="reinstatement">Account Reinstatement</option>
                   <option value="other">Other</option>
                 </select>
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Your Message *
                 </label>
                 <textarea
@@ -258,12 +365,18 @@ export default function ContactPage() {
                   name="message"
                   rows={5}
                   required
+                  value={formData.message}
+                  onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 ></textarea>
               </div>
 
-              <Button type="submit" className="w-full py-6 text-base">
-                Send Message
+              <Button
+                type="submit"
+                className="w-full py-6 text-base"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
 
               <p className="text-sm text-gray-500 mt-2">
@@ -274,5 +387,5 @@ export default function ContactPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
