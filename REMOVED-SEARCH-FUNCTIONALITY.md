@@ -4,6 +4,8 @@
 
 The search functionality has been removed from the H&S Ecommerce platform as per requirements. This document provides information about what was removed and what steps were taken.
 
+*Last updated: April 24, 2025*
+
 ## Components Removed
 
 1. **SearchDialog Component**: The entire `search-dialog.tsx` component has been removed.

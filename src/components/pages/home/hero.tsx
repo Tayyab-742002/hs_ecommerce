@@ -37,13 +37,13 @@ export function Hero({
   return (
     <section className="relative overflow-hidden ">
       {/* Background decoration */}
-      <div className="absolute inset-0 z-0">
+      {/* <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-background opacity-95"></div>
         <div className="absolute -left-32 -top-32 w-96 h-96 rounded-full bg-primary/10 filter blur-3xl"></div>
         <div className="absolute -right-32 top-1/3 w-96 h-96 rounded-full bg-primary/5 filter blur-3xl"></div>
-      </div>
+      </div> */}
 
-      <div className="container relative z-10 mx-auto px-4 py-16 md:py-24 lg:py-32">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <motion.div
