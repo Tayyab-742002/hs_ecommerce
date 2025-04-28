@@ -1,7 +1,7 @@
 import { ContactTemplate } from "@/components/email-templates/contact-template";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY!);
 
 export async function POST(request: Request) {
   try {
@@ -10,7 +10,7 @@ export async function POST(request: Request) {
 
     const { data, error } = await resend.emails.send({
       from: "H&S Ecommerce <onboarding@resend.dev>",
-      to: ["adgtscam@gmail.com", "qaziharis8@gmail.com", "xdtayyab0@gmail.com"],
+      to: ["adgtscam@gmail.com"],
       subject: `New Contact Form Submission: ${subject}`,
       replyTo: email,
       react: await ContactTemplate({
@@ -23,6 +23,7 @@ export async function POST(request: Request) {
     });
 
     if (error) {
+      console.error(error);
       return Response.json({ error }, { status: 400 });
     }
 
