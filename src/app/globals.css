@@ -9,6 +9,15 @@
 /* Theme variables */
 /* stylelint-disable-next-line */
 @theme inline {
+  --animate-scroll: scroll var(--animation-duration, 40s)
+    var(--animation-direction, forwards) linear infinite;
+
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -149,11 +158,11 @@
   --color-brand-secondary: var(--secondary);
 
   /* Platform-specific colors - easily customizable */
-  --color-amazon: oklch(0.55 0.18 140);
-  --color-ebay: oklch(0.6 0.2 90);
-  --color-walmart: oklch(0.55 0.22 240);
-  --color-tiktok: oklch(0.5 0.26 330);
-  --color-etsy: oklch(0.6 0.19 30);
+  --color-amazon: oklch(0.77 0.1738 64.55);
+  --color-ebay: oklch(0.6 0.2138 25.05);
+  --color-walmart: oklch(0.57 0.144351 245.265);
+  --color-tiktok: oklch(0.65 0.2404 16.46);
+  --color-etsy: oklch(0.65 0.1694 49.36);
 
   /* Service-specific colors */
   --color-va-services: oklch(0.6 0.1 280);

@@ -3,6 +3,11 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { FaAmazon,  FaTiktok, FaEtsy } from "react-icons/fa";
+import { MdContactPhone } from "react-icons/md";
+import { TbBrandWalmart } from "react-icons/tb";
+
+import { HiRefresh } from "react-icons/hi";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,37 +20,38 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Menu, Phone, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import EbayIcon from "@/icons/EbayIcon";
 
 const platforms = [
   {
     title: "Amazon",
     href: "/platforms/amazon",
     description: "Seller Central & Buyer accounts for all countries",
-    icon: "🛍️",
+    icon: <FaAmazon color="var(--color-amazon)" />,
   },
   {
     title: "eBay",
     href: "/platforms/ebay",
     description: "Seller and buyer accounts with global marketplace access",
-    icon: "🌐",
+    icon: <EbayIcon color="var(--color-ebay)" />,
   },
   {
     title: "Walmart",
     href: "/platforms/walmart",
     description: "Seller Center accounts for online marketplace",
-    icon: "🏪",
+    icon: <TbBrandWalmart color="var(--color-walmart)" />,
   },
   {
     title: "TikTok",
     href: "/platforms/tiktok",
     description: "TikTok Shop seller accounts and management",
-    icon: "📱",
+    icon: <FaTiktok color="var(--color-tiktok)" />,
   },
   {
     title: "Etsy",
     href: "/platforms/etsy",
     description: "Seller accounts for handmade and vintage marketplace",
-    icon: "🎨",
+    icon: <FaEtsy color="var(--color-etsy)" />,
   },
 ];
 
@@ -54,26 +60,53 @@ const services = [
     title: "Virtual Assistant Services",
     href: "/services/va-services",
     description: "Professional VA services for all major e-commerce platforms",
-    icon: "👥",
+    icon: <MdContactPhone color="#865DFF" />,
     subServices: [
-      { name: "Amazon VA Services", icon: "🛍️" },
-      { name: "Walmart VA Services", icon: "🏪" },
-      { name: "eBay VA Services", icon: "🌐" },
-      { name: "TikTok VA Services", icon: "📱" },
-      { name: "Etsy VA Services", icon: "🎨" },
+      {
+        name: "Amazon VA Services",
+        icon: <FaAmazon color="var(--color-amazon)" />,
+      },
+      {
+        name: "Walmart VA Services",
+        icon: <TbBrandWalmart color="var(--color-walmart)" />,
+      },
+      {
+        name: "eBay VA Services",
+        icon: <EbayIcon color="var(--color-ebay)" />,
+      },
+      {
+        name: "TikTok VA Services",
+        icon: <FaTiktok color="var(--color-tiktok)" />,
+      },
+      { name: "Etsy VA Services", icon: <FaEtsy color="var(--color-etsy)" /> },
     ],
   },
   {
     title: "Account Reinstatement",
     href: "/services/reinstatement",
     description: "Professional help to recover blocked or suspended accounts",
-    icon: "🔄",
+    icon: <HiRefresh color="#865DFF" />,
     subServices: [
-      { name: "Amazon Account Recovery", icon: "🛍️" },
-      { name: "Walmart Account Recovery", icon: "🏪" },
-      { name: "eBay Account Recovery", icon: "🌐" },
-      { name: "TikTok Account Recovery", icon: "📱" },
-      { name: "Etsy Account Recovery", icon: "🎨" },
+      {
+        name: "Amazon Account Recovery",
+        icon: <FaAmazon color="var(--color-amazon)" />,
+      },
+      {
+        name: "Walmart Account Recovery",
+        icon: <TbBrandWalmart color="var(--color-walmart)" />,
+      },
+      {
+        name: "eBay Account Recovery",
+        icon: <EbayIcon color="var(--color-ebay)" />,
+      },
+      {
+        name: "TikTok Account Recovery",
+        icon: <FaTiktok color="var(--color-tiktok)" />,
+      },
+      {
+        name: "Etsy Account Recovery",
+        icon: <FaEtsy color="var(--color-etsy)" />,
+      },
     ],
   },
 ];
@@ -83,15 +116,20 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo and Brand Name */}
-        <Link href="/" className="flex items-center space-x-3 transition-opacity hover:opacity-90">
+        <Link
+          href="/"
+          className="flex items-center  transition-opacity hover:opacity-90"
+        >
           <Image
-            src="/logo.svg"
+            src="/images/logo.png"
             alt="H&S Ecommerce Logo"
-            width={36}
-            height={36}
-            className="dark:invert"
+            width={50}
+            height={50}
           />
-          <span className="font-semibold text-xl tracking-tight">H&S Ecommerce</span>
+          <span className="font-semibold md:text-md text:xs leading-none tracking-tight">
+            <span className="text-[#DAAA1A]  text-sm md:text-lg">H&S</span>
+            <br /> Ecommerce
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -107,7 +145,9 @@ export default function Header() {
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="h-10">Platforms</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="h-10">
+                Platforms
+              </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                   {platforms.map((platform) => (
@@ -115,7 +155,7 @@ export default function Header() {
                       key={platform.title}
                       title={platform.title}
                       href={platform.href}
-                      icon={platform.icon}
+                      icon={platform.icon as any}
                     >
                       {platform.description}
                     </ListItem>
@@ -125,7 +165,9 @@ export default function Header() {
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="h-10">Services</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="h-10">
+                Services
+              </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-4 p-4 md:w-[500px] lg:w-[600px]">
                   {services.map((service) => (
@@ -133,7 +175,7 @@ export default function Header() {
                       key={service.title}
                       title={service.title}
                       href={service.href}
-                      icon={service.icon}
+                      icon={service.icon as any}
                     >
                       <div className="mt-2 space-y-3">
                         <p className="text-sm text-muted-foreground">
@@ -143,7 +185,7 @@ export default function Header() {
                           {service.subServices.map((subService) => (
                             <div
                               key={subService.name}
-                              className="flex items-center space-x-2 text-sm rounded-md p-1 hover:bg-accent transition-colors"
+                              className="flex items-center opacity-40 space-x-2 text-sm rounded-md p-1 hover:bg-accent transition-colors"
                             >
                               <span>{subService.icon}</span>
                               <span>{subService.name}</span>
@@ -171,11 +213,17 @@ export default function Header() {
         {/* Desktop Contact Numbers and Theme Toggle */}
         <div className="hidden lg:flex items-center space-x-4">
           <div className="flex flex-col items-end text-sm">
-            <a href="tel:+923010510316" className="flex items-center space-x-1 hover:text-primary transition-colors">
+            <a
+              href="tel:+923010510316"
+              className="flex items-center space-x-1 hover:text-primary transition-colors"
+            >
               <Phone className="h-3 w-3" />
               <span>+92 301 0510316</span>
             </a>
-            <a href="tel:+447955426807" className="flex items-center space-x-1 hover:text-primary transition-colors">
+            <a
+              href="tel:+447955426807"
+              className="flex items-center space-x-1 hover:text-primary transition-colors"
+            >
               <Phone className="h-3 w-3" />
               <span>+44 7955 426807</span>
             </a>
@@ -208,13 +256,14 @@ export default function Header() {
                     }}
                   >
                     <Image
-                      src="/logo.svg"
+                      src="/images/logo.png"
                       alt="H&S Ecommerce Logo"
                       width={32}
                       height={32}
-                      className="dark:invert"
                     />
-                    <span className="font-semibold text-lg">H&S Ecommerce</span>
+                    <span className="font-semibold text-sm">
+                      <span className="text-[#DAAA1A]">H&S</span> Ecommerce
+                    </span>
                   </Link>
                 </div>
 
@@ -259,7 +308,7 @@ export default function Header() {
                             closeButton?.click();
                           }}
                         >
-                          <span className="text-primary">{platform.icon}</span>
+                          <span className="text-primary text-lg">{platform.icon}</span>
                           <span>{platform.title}</span>
                         </Link>
                       ))}

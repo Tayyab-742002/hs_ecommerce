@@ -1,20 +1,20 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 export function PlatformsOverview() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
-  }
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -22,18 +22,18 @@ export function PlatformsOverview() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5
-      }
-    }
-  }
+        duration: 0.5,
+      },
+    },
+  };
 
   // Get platform color by name
   const getPlatformColor = (platformName: string) => {
     const lowerName = platformName.toLowerCase();
 
     // Default to primary if platform color is not found
-    if (!['amazon', 'ebay', 'walmart', 'tiktok', 'etsy'].includes(lowerName)) {
-      return 'var(--color-brand-primary)';
+    if (!["amazon", "ebay", "walmart", "tiktok", "etsy"].includes(lowerName)) {
+      return "var(--color-brand-primary)";
     }
 
     return `var(--color-${lowerName})`;
@@ -45,38 +45,43 @@ export function PlatformsOverview() {
       name: "Amazon",
       logo: "/images/platforms/amazon-logo.png",
       slug: "amazon",
-      description: "World's largest online marketplace with billions of customers across the globe.",
-      accountTypes: ["Seller Central", "Buyer", "Professional", "Individual"]
+      description:
+        "World's largest online marketplace with billions of customers across the globe.",
+      accountTypes: ["Seller Central", "Buyer", "Professional", "Individual"],
     },
     {
       name: "eBay",
       logo: "/images/platforms/ebay-logo.png",
       slug: "ebay",
-      description: "Leading online marketplace for unique, used, and specialized products.",
-      accountTypes: ["Seller", "Buyer", "Store", "Business"]
+      description:
+        "Leading online marketplace for unique, used, and specialized products.",
+      accountTypes: ["Seller", "Buyer", "Store", "Business"],
     },
     {
       name: "Walmart",
       logo: "/images/platforms/walmart-logo.png",
       slug: "walmart",
-      description: "Fast-growing marketplace with access to millions of Walmart shoppers.",
-      accountTypes: ["Seller", "Supplier", "Fulfillment"]
+      description:
+        "Fast-growing marketplace with access to millions of Walmart shoppers.",
+      accountTypes: ["Seller", "Supplier", "Fulfillment"],
     },
     {
       name: "TikTok",
       logo: "/images/platforms/tiktok-logo.png",
       slug: "tiktok",
-      description: "Rapidly expanding social commerce platform with viral marketing potential.",
-      accountTypes: ["TikTok Shop", "Business", "Creator"]
+      description:
+        "Rapidly expanding social commerce platform with viral marketing potential.",
+      accountTypes: ["TikTok Shop", "Business", "Creator"],
     },
     {
       name: "Etsy",
       logo: "/images/platforms/etsy-logo.png",
       slug: "etsy",
-      description: "Specialized marketplace for handmade, vintage, and unique factory-manufactured items.",
-      accountTypes: ["Seller", "Pattern", "Handmade", "Vintage"]
-    }
-  ]
+      description:
+        "Specialized marketplace for handmade, vintage, and unique factory-manufactured items.",
+      accountTypes: ["Seller", "Pattern", "Handmade", "Vintage"],
+    },
+  ];
 
   return (
     <section className="py-24 ">
@@ -88,7 +93,10 @@ export function PlatformsOverview() {
           variants={containerVariants}
           className="text-center mb-16"
         >
-          <motion.div variants={itemVariants} className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+          <motion.div
+            variants={itemVariants}
+            className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
+          >
             All Major Platforms
           </motion.div>
 
@@ -103,12 +111,14 @@ export function PlatformsOverview() {
             variants={itemVariants}
             className="text-gray-500 dark:text-gray-400 text-lg max-w-3xl mx-auto"
           >
-            We provide specialized accounts and services for all major e-commerce platforms. Choose your preferred platform and get started.
+            We provide specialized accounts and services for all major
+            e-commerce platforms. Choose your preferred platform and get
+            started.
           </motion.p>
         </motion.div>
 
         {/* Platforms grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {platforms.map((platform, index) => {
             const platformColor = getPlatformColor(platform.name);
             return (
@@ -123,10 +133,9 @@ export function PlatformsOverview() {
                 <div
                   className="rounded-2xl overflow-hidden h-full flex flex-col shadow-lg"
                   style={{
-                    background: `linear-gradient(135deg, ${platformColor}, ${platformColor}aa)`
+                    background: `linear-gradient(135deg, ${platformColor}, ${platformColor}aa)`,
                   }}
                 >
-                  {/* Platform header */}
                   <div className="p-6 flex items-center gap-4 border-b border-white/20">
                     <div className="bg-accent rounded-full p-2 h-14 w-14 flex items-center justify-center shadow-md">
                       <div className="relative w-8 h-8">
@@ -138,14 +147,13 @@ export function PlatformsOverview() {
                         />
                       </div>
                     </div>
-                    <h3 className="text-2xl font-bold text-white">{platform.name}</h3>
+                    <h3 className="text-2xl font-bold text-white">
+                      {platform.name}
+                    </h3>
                   </div>
 
-                  {/* Platform content */}
                   <div className="p-6 text-white flex-grow">
-                    <p className="mb-6 text-white/90">
-                      {platform.description}
-                    </p>
+                    <p className="mb-6 text-white/90">{platform.description}</p>
 
                     <div className="mb-6">
                       <h4 className="text-sm uppercase tracking-wider text-white/80 mb-3">
@@ -164,12 +172,9 @@ export function PlatformsOverview() {
                     </div>
                   </div>
 
-                  {/* Platform footer */}
                   <div className="px-6 pb-6 mt-auto">
                     <Link href={`/platforms/${platform.slug}`}>
-                      <Button
-                        className="w-full bg-white hover:bg-white/90 text-gray-900"
-                      >
+                      <Button className="w-full bg-white hover:bg-white/90 text-gray-900">
                         Explore {platform.name}
                       </Button>
                     </Link>
@@ -179,6 +184,78 @@ export function PlatformsOverview() {
             );
           })}
         </div>
+
+        {/* 3D CARD EFFECTS */}
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {platforms.map((platform, index) => {
+            return (
+              <CardContainer className="inter-var" key={index}>
+                <CardBody className="bg-card relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-dark dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+                  <CardItem
+                    translateZ="50"
+                    className="text-xl font-bold text-neutral-600 dark:text-white w-full "
+                  >
+                    <div className="p-6 flex items-center gap-4 border-b border-white/20">
+                      <div className="bg-accent rounded-full p-2 h-14 w-14 flex items-center justify-center shadow-md">
+                        <div className="relative w-8 h-8">
+                          <Image
+                            src={platform.logo}
+                            alt={platform.name}
+                            fill
+                            sizes="(max-width: 768px) 32px, 32px"
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white">
+                        {platform.name}
+                      </h3>
+                    </div>
+                  </CardItem>
+                  <CardItem
+                    as="p"
+                    translateZ="60"
+                    className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+                  >
+                    <div className="p-6 text-white flex-grow">
+                      <p className="mb-6 text-white/90">
+                        {platform.description}
+                      </p>
+
+                      <div className="mb-6">
+                        <h4 className="text-sm uppercase tracking-wider text-white/80 mb-3">
+                          Available Account Types
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {platform.accountTypes.map(
+                            (type, idx) =>
+                              idx < 3 && (
+                                <span
+                                  key={idx}
+                                  className="px-3 py-1 bg-white/20 rounded-full text-xs font-medium"
+                                >
+                                  {type}
+                                </span>
+                              )
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </CardItem>
+                  <CardItem translateZ="100" className="w-full mt-4">
+                    <div className="px-6 pb-6 mt-auto">
+                      <Link href={`/platforms/${platform.slug}`}>
+                        <Button className="w-full bg-white hover:bg-white/90 text-gray-900 cursor-pointer">
+                          Explore {platform.name}
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardItem>
+                </CardBody>
+              </CardContainer>
+            );
+          })}
+        </div> */}
 
         {/* View all platforms button */}
         <motion.div
@@ -196,5 +273,5 @@ export function PlatformsOverview() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

@@ -10,9 +10,7 @@ import { getHomePageData } from "@/lib/services/home";
 
 export default async function Home() {
   try {
-    const [{ hero }] = await Promise.all([
-      getHomePageData(),
-    ]);
+    const [{ hero }] = await Promise.all([getHomePageData()]);
 
     // console.log("Fetched home data:", { hero });
 
