@@ -121,7 +121,7 @@ export default function Header() {
           className="flex items-center  transition-opacity hover:opacity-90"
         >
           <Image
-            src="/images/logo.png"
+            src="/images/Logo.png"
             alt="H&S Ecommerce Logo"
             width={50}
             height={50}
