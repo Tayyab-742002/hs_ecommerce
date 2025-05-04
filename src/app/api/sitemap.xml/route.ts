@@ -15,10 +15,10 @@ const platforms = [
 ];
 
 const services = [
-  { slug: "account-management" },
+  // { slug: "account-management" },
   { slug: "reinstatement" },
   { slug: "va-services" },
-  { slug: "account-creation" },
+  // { slug: "account-creation" },
 ];
 
 export async function GET() {
@@ -30,7 +30,7 @@ export async function GET() {
       { url: "/contact", changefreq: "monthly", priority: 0.8 },
       { url: "/platforms", changefreq: "weekly", priority: 0.9 },
       { url: "/accounts", changefreq: "daily", priority: 0.9 },
-      { url: "/services", changefreq: "weekly", priority: 0.9 },
+      // { url: "/services", changefreq: "weekly", priority: 0.9 },
       { url: "/terms", changefreq: "yearly", priority: 0.5 },
       { url: "/privacy", changefreq: "yearly", priority: 0.5 },
 
