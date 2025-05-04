@@ -19,9 +19,18 @@ export function JsonLd() {
             name: "HS Ecommerce Agency",
             alternateName: ["H&S Ecommerce", "H and S Ecommerce"],
             url: "https://www.hsecommerce.store",
-            logo: "https://www.hsecommerce.store/logo.png", // Google uses this for search results
-            image: "https://www.hsecommerce.store/logo.png",
-            description: "HS Ecommerce (H&S) provides professional e-commerce services for Amazon, eBay, Walmart, TikTok and Etsy platforms.",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://www.hsecommerce.store/logo.png",
+              width: 512,
+              height: 512,
+            }, // Google uses this for search results
+            image: [
+              "https://www.hsecommerce.store/logo.png",
+              "https://www.hsecommerce.store/android-chrome-512x512.png",
+            ],
+            description:
+              "HS Ecommerce (H&S) provides professional e-commerce services for Amazon, eBay, Walmart, TikTok and Etsy platforms.",
             sameAs: [
               "https://www.facebook.com/hsecommerce",
               "https://www.instagram.com/hsecommerce",
@@ -50,7 +59,8 @@ export function JsonLd() {
               "@type": "SearchAction",
               target: {
                 "@type": "EntryPoint",
-                urlTemplate: "https://www.hsecommerce.store/search?q={search_term_string}",
+                urlTemplate:
+                  "https://www.hsecommerce.store/search?q={search_term_string}",
               },
               query: "required",
               "query-input": "required name=search_term_string",
