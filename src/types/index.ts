@@ -103,3 +103,39 @@ export interface ReinstatementService {
   price?: string;
   order?: number;
 }
+
+export interface AllServiceDetail {
+  _id: string;
+  name: string;
+  slug: string;
+  platform: {
+    _id: string;
+    name: string;
+    slug: string;
+    logo?: {
+      asset: {
+        url: string;
+      }
+    }
+  };
+  icon?: {
+    asset: {
+      url: string;
+    }
+  };
+  shortDescription: string;
+  description?: any[]; // Portable Text format
+  features?: Array<{
+    title: string;
+    description?: string;
+    included: boolean;
+    highlight?: boolean;
+  }>;
+  price: string;
+  isReinstatement: boolean;
+  order?: number;
+  seo?: {
+    title?: string;
+    description?: string;
+  };
+}

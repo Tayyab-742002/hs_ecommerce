@@ -1,0 +1,86 @@
+{
+  "_type": "platform",
+  "name": "Walmart",
+  "slug": {
+    "_type": "slug",
+    "current": "walmart"
+  },
+  "color": "var(--color-walmart)",
+  "description": [
+    {
+      "_type": "block",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Fast-growing marketplace with access to millions of Walmart shoppers. Benefit from Walmart's trusted brand and extensive customer base."
+        }
+      ]
+    }
+  ],
+  "features": [
+    {
+      "title": "Seller Accounts",
+      "description": "Verified seller accounts for the Walmart Marketplace",
+      "order": 1
+    },
+    {
+      "title": "WFS Integration",
+      "description": "Walmart Fulfillment Services setup and management",
+      "order": 2
+    },
+    {
+      "title": "Catalog Management",
+      "description": "Professional product listing and inventory management",
+      "order": 3
+    },
+    {
+      "title": "Performance Optimization",
+      "description": "Strategies to improve seller metrics and visibility",
+      "order": 4
+    }
+  ],
+  "accountCategories": ["seller", "supplier", "fulfillment"],
+  "vaServices": [
+    {
+      "title": "Account Setup",
+      "description": "Complete Walmart Marketplace account setup and verification",
+      "price": "From $499"
+    },
+    {
+      "title": "Listing Optimization",
+      "description": "Optimization of product listings for Walmart's algorithm",
+      "price": "From $25/listing"
+    },
+    {
+      "title": "Advertising Management",
+      "description": "Strategic management of Walmart Sponsored Products",
+      "price": "From $349/month"
+    }
+  ],
+  "accountRequirementFields": [
+    {
+      "label": "Business Type",
+      "fieldType": "select",
+      "options": ["LLC", "Corporation", "Sole Proprietor"],
+      "required": true
+    },
+    {
+      "label": "US Business Address",
+      "fieldType": "text",
+      "required": true
+    },
+    {
+      "label": "EIN/Tax ID",
+      "fieldType": "text",
+      "required": true
+    },
+    {
+      "label": "Number of SKUs",
+      "fieldType": "select",
+      "options": ["1-50", "51-200", "201-1000", "1000+"],
+      "required": true
+    }
+  ],
+  "order": 3
+}

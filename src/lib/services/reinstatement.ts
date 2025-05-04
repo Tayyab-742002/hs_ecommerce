@@ -153,39 +153,25 @@ export async function getReinstatementServiceBySlug(slug: string, options = { us
 }
 
 export async function getReinstatementServicesByPlatform(platformId: string, options = { useFallback: false }) {
-  const query = `*[_type == "reinstatementService" && platform._ref == $platformId] | order(order asc) {
+  const query = `*[_type == "reinstatementService" && references($platformId)] | order(order asc) {
     _id,
-    title,
-    "slug": slug.current,
-    platform-> {
-      _id,
-      name,
-      "slug": slug.current,
-      logo {
-        asset-> {
-          url
-        }
-      }
-    },
+    name,
     description,
-    image {
-      asset-> {
-        url
-      }
-    },
-    features,
-    successRate,
-    turnaroundTime,
     price,
+    features,
+    platformId,
     order
   }`
 
-  const services = fallbackReinstatementServices.filter(s => s.platform._id === platformId)
+  // Filter fallback reinstatement services by platformId
+  const filteredServices = fallbackReinstatementServices.filter(
+    (service) => service.platformId === platformId
+  )
 
-  return fetchWithFallback(query, services, {
+  return fetchWithFallback(query, filteredServices, {
     ...options,
-    params: { platformId },
+    params: { platformId }, // Ensure platformId is passed as a parameter
     cache: 'no-store',
-    tags: [`platform-reinstatement-${platformId}`]
+    tags: [`reinstatement-${platformId}`]
   })
 }

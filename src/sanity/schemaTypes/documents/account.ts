@@ -1,77 +1,117 @@
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: 'account',
-  title: 'Accounts',
-  type: 'document',
+  name: "account",
+  title: "Accounts",
+  type: "document",
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
+      name: "slug",
+      title: "Slug",
+      type: "slug",
       options: {
-        source: 'title',
+        source: (doc) => `${doc.category}`,
         maxLength: 96,
       },
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'platform',
-      title: 'Platform',
-      type: 'reference',
-      to: [{ type: 'platform' }],
-      validation: Rule => Rule.required(),
+      name: "platform",
+      title: "Platform",
+      type: "reference",
+      to: [{ type: "platform" }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'price',
-      title: 'Price',
-      type: 'number',
-      validation: Rule => Rule.required().min(0),
+      name: "category",
+      title: "Account Category",
+      type: "string",
+      options: {
+        list: [
+          { title: "Aged", value: "aged" },
+          { title: "Professional", value: "professional" },
+          { title: "Business", value: "business" },
+          { title: "Verified", value: "verified" },
+          { title: "Standard", value: "standard" },
+        ],
+      },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'images',
-      title: 'Account Images',
-      type: 'array',
-      of: [
+      name: "price",
+      title: "Price",
+      type: "number",
+      validation: (Rule) => Rule.required().min(0),
+    }),
+    defineField({
+      name: "features",
+      title: "Features",
+      type: "array",
+      of: [{ type: "string" }],
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "metrics",
+      title: "Account Metrics",
+      type: "object",
+      fields: [
         {
-          type: 'image',
-          options: { hotspot: true },
+          name: "followers",
+          title: "Followers Count",
+          type: "number",
+        },
+        {
+          name: "engagement",
+          title: "Engagement Rate",
+          type: "number",
+        },
+        {
+          name: "posts",
+          title: "Posts Count",
+          type: "number",
+        },
+        {
+          name: "age",
+          title: "Account Age (months)",
+          type: "number",
         },
       ],
     }),
     defineField({
-      name: 'metrics',
-      title: 'Account Metrics',
-      type: 'accountMetrics',
+      name: "status",
+      title: "Account Status",
+      type: "string",
+      options: {
+        list: [
+          { title: "Available", value: "available" },
+          { title: "Sold", value: "sold" },
+          { title: "Pending", value: "pending" },
+        ],
+      },
+      initialValue: "available",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'blockContent',
-    }),
-    defineField({
-      name: 'features',
-      title: 'Features',
-      type: 'array',
-      of: [{ type: 'string' }],
-    }),
-    defineField({
-      name: 'isAvailable',
-      title: 'Available',
-      type: 'boolean',
-      initialValue: true,
-    }),
-    defineField({
-      name: 'isFeatured',
-      title: 'Featured',
-      type: 'boolean',
-      initialValue: false,
+      name: "createdAt",
+      title: "Created At",
+      type: "datetime",
+      initialValue: () => new Date().toISOString(),
     }),
   ],
-})
+  preview: {
+    select: {
+      title: "slug.current",
+      subtitle: "platform.name",
+      media: "platform.logo",
+      price: "price"
+    },
+    prepare(selection) {
+      const { title, subtitle, media, price } = selection;
+      return {
+        title: title || "Untitled Account",
+        subtitle: subtitle ? `${subtitle} - $${price}` : "",
+        media,
+      };
+    },
+  },
+});

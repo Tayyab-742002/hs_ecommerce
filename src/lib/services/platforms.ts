@@ -1,4 +1,5 @@
 import { platforms as fallbackPlatforms } from '../fallback-data'
+import { vaServices as fallbackVAServices } from '../fallback-data/va-services'
 import { fetchWithFallback } from '../utils/fetch-data'
 
 export async function getPlatforms(options = { useFallback: false }) {
@@ -82,13 +83,25 @@ export async function getPlatformBySlug(slug: string, options = { useFallback: f
     }
   }`
 
+  // Set useFallback to false to prioritize Sanity data
+  const modifiedOptions = { ...options, useFallback: false };
+
   const platform = fallbackPlatforms.find(p => p.slug === slug)
   if (!platform) {
     throw new Error(`Platform with slug ${slug} not found in fallback data`)
   }
 
+  // If the platform doesn't have vaServices in fallback data, add them from the vaServices fallback
+  if (!platform.vaServices || platform.vaServices.length === 0) {
+    const fallbackServices = fallbackVAServices[slug as keyof typeof fallbackVAServices];
+    if (fallbackServices) {
+      platform.vaServices = fallbackServices;
+    }
+  }
+
   return fetchWithFallback(query, platform, {
-    ...options,
+    ...modifiedOptions,
+    params: { slug },
     cache: 'no-store',
     tags: [`platform-${slug}`]
   })

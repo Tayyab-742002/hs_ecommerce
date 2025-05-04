@@ -61,6 +61,18 @@ export default defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'price',
+      title: 'Starting Price',
+      type: 'string',
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: 'order',
+      title: 'Display Order',
+      type: 'number',
+      hidden: true,
+    }),
+    defineField({
       name: 'seo',
       title: 'SEO',
       type: 'seo',

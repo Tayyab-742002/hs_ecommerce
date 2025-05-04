@@ -1,236 +1,332 @@
-import { VAServiceCard } from '@/components/services/VAServiceCard'
-import Image from 'next/image'
-import Link from 'next/link'
-import { getPlatforms } from '@/lib/services/platforms'
-import { Platform, VAService } from '@/types'
+import { VAServiceCard } from "@/components/services/VAServiceCard";
+import Image from "next/image";
+import Link from "next/link";
+import { getAllServices } from "@/lib/services/all-services";
+import { AllServiceDetail } from "@/types";
+import { Briefcase, CheckCircle, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export const revalidate = 60;
 
 export default async function VAServicesPage() {
-  const platforms = await getPlatforms()
-  const typedPlatforms = platforms as unknown as Platform[]
-  
-  // Define common VA services if no platform has services defined yet
-  const commonVAServices = [
-    {
-      title: "Listing Optimization",
-      description: "Professional optimization of your product listings to improve visibility and conversion rates.",
-      price: "Starting at $25/listing",
-      icon: null
-    },
-    {
-      title: "Account Management",
-      description: "Complete management of your seller account including daily maintenance and performance monitoring.",
-      price: "From $350/month",
-      icon: null
-    },
-    {
-      title: "Customer Service",
-      description: "Responsive customer support to handle inquiries, returns, and maintain high ratings.",
-      price: "From $250/month",
-      icon: null
-    },
-    {
-      title: "PPC Campaign Management",
-      description: "Strategic management of advertising campaigns to maximize ROI and sales.",
-      price: "From $200/month",
-      icon: null
-    },
-    {
-      title: "Product Research",
-      description: "In-depth market research to identify profitable products and niches.",
-      price: "$150 per report",
-      icon: null
-    },
-    {
-      title: "Competitor Analysis",
-      description: "Detailed analysis of competitors' strategies, pricing, and performance.",
-      price: "$120 per analysis",
-      icon: null
-    }
-  ]
-
-  // Add a fallback VA service for platforms with no services
-  const platformsWithFallbackServices = typedPlatforms.map(platform => {
-    if (!platform.vaServices || platform.vaServices.length === 0) {
-      return {
-        ...platform,
-        vaServices: [{
-          title: `${platform.name} Virtual Assistant Services`,
-          description: `Professional virtual assistant services for ${platform.name} sellers.`,
-          price: 'Contact for pricing',
-          icon: undefined
-        }]
-      };
-    }
-    return platform;
-  });
+  const allServices = await getAllServices({ useFallback: true });
+  const typedAllServices = allServices as unknown as AllServiceDetail[];
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4">Virtual Assistant Services</h1>
-        <p className="text-xl text-gray-600">
-          Professional e-commerce virtual assistants to help manage and grow your online business
-        </p>
-      </div>
-
-      <div className="max-w-3xl mx-auto mb-12 bg-card p-8 rounded-lg shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">Why Choose Our VA Services?</h2>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="flex items-start">
-            <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-primary">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-lg font-medium">Experienced Specialists</h3>
-              <p className="text-gray-600">Our VAs have platform-specific expertise and training</p>
-            </div>
-          </div>
-
-          <div className="flex items-start">
-            <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-primary">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-lg font-medium">Cost-Effective</h3>
-              <p className="text-gray-600">Significantly lower than hiring full-time staff</p>
-            </div>
-          </div>
-
-          <div className="flex items-start">
-            <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-primary">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-lg font-medium">Flexible Solutions</h3>
-              <p className="text-gray-600">Scale up or down based on your business needs</p>
-            </div>
-          </div>
-
-          <div className="flex items-start">
-            <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 mr-3">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-primary">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-lg font-medium">Time-Saving</h3>
-              <p className="text-gray-600">Focus on strategy while we handle the operations</p>
-            </div>
-          </div>
+    <div className="w-full">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-7xl">
+        {/* Hero Section */}
+        <div className="mb-16 text-center">
+          <h1 className="text-3xl sm:text-4xl font-bold mb-4">
+            Virtual Assistant Services
+          </h1>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
+            Professional e-commerce services to help you manage and grow your
+            online business across all major platforms.
+          </p>
         </div>
-      </div>
 
-      {platformsWithFallbackServices.length > 0 ? (
-        <>
-          {platformsWithFallbackServices.map((platform) => (
-            <div key={platform._id} className="mb-16">
-              <div className="flex items-center mb-6">
-                {platform.logo && (
-                  <Image
-                    src={platform.logo.asset.url}
-                    alt={platform.name}
-                    width={50}
-                    height={50}
-                    className="mr-3"
+        {/* Services Overview */}
+        <div className="mb-16">
+          <div className="flex items-center mb-8">
+            <h2 className="text-xl sm:text-2xl font-bold">Our Services</h2>
+            <div className="ml-4 h-px bg-border flex-grow"></div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {typedAllServices.map((service) => (
+              <div key={service._id || `service-${service.name}`}>
+                {service.slug && typeof service.slug === 'object' ? (
+                  <div>
+                    <VAServiceCard
+                      service={{
+                        title: service.name,
+                        description: service.shortDescription,
+                        price: service.price,
+                        icon: service.icon,
+                        platformName: service.platform?.name || "All Platforms",
+                      }}
+                    />
+                  </div>
+                ) : (
+                  <VAServiceCard
+                    service={{
+                      title: service.name,
+                      description: service.shortDescription,
+                      price: service.price,
+                      icon: service.icon,
+                      platformName: service.platform?.name || "All Platforms",
+                    }}
                   />
                 )}
-                <h2 className="text-2xl font-bold">{platform.name} VA Services</h2>
               </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {platform.vaServices?.map((service: VAService, index: number) => (
-                  <div className="space-y-4" key={index}>
-                    {service && (
-                      <VAServiceCard 
-                        service={{
-                          ...service,
-                          // Ensure all required properties exist
-                          description: service.description || "",
-                          price: service.price || "Contact for pricing"
-                        }} 
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 text-center">
-                <Link
-                  href={`/platforms/${platform.slug}`}
-                  className="inline-block px-6 py-3 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors"
-                >
-                  View all {platform.name} services
-                </Link>
-              </div>
-            </div>
-          ))}
-        </>
-      ) : (
-        // Fallback content if no platform has VA services yet
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">Our Virtual Assistant Services</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {commonVAServices.map((service, index) => (
-              <VAServiceCard key={index} service={{...service, icon: undefined}} />
             ))}
           </div>
         </div>
-      )}
 
-      <div className="max-w-3xl mx-auto mt-16 p-8 bg-primary/5 rounded-lg">
-        <h2 className="text-2xl font-semibold mb-4 text-center">Custom VA Service Packages</h2>
-        <p className="text-gray-600 mb-6 text-center">
-          Need a specialized VA service not listed here? We can create custom packages tailored to your specific business needs.
-        </p>
+        {/* Why Choose Us Section */}
+        <div className="mb-16 bg-card rounded-xl border border-border p-6 sm:p-8">
+          <h2 className="text-xl sm:text-2xl font-bold mb-6 text-center">
+            Why Choose Our VA Services
+          </h2>
 
-        <div className="text-center">
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <a
-              href="https://wa.me/923010510316"
-              className="flex items-center p-4 bg-green-500 text-white rounded-lg hover:bg-green-600"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                className="w-6 h-6 mr-2"
-                fill="currentColor"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <Briefcase className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">
+                Expert Professionals
+              </h3>
+              <p className="text-muted-foreground">
+                Our team consists of experienced professionals with specialized
+                knowledge in e-commerce operations.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-primary"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold mb-2">
+                Time-Saving Solutions
+              </h3>
+              <p className="text-muted-foreground">
+                Free up your valuable time by delegating operational tasks to
+                our efficient virtual assistants.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <CheckCircle className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Quality Guaranteed</h3>
+              <p className="text-muted-foreground">
+                We stand behind our work with a satisfaction guarantee on all
+                our virtual assistant services.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* How It Works Section */}
+        <div className="mb-16">
+          <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-center">
+            How Our VA Services Work
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <div className="relative">
+              <div className="bg-card rounded-xl border border-border p-6 h-full">
+                <div className="absolute -top-4 -left-4 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg">
+                  1
+                </div>
+                <h3 className="text-lg font-semibold mb-3 mt-2">
+                  Request a Service
+                </h3>
+                <p className="text-muted-foreground">
+                  Choose the service you need and submit your request through
+                  our website or contact form.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="bg-card rounded-xl border border-border p-6 h-full">
+                <div className="absolute -top-4 -left-4 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg">
+                  2
+                </div>
+                <h3 className="text-lg font-semibold mb-3 mt-2">
+                  Consultation
+                </h3>
+                <p className="text-muted-foreground">
+                  We'll discuss your specific requirements and create a tailored
+                  plan for your business needs.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="bg-card rounded-xl border border-border p-6 h-full">
+                <div className="absolute -top-4 -left-4 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg">
+                  3
+                </div>
+                <h3 className="text-lg font-semibold mb-3 mt-2">
+                  Service Delivery
+                </h3>
+                <p className="text-muted-foreground">
+                  Our team executes the service according to the agreed plan,
+                  with regular updates and communication.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Testimonials Section */}
+        <div className="mb-16 bg-primary/5 rounded-xl p-6 sm:p-8">
+          <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-center">
+            What Our Clients Say
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="bg-background rounded-xl border border-border p-6">
+              <div className="flex text-yellow-400 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg
+                    key={i}
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="italic text-muted-foreground mb-4">
+                "Their product listing optimization service transformed my
+                Amazon store. Sales increased by 40% within the first month!"
+              </p>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center mr-3">
+                  <span className="font-semibold text-primary">JD</span>
+                </div>
+                <div>
+                  <p className="font-medium">John Doe</p>
+                  <p className="text-sm text-muted-foreground">Amazon Seller</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-background rounded-xl border border-border p-6">
+              <div className="flex text-yellow-400 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg
+                    key={i}
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="italic text-muted-foreground mb-4">
+                "The customer service team has been a game-changer for my
+                business. They handle all customer inquiries professionally,
+                allowing me to focus on product development."
+              </p>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center mr-3">
+                  <span className="font-semibold text-primary">SM</span>
+                </div>
+                <div>
+                  <p className="font-medium">Sarah Miller</p>
+                  <p className="text-sm text-muted-foreground">
+                    eBay Entrepreneur
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mb-16">
+          <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-center">
+            Frequently Asked Questions
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="text-lg font-semibold mb-2">
+                How quickly can I get started?
+              </h3>
+              <p className="text-muted-foreground">
+                Most of our services can be initiated within 24-48 hours after
+                your order is confirmed and requirements are gathered.
+              </p>
+            </div>
+
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="text-lg font-semibold mb-2">
+                Do you offer custom packages?
+              </h3>
+              <p className="text-muted-foreground">
+                Yes, we can create custom service packages tailored to your
+                specific business needs and budget.
+              </p>
+            </div>
+
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="text-lg font-semibold mb-2">
+                What platforms do you support?
+              </h3>
+              <p className="text-muted-foreground">
+                We provide services for all major e-commerce platforms including
+                Amazon, eBay, Walmart, TikTok Shop, and Etsy.
+              </p>
+            </div>
+
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="text-lg font-semibold mb-2">
+                How do you ensure quality?
+              </h3>
+              <p className="text-muted-foreground">
+                We have strict quality control processes and all work is
+                reviewed by experienced team leads before delivery.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="bg-primary/5 rounded-xl border border-primary/10 p-6 sm:p-8 text-center">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4">
+            Ready to Grow Your E-commerce Business?
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
+            Get started with our professional VA services today and take your
+            online business to the next level.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link href="/contact">
+              <Button size="lg" className="w-full sm:w-auto px-8">
+                Request Service Now
+              </Button>
+            </Link>
+            <Link href="/platforms">
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto px-8"
               >
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-              </svg>
-              +92 301 0510316 (WhatsApp)
-            </a>
-
-            <a
-              href="tel:+447955426807"
-              className="flex items-center p-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-6 h-6 mr-2"
-              >
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-              </svg>
-              +44 7955 426807
-            </a>
+                Explore Platforms
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

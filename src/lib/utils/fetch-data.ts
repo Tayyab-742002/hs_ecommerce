@@ -1,44 +1,36 @@
 import { client } from "@/sanity/lib/client";
-import { platforms } from "../fallback-data";
 
-type FetchOptions = {
-  useFallback?: boolean;
-  tags?: string[];
-  cache?: RequestCache;
-  params?: Record<string, any>;
-};
-
-export async function fetchWithFallback<T>(
-  query: string,
-  fallbackData: T,
-  options: FetchOptions = {}
-): Promise<T> {
-  const { useFallback = false, tags = [], cache = "no-store" } = options;
-
-  if (useFallback) {
-    return fallbackData;
-  }
+export async function fetchWithFallback(query: string, fallbackData: any, options: any = {}) {
+  const { useFallback = false, params = {}, cache, tags } = options;
 
   try {
-    console.log("Fetching Sanity data with query:", query);
-    const data = await client.fetch<T>(
-      query,
-      {},
-      {
-        cache,
-        next: { tags },
-      }
-    );
+    // Always try to fetch from Sanity first
+    const data = await client.fetch(query, params, { cache, next: { tags } });
 
-    if (!data) {
-      console.log("No data returned from Sanity, using fallback");
+    // If we have valid data from Sanity, return it
+    if (data && (Array.isArray(data) ? data.length > 0 : Object.keys(data).length > 0)) {
+      console.log('Using Sanity data');
+      return data;
+    }
+
+    // If Sanity data is empty and useFallback is true, return fallback data
+    if (useFallback) {
+      console.log('Using fallback data');
       return fallbackData;
     }
 
-    console.log("Sanity data fetched successfully:", data);
+    // Otherwise return the empty Sanity data
     return data;
   } catch (error) {
-    console.error("Error fetching data from Sanity:", error);
-    return fallbackData;
+    console.error('Error fetching data:', error);
+
+    // If there's an error and useFallback is true, return fallback data
+    if (useFallback) {
+      console.log('Using fallback data due to error');
+      return fallbackData;
+    }
+
+    // Otherwise rethrow the error
+    throw error;
   }
 }

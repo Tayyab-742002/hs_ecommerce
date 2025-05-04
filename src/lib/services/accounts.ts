@@ -27,27 +27,34 @@ export async function getAccounts(options = { useFallback: false }) {
 }
 
 export async function getAccountsByPlatform(platformId: string, options = { useFallback: false }) {
-  const query = `
-    *[_type == "account" && platform._ref == $platformId] | order(createdAt desc) {
+  const query = `*[_type == "account" && platform._ref == $platformId] | order(price asc) {
+    _id,
+    platform->{
       _id,
-      platform-> {
-        _id,
-        name,
-        logo {
-          asset-> {
-            url
-          }
+      name,
+      logo {
+        asset->{
+          url
         }
-      },
-      category,
-      price,
-      features,
-      metrics,
-      status,
-      createdAt
-    }
-  `
+      }
+    },
+    category,
+    price,
+    features,
+    metrics,
+    status,
+    createdAt
+  }`
 
-  const platformAccounts = fallbackAccounts.filter(account => account.platform._ref === platformId)
-  return fetchWithFallback(query, platformAccounts, { ...options, tags: [`platform-${platformId}-accounts`] })
+  // Filter fallback accounts by platformId
+  const filteredAccounts = fallbackAccounts.filter(
+    (account) => account.platform._ref === platformId
+  )
+
+  return fetchWithFallback(query, filteredAccounts, {
+    ...options,
+    params: { platformId },
+    cache: 'no-store',
+    tags: [`accounts-${platformId}`]
+  })
 }

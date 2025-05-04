@@ -188,7 +188,7 @@ export function RequirementsForm({
           </div>
 
           {/* Dynamic fields based on platform requirements */}
-          {fields.map((field, index) => {
+          {/* {fields.map((field, index) => {
             const fieldId = field.label.toLowerCase().replace(/\s+/g, "-");
 
             switch (field.fieldType) {
@@ -294,7 +294,23 @@ export function RequirementsForm({
               default:
                 return null;
             }
-          })}
+          })} */}
+
+          <div>
+            <label htmlFor="details" className="block text-sm font-medium mb-1.5">
+              Additional Details
+            </label>
+            <textarea
+              id="details"
+              name="details"
+              rows={4}
+              value={formData.details || ""}
+              onChange={handleChange}
+              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              style={{ "--ring": platformColor } as React.CSSProperties}
+              placeholder="Please provide any specific requirements or details about your needs..."
+            />
+          </div>
 
           <Button
             type="submit"

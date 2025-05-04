@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaAmazon,  FaTiktok, FaEtsy } from "react-icons/fa";
+import { FaAmazon, FaTiktok, FaEtsy } from "react-icons/fa";
 import { MdContactPhone } from "react-icons/md";
 import { TbBrandWalmart } from "react-icons/tb";
 
@@ -308,7 +308,9 @@ export default function Header() {
                             closeButton?.click();
                           }}
                         >
-                          <span className="text-primary text-lg">{platform.icon}</span>
+                          <span className="text-primary text-lg">
+                            {platform.icon}
+                          </span>
                           <span>{platform.title}</span>
                         </Link>
                       ))}

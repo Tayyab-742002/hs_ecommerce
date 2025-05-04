@@ -7,12 +7,14 @@ import page from './documents/page'
 import siteSettings from './documents/siteSettings'
 import service from './documents/service'
 import reinstatementService from './documents/reinstatementService'
+import allService from './documents/allService'
 
 // Object Types
 import blockContent from './objects/blockContent'
 import seo from './objects/seo'
 import accountMetrics from './objects/accountMetrics'
 import hero from './objects/hero'
+import serviceFeature from './objects/serviceFeature'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -21,6 +23,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     account,
     service,
     reinstatementService,
+    allService,
     page,
     siteSettings,
 
@@ -29,5 +32,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     seo,
     accountMetrics,
     hero,
+    serviceFeature,
   ],
 }

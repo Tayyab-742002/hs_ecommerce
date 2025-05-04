@@ -1,37 +1,46 @@
-'use client'
-
+import React from 'react'
 import Image from 'next/image'
-import { Account } from '@/lib/fallback-data/accounts'
-import { CheckCircle, Star } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Star } from 'lucide-react'
+import { formatCurrency } from '@/lib/utils/format'
 import { PlatformBadge } from '@/components/ui/platform-badge'
-import { useColorScheme } from '@/providers/theme-provider'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import { getPlatformColor } from '@/lib/utils/platform-colors'
 
-export function AccountCard({ account }: { account: Account }) {
-  const { getPlatformColor } = useColorScheme()
-  const platformColor = getPlatformColor(account.platform.name)
-  
-  // Get color for account status
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'available':
-        return 'var(--color-success)'
-      case 'pending':
-        return 'var(--color-warning)'
-      case 'sold':
-        return 'var(--color-destructive)'
-      default:
-        return 'var(--color-muted)'
+interface AccountCardProps {
+  account: {
+    _id: string
+    platform: {
+      _ref: string
+      name: string
+      logo?: {
+        asset: {
+          url: string
+        }
+      }
     }
+    category: string
+    price: number
+    features: string[]
+    metrics?: {
+      followers?: number
+      engagement?: number
+      posts?: number
+      age?: number
+    }
+    status: 'available' | 'sold' | 'pending'
+    createdAt: string
   }
-  
-  const statusColor = getStatusColor(account.status)
+}
+
+export function AccountCard({ account }: AccountCardProps) {
+  const platformColor = getPlatformColor(account.platform.name.toLowerCase())
 
   return (
     <div className="bg-card rounded-xl border border-border shadow-sm overflow-hidden transition-all hover:shadow-md hover:border-primary/20">
       <div className="p-6">
         <div className="flex items-center gap-4 mb-6">
-          <div 
+          <div
             className="w-12 h-12 rounded-full flex items-center justify-center"
             style={{ background: `${platformColor}15` }}
           >
@@ -50,81 +59,93 @@ export function AccountCard({ account }: { account: Account }) {
           <div>
             <div className="flex items-center gap-2">
               <h3 className="font-semibold">{account.platform.name}</h3>
-              <PlatformBadge 
-                platformName={account.platform.name} 
-                size="sm" 
-                variant="subtle" 
-                withName={false} 
+              <PlatformBadge
+                platformName={account.platform.name}
+                size="sm"
+                variant="subtle"
+                withName={false}
               />
             </div>
             <span className="text-sm text-gray-500 dark:text-gray-400 capitalize">{account.category}</span>
           </div>
         </div>
 
-        {account.metrics && (
-          <div className="grid grid-cols-2 gap-4 mb-6 p-4 rounded-lg bg-background">
-            {account.metrics.followers && (
-              <div>
-                <span className="text-xs text-gray-500 dark:text-gray-400">Followers</span>
-                <p className="font-semibold">{account.metrics.followers.toLocaleString()}</p>
-              </div>
-            )}
-            {account.metrics.engagement && (
-              <div>
-                <span className="text-xs text-gray-500 dark:text-gray-400">Engagement</span>
-                <p className="font-semibold">{account.metrics.engagement}%</p>
-              </div>
-            )}
-            {account.metrics.posts && (
-              <div>
-                <span className="text-xs text-gray-500 dark:text-gray-400">Posts</span>
-                <p className="font-semibold">{account.metrics.posts}</p>
-              </div>
-            )}
-            {account.metrics.age && (
-              <div>
-                <span className="text-xs text-gray-500 dark:text-gray-400">Age</span>
-                <p className="font-semibold">{account.metrics.age} years</p>
-              </div>
-            )}
+        <div className="mb-6">
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-sm text-muted-foreground">Price</span>
+            <span className="font-semibold text-lg">{formatCurrency(account.price)}</span>
+          </div>
+
+          {/* Account Metrics */}
+          {account.metrics && Object.keys(account.metrics).length > 0 && (
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 mt-4">
+              {account.metrics.followers !== undefined && (
+                <div className="flex justify-between">
+                  <span className="text-xs text-muted-foreground">Followers</span>
+                  <span className="text-xs font-medium">{account.metrics.followers.toLocaleString()}</span>
+                </div>
+              )}
+              {account.metrics.engagement !== undefined && (
+                <div className="flex justify-between">
+                  <span className="text-xs text-muted-foreground">Engagement</span>
+                  <span className="text-xs font-medium">{account.metrics.engagement}%</span>
+                </div>
+              )}
+              {account.metrics.age !== undefined && (
+                <div className="flex justify-between">
+                  <span className="text-xs text-muted-foreground">Age</span>
+                  <span className="text-xs font-medium">{account.metrics.age} months</span>
+                </div>
+              )}
+              {account.metrics.posts !== undefined && (
+                <div className="flex justify-between">
+                  <span className="text-xs text-muted-foreground">Posts</span>
+                  <span className="text-xs font-medium">{account.metrics.posts}</span>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Features */}
+        {account.features.length > 0 && (
+          <div className="mb-6">
+            <h4 className="text-sm font-medium mb-2">Features</h4>
+            <ul className="space-y-1">
+              {account.features.slice(0, 4).map((feature, index) => (
+                <li key={index} className="text-xs text-muted-foreground flex items-start">
+                  <span className="mr-2 text-primary">✓</span>
+                  {feature}
+                </li>
+              ))}
+              {account.features.length > 4 && (
+                <li className="text-xs text-muted-foreground">+ {account.features.length - 4} more</li>
+              )}
+            </ul>
           </div>
         )}
 
-        <ul className="space-y-3 mb-6">
-          {account.features.map((feature, index) => (
-            <li key={index} className="flex items-start gap-2 text-sm">
-              <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: platformColor }} />
-              <span className="text-gray-700 dark:text-gray-300">{feature}</span>
-            </li>
-          ))}
-        </ul>
+        {/* Status and CTA */}
+        <div className="flex items-center justify-between mt-auto pt-4 border-t border-border">
+          <div className="flex items-center">
+            <span
+              className={`w-2 h-2 rounded-full mr-2 ${
+                account.status === 'available' ? 'bg-green-500' :
+                account.status === 'pending' ? 'bg-yellow-500' : 'bg-red-500'
+              }`}
+            ></span>
+            <span className="text-xs capitalize">{account.status}</span>
+          </div>
 
-        <div className="flex items-center justify-between pt-4 border-t border-border">
-          <span className="text-2xl font-bold" style={{ color: platformColor }}>${account.price}</span>
-          <div className="flex items-center gap-3">
-            <span 
-              className="px-3 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1"
-              style={{ 
-                backgroundColor: `${statusColor}15`,
-                color: statusColor
-              }}
-            >
-              <span 
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ backgroundColor: statusColor }}
-              ></span>
-              {account.status.charAt(0).toUpperCase() + account.status.slice(1)}
-            </span>
-            
-            <Button 
-              size="sm" 
-              className="px-3 text-white"
-              style={{ backgroundColor: platformColor }}
+          <Link href={`/platforms/${account.platform.name.toLowerCase()}#inquiry-forms`}>
+            <Button
+              size="sm"
+              variant={account.status === 'available' ? 'default' : 'outline'}
               disabled={account.status !== 'available'}
             >
-              {account.status === 'available' ? 'Buy Now' : 'Sold Out'}
+              {account.status === 'available' ? 'Inquire' : 'Sold Out'}
             </Button>
-          </div>
+          </Link>
         </div>
       </div>
     </div>
