@@ -88,12 +88,7 @@ const platforms = [
   { slug: "tiktok" },
 ];
 
-const services = [
-  { slug: "account-management" },
-  { slug: "reinstatement" },
-  { slug: "va-services" },
-  { slug: "account-creation" },
-];
+const services = [{ slug: "reinstatement" }, { slug: "va-services" }];
 
 // Add this to make the route dynamic (since we're using headers())
 export const dynamic = "force-dynamic";
@@ -129,7 +124,6 @@ function generateSitemap(): string {
     { url: "/contact", changefreq: "monthly", priority: 0.8 },
     { url: "/platforms", changefreq: "weekly", priority: 0.9 },
     { url: "/accounts", changefreq: "daily", priority: 0.9 },
-    { url: "/services", changefreq: "weekly", priority: 0.9 },
     { url: "/terms", changefreq: "yearly", priority: 0.5 },
     { url: "/privacy", changefreq: "yearly", priority: 0.5 },
   ];
