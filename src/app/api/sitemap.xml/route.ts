@@ -1,6 +1,5 @@
 // app/api/sitemap.xml/route.ts
 import { SitemapStream, streamToPromise } from "sitemap";
-import { Readable } from "stream";
 
 // Mark this route as dynamic to prevent static generation errors
 export const dynamic = "force-dynamic";
@@ -23,6 +22,11 @@ const services = [
 
 export async function GET() {
   try {
+    // Create sitemap stream
+    const smStream = new SitemapStream({
+      hostname: "https://www.hsecommerce.store",
+    });
+
     // Define the links
     const links = [
       { url: "/", changefreq: "weekly", priority: 1.0 },
@@ -49,27 +53,21 @@ export async function GET() {
       })),
     ];
 
-    // Create a stream to write to
-    const stream = new SitemapStream({
-      hostname: "https://www.hsecommerce.store",
-    });
+    // Add all links to the sitemap stream
+    for (const link of links) {
+      smStream.write(link);
+    }
 
-    // Return a promise that resolves with your XML
-    const smStream = new Readable({
-      read() {
-        links.forEach((link) => this.push(link));
-        this.push(null);
-      },
-    });
+    // End the stream
+    smStream.end();
 
-    // Pipe the readable stream to the sitemap stream and get the result
-    const pipeline = smStream.pipe(stream);
-    const xml = await streamToPromise(pipeline);
+    // Generate sitemap XML
+    const sitemap = await streamToPromise(smStream);
 
-    return new Response(xml, {
+    // Return the XML response
+    return new Response(sitemap.toString(), {
       headers: {
         "Content-Type": "application/xml",
-        "Content-Length": String(xml.length),
         "Cache-Control": "public, max-age=86400, stale-while-revalidate=43200",
       },
     });
