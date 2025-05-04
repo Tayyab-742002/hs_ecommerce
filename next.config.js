@@ -19,6 +19,6 @@ const nextConfig = {
     // your project has TypeScript errors.
     ignoreBuildErrors: true,
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
