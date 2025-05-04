@@ -42,8 +42,8 @@ export async function getVAServices(options = { useFallback: false }) {
 
   return fetchWithFallback(query, fallbackData, {
     ...options,
-    cache: "no-store",
-    tags: ["va-services"]
+    tags: ["va-services"],
+    revalidate: 60
   });
 }
 
@@ -189,3 +189,4 @@ export async function getVAServiceBySlug(slug: string, options = { useFallback: 
     tags: [`va-service-${slug}`]
   });
 }
+

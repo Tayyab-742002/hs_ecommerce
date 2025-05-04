@@ -34,7 +34,8 @@ export async function getPlatforms(options = { useFallback: false }) {
 
   return fetchWithFallback(query, fallbackPlatforms, {
     ...options,
-    cache: 'no-store' // Disable cache during development
+    tags: ["platforms"],
+    revalidate: 60
   })
 }
 

@@ -109,7 +109,8 @@ export async function getReinstatementServices(options = { useFallback: false })
 
   return fetchWithFallback(query, fallbackReinstatementServices, {
     ...options,
-    cache: 'no-store'
+    tags: ["reinstatement-services"],
+    revalidate: 60
   })
 }
 
@@ -147,8 +148,9 @@ export async function getReinstatementServiceBySlug(slug: string, options = { us
 
   return fetchWithFallback(query, service, {
     ...options,
-    cache: 'no-store',
-    tags: [`reinstatement-${slug}`]
+    params: { slug },
+    tags: [`reinstatement-${slug}`],
+    revalidate: 60
   })
 }
 

@@ -19,8 +19,8 @@ export async function getAllServices(options = { useFallback: false }) {
 
   return fetchWithFallback(query, fallbackAllServices, {
     ...options,
-    cache: "no-store",
     tags: ["all-services"],
+    revalidate: 60
   });
 }
 
@@ -63,7 +63,8 @@ export async function getServiceBySlug(
   return fetchWithFallback(query, fallbackAllServices, {
     ...options,
     params: { slug },
-    cache: "no-store",
     tags: [`service-${slug}`],
+    revalidate: 60
   });
 }
+
