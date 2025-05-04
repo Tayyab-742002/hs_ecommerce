@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { VAServiceCard } from "@/components/services/VAServiceCard";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,6 +8,20 @@ import { Briefcase, CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const revalidate = 60;
+
+// Generate metadata for VA services page
+export const generateMetadata = async (): Promise<Metadata> => {
+  return {
+    title: "Virtual Assistant Services | HS Ecommerce | H&S Ecommerce Agency",
+    description: "HS Ecommerce (H&S) provides professional e-commerce virtual assistant services to help manage and grow your online business across Amazon, eBay, Walmart, TikTok, and Etsy.",
+    keywords: "hs ecommerce, h&s ecommerce, virtual assistant services, ecommerce VA, Amazon virtual assistant, eBay VA, Walmart VA, TikTok shop management, Etsy VA, h and s ecommerce agency",
+    openGraph: {
+      title: "Virtual Assistant Services | HS Ecommerce | H&S Ecommerce Agency",
+      description: "Professional e-commerce virtual assistant services to help you manage and grow your online business across all major platforms.",
+      type: "website",
+    },
+  };
+};
 
 export default async function VAServicesPage() {
   const allServices = await getAllServices({ useFallback: true });

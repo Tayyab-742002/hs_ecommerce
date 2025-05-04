@@ -180,10 +180,10 @@ export default function ContactPage() {
                     <h3 className="text-lg font-medium mb-1">Email</h3>
                     <p className="text-gray-600">
                       <a
-                        href="mailto:contact@hsecommerce.com"
+                        href="mailto:contact@hsecommerce.store"
                         className="hover:text-primary"
                       >
-                        contact@hsecommerce.com
+                        contact@hsecommerce.store
                       </a>
                     </p>
                   </div>

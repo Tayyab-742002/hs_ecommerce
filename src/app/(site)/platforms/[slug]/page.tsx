@@ -1,5 +1,6 @@
 export const revalidate = 60;
 
+import { Metadata } from "next";
 import { getPlatformBySlug } from "@/lib/services/platforms";
 import { getAccountsByPlatform } from "@/lib/services/accounts";
 import { getReinstatementServicesByPlatform } from "@/lib/services/reinstatement";
@@ -35,6 +36,49 @@ const getPlainTextDescription = (portableText?: any[]) => {
     )
     .join(" ");
 };
+
+// Generate metadata for the page
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const { slug } = params;
+  const platformData = await getPlatformBySlug(slug);
+
+  // Extract plain text description from rich text if available
+  const description = getPlainTextDescription(platformData.description) 
+    || `Professional seller and buyer accounts plus services for ${platformData.name}`;
+
+  // Use SEO fields from Sanity if available
+  const title = platformData.seo?.metaTitle 
+    || `${platformData.name} Services | HS Ecommerce | H&S Ecommerce Agency`;
+  
+  const metaDescription = platformData.seo?.metaDescription 
+    || `HS Ecommerce (H&S) provides professional ${platformData.name} seller accounts and services: ${description}`;
+  
+  // Get keywords from SEO or fallback to defaults
+  const keywords = platformData.seo?.keywords?.join(', ') 
+    || `hs ecommerce, h&s ecommerce, ${platformData.name}, ${platformData.name.toLowerCase()} accounts, ${platformData.name.toLowerCase()} seller, ecommerce services`;
+
+  // Handle OG image
+  const ogImage = platformData.seo?.ogImage?.asset?.url 
+    || platformData.logo?.asset?.url 
+    || undefined;
+
+  return {
+    title,
+    description: metaDescription,
+    keywords,
+    openGraph: {
+      title,
+      description: metaDescription,
+      images: ogImage ? [ogImage] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: metaDescription,
+      images: ogImage ? [ogImage] : undefined,
+    },
+  };
+}
 
 type Props = {
   params: { slug: string };

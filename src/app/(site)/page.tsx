@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Hero } from "@/components/pages/home/hero";
 import { ServicesShowcase } from "@/components/pages/home/services-showcase";
 import { PlatformsOverview } from "@/components/pages/home/platforms-overview";
@@ -7,6 +8,21 @@ import { FAQSection } from "@/components/pages/home/faq-section";
 import { WhyChooseUs } from "@/components/pages/home/why-choose-us";
 import { CTASection } from "@/components/pages/home/cta-section";
 import { getHomePageData } from "@/lib/services/home";
+
+// Generate metadata for the home page
+export const generateMetadata = async (): Promise<Metadata> => {
+  // Can fetch metadata from Sanity if needed
+  return {
+    title: "HS Ecommerce | H&S Ecommerce Agency | Amazon, eBay & Walmart Services",
+    description:
+      "HS Ecommerce Agency (H&S) provides professional e-commerce services for Amazon, eBay, Walmart, TikTok and Etsy platforms including seller accounts, VA services & account reinstatement.",
+    keywords:
+      "hs ecommerce, h&s ecommerce, h and s ecommerce, ecommerce services, amazon seller accounts, ebay accounts, walmart seller, tiktok shop, etsy seller, virtual assistant services, account reinstatement",
+    alternates: {
+      canonical: "/",
+    },
+  };
+};
 
 export default async function Home() {
   try {
