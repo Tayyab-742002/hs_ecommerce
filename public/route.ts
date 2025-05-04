@@ -1,6 +1,5 @@
 import { RequirementTemplate } from "@/components/email-templates/requirement-template";
 import { Resend } from "resend";
-import { FormField } from "@/types/form";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -10,11 +9,11 @@ export async function POST(request: Request) {
     const { fullName, email, phone, platformName, fields, ...formData } = body;
 
     const { data, error } = await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: ["adgtscam@gmail.com"], // Replace with your email
+      from: "H&S Requirements Form <contact@hsecommerce.store>",
+      to: ["qaziharis8@gmail.com"],
       subject: `New Requirements: ${platformName} Account`,
       replyTo: email,
-      react:await RequirementTemplate({
+      react: await RequirementTemplate({
         fullName,
         email,
         phone,
@@ -25,13 +24,13 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      console.error('Resend API error:', error);
+      console.error("Resend API error:", error);
       return Response.json({ error }, { status: 400 });
     }
 
     return Response.json({ data });
   } catch (error) {
-    console.error('Server error:', error);
+    console.error("Server error:", error);
     return Response.json({ error: "Internal server error" }, { status: 500 });
   }
 }

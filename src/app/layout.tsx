@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -12,6 +12,10 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  themeColor: "#0D3D4C",
+};
 
 export const metadata: Metadata = {
   title: "H&S Ecommerce Agency | HS Ecommerce | Amazon, eBay, Walmart Services",
@@ -68,7 +72,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  themeColor: "#0D3D4C",
   manifest: "/site.webmanifest",
 };
 
