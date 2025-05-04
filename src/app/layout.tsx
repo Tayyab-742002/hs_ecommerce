@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         width: 512,
         height: 512,
         alt: "HS Ecommerce Agency logo",
-      }
+      },
     ],
   },
   twitter: {
@@ -56,24 +56,20 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' }
-    ],
+    icon: "/favicon.ico",
     apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
     other: [
       {
-        rel: 'mask-icon',
-        url: '/safari-pinned-tab.svg',
-        color: '#0D3D4C',
+        rel: "mask-icon",
+        url: "/safari-pinned-tab.svg",
+        color: "#0D3D4C",
       },
     ],
   },
-  themeColor: '#0D3D4C',
-  manifest: '/site.webmanifest',
+  themeColor: "#0D3D4C",
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
@@ -89,18 +85,30 @@ export default function RootLayout({
           content="Ys_aIc6BM8xc_r0PwTVNkGpGNveWOrEvXVrfHmFTjYk"
         />
         <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
         <meta name="msapplication-TileColor" content="#0D3D4C" />
         <meta name="theme-color" content="#0D3D4C" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
