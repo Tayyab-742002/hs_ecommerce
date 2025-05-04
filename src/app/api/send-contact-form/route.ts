@@ -10,7 +10,7 @@ export async function POST(request: Request) {
 
     const { data, error } = await resend.emails.send({
       from: "H&S Contact Form <contact@hsecommerce.store>",
-      to: ["qaziharis8@gmail.com"],
+      to: [process.env.EMAIL_ADDRESS!],
       subject: `New Contact Form Submission: ${subject}`,
       replyTo: email,
       react: await ContactTemplate({

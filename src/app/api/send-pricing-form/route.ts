@@ -10,7 +10,7 @@ export async function POST(request: Request) {
 
     const { data, error } = await resend.emails.send({
       from: "H&S Pricing Inquiry <contact@hsecommerce.store>",
-      to: ["qaziharis8@gmail.com"],
+      to: [process.env.EMAIL_ADDRESS!],
       subject: `New Pricing Inquiry: ${platformName} ${accountType || "Accounts"}`,
       replyTo: email,
       react: await PricingTemplate({

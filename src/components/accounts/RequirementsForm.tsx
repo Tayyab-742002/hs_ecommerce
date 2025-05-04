@@ -188,113 +188,119 @@ export function RequirementsForm({
           </div>
 
           {/* Dynamic fields based on platform requirements */}
-          {/* {fields.map((field, index) => {
-            const fieldId = field.label.toLowerCase().replace(/\s+/g, "-");
+          {fields
+            .filter(field =>
+              !["account-type", "country/marketplace", "business-name"].includes(
+                field.name || field.label.toLowerCase().replace(/\s+/g, "-")
+              )
+            )
+            .map((field, index) => {
+              const fieldId = field.name || field.label.toLowerCase().replace(/\s+/g, "-");
 
-            switch (field.fieldType) {
-              case "text":
-                return (
-                  <div key={index}>
-                    <label
-                      htmlFor={fieldId}
-                      className="block text-sm font-medium mb-1.5"
-                    >
-                      {field.label} {field.required && "*"}
-                    </label>
-                    <input
-                      id={fieldId}
-                      name={fieldId}
-                      type="text"
-                      required={field.required}
-                      value={formData[fieldId] || ""}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
-                      style={{ "--ring": platformColor } as React.CSSProperties}
-                    />
-                  </div>
-                );
-
-              case "select":
-                return (
-                  <div key={index}>
-                    <label
-                      htmlFor={fieldId}
-                      className="block text-sm font-medium mb-1.5"
-                    >
-                      {field.label} {field.required && "*"}
-                    </label>
-                    <select
-                      id={fieldId}
-                      name={fieldId}
-                      required={field.required}
-                      value={formData[fieldId] || ""}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
-                      style={{ "--ring": platformColor } as React.CSSProperties}
-                    >
-                      <option value="">-- Select an option --</option>
-                      {field.options?.map((option, optIndex) => (
-                        <option key={optIndex} value={option}>
-                          {option}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                );
-
-              case "checkbox":
-                return (
-                  <div key={index} className="flex items-start pt-2">
-                    <div className="flex items-center h-5">
+              switch (field.fieldType) {
+                case "text":
+                  return (
+                    <div key={index}>
+                      <label
+                        htmlFor={fieldId}
+                        className="block text-sm font-medium mb-1.5"
+                      >
+                        {field.label} {field.required && "*"}
+                      </label>
                       <input
                         id={fieldId}
                         name={fieldId}
-                        type="checkbox"
-                        checked={formData[fieldId] || false}
+                        type="text"
+                        required={field.required}
+                        value={formData[fieldId] || ""}
                         onChange={handleChange}
-                        className="h-4 w-4 rounded border-border focus:ring-offset-1"
-                        style={
-                          {
-                            accentColor: platformColor,
-                            "--ring": platformColor,
-                          } as React.CSSProperties
-                        }
+                        className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+                        style={{ "--ring": platformColor } as React.CSSProperties}
                       />
                     </div>
-                    <div className="ml-3 text-sm">
-                      <label htmlFor={fieldId} className="font-medium">
-                        {field.label}
+                  );
+
+                case "select":
+                  return (
+                    <div key={index}>
+                      <label
+                        htmlFor={fieldId}
+                        className="block text-sm font-medium mb-1.5"
+                      >
+                        {field.label} {field.required && "*"}
                       </label>
+                      <select
+                        id={fieldId}
+                        name={fieldId}
+                        required={field.required}
+                        value={formData[fieldId] || ""}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+                        style={{ "--ring": platformColor } as React.CSSProperties}
+                      >
+                        <option value="">-- Select an option --</option>
+                        {field.options?.map((option, optIndex) => (
+                          <option key={optIndex} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
                     </div>
-                  </div>
-                );
+                  );
 
-              case "textarea":
-                return (
-                  <div key={index}>
-                    <label
-                      htmlFor={fieldId}
-                      className="block text-sm font-medium mb-1.5"
-                    >
-                      {field.label} {field.required && "*"}
-                    </label>
-                    <textarea
-                      id={fieldId}
-                      name={fieldId}
-                      rows={3}
-                      required={field.required}
-                      value={formData[fieldId] || ""}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
-                      style={{ "--ring": platformColor } as React.CSSProperties}
-                    />
-                  </div>
-                );
+                case "checkbox":
+                  return (
+                    <div key={index} className="flex items-start pt-2">
+                      <div className="flex items-center h-5">
+                        <input
+                          id={fieldId}
+                          name={fieldId}
+                          type="checkbox"
+                          checked={formData[fieldId] || false}
+                          onChange={handleChange}
+                          className="h-4 w-4 rounded border-border focus:ring-offset-1"
+                          style={
+                            {
+                              accentColor: platformColor,
+                              "--ring": platformColor,
+                            } as React.CSSProperties
+                          }
+                        />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor={fieldId} className="font-medium">
+                          {field.label}
+                        </label>
+                      </div>
+                    </div>
+                  );
 
-              default:
-                return null;
-            }
-          })} */}
+                case "textarea":
+                  return (
+                    <div key={index}>
+                      <label
+                        htmlFor={fieldId}
+                        className="block text-sm font-medium mb-1.5"
+                      >
+                        {field.label} {field.required && "*"}
+                      </label>
+                      <textarea
+                        id={fieldId}
+                        name={fieldId}
+                        rows={3}
+                        required={field.required}
+                        value={formData[fieldId] || ""}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+                        style={{ "--ring": platformColor } as React.CSSProperties}
+                      />
+                    </div>
+                  );
+
+                default:
+                  return null;
+              }
+            })}
 
           <div>
             <label htmlFor="details" className="block text-sm font-medium mb-1.5">
