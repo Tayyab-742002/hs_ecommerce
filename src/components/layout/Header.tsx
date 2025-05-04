@@ -256,7 +256,7 @@ export default function Header() {
                     }}
                   >
                     <Image
-                      src="/images/logo.png"
+                      src="/images/Logo.png"
                       alt="H&S Ecommerce Logo"
                       width={32}
                       height={32}
