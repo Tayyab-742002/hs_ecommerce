@@ -113,7 +113,7 @@ const services = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 place-items-center  backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo and Brand Name */}
         <Link
@@ -133,7 +133,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <NavigationMenu className="hidden lg:flex">
+        <NavigationMenu className="hidden lg:flex ">
           <NavigationMenuList className="space-x-1">
             <NavigationMenuItem>
               <NavigationMenuLink
