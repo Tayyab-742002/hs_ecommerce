@@ -1,40 +1,41 @@
-import React from 'react'
-import Image from 'next/image'
-import { Star } from 'lucide-react'
-import { formatCurrency } from '@/lib/utils/format'
-import { PlatformBadge } from '@/components/ui/platform-badge'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import { getPlatformColor } from '@/lib/utils/platform-colors'
+import React from "react";
+import Image from "next/image";
+import { Star } from "lucide-react";
+import { formatCurrency } from "@/lib/utils/format";
+import { PlatformBadge } from "@/components/ui/platform-badge";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { getPlatformColor } from "@/lib/utils/platform-colors";
 
 interface AccountCardProps {
   account: {
-    _id: string
+    _id: string;
+    title: string;
     platform: {
-      _ref: string
-      name: string
+      _ref: string;
+      name: string;
       logo?: {
         asset: {
-          url: string
-        }
-      }
-    }
-    category: string
-    price: number
-    features: string[]
+          url: string;
+        };
+      };
+    };
+    category: string;
+    price: number;
+    features: string[];
     metrics?: {
-      followers?: number
-      engagement?: number
-      posts?: number
-      age?: number
-    }
-    status: 'available' | 'sold' | 'pending'
-    createdAt: string
-  }
+      followers?: number;
+      engagement?: number;
+      posts?: number;
+      age?: number;
+    };
+    status: "available" | "sold" | "pending";
+    createdAt: string;
+  };
 }
 
 export function AccountCard({ account }: AccountCardProps) {
-  const platformColor = getPlatformColor(account.platform.name.toLowerCase())
+  const platformColor = getPlatformColor(account.platform.name.toLowerCase());
 
   return (
     <div className="bg-card rounded-xl border border-border shadow-sm overflow-hidden transition-all hover:shadow-md hover:border-primary/20">
@@ -58,7 +59,7 @@ export function AccountCard({ account }: AccountCardProps) {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="font-semibold">{account.platform.name}</h3>
+              <h3 className="font-semibold">{account.title}</h3>
               <PlatformBadge
                 platformName={account.platform.name}
                 size="sm"
@@ -66,14 +67,18 @@ export function AccountCard({ account }: AccountCardProps) {
                 withName={false}
               />
             </div>
-            <span className="text-sm text-gray-500 dark:text-gray-400 capitalize">{account.category}</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400 capitalize">
+              {account.category}
+            </span>
           </div>
         </div>
 
         <div className="mb-6">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm text-muted-foreground">Price</span>
-            <span className="font-semibold text-lg">{formatCurrency(account.price)}</span>
+            <span className="font-semibold text-lg">
+              {formatCurrency(account.price)}
+            </span>
           </div>
 
           {/* Account Metrics */}
@@ -81,26 +86,38 @@ export function AccountCard({ account }: AccountCardProps) {
             <div className="grid grid-cols-2 gap-x-4 gap-y-2 mt-4">
               {account.metrics.followers !== undefined && (
                 <div className="flex justify-between">
-                  <span className="text-xs text-muted-foreground">Followers</span>
-                  <span className="text-xs font-medium">{account.metrics.followers.toLocaleString()}</span>
+                  <span className="text-xs text-muted-foreground">
+                    Followers
+                  </span>
+                  <span className="text-xs font-medium">
+                    {account.metrics.followers.toLocaleString()}
+                  </span>
                 </div>
               )}
               {account.metrics.engagement !== undefined && (
                 <div className="flex justify-between">
-                  <span className="text-xs text-muted-foreground">Engagement</span>
-                  <span className="text-xs font-medium">{account.metrics.engagement}%</span>
+                  <span className="text-xs text-muted-foreground">
+                    Engagement
+                  </span>
+                  <span className="text-xs font-medium">
+                    {account.metrics.engagement}%
+                  </span>
                 </div>
               )}
               {account.metrics.age !== undefined && (
                 <div className="flex justify-between">
                   <span className="text-xs text-muted-foreground">Age</span>
-                  <span className="text-xs font-medium">{account.metrics.age} months</span>
+                  <span className="text-xs font-medium">
+                    {account.metrics.age} months
+                  </span>
                 </div>
               )}
               {account.metrics.posts !== undefined && (
                 <div className="flex justify-between">
                   <span className="text-xs text-muted-foreground">Posts</span>
-                  <span className="text-xs font-medium">{account.metrics.posts}</span>
+                  <span className="text-xs font-medium">
+                    {account.metrics.posts}
+                  </span>
                 </div>
               )}
             </div>
@@ -113,13 +130,18 @@ export function AccountCard({ account }: AccountCardProps) {
             <h4 className="text-sm font-medium mb-2">Features</h4>
             <ul className="space-y-1">
               {account.features.slice(0, 4).map((feature, index) => (
-                <li key={index} className="text-xs text-muted-foreground flex items-start">
+                <li
+                  key={index}
+                  className="text-xs text-muted-foreground flex items-start"
+                >
                   <span className="mr-2 text-primary">✓</span>
                   {feature}
                 </li>
               ))}
               {account.features.length > 4 && (
-                <li className="text-xs text-muted-foreground">+ {account.features.length - 4} more</li>
+                <li className="text-xs text-muted-foreground">
+                  + {account.features.length - 4} more
+                </li>
               )}
             </ul>
           </div>
@@ -130,24 +152,29 @@ export function AccountCard({ account }: AccountCardProps) {
           <div className="flex items-center">
             <span
               className={`w-2 h-2 rounded-full mr-2 ${
-                account.status === 'available' ? 'bg-green-500' :
-                account.status === 'pending' ? 'bg-yellow-500' : 'bg-red-500'
+                account.status === "available"
+                  ? "bg-green-500"
+                  : account.status === "pending"
+                    ? "bg-yellow-500"
+                    : "bg-red-500"
               }`}
             ></span>
             <span className="text-xs capitalize">{account.status}</span>
           </div>
 
-          <Link href={`/platforms/${account.platform.name.toLowerCase()}#inquiry-forms`}>
+          <Link
+            href={`/platforms/${account.platform.name.toLowerCase()}#inquiry-forms`}
+          >
             <Button
               size="sm"
-              variant={account.status === 'available' ? 'default' : 'outline'}
-              disabled={account.status !== 'available'}
+              variant={account.status === "available" ? "default" : "outline"}
+              disabled={account.status !== "available"}
             >
-              {account.status === 'available' ? 'Inquire' : 'Sold Out'}
+              {account.status === "available" ? "Inquire" : "Sold Out"}
             </Button>
           </Link>
         </div>
       </div>
     </div>
-  )
+  );
 }

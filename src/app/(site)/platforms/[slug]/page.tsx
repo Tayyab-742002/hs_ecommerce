@@ -38,29 +38,38 @@ const getPlainTextDescription = (portableText?: any[]) => {
 };
 
 // Generate metadata for the page
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const { slug } = params;
   const platformData = await getPlatformBySlug(slug);
 
   // Extract plain text description from rich text if available
-  const description = getPlainTextDescription(platformData.description) 
-    || `Professional seller and buyer accounts plus services for ${platformData.name}`;
+  const description =
+    getPlainTextDescription(platformData.description) ||
+    `Professional seller and buyer accounts plus services for ${platformData.name}`;
 
   // Use SEO fields from Sanity if available
-  const title = platformData.seo?.metaTitle 
-    || `${platformData.name} Services | HS Ecommerce | H&S Ecommerce Agency`;
-  
-  const metaDescription = platformData.seo?.metaDescription 
-    || `HS Ecommerce (H&S) provides professional ${platformData.name} seller accounts and services: ${description}`;
-  
+  const title =
+    platformData.seo?.metaTitle ||
+    `${platformData.name} Services | HS Ecommerce | H&S Ecommerce Agency`;
+
+  const metaDescription =
+    platformData.seo?.metaDescription ||
+    `HS Ecommerce (H&S) provides professional ${platformData.name} seller accounts and services: ${description}`;
+
   // Get keywords from SEO or fallback to defaults
-  const keywords = platformData.seo?.keywords?.join(', ') 
-    || `hs ecommerce, h&s ecommerce, ${platformData.name}, ${platformData.name.toLowerCase()} accounts, ${platformData.name.toLowerCase()} seller, ecommerce services`;
+  const keywords =
+    platformData.seo?.keywords?.join(", ") ||
+    `hs ecommerce, h&s ecommerce, ${platformData.name}, ${platformData.name.toLowerCase()} accounts, ${platformData.name.toLowerCase()} seller, ecommerce services`;
 
   // Handle OG image
-  const ogImage = platformData.seo?.ogImage?.asset?.url 
-    || platformData.logo?.asset?.url 
-    || undefined;
+  const ogImage =
+    platformData.seo?.ogImage?.asset?.url ||
+    platformData.logo?.asset?.url ||
+    undefined;
 
   return {
     title,
@@ -404,6 +413,7 @@ export default async function PlatformPage({ params, searchParams }: Props) {
                         key={account._id}
                         account={{
                           _id: account._id,
+                          title: account.title,
                           platform: {
                             _ref: platform._id,
                             name: platform.name,

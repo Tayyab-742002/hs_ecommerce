@@ -6,6 +6,12 @@ export default defineType({
   type: "document",
   fields: [
     defineField({
+      name: "title",
+      title: "Account Title",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
@@ -100,10 +106,10 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: "slug.current",
+      title: "title",
       subtitle: "platform.name",
       media: "platform.logo",
-      price: "price"
+      price: "price",
     },
     prepare(selection) {
       const { title, subtitle, media, price } = selection;

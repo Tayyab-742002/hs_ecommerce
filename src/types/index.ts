@@ -10,12 +10,12 @@ export interface Platform {
   logo?: {
     asset: {
       url: string;
-    }
+    };
   };
   banner?: {
     asset: {
       url: string;
-    }
+    };
   };
   features?: Array<{
     title: string;
@@ -23,7 +23,7 @@ export interface Platform {
     icon?: {
       asset: {
         url: string;
-      }
+      };
     };
     order?: number;
   }>;
@@ -34,7 +34,7 @@ export interface Platform {
     icon?: {
       asset: {
         url: string;
-      }
+      };
     };
   }>;
   accountCategories?: string[];
@@ -54,20 +54,21 @@ export interface VAService {
   icon?: {
     asset: {
       url: string;
-    }
+    };
   };
 }
 
 export interface Account {
   _id: string;
+  title: string;
   platform: {
     _id: string;
     name: string;
     logo?: {
       asset: {
         url: string;
-      }
-    }
+      };
+    };
   };
   category?: string;
   price?: string;
@@ -88,14 +89,14 @@ export interface ReinstatementService {
     logo?: {
       asset: {
         url: string;
-      }
-    }
+      };
+    };
   };
   description?: string;
   image?: {
     asset: {
       url: string;
-    }
+    };
   };
   features?: string[];
   successRate?: string;
@@ -115,13 +116,13 @@ export interface AllServiceDetail {
     logo?: {
       asset: {
         url: string;
-      }
-    }
+      };
+    };
   };
   icon?: {
     asset: {
       url: string;
-    }
+    };
   };
   shortDescription: string;
   description?: any[]; // Portable Text format
