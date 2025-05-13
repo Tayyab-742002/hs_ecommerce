@@ -1,20 +1,21 @@
-import { fetchWithFallback } from '../utils/fetch-data'
+import { fetchWithFallback } from "../utils/fetch-data";
 
 const fallbackHomeData = {
   hero: {
     heading: "Your Gateway to E-commerce Success",
-    subheading: "Professional services for Amazon, eBay, Walmart, TikTok, and Etsy sellers",
+    subheading:
+      "Professional services for Amazon, eBay, Walmart, TikTok, and Etsy sellers",
     backgroundImage: null,
     cta: {
       text: "Get Started",
-      link: "/contact"
+      link: "/contact",
     },
     overlay: {
       enabled: true,
-      opacity: 0.5
-    }
-  }
-}
+      opacity: 0.5,
+    },
+  },
+};
 
 export async function getHomePageData(options = { useFallback: false }) {
   const query = `
@@ -37,7 +38,12 @@ export async function getHomePageData(options = { useFallback: false }) {
         }
       }
     }
-  `
+  `;
 
-  return fetchWithFallback(query, fallbackHomeData, options)
+  return fetchWithFallback(query, fallbackHomeData, {
+    ...options,
+    cache: "no-store",
+    tags: ["home-page"],
+    revalidate: 60,
+  });
 }

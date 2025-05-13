@@ -9,11 +9,14 @@ import { WhyChooseUs } from "@/components/pages/home/why-choose-us";
 import { CTASection } from "@/components/pages/home/cta-section";
 import { getHomePageData } from "@/lib/services/home";
 
+export const revalidate = 60;
+
 // Generate metadata for the home page
 export const generateMetadata = async (): Promise<Metadata> => {
   // Can fetch metadata from Sanity if needed
   return {
-    title: "HS Ecommerce | H&S Ecommerce Agency | Amazon, eBay & Walmart Services",
+    title:
+      "HS Ecommerce | H&S Ecommerce Agency | Amazon, eBay & Walmart Services",
     description:
       "HS Ecommerce Agency (H&S) provides professional e-commerce services for Amazon, eBay, Walmart, TikTok and Etsy platforms including seller accounts, VA services & account reinstatement.",
     keywords:
