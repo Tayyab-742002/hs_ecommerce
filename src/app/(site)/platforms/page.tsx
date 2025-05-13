@@ -1,18 +1,19 @@
-import { getPlatforms } from '@/lib/services/platforms'
-import Image from 'next/image'
-import Link from 'next/link'
+import { Platform } from "@/lib/fallback-data";
+import { getPlatforms } from "@/lib/services/platforms";
+import Image from "next/image";
+import Link from "next/link";
 
 export const revalidate = 60;
 
 export default async function PlatformsPage() {
-  const platforms = await getPlatforms()
+  const platforms = await getPlatforms();
 
   return (
     <div className="container mx-auto px-4 py-8 ">
       <h1 className="text-3xl font-bold mb-8">Our Platforms</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {platforms.map((platform) => (
+        {platforms.map((platform: Platform) => (
           <Link
             key={platform._id}
             href={`/platforms/${platform.slug}`}
@@ -36,7 +37,10 @@ export default async function PlatformsPage() {
 
             <div className="space-y-2">
               {platform?.features?.slice(0, 3).map((feature, index) => (
-                <div key={index} className="flex items-center text-sm text-gray-600">
+                <div
+                  key={index}
+                  className="flex items-center text-sm text-gray-600"
+                >
                   <span className="mr-2">•</span>
                   {feature.title}
                 </div>
@@ -46,5 +50,5 @@ export default async function PlatformsPage() {
         ))}
       </div>
     </div>
-  )
+  );
 }

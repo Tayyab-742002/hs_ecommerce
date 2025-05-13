@@ -1,84 +1,117 @@
-import { getReinstatementServices } from '@/lib/services/reinstatement'
-import { ReinstatementCard } from '@/components/services/ReinstatementCard'
+import { getReinstatementServices } from "@/lib/services/reinstatement";
+import { ReinstatementCard } from "@/components/services/ReinstatementCard";
 
 export const revalidate = 60;
 
 export default async function ReinstatementServicesPage() {
-  const services = await getReinstatementServices()
+  const services = await getReinstatementServices();
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4">Account Reinstatement Services</h1>
+        <h1 className="text-4xl font-bold mb-4">
+          Account Reinstatement Services
+        </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-          We help sellers get their suspended accounts back with our expert-led reinstatement services. Don&apos;t let a suspension end your e-commerce journey.
+          We help sellers get their suspended accounts back with our expert-led
+          reinstatement services. Don&apos;t let a suspension end your
+          e-commerce journey.
         </p>
       </div>
 
       <div className="max-w-3xl mx-auto mb-12 bg-card p-8 rounded-lg shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">How Our Reinstatement Process Works</h2>
+        <h2 className="text-2xl font-semibold mb-4">
+          How Our Reinstatement Process Works
+        </h2>
 
         <div className="space-y-6">
           <div className="flex items-start">
             <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 mr-4">
-              <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">1</span>
+              <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">
+                1
+              </span>
             </div>
             <div>
               <h3 className="text-lg font-semibold">Initial Assessment</h3>
-              <p className="text-gray-600">We analyze your account suspension details and identify the specific violation or issue that led to the suspension.</p>
+              <p className="text-gray-600">
+                We analyze your account suspension details and identify the
+                specific violation or issue that led to the suspension.
+              </p>
             </div>
           </div>
 
           <div className="flex items-start">
             <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 mr-4">
-              <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">2</span>
+              <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">
+                2
+              </span>
             </div>
             <div>
               <h3 className="text-lg font-semibold">Customized Strategy</h3>
-              <p className="text-gray-600">Our experts develop a tailored reinstatement strategy based on the platform's policies and your specific situation.</p>
+              <p className="text-gray-600">
+                Our experts develop a tailored reinstatement strategy based on
+                the platform's policies and your specific situation.
+              </p>
             </div>
           </div>
 
           <div className="flex items-start">
             <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 mr-4">
-              <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">3</span>
+              <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">
+                3
+              </span>
             </div>
             <div>
               <h3 className="text-lg font-semibold">Appeal Preparation</h3>
-              <p className="text-gray-600">We create a professional Plan of Action (POA) or appeal letter addressing all concerns raised by the marketplace.</p>
+              <p className="text-gray-600">
+                We create a professional Plan of Action (POA) or appeal letter
+                addressing all concerns raised by the marketplace.
+              </p>
             </div>
           </div>
 
           <div className="flex items-start">
             <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 mr-4">
-              <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">4</span>
+              <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">
+                4
+              </span>
             </div>
             <div>
               <h3 className="text-lg font-semibold">Submission & Follow-up</h3>
-              <p className="text-gray-600">We submit the appeal and handle all communication with the platform until your account is reinstated.</p>
+              <p className="text-gray-600">
+                We submit the appeal and handle all communication with the
+                platform until your account is reinstated.
+              </p>
             </div>
           </div>
 
           <div className="flex items-start">
             <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 mr-4">
-              <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">5</span>
+              <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">
+                5
+              </span>
             </div>
             <div>
               <h3 className="text-lg font-semibold">Future Prevention</h3>
-              <p className="text-gray-600">After reinstatement, we provide guidance on best practices to prevent future suspensions.</p>
+              <p className="text-gray-600">
+                After reinstatement, we provide guidance on best practices to
+                prevent future suspensions.
+              </p>
             </div>
           </div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.map((service) => (
+        {services.map((service: any) => (
           <ReinstatementCard key={service._id} service={service} />
         ))}
       </div>
 
       <div className="mt-16 text-center">
-        <h2 className="text-2xl font-semibold mb-4">Need Urgent Account Reinstatement?</h2>
+        <h2 className="text-2xl font-semibold mb-4">
+          Need Urgent Account Reinstatement?
+        </h2>
         <p className="text-gray-600 mb-6">
           Contact us immediately for expedited service
         </p>
@@ -120,5 +153,5 @@ export default async function ReinstatementServicesPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
