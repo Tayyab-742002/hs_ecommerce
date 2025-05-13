@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Menu, Phone, X } from "lucide-react";
+import { ChevronRight, Menu, Phone, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import EbayIcon from "@/icons/EbayIcon";
 
@@ -146,7 +146,7 @@ export default function Header() {
 
             <NavigationMenuItem>
               <NavigationMenuTrigger className="h-10">
-                Platforms
+                <Link href={"/platforms"}>Platforms</Link>
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
@@ -160,6 +160,15 @@ export default function Header() {
                       {platform.description}
                     </ListItem>
                   ))}
+                  <div className="col-span-2 mt-4">
+                    <Link
+                      href="/accounts"
+                      className="flex items-center justify-center w-full gap-2 p-3 text-sm font-medium transition-colors rounded-md hover:bg-accent"
+                    >
+                      <span>View All Accounts</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </Link>
+                  </div>
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
@@ -292,7 +301,7 @@ export default function Header() {
                   <div>
                     <div className="px-3 mb-2">
                       <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
-                        Platforms
+                        <Link href={"/platforms"}>Platforms</Link>
                       </h3>
                     </div>
                     <div className="flex flex-col space-y-1">
@@ -316,7 +325,27 @@ export default function Header() {
                       ))}
                     </div>
                   </div>
-
+                  {/* Create a link to navigate to all acocunts */}
+                  <div>
+                    <div className="px-3 mb-2">
+                      <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+                        Accounts
+                      </h3>
+                    </div>
+                    <Link
+                      href="/accounts"
+                      className="flex items-center space-x-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent transition-colors"
+                      onClick={() => {
+                        const closeButton = document.querySelector(
+                          '[data-state="open"] button[aria-label="Close"]'
+                        ) as HTMLButtonElement;
+                        closeButton?.click();
+                      }}
+                    >
+                      <span className="text-primary">🔑</span>
+                      <span>All Accounts</span>
+                    </Link>
+                  </div>
                   <div>
                     <div className="px-3 mb-2">
                       <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
