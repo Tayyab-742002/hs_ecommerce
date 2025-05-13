@@ -66,10 +66,16 @@ export function Hero({
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                 <span className="text-foreground inline-block">
-                  {heading.split(" ").slice(0, -2).join(" ")}{" "}
-                  <ColourfulText
-                    text={heading.split(" ").slice(-2).join(" ")}
-                  />
+                  {heading && heading.split(" ").length > 1 ? (
+                    <>
+                      {heading.split(" ").slice(0, -1).join(" ")}{" "}
+                      <ColourfulText
+                        text={heading.split(" ").slice(-1).join(" ")}
+                      />
+                    </>
+                  ) : (
+                    <ColourfulText text={heading || ""} />
+                  )}
                 </span>
                 {/* <span className="inline-block"></span> */}
               </h1>
