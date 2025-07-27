@@ -75,7 +75,7 @@ export function ThreePLServices() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-background relative overflow-hidden " >
+    <section className="py-16 md:py-24 bg-background relative overflow-hidden ">
       {/* Enhanced background with animated elements */}
       <motion.div
         initial="hidden"
@@ -95,7 +95,7 @@ export function ThreePLServices() {
           variants={itemVariants}
           className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-500 to-pink-500"
         >
-          3LP Services
+          3PL Services
         </motion.h2>
 
         <motion.p
