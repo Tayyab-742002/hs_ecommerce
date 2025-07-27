@@ -43,7 +43,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const platformData = await getPlatformBySlug(slug);
 
   // Extract plain text description from rich text if available
@@ -96,9 +96,8 @@ type Props = {
 
 export default async function PlatformPage({ params, searchParams }: Props) {
   const { slug } = params;
-  console.log("Fetching platform data for slug:", slug);
+
   const platformData = await getPlatformBySlug(slug);
-  console.log("Platform data:", JSON.stringify(platformData, null, 2));
 
   // Ensure platformData has an _id before proceeding
   if (!platformData._id) {
@@ -120,10 +119,7 @@ export default async function PlatformPage({ params, searchParams }: Props) {
 
     // Ensure vaServices exists and is an array
     if (!platform.vaServices) {
-      console.log("No VA services found, initializing empty array");
       platform.vaServices = [];
-    } else {
-      console.log("VA services found:", platform.vaServices.length);
     }
 
     // Get platform description as plain text

@@ -75,7 +75,7 @@ export function ThreePLServices() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-background relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-background relative overflow-hidden " >
       {/* Enhanced background with animated elements */}
       <motion.div
         initial="hidden"

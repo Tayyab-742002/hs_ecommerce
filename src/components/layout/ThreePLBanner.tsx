@@ -21,7 +21,7 @@ export function ThreePLBanner() {
           animate={{ height: "auto", opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="relative overflow-hidden bg-gradient-to-r from-red-50 via-rose-50 to-pink-50 dark:from-red-950/30 dark:via-rose-950/30 dark:to-pink-950/30 border-b border-red-200/30 dark:border-red-800/30"
+          className="relative overflow-hidden bg-gradient-to-r from-red-50 via-rose-50 to-pink-50 dark:from-red-950/30 dark:via-rose-950/30 dark:to-pink-950/30 border-b border-red-200/30 dark:border-red-800/30 z-999"
         >
           <div className="container mx-auto px-4 py-4 relative">
             <div className="flex items-center justify-between gap-4">
@@ -53,7 +53,7 @@ export function ThreePLBanner() {
 
                   <div className="hidden sm:block w-px h-6 bg-red-300/50 dark:bg-red-700/50" />
 
-                  <p className="text-red-700 dark:text-red-200 text-xs sm:text-sm font-medium">
+                  <p className="text-red-700 dark:text-red-200 text-xs sm:text-sm font-medium ">
                     Complete logistics solutions for your e-commerce business
                   </p>
                 </div>

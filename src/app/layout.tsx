@@ -122,12 +122,15 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#0D3D4C" />
         <meta name="theme-color" content="#0D3D4C" />
         <script
-          defer
+          async
           src="https://cloud.umami.is/script.js"
           data-website-id="42a19837-d4a5-428e-8998-7f72dc062dea"
         ></script>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9399138356902429"
-     crossorigin="anonymous"></script>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9399138356902429"
+          crossOrigin="anonymous"
+        ></script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
