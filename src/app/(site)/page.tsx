@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Hero } from "@/components/pages/home/hero";
 import { ServicesShowcase } from "@/components/pages/home/services-showcase";
+import { ThreePLServices } from "@/components/pages/home/threepl-services";
 import { PlatformsOverview } from "@/components/pages/home/platforms-overview";
 import { StatsSection } from "@/components/pages/home/stats-section";
 import { Testimonials } from "@/components/pages/home/testimonials";
@@ -18,9 +19,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
     title:
       "HS Ecommerce | H&S Ecommerce Agency | Amazon, eBay & Walmart Services",
     description:
-      "HS Ecommerce Agency (H&S) provides professional e-commerce services for Amazon, eBay, Walmart, TikTok and Etsy platforms including seller accounts, VA services & account reinstatement.",
+      "HS Ecommerce Agency (H&S) provides professional e-commerce services for Amazon, eBay, Walmart, TikTok and Etsy platforms including seller accounts, VA services, account reinstatement & 3PL logistics solutions.",
     keywords:
-      "hs ecommerce, h&s ecommerce, h and s ecommerce, ecommerce services, amazon seller accounts, ebay accounts, walmart seller, tiktok shop, etsy seller, virtual assistant services, account reinstatement",
+      "hs ecommerce, h&s ecommerce, h and s ecommerce, ecommerce services, amazon seller accounts, ebay accounts, walmart seller, tiktok shop, etsy seller, virtual assistant services, account reinstatement, 3pl services, logistics, warehousing, fulfillment",
     alternates: {
       canonical: "/",
     },
@@ -55,6 +56,9 @@ export default async function Home() {
 
         {/* Services Showcase Section */}
         <ServicesShowcase />
+
+        {/* 3PL Services Section */}
+        <ThreePLServices />
 
         {/* All Platforms Overview */}
         <PlatformsOverview />
