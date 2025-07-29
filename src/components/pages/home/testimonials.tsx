@@ -3,26 +3,10 @@
 import { motion } from "framer-motion";
 
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+import { Shield } from "lucide-react";
 
 export function Testimonials() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
 
   const testimonials = [
     {
@@ -121,43 +105,27 @@ export function Testimonials() {
   // ];
   return (
     <>
-      <section className="py-24 bg-background">
+      <section className="py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={containerVariants}
-            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
           >
-            <motion.div
-              variants={itemVariants}
-              className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
-            >
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium mb-3">
+              <Shield className="w-3 h-3" />
               Customer Success Stories
-            </motion.div>
-
-            <motion.h2
-              variants={itemVariants}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
-            >
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
               What Our Clients Say
-            </motion.h2>
-
-            <motion.p
-              variants={itemVariants}
-              className="text-foreground/70 text-lg max-w-3xl mx-auto"
-            >
+            </h2>
+            <p className="text-sm text-muted-foreground max-w-xl mx-auto">
               Hear from satisfied sellers who have grown their businesses with
               our accounts, VA services, and reinstatement solutions.
-            </motion.p>
+            </p>
           </motion.div>
-
-          {/* Background decorations */}
-          <div className="absolute inset-0 -z-10 overflow-hidden">
-            <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
-            <div className="absolute top-1/2 -left-24 w-80 h-80 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
-          </div>
 
           {/* Testimonial cards */}
           <AnimatedTestimonials testimonials={testimonials} />

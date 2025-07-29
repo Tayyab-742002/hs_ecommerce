@@ -1,112 +1,64 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useColorScheme } from "@/providers/theme-provider";
-
+import { Clock, Globe } from "lucide-react";
+import { FaUsers } from "react-icons/fa";
+import { FaRankingStar } from "react-icons/fa6";
+import { CiTimer } from "react-icons/ci";
+import { BsGlobeAsiaAustralia } from "react-icons/bs";
 export function StatsSection() {
-  const { getPlatformColor, getPlatformGradient } = useColorScheme();
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
   const stats = [
     {
       value: "2,500+",
       label: "Accounts Delivered",
-      description: "Across all platforms for clients worldwide",
-      platform: "amazon",
-      icon: "🟢",
+      icon: <FaUsers className="w-8 h-8 text-[#94A3B8]" />,
     },
     {
-      value: "85%",
+      value: "95%",
       label: "Success Rate",
-      description: "For account reinstatement services",
-      platform: "ebay",
-      icon: "✓",
+      icon: <FaRankingStar className="w-8 h-8 text-[#94A3B8]" />,
     },
     {
       value: "24/7",
-      label: "Support Available",
-      description: "Via WhatsApp and email for urgent issues",
-      platform: "walmart",
-      icon: "💬",
+      label: "Expert Support",
+      icon: <CiTimer className="w-8 h-8 text-[#94A3B8]" />,
     },
     {
       value: "50+",
-      label: "Countries Covered",
-      description: "With specialized regional accounts",
-      platform: "tiktok",
-      icon: "🌐",
+      label: "Global Coverage",
+      icon: (
+        <BsGlobeAsiaAustralia className="w-6 h-6 md:w-8 md:h-8 text-[#94A3B8]" />
+      ),
     },
   ];
 
   return (
-    <section className="py-16 ">
-      <div className="container mx-auto px-4">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
-          {stats.map((stat, index) => {
-            const platformColor = getPlatformColor(stat.platform);
-            const platformGradient = getPlatformGradient(stat.platform);
-
-            return (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="flex flex-col text-center"
-              >
-                <div className="relative mb-6 mx-auto">
-                  <div
-                    className="absolute inset-0 rounded-full opacity-2 blur-lg transform scale-150"
-                    style={{ backgroundColor: platformColor }}
-                  ></div>
-                  <div
-                    className="relative w-24 h-24 flex items-center justify-center rounded-full text-white shadow-md"
-                    style={{ background: platformGradient }}
-                  >
-                    <span className="text-2xl">{stat.icon}</span>
-                  </div>
+    <section className="w-full   py-4 sm:py-5">
+      <div className="container px-4 mx-auto">
+        <div className="flex flex-wrap justify-around  items-center gap-y-3 sm:gap-y-0 text-center">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="flex min-w-[140px] gap-2 place-items-center"
+            >
+              <div className="flex w-full flex-col items-center justify-center space-y-1 gap-2">
+                <div className="flex items-center justify-center mb-1">
+                  {stat.icon}
                 </div>
-
-                <div
-                  className="mb-2 text-3xl md:text-4xl font-bold bg-clip-text text-transparent"
-                  style={{ background: platformGradient }}
-                >
+                <div className="text-base font-semibold text-foreground">
                   {stat.value}
                 </div>
-
-                <div className="text-lg font-semibold mb-2">{stat.label}</div>
-
-                <p className="text-gray-500 dark:text-gray-400 text-sm">
-                  {stat.description}
-                </p>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+                <div className="text-xs text-muted-foreground">
+                  {stat.label}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

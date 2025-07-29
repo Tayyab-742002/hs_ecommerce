@@ -1,21 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-export function PlatformsOverview() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
+import { getPlatformColor } from "@/lib/utils/platform-colors";
+import { FaAmazon, FaEtsy, FaTiktok, FaEbay } from "react-icons/fa";
+import { TbBrandWalmart } from "react-icons/tb";
+import CardFlip from "@/components/mvpblocks/card-flip";
 
+import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
+import { LiaSmileWinkSolid } from "react-icons/lia";
+export function PlatformsOverview() {
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -27,235 +21,162 @@ export function PlatformsOverview() {
     },
   };
 
-  // Get platform color by name
-  const getPlatformColor = (platformName: string) => {
-    const lowerName = platformName.toLowerCase();
-
-    // Default to primary if platform color is not found
-    if (!["amazon", "ebay", "walmart", "tiktok", "etsy"].includes(lowerName)) {
-      return "var(--color-brand-primary)";
-    }
-
-    return `var(--color-${lowerName})`;
-  };
-
   // These would ideally come from your Sanity CMS, but for now using static data
   const platforms = [
     {
-      name: "Amazon",
+      title: "Amazon",
+      subtitle: "Sell globally with the world's largest e-commerce platform",
       logo: "/images/platforms/amazon-logo.png",
       slug: "amazon",
       description:
         "World's largest online marketplace with billions of customers across the globe.",
       accountTypes: ["Seller Central", "Buyer", "Professional", "Individual"],
+      features: [
+        "Global Reach",
+        "FBA (Fulfilled by Amazon)",
+        "Brand Registry",
+        "Sponsored Ads",
+      ],
+      link: "/platforms/amazon",
+      icon: (
+        <FaAmazon
+          className="h-full w-full text-white"
+          style={{ color: getPlatformColor("Amazon") }}
+        />
+      ),
     },
     {
-      name: "eBay",
+      title: "eBay",
+      subtitle: "Reach a global audience for niche and pre-owned goods",
       logo: "/images/platforms/ebay-logo.png",
       slug: "ebay",
       description:
         "Leading online marketplace for unique, used, and specialized products.",
       accountTypes: ["Seller", "Buyer", "Store", "Business"],
+      features: [
+        "Auction & Fixed-Price Listings",
+        "eBay Stores",
+        "Global Shipping Program",
+        "Terapeak Insights",
+      ],
+      link: "/platforms/ebay",
+      icon: (
+        <FaEbay
+          className="h-full w-full text-white"
+          style={{ color: getPlatformColor("eBay") }}
+        />
+      ),
     },
     {
-      name: "Walmart",
+      title: "Walmart",
+      subtitle: "Tap into millions of loyal Walmart shoppers",
       logo: "/images/platforms/walmart-logo.png",
       slug: "walmart",
       description:
         "Fast-growing marketplace with access to millions of Walmart shoppers.",
       accountTypes: ["Seller", "Supplier", "Fulfillment"],
+      features: [
+        "Walmart Fulfillment Services (WFS)",
+        "Pro Seller Badge",
+        "Omni-channel Retail",
+        "Competitive Pricing Tools",
+      ],
+      link: "/platforms/walmart",
+      icon: (
+        <TbBrandWalmart
+          className="h-full w-full text-white"
+          style={{ color: getPlatformColor("Walmart") }}
+        />
+      ),
     },
     {
-      name: "TikTok",
+      title: "TikTok",
+      subtitle: "Leverage viral video marketing for instant product exposure",
       logo: "/images/platforms/tiktok-logo.png",
       slug: "tiktok",
       description:
         "Rapidly expanding social commerce platform with viral marketing potential.",
       accountTypes: ["TikTok Shop", "Business", "Creator"],
+      features: [
+        "In-Video Shopping",
+        "Creator Marketplace",
+        "Ad Manager Tools",
+        "Live Commerce",
+      ],
+      link: "/platforms/tiktok",
+      icon: (
+        <FaTiktok
+          className="h-full w-full text-white"
+          style={{ color: getPlatformColor("TikTok") }}
+        />
+      ),
     },
     {
-      name: "Etsy",
+      title: "Etsy",
+      subtitle: "Perfect platform for handmade, vintage, and creative goods",
       logo: "/images/platforms/etsy-logo.png",
       slug: "etsy",
       description:
         "Specialized marketplace for handmade, vintage, and unique factory-manufactured items.",
       accountTypes: ["Seller", "Pattern", "Handmade", "Vintage"],
+      features: [
+        "Customizable Storefront",
+        "Product Personalization",
+        "Etsy Ads",
+        "Etsy Pattern Website Builder",
+      ],
+      link: "/platforms/etsy",
+      icon: (
+        <FaEtsy
+          className="h-full w-full text-white"
+          style={{ color: getPlatformColor("Etsy") }}
+        />
+      ),
     },
   ];
 
   return (
-    <section className="py-24 ">
+    <section className="py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-8"
         >
-          <motion.div
-            variants={itemVariants}
-            className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
-          >
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium mb-3">
+            <LiaSmileWinkSolid className="w-3 h-3" />
             All Major Platforms
-          </motion.div>
-
-          <motion.h2
-            variants={itemVariants}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
-          >
+          </div>
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
             Explore Our Supported Platforms
-          </motion.h2>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-gray-500 dark:text-gray-400 text-lg max-w-3xl mx-auto"
-          >
+          </h2>
+          <p className="text-sm text-muted-foreground max-w-xl mx-auto">
             We provide specialized accounts and services for all major
             e-commerce platforms. Choose your preferred platform and get
             started.
-          </motion.p>
+          </p>
         </motion.div>
 
         {/* Platforms grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6 mb-12 justify-items-center">
           {platforms.map((platform, index) => {
-            const platformColor = getPlatformColor(platform.name);
+            const platformColor = getPlatformColor(platform.title);
             return (
-              <motion.div
+              <CardFlip
                 key={index}
-                variants={itemVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                className="relative group bg-card rounded-md md:p-6 p-2 "
-              >
-                <div
-                  className="rounded-2xl overflow-hidden h-full flex flex-col shadow-lg"
-                  style={{
-                    background: `linear-gradient(135deg, ${platformColor}, ${platformColor}aa)`,
-                  }}
-                >
-                  <div className="p-6 flex items-center gap-4 border-b border-white/20">
-                    <div className="bg-accent rounded-full p-2 h-14 w-14 flex items-center justify-center shadow-md">
-                      <div className="relative w-8 h-8">
-                        <Image
-                          src={platform.logo}
-                          alt={platform.name}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    </div>
-                    <h3 className="text-2xl font-bold text-white">
-                      {platform.name}
-                    </h3>
-                  </div>
-
-                  <div className="p-6 text-white flex-grow">
-                    <p className="mb-6 text-white/90">{platform.description}</p>
-
-                    <div className="mb-6">
-                      <h4 className="text-sm uppercase tracking-wider text-white/80 mb-3">
-                        Available Account Types
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {platform.accountTypes.map((type, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-1 bg-white/20 rounded-full text-xs font-medium"
-                          >
-                            {type}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="px-6 pb-6 mt-auto">
-                    <Link href={`/platforms/${platform.slug}`}>
-                      <Button className="w-full bg-white hover:bg-white/90 text-gray-900">
-                        Explore {platform.name}
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
+                title={platform.title}
+                subtitle={platform.subtitle}
+                description={platform.description}
+                features={platform.features}
+                icon={platform.icon}
+                link={platform.link}
+                platformColor={platformColor}
+              />
             );
           })}
         </div>
-
-        {/* 3D CARD EFFECTS */}
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {platforms.map((platform, index) => {
-            return (
-              <CardContainer className="inter-var" key={index}>
-                <CardBody className="bg-card relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-dark dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
-                  <CardItem
-                    translateZ="50"
-                    className="text-xl font-bold text-neutral-600 dark:text-white w-full "
-                  >
-                    <div className="p-6 flex items-center gap-4 border-b border-white/20">
-                      <div className="bg-accent rounded-full p-2 h-14 w-14 flex items-center justify-center shadow-md">
-                        <div className="relative w-8 h-8">
-                          <Image
-                            src={platform.logo}
-                            alt={platform.name}
-                            fill
-                            sizes="(max-width: 768px) 32px, 32px"
-                            className="object-contain"
-                          />
-                        </div>
-                      </div>
-                      <h3 className="text-2xl font-bold text-white">
-                        {platform.name}
-                      </h3>
-                    </div>
-                  </CardItem>
-                  <CardItem
-                    as="p"
-                    translateZ="60"
-                    className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
-                  >
-                    <div className="p-6 text-white flex-grow">
-                      <p className="mb-6 text-white/90">
-                        {platform.description}
-                      </p>
-
-                      <div className="mb-6">
-                        <h4 className="text-sm uppercase tracking-wider text-white/80 mb-3">
-                          Available Account Types
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                          {platform.accountTypes.map(
-                            (type, idx) =>
-                              idx < 3 && (
-                                <span
-                                  key={idx}
-                                  className="px-3 py-1 bg-white/20 rounded-full text-xs font-medium"
-                                >
-                                  {type}
-                                </span>
-                              )
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </CardItem>
-                  <CardItem translateZ="100" className="w-full mt-4">
-                    <div className="px-6 pb-6 mt-auto">
-                      <Link href={`/platforms/${platform.slug}`}>
-                        <Button className="w-full bg-white hover:bg-white/90 text-gray-900 cursor-pointer">
-                          Explore {platform.name}
-                        </Button>
-                      </Link>
-                    </div>
-                  </CardItem>
-                </CardBody>
-              </CardContainer>
-            );
-          })}
-        </div> */}
 
         {/* View all platforms button */}
         <motion.div
@@ -266,9 +187,9 @@ export function PlatformsOverview() {
           className="text-center"
         >
           <Link href="/platforms">
-            <Button size="lg" variant="outline" className="rounded-full px-8">
+            <InteractiveHoverButton className="border border-primary/50">
               View All Platform Details
-            </Button>
+            </InteractiveHoverButton>
           </Link>
         </motion.div>
       </div>

@@ -1,23 +1,24 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import { ArrowRight, CheckCircle } from 'lucide-react'
-import { useColorScheme } from '@/providers/theme-provider'
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowRight, CheckCircle } from "lucide-react";
+import { useColorScheme } from "@/providers/theme-provider";
+import { ShimmerButton } from "@/components/magicui/shimmer-button";
 
 export function CTASection() {
-  const { getPlatformColor, getPlatformGradient } = useColorScheme()
+  const { getPlatformColor, getPlatformGradient } = useColorScheme();
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
-  }
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -25,35 +26,15 @@ export function CTASection() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5
-      }
-    }
-  }
-
-  // Features with associated platforms for styling
-  const features = [
-    { text: "Quick Setup", platform: "Amazon" },
-    { text: "Professional Support", platform: "eBay" },
-    { text: "All Countries Available", platform: "Walmart" }
-  ]
+        duration: 0.5,
+      },
+    },
+  };
 
   return (
-    <section className="py-24 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden -z-10">
-        <div className="absolute inset-0 bg-background"></div>
-        <div
-          className="absolute -top-24 -right-24 w-96 h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-10"
-          style={{ background: getPlatformGradient('eBay') }}
-        ></div>
-        <div
-          className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full mix-blend-multiply filter blur-3xl opacity-10"
-          style={{ background: getPlatformGradient('Amazon') }}
-        ></div>
-      </div>
-
+    <section className="py-12 relative overflow-hidden ">
       {/* Main content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-primary p-5 rounded-lg">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -63,41 +44,41 @@ export function CTASection() {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
+            className="text-3xl text-white font-bold tracking-tight md:text-4xl mb-2"
           >
             Ready to Grow Your E-commerce Business?
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto"
+            className="text-md text-white/60 mb-8 max-w-3xl mx-auto"
           >
-            Get started with our professional accounts, VA services, and reinstatement solutions for Amazon, eBay, Walmart, TikTok, and Etsy.
+            Get started with our professional accounts, VA services, and
+            reinstatement solutions for Amazon, eBay, Walmart, TikTok, and Etsy.
           </motion.p>
 
           <motion.div
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button
-              size="lg"
-              asChild
-              className="rounded-full text-base px-8  text-white"
-              style={{ background: getPlatformGradient('Amazon') }}
+            <ShimmerButton
+              className="text-white! bg-primary! py-1!"
+              background="#fb4141"
             >
-              <Link href="/contact">
-                Contact Us Now <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
+              <Link href="/contact">Contact Us Now</Link>
+            </ShimmerButton>
 
             <Button
               size="lg"
-              variant="outline"
+              variant="ghost"
               asChild
-              className="rounded-full text-base px-8  border-2 backdrop-blur-sm"
-              style={{ borderColor: `${getPlatformColor('etsy')}40`, color: getPlatformColor('etsy') }}
+              className="rounded-full  px-6 py-1! border-2 backdrop-blur-sm"
+              style={{
+                borderColor: `${getPlatformColor("etsy")}40`,
+                color: getPlatformColor("etsy"),
+              }}
             >
-              <Link href="/platforms">
+              <Link href="/platforms" className="text-white/80!">
                 Explore Platforms
               </Link>
             </Button>
@@ -105,34 +86,15 @@ export function CTASection() {
 
           <motion.div
             variants={itemVariants}
-            className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-muted-foreground"
-          >
-            {features.map((feature, index) => (
-              <div key={index} className="flex items-center gap-2">
-                <CheckCircle
-                  className="w-5 h-5"
-                  style={{ color: getPlatformColor(feature.platform) }}
-                />
-                <span>{feature.text}</span>
-              </div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            variants={itemVariants}
             className="mt-16 flex flex-col sm:flex-row justify-center items-center gap-4"
           >
-            <p className="text-muted-foreground font-medium">Contact us directly:</p>
+            <p className="text-white font-semibold">Contact us:</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="https://wa.me/923010510316"
-                className="flex items-center justify-center gap-2 px-5 py-2 rounded-lg transition-colors"
-                style={{
-                  background: `linear-gradient(to right, ${getPlatformColor('TikTok')}90, ${getPlatformColor('TikTok')}70)`,
-                  color: 'white'
-                }}
-                onMouseOver={(e) => e.currentTarget.style.opacity = '0.9'}
-                onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
+                className="flex items-center justify-center gap-2 px-5 py-2 rounded-lg transition-colors text-white/80! text-sm"
+                onMouseOver={(e) => (e.currentTarget.style.opacity = "0.9")}
+                onMouseOut={(e) => (e.currentTarget.style.opacity = "1")}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -147,13 +109,9 @@ export function CTASection() {
 
               <a
                 href="tel:+447955426807"
-                className="flex items-center justify-center gap-2 px-5 py-2 rounded-lg transition-colors"
-                style={{
-                  background: `linear-gradient(to right, ${getPlatformColor('Etsy')}90, ${getPlatformColor('Etsy')}70)`,
-                  color: 'white'
-                }}
-                onMouseOver={(e) => e.currentTarget.style.opacity = '0.9'}
-                onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
+                className="flex items-center justify-center gap-2 px-5 py-2 rounded-lg transition-colors text-white/80! text-sm"
+                onMouseOver={(e) => (e.currentTarget.style.opacity = "0.9")}
+                onMouseOut={(e) => (e.currentTarget.style.opacity = "1")}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -174,5 +132,5 @@ export function CTASection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

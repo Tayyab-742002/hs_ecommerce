@@ -242,13 +242,13 @@ export default function Header() {
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="h-10 text-sm font-medium rounded-lg">
+              <NavigationMenuTrigger className="h-10 text-sm font-medium rounded-lg group hover:text-white">
                 <NavigationMenuLink
                   href="/platforms"
-                  className="flex items-center flex-row space-x-1  hover:text-primary"
+                  className="flex items-center flex-row space-x-1  hover:text-white"
                 >
-                  <Building2 className="w-4 h-4 hover:text-primary" />
-                  <span>Platforms</span>
+                  <Building2 className="w-4 h-4  hover:text-white" />
+                  <span className="hover:text-white">Platforms</span>
                 </NavigationMenuLink>
               </NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -266,7 +266,7 @@ export default function Header() {
                       href="/accounts"
                       className={cn(
                         "inline-flex items-center space-x-2 rounded-lg bg-primary/10 px-3 py-2",
-                        "text-sm font-medium text-primary transition-colors hover:bg-primary/20"
+                        "text-sm font-medium text-primary transition-colors hover:bg-primary/70 hover:text-white"
                       )}
                     >
                       <span>View All Accounts</span>
@@ -290,10 +290,10 @@ export default function Header() {
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="h-10 text-sm font-medium rounded-lg">
-                <span className="flex items-center flex-row space-x-1  hover:text-primary">
-                  <HeadphonesIcon className="w-4 h-4" />
-                  <span>Services</span>
+              <NavigationMenuTrigger className="h-10 text-sm font-medium rounded-lg ">
+                <span className="flex items-center flex-row space-x-1   hover:text-white">
+                  <HeadphonesIcon className="w-4 h-4 hover:text-white" />
+                  <span className="hover:text-white">Services</span>
                 </span>
               </NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -372,7 +372,7 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu */}
-        <div className="lg:hidden flex items-center gap-2">
+        <div className="lg:hidden flex items-center gap-2 ">
           <Sheet>
             <SheetTrigger asChild>
               <Button
@@ -388,7 +388,7 @@ export default function Header() {
               side="left"
               className="w-80 pl-4 pr-0 overflow-y-auto"
             >
-              <div className="flex flex-col h-full">
+              <div className="flex flex-col h-full ">
                 {/* Mobile Header */}
                 <div className="mb-8 pt-2">
                   <Link
@@ -414,7 +414,7 @@ export default function Header() {
                   </Link>
                 </div>
 
-                <nav className="flex-1 space-y-8">
+                <nav className="flex-1 space-y-8 ">
                   {/* Main Navigation */}
                   <div>
                     <div className="px-3 mb-3">
@@ -600,7 +600,7 @@ const PlatformItem = React.forwardRef<
             ref={ref}
             className={cn(
               "block select-none space-y-3 rounded-xl p-4 leading-none no-underline outline-none",
-              "transition-all duration-200 hover:bg-accent/90  hover:shadow-sm",
+              "transition-all duration-200 hover:bg-accent/20  hover:shadow-sm group ",
               "focus:bg-accent focus:text-accent-foreground border border-border/50 hover:border-border/80",
               className
             )}
@@ -612,7 +612,7 @@ const PlatformItem = React.forwardRef<
                 {title}
               </span>
             </div>
-            <p className="line-clamp-2 text-xs leading-snug text-muted-foreground mb-3">
+            <p className="line-clamp-2 text-xs leading-snug text-muted-foreground  mb-3">
               {description}
             </p>
             <div className="flex flex-wrap gap-1">
@@ -658,7 +658,7 @@ const ServiceItem = React.forwardRef<
             ref={ref}
             className={cn(
               "block select-none rounded-xl p-4 leading-none no-underline outline-none",
-              "transition-all  duration-200 hover:bg-accent border border-border/50 hover:border-border",
+              "transition-all  duration-200 hover:bg-accent/30 border border-border/50 hover:border-border",
               className
             )}
             {...props}

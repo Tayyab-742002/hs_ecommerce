@@ -4,11 +4,10 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Users, Star } from "lucide-react";
-import { FaAmazon, FaEbay, FaTiktok, FaEtsy } from "react-icons/fa";
-import { TbBrandWalmart } from "react-icons/tb";
 import AvatarGroup from "@/components/avatar-group";
-
+import { FaAmazon, FaEtsy, FaTiktok, FaEbay } from "react-icons/fa";
+import { TbBrandWalmart } from "react-icons/tb";
+import { getPlatformColor } from "@/lib/utils/platform-colors";
 interface HeroProps {
   heading?: string;
   subheading?: string;
@@ -32,31 +31,64 @@ export function Hero({
   },
   backgroundImage,
 }: HeroProps) {
-  const clientAvatars = [
-    "/images/avatar1.jpg",
-    "/images/avatar2.jpg",
-    "/images/avatar3.jpg",
-    "/images/avatar4.jpg",
-  ];
-
   const platforms = [
-    { alt: "Amazon", logo: "/images/platforms/amazon-logo.png" },
-    { alt: "Ebay", logo: "/images/platforms/ebay-logo.png" },
-    { alt: "Tiktok", logo: "/images/platforms/tiktok-logo.png" },
-    { alt: "Etsy", logo: "/images/platforms/etsy-logo.png" },
-    { alt: "Walmart", logo: "/images/platforms/walmart-logo.png" },
+    {
+      alt: "Amazon",
+      icon: (
+        <FaAmazon
+          className="w-8 h-8"
+          style={{ color: getPlatformColor("Amazon") }}
+        />
+      ),
+    },
+    {
+      alt: "Ebay",
+      icon: (
+        <FaEbay
+          className="w-8 h-8"
+          style={{ color: getPlatformColor("Ebay") }}
+        />
+      ),
+    },
+    {
+      alt: "Tiktok",
+      icon: (
+        <FaTiktok
+          className="w-8 h-8"
+          style={{ color: getPlatformColor("Tiktok") }}
+        />
+      ),
+    },
+    {
+      alt: "Etsy",
+      icon: (
+        <FaEtsy
+          className="w-8 h-8"
+          style={{ color: getPlatformColor("Etsy") }}
+        />
+      ),
+    },
+    {
+      alt: "Walmart",
+      icon: (
+        <TbBrandWalmart
+          className="w-8 h-8"
+          style={{ color: getPlatformColor("Walmart") }}
+        />
+      ),
+    },
   ];
 
   return (
-    <section className="relative  overflow-hidden">
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+    <section className="py-12">
+      <div className=" container justify-center! items-center! z-10 mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:pt-20">
+        <div className="grid grid-cols-1  lg:grid-cols-2 items-center gap-10 ">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-6 lg:space-y-8"
+            className="space-y-6 lg:space-y-8 "
           >
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl text-center lg:text-left lg:text-6xl font-bold text-primary leading-tight">
@@ -143,22 +175,16 @@ export function Hero({
               transition={{ duration: 0.6, delay: 0.5 }}
               className="pt-8"
             >
-              <div className="flex flex-wrap items-center gap-6">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-10 mt-2">
                 {platforms.map((platform, i) => (
                   <motion.div
                     key={platform.alt}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, delay: 0.6 + i * 0.1 }}
-                    className="flex items-center gap-2"
+                    className="flex items-center  gap-2 "
                   >
-                    <Image
-                      src={platform.logo}
-                      alt={platform.alt}
-                      width={42}
-                      height={42}
-                      // className="w-8 h-8"
-                    />
+                    {platform.icon}
                   </motion.div>
                 ))}
               </div>
@@ -170,14 +196,14 @@ export function Hero({
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
+            className="flex justify-center lg:justify-end items-center "
           >
             <Image
               src={backgroundImage?.asset.url || ""}
               alt="Hero Image"
               width={500}
               height={500}
-              className="w-full! h-full! object-cover rounded-2xl"
+              className="object-cover rounded-2xl "
             />
           </motion.div>
         </div>

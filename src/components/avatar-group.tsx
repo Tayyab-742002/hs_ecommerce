@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-
+import { ShimmerButton } from "@/components/magicui/shimmer-button";
 interface AvatarItem {
   id: number;
   name: string;

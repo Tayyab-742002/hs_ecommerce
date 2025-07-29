@@ -8,209 +8,137 @@ import {
   Globe,
   Award,
   ThumbsUp,
+  Shield,
+  TrendingUp,
 } from "lucide-react";
 import { useColorScheme } from "@/providers/theme-provider";
+import { HiLockClosed } from "react-icons/hi";
 
 export function WhyChooseUs() {
-  const { getPlatformColor } = useColorScheme();
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
+ 
 
   const features = [
     {
-      icon: <ShieldCheck className="w-10 h-10" />,
-      platform: "Amazon",
+      icon: <ShieldCheck className="w-5 h-5" />,
       title: "Verified Accounts",
-      description:
-        "All accounts are fully verified and ready to use immediately upon delivery.",
+      description: "Fully verified and ready to use",
     },
     {
-      icon: <Clock className="w-10 h-10" />,
-      platform: "eBay",
+      icon: <Clock className="w-5 h-5" />,
       title: "Fast Delivery",
-      description:
-        "Most accounts are delivered within 24-48 hours after payment confirmation.",
+      description: "24-48 hours delivery",
     },
     {
-      icon: <HeadphonesIcon className="w-10 h-10" />,
-      platform: "Walmart",
+      icon: <HeadphonesIcon className="w-5 h-5" />,
       title: "24/7 Support",
-      description:
-        "Our team is available round the clock via WhatsApp and email for any questions or issues.",
+      description: "Round-the-clock assistance",
     },
     {
-      icon: <Globe className="w-10 h-10" />,
-      platform: "TikTok",
+      icon: <Globe className="w-5 h-5" />,
       title: "Global Coverage",
-      description:
-        "We provide accounts for all countries and regions worldwide.",
+      description: "Worldwide availability",
     },
     {
-      icon: <Award className="w-10 h-10" />,
-      platform: "Etsy",
+      icon: <Award className="w-5 h-5" />,
       title: "Expert Team",
-      description:
-        "Our team consists of e-commerce specialists with years of platform experience.",
+      description: "E-commerce specialists",
     },
     {
-      icon: <ThumbsUp className="w-10 h-10" />,
-      platform: "Amazon",
+      icon: <ThumbsUp className="w-5 h-5" />,
       title: "High Success Rate",
-      description:
-        "75-85% success rate for account reinstatement services across platforms.",
+      description: "75-85% success rate",
+    },
+    {
+      icon: <HiLockClosed className="w-5 h-5" />,
+      title: "Secure Transactions",
+      description: "Advanced encryption",
+    },
+    {
+      icon: <TrendingUp className="w-5 h-5" />,
+      title: "Scalable Solutions",
+      description: "Grows with your business",
     },
   ];
 
   return (
-    <section className="py-24 bg-background">
+    <section className="py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Compact Header */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-8"
         >
-          <motion.div
-            variants={itemVariants}
-            className="inline-flex items-center px-4 py-1.5 rounded-full border border-border bg-card/80 backdrop-blur-sm text-sm font-medium mb-4"
-          >
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium mb-3">
+            <Shield className="w-3 h-3" />
             Our Advantages
-          </motion.div>
-
-          <motion.h2
-            variants={itemVariants}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
-          >
+          </div>
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
             Why Choose H&S Ecommerce
-          </motion.h2>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-muted-foreground text-lg max-w-3xl mx-auto"
-          >
-            We deliver exceptional value and service to help your e-commerce
-            business succeed across all major platforms.
-          </motion.p>
+          </h2>
+          <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+            Exceptional value and service for your e-commerce success
+          </p>
         </motion.div>
 
+        {/* Compact Grid */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          transition={{ duration: 0.8, staggerChildren: 0.05 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4"
         >
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              variants={itemVariants}
-              className="bg-card rounded-xl p-8 shadow-lg  flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300"
-              style={{
-                borderColor: `${getPlatformColor(feature.platform)}30`,
-                boxShadow: `0 4px 20px ${getPlatformColor(feature.platform)}10`,
-              }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+              whileHover={{ y: -2 }}
+              className="group p-4 rounded-xl bg-card border border-border/50 hover:border-primary/20 hover:shadow-sm transition-all duration-300"
             >
-              <div
-                className="p-4 rounded-full mb-6"
-                style={{
-                  backgroundColor: `${getPlatformColor(feature.platform)}10`,
-                  color: getPlatformColor(feature.platform),
-                }}
-              >
-                {feature.icon}
+              <div className="flex flex-col items-center text-center space-y-2">
+                <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors duration-300">
+                  {feature.icon}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-sm text-foreground">
+                    {feature.title}
+                  </h3>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
-
-              <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
-
-              <p className="text-muted-foreground">{feature.description}</p>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Additional trust indicators */}
+        {/* Optional: Stats Row */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-16 bg-card rounded-2xl p-8 shadow-lg border border-border relative overflow-hidden"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-8 pt-6 border-t border-border/30"
         >
-          <div className="absolute inset-0 opacity-5">
-            <svg
-              width="100%"
-              height="100%"
-              viewBox="0 0 100 100"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <defs>
-                <pattern
-                  id="grid"
-                  width="10"
-                  height="10"
-                  patternUnits="userSpaceOnUse"
-                >
-                  <path
-                    d="M 10 0 L 0 0 0 10"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="0.5"
-                  />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" />
-            </svg>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-            <motion.div variants={itemVariants} className="text-center">
-              <div
-                className="text-4xl font-bold mb-2"
-                style={{ color: getPlatformColor("Amazon") }}
-              >
-                5+ Years
-              </div>
-              <p className="text-muted-foreground">Industry Experience</p>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="text-center">
-              <div
-                className="text-4xl font-bold mb-2"
-                style={{ color: getPlatformColor("eBay") }}
-              >
-                2,500+
-              </div>
-              <p className="text-muted-foreground">Satisfied Clients</p>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="text-center">
-              <div
-                className="text-4xl font-bold mb-2"
-                style={{ color: getPlatformColor("Walmart") }}
-              >
-                50+
-              </div>
-              <p className="text-muted-foreground">Countries Served</p>
-            </motion.div>
+          <div className="grid grid-cols-3 gap-4 text-center">
+            <div>
+              <div className="text-lg font-bold text-primary">1000+</div>
+              <div className="text-xs text-muted-foreground">Happy Clients</div>
+            </div>
+            <div>
+              <div className="text-lg font-bold text-primary">24/7</div>
+              <div className="text-xs text-muted-foreground">Support</div>
+            </div>
+            <div>
+              <div className="text-lg font-bold text-primary">85%</div>
+              <div className="text-xs text-muted-foreground">Success Rate</div>
+            </div>
           </div>
         </motion.div>
       </div>

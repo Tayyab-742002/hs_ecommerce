@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { Hero } from "@/components/pages/home/hero";
 import { ServicesShowcase } from "@/components/pages/home/services-showcase";
-import { ThreePLServices } from "@/components/pages/home/threepl-services";
 import { PlatformsOverview } from "@/components/pages/home/platforms-overview";
 import { StatsSection } from "@/components/pages/home/stats-section";
 import { Testimonials } from "@/components/pages/home/testimonials";
@@ -40,7 +39,7 @@ export default async function Home() {
         {hero && <Hero {...(hero as any)} />}
 
         {/* Stats Section */}
-        <StatsSection />
+        {/* <StatsSection /> */}
 
         {/* Why Choose Us Section */}
         <WhyChooseUs />
@@ -56,10 +55,6 @@ export default async function Home() {
 
         {/* Services Showcase Section */}
         <ServicesShowcase />
-
-        {/* 3PL Services Section */}
-        <ThreePLServices />
-
         {/* All Platforms Overview */}
         <PlatformsOverview />
 
