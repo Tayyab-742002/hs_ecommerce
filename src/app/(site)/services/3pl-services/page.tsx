@@ -120,12 +120,6 @@ export default async function ThreePLServicesPage() {
           { text: "focus on growth", color: "secondary" },
         ],
       },
-      stats: [
-        { value: "99.8%", label: "Order Accuracy", icon: Target },
-        { value: "24h", label: "Fulfillment Time", icon: Clock },
-        { value: "50K+", label: "Orders Processed", icon: Package },
-        { value: "15+", label: "Carrier Partners", icon: Truck },
-      ],
     },
     services: {
       title: "Choose Your 3PL Service",
@@ -136,7 +130,7 @@ export default async function ThreePLServicesPage() {
           { text: "optimize your operations", color: "secondary" },
         ],
       },
-      data: threePLServices,
+      data: threePLServices as any,
       badge: {
         icon: Package,
         text: "Our Services",
@@ -253,35 +247,30 @@ export default async function ThreePLServicesPage() {
       },
       items: [
         {
-          id: "setup-time",
-          question: "How long does setup take?",
-          answer:
+          id: 1,
+          title: "How long does setup take?",
+          content:
             "Initial setup typically takes 1-2 weeks depending on inventory volume and complexity. We provide dedicated project managers to ensure smooth onboarding and minimal disruption to your operations.",
         },
         {
-          id: "minimum-volume",
-          question: "Is there a minimum order volume?",
-          answer:
+          id: 2,
+          title: "Is there a minimum order volume?",
+          content:
             "We work with businesses of all sizes. While there's no strict minimum, our services are most cost-effective for businesses processing 100+ orders per month. We offer flexible pricing based on your volume.",
         },
         {
-          id: "integration",
-          question: "How do you integrate with our systems?",
-          answer:
+          id: 3,
+          title: "How do you integrate with our systems?",
+          content:
             "We support integration with major e-commerce platforms (Shopify, WooCommerce, Amazon, etc.) and ERPs. Our API allows real-time data sync for inventory, orders, and shipping information.",
         },
         {
-          id: "coverage",
-          question: "What's your shipping coverage?",
-          answer:
+          id: 4,
+          title: "What's your shipping coverage?",
+          content:
             "We offer domestic and international shipping through partnerships with major carriers (FedEx, UPS, DHL, USPS). Same-day and next-day delivery available in major metropolitan areas.",
         },
       ],
-    },
-    colorScheme: {
-      primary: "green-500",
-      secondary: "teal-500",
-      accent: "cyan-500",
     },
   };
 

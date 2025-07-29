@@ -221,12 +221,6 @@ export default async function ReinstatementServicesPage() {
           { text: "e-commerce journey", color: "secondary" },
         ],
       },
-      stats: [
-        { value: "92%", label: "Success Rate", icon: Trophy },
-        { value: "24/7", label: "Support Available", icon: Clock },
-        { value: "1,250+", label: "Accounts Restored", icon: Users },
-        { value: "48h", label: "Avg Response", icon: Zap },
-      ],
     },
     services: {
       title: "Choose Your Recovery Service",
@@ -352,35 +346,30 @@ export default async function ReinstatementServicesPage() {
       },
       items: [
         {
-          id: "success-rate",
-          question: "What is your success rate?",
-          answer:
+          id: 1,
+          title: "What is your success rate?",
+          content:
             "We maintain an average success rate of 92% across all platforms. Our success rate varies by platform and violation type, but we have extensive experience with all major e-commerce marketplaces.",
         },
         {
-          id: "timeline",
-          question: "How long does the reinstatement process take?",
-          answer:
+          id: 2,
+          title: "How long does the reinstatement process take?",
+          content:
             "Timeline varies by platform and complexity of the case. Most cases are resolved within 5-21 days. We provide regular updates throughout the process and work as quickly as possible while ensuring quality.",
         },
         {
-          id: "guarantee",
-          question: "Do you offer any guarantees?",
-          answer:
+          id: 3,
+          title: "Do you offer any guarantees?",
+          content:
             "Yes, we offer a money-back guarantee if we cannot successfully reinstate your account. We're confident in our expertise and stand behind our work with full transparency.",
         },
         {
-          id: "platforms",
-          question: "Which platforms do you support?",
-          answer:
+          id: 4,
+          title: "Which platforms do you support?",
+          content:
             "We provide reinstatement services for Amazon, eBay, Walmart Marketplace, Etsy, and TikTok Shop. Each platform has unique requirements, and our specialists focus on their assigned platforms for maximum expertise.",
         },
       ],
-    },
-    colorScheme: {
-      primary: "red-500",
-      secondary: "orange-500",
-      accent: "yellow-500",
     },
   };
 
