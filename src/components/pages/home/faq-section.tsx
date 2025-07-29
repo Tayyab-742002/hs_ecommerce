@@ -1,10 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { useColorScheme } from "@/providers/theme-provider";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { PlusIcon } from "lucide-react";
 import { motion } from "framer-motion";
@@ -14,6 +10,7 @@ import {
   AccordionContent,
   AccordionItem,
 } from "@/components/ui/accordion";
+import { getPlatformColor } from "@/lib/utils/platform-colors";
 interface FAQ {
   id: number;
   title: string;
@@ -21,12 +18,6 @@ interface FAQ {
 }
 
 export function FAQSection() {
-  const { getPlatformColor, getPlatformGradient } = useColorScheme();
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
-
-  const toggleFAQ = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
   const fadeInAnimationVariants = {
     initial: {
       opacity: 0,
@@ -40,26 +31,6 @@ export function FAQSection() {
         duration: 0.4,
       },
     }),
-  };
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
   };
 
   const faqs: FAQ[] = [

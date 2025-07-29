@@ -1,157 +1,388 @@
+import { Metadata } from "next";
 import { getReinstatementServices } from "@/lib/services/reinstatement";
-import { ReinstatementCard } from "@/components/services/ReinstatementCard";
+import { ServicePageLayout, ServicePageData } from "@/components/services";
+import {
+  AlertTriangle,
+  Shield,
+  Clock,
+  Award,
+  Target,
+  MessageSquare,
+  Trophy,
+  Users,
+  Zap,
+  Star,
+} from "lucide-react";
+import { ReinstatementService } from "@/types";
 
 export const revalidate = 60;
 
+const fallbackReinstatementServices: ReinstatementService[] = [
+  {
+    _id: "fallback-amazon-reinstatement",
+    title: "Amazon Account Reinstatement",
+    slug: "amazon-account-reinstatement",
+    platform: {
+      _id: "amazon",
+      name: "Amazon",
+      slug: "amazon",
+      logo: {
+        asset: {
+          url: "/images/platforms/amazon-logo.png",
+        },
+      },
+    },
+    description:
+      "Get your suspended Amazon Seller Central account back online with our expert reinstatement service. Our specialists understand Amazon's complex policies and create compelling appeals that work.",
+    features: [
+      "Complete suspension analysis and root cause identification",
+      "Professional Plan of Action (POA) crafted by Amazon experts",
+      "Direct communication with Amazon Seller Performance team",
+      "Policy compliance audit and recommendations",
+      "Ongoing support until successful reinstatement",
+      "Performance metrics optimization guidance",
+      "Preventative measures for future suspensions",
+    ],
+    successRate: "87%",
+    turnaroundTime: "5-14 days",
+    price: "349",
+  },
+  {
+    _id: "fallback-ebay-reinstatement",
+    title: "eBay Account Reinstatement",
+    slug: "ebay-account-reinstatement",
+    platform: {
+      _id: "ebay",
+      name: "eBay",
+      slug: "ebay",
+      logo: {
+        asset: {
+          url: "/images/platforms/ebay-logo.png",
+        },
+      },
+    },
+    description:
+      "Restore your suspended eBay seller account with our specialized reinstatement service. We handle everything from appeals to policy compliance.",
+    features: [
+      "Comprehensive account audit and violation assessment",
+      "Custom appeal letter writing with proven templates",
+      "Direct liaison with eBay customer support",
+      "Seller performance optimization strategies",
+      "Policy compliance training and guidance",
+      "Account health monitoring post-reinstatement",
+      "Listing optimization recommendations",
+    ],
+    successRate: "82%",
+    turnaroundTime: "7-21 days",
+    price: "299",
+  },
+  {
+    _id: "fallback-walmart-reinstatement",
+    title: "Walmart Marketplace Reinstatement",
+    slug: "walmart-account-reinstatement",
+    platform: {
+      _id: "walmart",
+      name: "Walmart",
+      slug: "walmart",
+      logo: {
+        asset: {
+          url: "/images/platforms/walmart-logo.png",
+        },
+      },
+    },
+    description:
+      "Get your Walmart Marketplace seller account back in good standing with our specialized reinstatement team who understand Walmart's unique requirements.",
+    features: [
+      "Detailed suspension cause analysis",
+      "Strategic appeal preparation with Walmart focus",
+      "Performance metrics improvement planning",
+      "Walmart policy compliance comprehensive review",
+      "Long-term account health monitoring",
+      "Product quality and safety compliance",
+      "Marketplace performance optimization",
+    ],
+    successRate: "79%",
+    turnaroundTime: "10-28 days",
+    price: "399",
+  },
+  {
+    _id: "fallback-etsy-reinstatement",
+    title: "Etsy Shop Reinstatement",
+    slug: "etsy-shop-reinstatement",
+    platform: {
+      _id: "etsy",
+      name: "Etsy",
+      slug: "etsy",
+      logo: {
+        asset: {
+          url: "/images/platforms/etsy-logo.png",
+        },
+      },
+    },
+    description:
+      "Restore your suspended Etsy shop with our creative marketplace specialists who understand Etsy's unique community guidelines and handmade policies.",
+    features: [
+      "Creative policy violation assessment",
+      "Handmade and vintage compliance review",
+      "IP infringement resolution strategies",
+      "Shop quality and authenticity verification",
+      "Customer service improvement plans",
+      "Listing optimization for Etsy algorithms",
+      "Community guidelines training",
+    ],
+    successRate: "84%",
+    turnaroundTime: "3-10 days",
+    price: "249",
+  },
+  {
+    _id: "fallback-tiktok-reinstatement",
+    title: "TikTok Shop Reinstatement",
+    slug: "tiktok-shop-reinstatement",
+    platform: {
+      _id: "tiktok",
+      name: "TikTok",
+      slug: "tiktok",
+      logo: {
+        asset: {
+          url: "/images/platforms/tiktok-logo.png",
+        },
+      },
+    },
+    description:
+      "Reinstate your TikTok Shop account with our social commerce experts who specialize in TikTok's evolving e-commerce policies and creator guidelines.",
+    features: [
+      "Social commerce policy analysis",
+      "Creator guidelines compliance review",
+      "Live shopping violation assessment",
+      "Content policy alignment strategies",
+      "Community standards training",
+      "Shop performance optimization",
+      "Influencer partnership compliance",
+    ],
+    successRate: "76%",
+    turnaroundTime: "7-18 days",
+    price: "329",
+  },
+];
+
+// Generate metadata for reinstatement services page
+export const generateMetadata = async (): Promise<Metadata> => {
+  return {
+    title:
+      "Account Reinstatement Services | HS Ecommerce | H&S Ecommerce Agency",
+    description:
+      "Professional account reinstatement services for suspended Amazon, eBay, Walmart, TikTok, and Etsy accounts. Expert appeal writing and policy compliance assistance.",
+    keywords:
+      "account reinstatement, amazon reinstatement, ebay reinstatement, walmart reinstatement, etsy reinstatement, tiktok reinstatement, suspended account recovery, appeal writing, policy compliance, hs ecommerce, h&s ecommerce, h and s ecommerce agency",
+    openGraph: {
+      title:
+        "Account Reinstatement Services | HS Ecommerce | H&S Ecommerce Agency",
+      description:
+        "Expert account reinstatement services to restore your suspended e-commerce accounts across all major platforms with proven success rates.",
+      type: "website",
+    },
+  };
+};
+
 export default async function ReinstatementServicesPage() {
-  const services = await getReinstatementServices();
+  // Fetch services data (fallback to fallback array if not available)
+  const services = await getReinstatementServices().catch(() => []);
+  const displayServices = services?.length
+    ? services
+    : fallbackReinstatementServices;
 
-  return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4">
-          Account Reinstatement Services
-        </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-          We help sellers get their suspended accounts back with our expert-led
-          reinstatement services. Don&apos;t let a suspension end your
-          e-commerce journey.
-        </p>
-      </div>
-
-      <div className="max-w-3xl mx-auto mb-12 bg-card p-8 rounded-lg shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">
-          How Our Reinstatement Process Works
-        </h2>
-
-        <div className="space-y-6">
-          <div className="flex items-start">
-            <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 mr-4">
-              <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">
-                1
-              </span>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold">Initial Assessment</h3>
-              <p className="text-gray-600">
-                We analyze your account suspension details and identify the
-                specific violation or issue that led to the suspension.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start">
-            <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 mr-4">
-              <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">
-                2
-              </span>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold">Customized Strategy</h3>
-              <p className="text-gray-600">
-                Our experts develop a tailored reinstatement strategy based on
-                the platform's policies and your specific situation.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start">
-            <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 mr-4">
-              <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">
-                3
-              </span>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold">Appeal Preparation</h3>
-              <p className="text-gray-600">
-                We create a professional Plan of Action (POA) or appeal letter
-                addressing all concerns raised by the marketplace.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start">
-            <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 mr-4">
-              <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">
-                4
-              </span>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold">Submission & Follow-up</h3>
-              <p className="text-gray-600">
-                We submit the appeal and handle all communication with the
-                platform until your account is reinstated.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start">
-            <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 mr-4">
-              <span className="flex items-center justify-center w-8 h-8 text-xl font-bold text-primary">
-                5
-              </span>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold">Future Prevention</h3>
-              <p className="text-gray-600">
-                After reinstatement, we provide guidance on best practices to
-                prevent future suspensions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.map((service: any) => (
-          <ReinstatementCard key={service._id} service={service} />
-        ))}
-      </div>
-
-      <div className="mt-16 text-center">
-        <h2 className="text-2xl font-semibold mb-4">
-          Need Urgent Account Reinstatement?
-        </h2>
-        <p className="text-gray-600 mb-6">
-          Contact us immediately for expedited service
-        </p>
-
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-          <a
-            href="https://wa.me/923010510316"
-            className="flex items-center p-4 bg-green-500 text-white rounded-lg hover:bg-green-600"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              className="w-6 h-6 mr-2"
-              fill="currentColor"
-            >
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-            </svg>
-            +92 301 0510316 (WhatsApp)
-          </a>
-
-          <a
-            href="tel:+447955426807"
-            className="flex items-center p-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-6 h-6 mr-2"
-            >
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-            </svg>
-            +44 7955 426807
-          </a>
-        </div>
-      </div>
-    </div>
+  // Transform services to match new Service interface
+  const transformedServices = displayServices.map(
+    (service: ReinstatementService) => ({
+      id: service._id,
+      title: service.title,
+      description: service.description,
+      price: service.price,
+      category: service.platform?.name || "Account Recovery",
+      platform: service.platform,
+    })
   );
+
+  // Service page data configuration
+  const pageData: ServicePageData = {
+    hero: {
+      badge: {
+        icon: AlertTriangle,
+        text: "Expert Account Recovery Specialists",
+      },
+      title: {
+        main: "Reclaim Your Account",
+        subtitle: "with Confidence",
+      },
+      description: {
+        text: "We help sellers restore suspended accounts through {highlight1}, expert-led reinstatement services. Don't let setbacks stop your {highlight2}.",
+        highlights: [
+          { text: "strategic", color: "primary" },
+          { text: "e-commerce journey", color: "secondary" },
+        ],
+      },
+      stats: [
+        { value: "92%", label: "Success Rate", icon: Trophy },
+        { value: "24/7", label: "Support Available", icon: Clock },
+        { value: "1,250+", label: "Accounts Restored", icon: Users },
+        { value: "48h", label: "Avg Response", icon: Zap },
+      ],
+    },
+    services: {
+      title: "Choose Your Recovery Service",
+      description: {
+        text: "From Amazon to TikTok, we've got all your {highlight1} covered with {highlight2}",
+        highlights: [
+          { text: "account reinstatement needs", color: "primary" },
+          { text: "proven expertise", color: "secondary" },
+        ],
+      },
+      data: transformedServices,
+      badge: {
+        icon: Shield,
+        text: "Our Services",
+      },
+    },
+    whyChooseUs: {
+      title: "Why Choose Our Recovery Services",
+      description: {
+        text: "We deliver exceptional results through {highlight1}, {highlight2}, and {highlight3}",
+        highlights: [
+          { text: "expertise", color: "primary" },
+          { text: "efficiency", color: "secondary" },
+          { text: "dedication", color: "primary" },
+        ],
+      },
+      features: [
+        {
+          icon: Shield,
+          title: "Proven Expertise",
+          description:
+            "Our team has successfully handled over 1,250 reinstatements across all major platforms with an industry-leading success rate.",
+          gradient: "from-red-500/20 to-pink-500/20",
+        },
+        {
+          icon: Clock,
+          title: "Fast Turnaround",
+          description:
+            "We prioritize urgent cases and work efficiently to get your account reinstated as quickly as possible without compromising quality.",
+          gradient: "from-orange-500/20 to-yellow-500/20",
+        },
+        {
+          icon: Award,
+          title: "No Success, No Fee",
+          description:
+            "We're so confident in our service that we offer a money-back guarantee if we can't successfully reinstate your account.",
+          gradient: "from-yellow-500/20 to-green-500/20",
+        },
+      ],
+      badge: {
+        icon: Trophy,
+        text: "Why Choose Us",
+      },
+    },
+    howItWorks: {
+      title: "How Our Recovery Services Work",
+      description: {
+        text: "Simple, streamlined process to get your account {highlight1}",
+        highlights: [{ text: "back online quickly", color: "primary" }],
+      },
+      steps: [
+        {
+          step: "1",
+          title: "Analyze & Assess",
+          description:
+            "We conduct a comprehensive analysis of your suspension, reviewing all communications and policy violations to identify the root cause.",
+          gradient: "from-red-500/10 to-orange-500/10",
+        },
+        {
+          step: "2",
+          title: "Create Strategy",
+          description:
+            "Our experts craft a tailored reinstatement strategy and prepare compelling documentation to address all platform concerns.",
+          gradient: "from-orange-500/10 to-yellow-500/10",
+        },
+        {
+          step: "3",
+          title: "Execute & Monitor",
+          description:
+            "We handle the submission process and provide ongoing monitoring to ensure compliance and prevent future issues.",
+          gradient: "from-yellow-500/10 to-red-500/10",
+        },
+      ],
+      badge: {
+        icon: Target,
+        text: "Our Process",
+      },
+    },
+    testimonials: {
+      title: "What Our Clients Say",
+      description: {
+        text: "Real accounts restored for real businesses we've helped {highlight1}",
+        highlights: [{ text: "recover", color: "primary" }],
+      },
+      data: [
+        {
+          quote:
+            "Their Amazon reinstatement service was incredible. Account was back online in just 8 days after being suspended for 3 months. Professional and efficient!",
+          author: "Michael Chen",
+          role: "Amazon Seller",
+          initials: "MC",
+          gradient: "from-red-500/10 to-orange-500/10",
+        },
+        {
+          quote:
+            "The team handled my eBay suspension perfectly. They created a compelling appeal and communicated with eBay on my behalf. Worth every penny!",
+          author: "Sarah Johnson",
+          role: "eBay Entrepreneur",
+          initials: "SJ",
+          gradient: "from-orange-500/10 to-yellow-500/10",
+        },
+      ],
+      badge: {
+        icon: MessageSquare,
+        text: "Client Success Stories",
+      },
+    },
+    faq: {
+      title: "Frequently Asked Questions",
+      description: {
+        text: "Get answers to common questions about our {highlight1}",
+        highlights: [{ text: "recovery services", color: "primary" }],
+      },
+      items: [
+        {
+          id: "success-rate",
+          question: "What is your success rate?",
+          answer:
+            "We maintain an average success rate of 92% across all platforms. Our success rate varies by platform and violation type, but we have extensive experience with all major e-commerce marketplaces.",
+        },
+        {
+          id: "timeline",
+          question: "How long does the reinstatement process take?",
+          answer:
+            "Timeline varies by platform and complexity of the case. Most cases are resolved within 5-21 days. We provide regular updates throughout the process and work as quickly as possible while ensuring quality.",
+        },
+        {
+          id: "guarantee",
+          question: "Do you offer any guarantees?",
+          answer:
+            "Yes, we offer a money-back guarantee if we cannot successfully reinstate your account. We're confident in our expertise and stand behind our work with full transparency.",
+        },
+        {
+          id: "platforms",
+          question: "Which platforms do you support?",
+          answer:
+            "We provide reinstatement services for Amazon, eBay, Walmart Marketplace, Etsy, and TikTok Shop. Each platform has unique requirements, and our specialists focus on their assigned platforms for maximum expertise.",
+        },
+      ],
+    },
+    colorScheme: {
+      primary: "red-500",
+      secondary: "orange-500",
+      accent: "yellow-500",
+    },
+  };
+
+  return <ServicePageLayout data={pageData} />;
 }

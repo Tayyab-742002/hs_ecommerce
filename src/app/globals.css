@@ -26,7 +26,7 @@
   /* --border: oklch(0.9073 0.053 306.0902); */
   --border: oklch(0.6362 0.0575 255.5);
   --input: oklch(0.9073 0.053 306.0902);
-  --ring: oklch(0.709 0.1592 293.5412);
+  --ring: oklch(0.6539 0.2221 25.86 / 69.17%);
   --chart-1: oklch(0.709 0.1592 293.5412);
   --chart-2: oklch(0.6056 0.2189 292.7172);
   --chart-3: oklch(0.5413 0.2466 293.009);
@@ -74,7 +74,7 @@
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.6115 0.1963 29.64);
   --input: oklch(0.9073 0.053 306.0902);
-  --ring: oklch(0.709 0.1592 293.5412);
+  --ring: oklch(0.6539 0.2221 25.86 / 69.17%);
   --chart-1: oklch(0.709 0.1592 293.5412);
   --chart-2: oklch(0.6056 0.2189 292.7172);
   --chart-3: oklch(0.5413 0.2466 293.009);
@@ -130,7 +130,7 @@
   --destructive-foreground: oklch(0.2161 0.0061 56.0434);
   --border: oklch(0.6362 0.0575 255.5);
   --input: oklch(0.3416 0.0444 308.8496);
-  --ring: oklch(0.7874 0.1179 295.7538);
+  --ring: oklch(0.6539 0.2221 25.86 / 69.17%);
   --chart-1: oklch(0.7874 0.1179 295.7538);
   --chart-2: oklch(0.709 0.1592 293.5412);
   --chart-3: oklch(0.6056 0.2189 292.7172);
@@ -226,22 +226,24 @@
   --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
   --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
   @keyframes shimmer-slide {
-  to {
-    transform: translate(calc(100cqw - 100%), 0);
+    to {
+      transform: translate(calc(100cqw - 100%), 0);
     }
   }
   @keyframes spin-around {
-  0% {
-    transform: translateZ(0) rotate(0);
+    0% {
+      transform: translateZ(0) rotate(0);
     }
-  15%, 35% {
-    transform: translateZ(0) rotate(90deg);
+    15%,
+    35% {
+      transform: translateZ(0) rotate(90deg);
     }
-  65%, 85% {
-    transform: translateZ(0) rotate(270deg);
+    65%,
+    85% {
+      transform: translateZ(0) rotate(270deg);
     }
-  100% {
-    transform: translateZ(0) rotate(360deg);
+    100% {
+      transform: translateZ(0) rotate(360deg);
     }
   }
 }
@@ -257,4 +259,67 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom animations for enhanced VA services page */
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.5;
+    filter: blur(20px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 4s ease infinite;
+  background-size: 200% 200%;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
+  background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb), 0.2), transparent);
+  background-size: 200% 100%;
 }

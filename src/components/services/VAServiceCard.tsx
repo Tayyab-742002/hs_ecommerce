@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 interface VAServiceCardProps {
   service: {
@@ -17,38 +18,81 @@ interface VAServiceCardProps {
 
 export function VAServiceCard({ service }: VAServiceCardProps) {
   return (
-    <div className="group h-full bg-card rounded-xl border border-border overflow-hidden hover:border-primary/50 hover:shadow-md transition-all duration-300">
-      <div className="p-6">
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center">
-            {service.icon && service.icon.asset && (
-              <div className="mr-3 bg-primary/10 p-2 rounded-md">
-                <Image
-                  src={service.icon.asset.url}
-                  alt={service.title}
-                  width={24}
-                  height={24}
-                  className="h-6 w-6 object-contain"
-                />
-              </div>
-            )}
-            <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">
-              {service.title}
-            </h3>
-          </div>
-          <div className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-medium">
-            {service.platformName}
-          </div>
+    <div className="group h-full relative overflow-hidden">
+      {/* Card Background with Enhanced Gradients */}
+      <div className="absolute inset-0 bg-gradient-to-br from-card/95 to-card/85 backdrop-blur-sm"></div>
+
+      {/* Hover Glow Effect */}
+      <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+
+      {/* Main Card Content */}
+      <div className="relative h-full bg-gradient-to-br from-card/90 to-card/70 rounded-2xl border border-border/50 hover:border-primary/30 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl overflow-hidden">
+        {/* Shimmer Effect on Hover */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out"></div>
         </div>
 
-        <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-          {service.description}
-        </p>
+        <div className="relative p-6 lg:p-8 h-full flex flex-col">
+          {/* Header Section */}
+          <div className="mb-6">
+            {/* Platform Badge */}
+            <div className="flex justify-end mb-4">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/15 to-accent/15 text-primary px-3 py-1.5 rounded-full text-xs font-semibold border border-primary/20 backdrop-blur-sm">
+                <Sparkles className="w-3 h-3" />
+                {service.platformName}
+              </div>
+            </div>
 
-        <div className="flex items-center justify-between mt-auto pt-4 border-t border-border">
-          <div className="text-sm">
-            <span className="text-muted-foreground">Starting at</span>
-            <span className="font-medium ml-1">{service.price}</span>
+            {/* Icon and Title */}
+            <div className="flex items-start gap-4 mb-4">
+              {service.icon && service.icon.asset && (
+                <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <Image
+                    src={service.icon.asset.url}
+                    alt={service.title}
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 object-contain"
+                  />
+                </div>
+              )}
+              <div className="flex-1">
+                <h3 className="font-bold text-xl leading-tight group-hover:text-primary transition-colors duration-300 mb-2">
+                  {service.title}
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          {/* Description */}
+          <div className="flex-1 mb-6">
+            <p className="text-muted-foreground leading-relaxed text-base line-clamp-4 group-hover:text-muted-foreground/80 transition-colors">
+              {service.description}
+            </p>
+          </div>
+
+          {/* Footer Section */}
+          <div className="pt-6 border-t border-border/50 group-hover:border-primary/20 transition-colors">
+            <div className="flex items-center justify-between">
+              <div className="flex flex-col">
+                <span className="text-xs text-muted-foreground font-medium mb-1">
+                  Starting at
+                </span>
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                    ${service.price}
+                  </span>
+                  <span className="text-muted-foreground text-sm">USD</span>
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
+                  <ArrowRight className="w-5 h-5" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

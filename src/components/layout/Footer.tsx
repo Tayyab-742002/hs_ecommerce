@@ -95,10 +95,10 @@ export default function Footer() {
               <li className="text-sm text-foreground/80">
                 <span className="font-medium">Email:</span>{" "}
                 <a
-                  href="mailto:contact@hsecommerce.com"
+                  href="mailto:handsecommerce@gmail.com"
                   className="hover:text-primary"
                 >
-                  contact@hsecommerce.com
+                  handsecommerce@gmail.com
                 </a>
               </li>
             </ul>
