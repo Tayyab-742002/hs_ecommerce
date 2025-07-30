@@ -182,7 +182,6 @@ export async function getReinstatementServicesByPlatform(
   const filteredServices = fallbackReinstatementServices.filter(
     (service) => service.platformId === platformId
   );
-  console.log("filteredServices", filteredServices);
   return fetchWithFallback(query, filteredServices, {
     ...options,
     params: { platformId }, // Ensure platformId is passed as a parameter

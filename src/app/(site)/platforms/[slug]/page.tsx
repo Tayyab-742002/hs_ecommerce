@@ -434,12 +434,14 @@ export default async function PlatformPage({ params, searchParams }: Props) {
             className="mt-16 grid md:grid-cols-2 gap-8 scroll-mt-16"
           >
             <div className="p-6 rounded-xl">
-              <PriceInquiryForm platformName={platform.name} />
+              <PriceInquiryForm
+                platformName={platform.name.split(" ")[0].toLowerCase()}
+              />
             </div>
 
             <div className="p-6 rounded-xl ">
               <RequirementsForm
-                platformName={platform.name}
+                platformName={platform.name.split(" ")[0].toLowerCase()}
                 fields={
                   (platform.accountRequirementFields || []) as FormField[]
                 }

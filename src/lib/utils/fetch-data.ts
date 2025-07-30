@@ -22,13 +22,13 @@ export async function fetchWithFallback(
       data &&
       (Array.isArray(data) ? data.length > 0 : Object.keys(data).length > 0)
     ) {
-      console.log("Using Sanity data");
+      
       return data;
     }
 
     // If Sanity data is empty and useFallback is true, return fallback data
     if (useFallback) {
-      console.log("Using fallback data");
+    
       return fallbackData;
     }
 
@@ -39,7 +39,7 @@ export async function fetchWithFallback(
 
     // If there's an error and useFallback is true, return fallback data
     if (useFallback) {
-      console.log("Using fallback data due to error");
+      
       return fallbackData;
     }
 

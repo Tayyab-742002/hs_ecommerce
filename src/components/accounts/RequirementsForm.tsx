@@ -9,12 +9,14 @@ import { FormField } from "@/types/form";
 
 interface RequirementsFormProps {
   platformName: string;
+  formTitle?: string;
   fields: FormField[];
 }
 
 export function RequirementsForm({
   platformName,
   fields,
+  formTitle,
 }: RequirementsFormProps) {
   const { getPlatformColor, getPlatformGradient } = useColorScheme();
   const platformColor = getPlatformColor(platformName);
@@ -109,18 +111,18 @@ export function RequirementsForm({
       <div className="p-6">
         <div className="flex flex-col md:flex-row items-center justify-start gap-3 mb-6">
           <PlatformBadge
-            platformName={""}
+            platformName={platformName}
             size="md"
             variant="subtle"
           />
           <h3 className="text-xl font-semibold text-center">
-            Account Requirements
+            {formTitle || "Account Requirements"}
           </h3>
         </div>
 
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-          Tell us your specific requirements for your {platformName} account,
-          and we'll customize it to your needs.
+          Tell us your specific requirements, and we'll customize it to your
+          needs.
         </p>
 
         {error && (

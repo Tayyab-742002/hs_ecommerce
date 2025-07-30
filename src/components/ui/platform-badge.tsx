@@ -4,6 +4,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import { FaAmazon, FaEtsy, FaTiktok, FaEbay } from "react-icons/fa";
 import { TbBrandWalmart } from "react-icons/tb";
+import { FaWpforms } from "react-icons/fa";
 import {
   getPlatformColor,
   getPlatformGradient,
@@ -49,11 +50,17 @@ export function PlatformBadge({
     etsy: (
       <FaEtsy className="w-8 h-8" style={{ color: getPlatformColor("Etsy") }} />
     ),
+    default: (
+      <FaWpforms
+        className="w-8 h-8"
+        style={{ color: getPlatformColor("Tiktok") }}
+      />
+    ),
   };
 
   // Get platform name in lowercase for consistency
   const platformNameLower = platformName.toLowerCase();
-  const platformLogo = defaultLogos[platformNameLower] || defaultLogos.amazon;
+  const platformLogo = defaultLogos[platformNameLower] || defaultLogos.default;
   // Size classes
   const sizeClasses = {
     sm: "h-6 text-xs",
@@ -109,7 +116,7 @@ export function PlatformBadge({
         {platformLogo}
       </div>
 
-      {withName && <span className="ml-1.5 mr-0.5">{platformName}</span>}
+      {/* {withName && <span className="ml-1.5 mr-0.5">{platformName}</span>} */}
     </div>
   );
 }

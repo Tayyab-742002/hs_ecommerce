@@ -41,7 +41,7 @@ export function ServiceGrid({
       return part;
     });
   };
-  // console.log("Services Grid", services);
+
   return (
     <div className="py-8">
       <div className="text-center mb-8">
