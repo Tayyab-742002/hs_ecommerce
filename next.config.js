@@ -7,6 +7,16 @@ const nextConfig = {
         hostname: "cdn.sanity.io",
         pathname: "/images/**",
       },
+      {
+        protocol: "https",
+        hostname: "randomuser.me",
+        pathname: "/api/portraits/**",
+      },
+      {
+        protocol: "https",
+        hostname: "pub-20f982007aa54df4849bcd969b89a1bf.r2.dev",
+        pathname: "/**",
+      },
     ],
   },
   eslint: {
@@ -19,6 +29,6 @@ const nextConfig = {
     // your project has TypeScript errors.
     ignoreBuildErrors: true,
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

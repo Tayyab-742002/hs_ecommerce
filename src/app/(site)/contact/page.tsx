@@ -54,7 +54,9 @@ export default function ContactPage() {
         message: "",
       });
     } catch (error) {
-      setError("An error occurred while sending your message. Please try again.");
+      setError(
+        "An error occurred while sending your message. Please try again."
+      );
       console.error("Error sending message:", error);
     } finally {
       setIsSubmitting(false);
@@ -88,7 +90,7 @@ export default function ContactPage() {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
-            <div className="bg-card p-8 rounded-lg shadow-md">
+            <div className="bg-card p-8 rounded-lg shadow-md border border-border/50">
               <h2 className="text-2xl font-semibold mb-6">
                 Contact Information
               </h2>
@@ -113,7 +115,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-medium mb-1">Phone Numbers</h3>
-                    <p className="text-gray-600 mb-1">
+                    <p className="text-muted-foreground mb-1">
                       <a
                         href="tel:+923010510316"
                         className="hover:text-primary"
@@ -121,7 +123,7 @@ export default function ContactPage() {
                         +92 301 0510316
                       </a>
                     </p>
-                    <p className="text-gray-600">
+                    <p className="text-muted-foreground">
                       <a
                         href="tel:+447955426807"
                         className="hover:text-primary"
@@ -147,7 +149,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-medium mb-1">WhatsApp</h3>
-                    <p className="text-gray-600">
+                    <p className="text-muted-foreground">
                       <a
                         href="https://wa.me/923010510316"
                         className="hover:text-primary"
@@ -178,12 +180,12 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-medium mb-1">Email</h3>
-                    <p className="text-gray-600">
+                    <p className="text-muted-foreground">
                       <a
-                        href="mailto:contact@hsecommerce.store"
+                        href="mailto:handsecommerce@gmail.com"
                         className="hover:text-primary"
                       >
-                        contact@hsecommerce.store
+                        handsecommerce@gmail.com
                       </a>
                     </p>
                   </div>
@@ -191,7 +193,7 @@ export default function ContactPage() {
               </div>
 
               <div className="mt-10">
-                <h3 className="text-lg font-medium mb-4">Connect With Us</h3>
+                <h3 className="text-lg font-medium mb-4 ">Connect With Us</h3>
                 <div className="flex space-x-4">
                   <a
                     href="#"
@@ -256,27 +258,33 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="bg-card p-8 rounded-lg shadow-md">
+            <div className="bg-card p-8 rounded-lg shadow-md border border-border/50">
               <h2 className="text-2xl font-semibold mb-6">Business Hours</h2>
               <ul className="space-y-3">
                 <li className="flex justify-between">
-                  <span className="text-gray-600">Monday - Friday</span>
-                  <span className="font-medium">9:00 AM - 6:00 PM</span>
+                  <span className="text-muted-foreground">Monday - Friday</span>
+                  <span className="font-medium text-muted-foreground">
+                    9:00 AM - 6:00 PM
+                  </span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="text-gray-600">Saturday</span>
-                  <span className="font-medium">10:00 AM - 4:00 PM</span>
+                  <span className="text-muted-foreground">Saturday</span>
+                  <span className="font-medium text-muted-foreground">
+                    10:00 AM - 4:00 PM
+                  </span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="text-gray-600">Sunday</span>
-                  <span className="font-medium">Closed</span>
+                  <span className="text-muted-foreground">Sunday</span>
+                  <span className="font-medium text-muted-foreground">
+                    Closed
+                  </span>
                 </li>
               </ul>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-card p-8 rounded-lg shadow-md">
+          <div className="bg-card p-8 rounded-lg shadow-md border border-border/50">
             {isSubmitted ? (
               <div className="text-center">
                 <div
@@ -286,8 +294,9 @@ export default function ContactPage() {
                   <CheckCircle className="h-8 w-8 text-success" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
-                <p className="text-gray-500 dark:text-gray-400 mb-6">
-                  Thank you for contacting us. We'll get back to you within 24 hours.
+                <p className="text-muted-foreground mb-6">
+                  Thank you for contacting us. We'll get back to you within 24
+                  hours.
                 </p>
                 <Button
                   variant="outline"
@@ -299,7 +308,9 @@ export default function ContactPage() {
               </div>
             ) : (
               <>
-                <h2 className="text-2xl font-semibold mb-6">Send Us a Message</h2>
+                <h2 className="text-2xl font-semibold mb-6">
+                  Send Us a Message
+                </h2>
 
                 {error && (
                   <div
@@ -318,9 +329,9 @@ export default function ContactPage() {
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-sm font-medium text-muted-foreground mb-1"
                     >
-                      Your Name *
+                      Your Name <span className="text-red-500">*</span>
                     </label>
                     <input
                       id="name"
@@ -329,16 +340,16 @@ export default function ContactPage() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md  focus:ring-primary focus:border-transparent"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-sm font-medium text-muted-foreground mb-1"
                     >
-                      Email Address *
+                      Email Address <span className="text-red-500">*</span>
                     </label>
                     <input
                       id="email"
@@ -347,7 +358,7 @@ export default function ContactPage() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md  focus:ring-primary focus:border-transparent"
                     />
                   </div>
 
@@ -356,7 +367,7 @@ export default function ContactPage() {
                       htmlFor="phone"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Phone Number *
+                      Phone Number <span className="text-red-500">*</span>
                     </label>
                     <input
                       id="phone"
@@ -365,7 +376,7 @@ export default function ContactPage() {
                       required
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md  focus:ring-primary focus:border-transparent"
                     />
                   </div>
 
@@ -374,7 +385,7 @@ export default function ContactPage() {
                       htmlFor="subject"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Subject *
+                      Subject <span className="text-red-500">*</span>
                     </label>
                     <select
                       id="subject"
@@ -382,12 +393,23 @@ export default function ContactPage() {
                       required
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md  focus:ring-primary focus:border-transparent"
                     >
-                      <option value="general">General Inquiry</option>
-                      <option value="support">Technical Support</option>
-                      <option value="billing">Billing Question</option>
-                      <option value="partnership">Partnership</option>
+                      <option value="general" className="text-muted-foreground">
+                        General Inquiry
+                      </option>
+                      <option value="support" className="text-muted-foreground">
+                        Technical Support
+                      </option>
+                      <option value="billing" className="text-muted-foreground">
+                        Billing Question
+                      </option>
+                      <option
+                        value="partnership"
+                        className="text-muted-foreground"
+                      >
+                        Partnership
+                      </option>
                     </select>
                   </div>
 
@@ -396,7 +418,7 @@ export default function ContactPage() {
                       htmlFor="message"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Your Message *
+                      Your Message <span className="text-red-500">*</span>
                     </label>
                     <textarea
                       id="message"
@@ -405,7 +427,7 @@ export default function ContactPage() {
                       required
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md  focus:ring-primary focus:border-transparent"
                     ></textarea>
                   </div>
 

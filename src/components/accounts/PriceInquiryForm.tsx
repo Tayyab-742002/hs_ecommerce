@@ -110,11 +110,11 @@ export function PriceInquiryForm({
   return (
     <div className="bg-card border border-border rounded-lg">
       <div className="p-6">
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
           <PlatformBadge
-            platformName={platformName}
+            platformName={""}
             size="md"
-            variant="filled"
+            variant="subtle"
           />
           <h3 className="text-xl font-semibold">Pricing Request</h3>
         </div>
@@ -150,7 +150,7 @@ export function PriceInquiryForm({
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
             />
           </div>
@@ -166,7 +166,7 @@ export function PriceInquiryForm({
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
             />
           </div>
@@ -181,7 +181,7 @@ export function PriceInquiryForm({
               type="tel"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
             />
           </div>
@@ -199,7 +199,7 @@ export function PriceInquiryForm({
               rows={3}
               value={formData.message}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
               placeholder="Any specific requirements or questions..."
             />
@@ -208,8 +208,7 @@ export function PriceInquiryForm({
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-2.5 text-white"
-            style={{ background: getPlatformGradient(platformName) }}
+            className="w-full py-2.5 text-white bg-primary"
           >
             {isSubmitting ? (
               <span className="flex items-center justify-center gap-2">

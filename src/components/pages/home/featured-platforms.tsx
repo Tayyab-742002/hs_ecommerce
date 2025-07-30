@@ -6,6 +6,9 @@ import { CheckCircle, ChevronRight, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import CardFlip from "@/components/mvpblocks/card-flip";
+import { getPlatformColor } from "@/lib/utils/platform-colors";
+
 
 export interface Platform {
   _id: string;
@@ -62,18 +65,6 @@ export function FeaturedPlatforms({ platforms }: FeaturedPlatformsProps) {
         duration: 0.5,
       },
     },
-  };
-
-  // Platform color map using CSS variables
-  const getPlatformColor = (platformName: string) => {
-    const lowerName = platformName.toLowerCase();
-
-    // Default to primary if platform color is not found
-    if (!["amazon", "ebay", "walmart", "tiktok", "etsy"].includes(lowerName)) {
-      return "var(--color-brand-primary)";
-    }
-
-    return `var(--color-${lowerName})`;
   };
 
   // Helper function to get plain text description from Portable Text

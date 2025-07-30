@@ -19,7 +19,7 @@ export function Breadcrumb({
   separator = <ChevronRight className="h-4 w-4" />,
   containerClasses = "py-4 flex text-sm",
   listClasses = "flex items-center space-x-2",
-  activeItemClasses = "text-gray-600 dark:text-gray-400 font-medium",
+  activeItemClasses = "text-muted-foreground font-medium",
   inactiveItemClasses = "text-primary hover:text-primary/80 hover:underline transition-colors"
 }: BreadcrumbProps) {
   const paths = usePathname()

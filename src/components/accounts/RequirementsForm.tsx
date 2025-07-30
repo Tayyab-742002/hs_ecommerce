@@ -107,13 +107,15 @@ export function RequirementsForm({
   return (
     <div className="bg-card border border-border rounded-lg">
       <div className="p-6">
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex flex-col md:flex-row items-center justify-start gap-3 mb-6">
           <PlatformBadge
-            platformName={platformName}
+            platformName={""}
             size="md"
-            variant="filled"
+            variant="subtle"
           />
-          <h3 className="text-xl font-semibold">Account Requirements</h3>
+          <h3 className="text-xl font-semibold text-center">
+            Account Requirements
+          </h3>
         </div>
 
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
@@ -150,7 +152,7 @@ export function RequirementsForm({
               required
               value={formData.fullName || ""}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
             />
           </div>
@@ -166,7 +168,7 @@ export function RequirementsForm({
               required
               value={formData.email || ""}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
             />
           </div>
@@ -182,20 +184,26 @@ export function RequirementsForm({
               required
               value={formData.phone || ""}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
             />
           </div>
 
           {/* Dynamic fields based on platform requirements */}
           {fields
-            .filter(field =>
-              !["account-type", "country/marketplace", "business-name"].includes(
-                field.name || field.label.toLowerCase().replace(/\s+/g, "-")
-              )
+            .filter(
+              (field) =>
+                ![
+                  "account-type",
+                  "country/marketplace",
+                  "business-name",
+                ].includes(
+                  field.name || field.label.toLowerCase().replace(/\s+/g, "-")
+                )
             )
             .map((field, index) => {
-              const fieldId = field.name || field.label.toLowerCase().replace(/\s+/g, "-");
+              const fieldId =
+                field.name || field.label.toLowerCase().replace(/\s+/g, "-");
 
               switch (field.fieldType) {
                 case "text":
@@ -214,8 +222,10 @@ export function RequirementsForm({
                         required={field.required}
                         value={formData[fieldId] || ""}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
-                        style={{ "--ring": platformColor } as React.CSSProperties}
+                        className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
+                        style={
+                          { "--ring": platformColor } as React.CSSProperties
+                        }
                       />
                     </div>
                   );
@@ -235,8 +245,10 @@ export function RequirementsForm({
                         required={field.required}
                         value={formData[fieldId] || ""}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
-                        style={{ "--ring": platformColor } as React.CSSProperties}
+                        className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
+                        style={
+                          { "--ring": platformColor } as React.CSSProperties
+                        }
                       >
                         <option value="">-- Select an option --</option>
                         {field.options?.map((option, optIndex) => (
@@ -258,7 +270,7 @@ export function RequirementsForm({
                           type="checkbox"
                           checked={formData[fieldId] || false}
                           onChange={handleChange}
-                          className="h-4 w-4 rounded border-border focus:ring-offset-1"
+                          className="h-4 w-4 rounded border-muted-foreground/50 focus:ring-offset-1"
                           style={
                             {
                               accentColor: platformColor,
@@ -291,8 +303,10 @@ export function RequirementsForm({
                         required={field.required}
                         value={formData[fieldId] || ""}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
-                        style={{ "--ring": platformColor } as React.CSSProperties}
+                        className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
+                        style={
+                          { "--ring": platformColor } as React.CSSProperties
+                        }
                       />
                     </div>
                   );
@@ -303,16 +317,18 @@ export function RequirementsForm({
             })}
 
           <div>
-            <label htmlFor="details" className="block text-sm font-medium mb-1.5">
+            <label
+              htmlFor="details"
+              className="block text-sm font-medium mb-1.5"
+            >
               Additional Details
             </label>
             <textarea
               id="details"
               name="details"
-              rows={4}
               value={formData.details || ""}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
               placeholder="Please provide any specific requirements or details about your needs..."
             />
@@ -321,8 +337,7 @@ export function RequirementsForm({
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-2.5 text-white mt-6"
-            style={{ background: getPlatformGradient(platformName) }}
+            className="w-full py-2.5 text-white mt-6 bg-primary"
           >
             {isSubmitting ? (
               <span className="flex items-center justify-center gap-2">

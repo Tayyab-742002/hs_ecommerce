@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { Hero } from "@/components/pages/home/hero";
 import { ServicesShowcase } from "@/components/pages/home/services-showcase";
-import { ThreePLServices } from "@/components/pages/home/threepl-services";
 import { PlatformsOverview } from "@/components/pages/home/platforms-overview";
 import { StatsSection } from "@/components/pages/home/stats-section";
 import { Testimonials } from "@/components/pages/home/testimonials";
@@ -9,6 +8,7 @@ import { FAQSection } from "@/components/pages/home/faq-section";
 import { WhyChooseUs } from "@/components/pages/home/why-choose-us";
 import { CTASection } from "@/components/pages/home/cta-section";
 import { getHomePageData } from "@/lib/services/home";
+import { HeroSection } from "@/components/pages/home/herosection/hero-serction";
 
 export const revalidate = 60;
 
@@ -37,10 +37,11 @@ export default async function Home() {
     return (
       <div className="flex flex-col min-h-screen">
         {/* Hero Section */}
-        {hero && <Hero {...(hero as any)} />}
-
+        {/* {hero && <Hero {...(hero as any)} />} */}
+        {hero && <HeroSection {...(hero as any)} />}
+        {/* <HeroSection /> */}
         {/* Stats Section */}
-        <StatsSection />
+        {/* <StatsSection /> */}
 
         {/* Why Choose Us Section */}
         <WhyChooseUs />
@@ -56,10 +57,6 @@ export default async function Home() {
 
         {/* Services Showcase Section */}
         <ServicesShowcase />
-
-        {/* 3PL Services Section */}
-        <ThreePLServices />
-
         {/* All Platforms Overview */}
         <PlatformsOverview />
 
