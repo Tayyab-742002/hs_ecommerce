@@ -107,13 +107,15 @@ export function RequirementsForm({
   return (
     <div className="bg-card border border-border rounded-lg">
       <div className="p-6">
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex flex-col md:flex-row items-center justify-start gap-3 mb-6">
           <PlatformBadge
-            platformName={platformName}
+            platformName={""}
             size="md"
-            variant="filled"
+            variant="subtle"
           />
-          <h3 className="text-xl font-semibold">Account Requirements</h3>
+          <h3 className="text-xl font-semibold text-center">
+            Account Requirements
+          </h3>
         </div>
 
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
@@ -189,13 +191,19 @@ export function RequirementsForm({
 
           {/* Dynamic fields based on platform requirements */}
           {fields
-            .filter(field =>
-              !["account-type", "country/marketplace", "business-name"].includes(
-                field.name || field.label.toLowerCase().replace(/\s+/g, "-")
-              )
+            .filter(
+              (field) =>
+                ![
+                  "account-type",
+                  "country/marketplace",
+                  "business-name",
+                ].includes(
+                  field.name || field.label.toLowerCase().replace(/\s+/g, "-")
+                )
             )
             .map((field, index) => {
-              const fieldId = field.name || field.label.toLowerCase().replace(/\s+/g, "-");
+              const fieldId =
+                field.name || field.label.toLowerCase().replace(/\s+/g, "-");
 
               switch (field.fieldType) {
                 case "text":
@@ -215,7 +223,9 @@ export function RequirementsForm({
                         value={formData[fieldId] || ""}
                         onChange={handleChange}
                         className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
-                        style={{ "--ring": platformColor } as React.CSSProperties}
+                        style={
+                          { "--ring": platformColor } as React.CSSProperties
+                        }
                       />
                     </div>
                   );
@@ -236,7 +246,9 @@ export function RequirementsForm({
                         value={formData[fieldId] || ""}
                         onChange={handleChange}
                         className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
-                        style={{ "--ring": platformColor } as React.CSSProperties}
+                        style={
+                          { "--ring": platformColor } as React.CSSProperties
+                        }
                       >
                         <option value="">-- Select an option --</option>
                         {field.options?.map((option, optIndex) => (
@@ -292,7 +304,9 @@ export function RequirementsForm({
                         value={formData[fieldId] || ""}
                         onChange={handleChange}
                         className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
-                        style={{ "--ring": platformColor } as React.CSSProperties}
+                        style={
+                          { "--ring": platformColor } as React.CSSProperties
+                        }
                       />
                     </div>
                   );
@@ -303,13 +317,15 @@ export function RequirementsForm({
             })}
 
           <div>
-            <label htmlFor="details" className="block text-sm font-medium mb-1.5">
+            <label
+              htmlFor="details"
+              className="block text-sm font-medium mb-1.5"
+            >
               Additional Details
             </label>
             <textarea
               id="details"
               name="details"
-              rows={4}
               value={formData.details || ""}
               onChange={handleChange}
               className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
@@ -321,8 +337,7 @@ export function RequirementsForm({
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-2.5 text-white mt-6"
-            style={{ background: getPlatformGradient(platformName) }}
+            className="w-full py-2.5 text-white mt-6 bg-primary"
           >
             {isSubmitting ? (
               <span className="flex items-center justify-center gap-2">

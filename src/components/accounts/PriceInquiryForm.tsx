@@ -110,11 +110,11 @@ export function PriceInquiryForm({
   return (
     <div className="bg-card border border-border rounded-lg">
       <div className="p-6">
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
           <PlatformBadge
-            platformName={platformName}
+            platformName={""}
             size="md"
-            variant="filled"
+            variant="subtle"
           />
           <h3 className="text-xl font-semibold">Pricing Request</h3>
         </div>
@@ -208,8 +208,7 @@ export function PriceInquiryForm({
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-2.5 text-white"
-            style={{ background: getPlatformGradient(platformName) }}
+            className="w-full py-2.5 text-white bg-primary"
           >
             {isSubmitting ? (
               <span className="flex items-center justify-center gap-2">

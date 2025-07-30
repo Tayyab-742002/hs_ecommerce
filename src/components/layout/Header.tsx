@@ -594,7 +594,7 @@ const PlatformItem = React.forwardRef<
     ref
   ) => {
     return (
-      <li>
+      <div>
         <NavigationMenuLink asChild>
           <a
             ref={ref}
@@ -627,7 +627,7 @@ const PlatformItem = React.forwardRef<
             </div>
           </a>
         </NavigationMenuLink>
-      </li>
+      </div>
     );
   }
 );

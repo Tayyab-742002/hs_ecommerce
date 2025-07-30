@@ -11,7 +11,7 @@ import {
   Shield,
   TrendingUp,
 } from "lucide-react";
-import { useColorScheme } from "@/providers/theme-provider";
+
 import { HiLockClosed } from "react-icons/hi";
 
 export function WhyChooseUs() {

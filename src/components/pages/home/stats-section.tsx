@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock, Globe } from "lucide-react";
+
 import { FaUsers } from "react-icons/fa";
 import { FaRankingStar } from "react-icons/fa6";
 import { CiTimer } from "react-icons/ci";

@@ -136,8 +136,6 @@ export default async function PlatformPage({ params, searchParams }: Props) {
             backgroundColor: `var(--color-${platform.name.toLowerCase()})20`,
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background opacity-50"></div>
-
           <PageHeader
             title={platform.name}
             description={description}
@@ -165,12 +163,6 @@ export default async function PlatformPage({ params, searchParams }: Props) {
               {platform.accountCategories &&
                 platform.accountCategories.length > 0 && (
                   <div className="flex flex-wrap gap-2">
-                    <PlatformBadgeGroup
-                      platforms={[platform.name]}
-                      size="lg"
-                      variant="filled"
-                    />
-
                     {platform.accountCategories.map((category) => (
                       <span
                         key={category}
@@ -186,57 +178,42 @@ export default async function PlatformPage({ params, searchParams }: Props) {
         </div>
 
         {/* Main content with tabs */}
-        <div className="container mx-auto px-4 py-12">
+        <div className="container mx-auto px-4 ">
           <Tabs defaultValue="overview" className="w-full">
-            <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3 mb-12">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="accounts">Accounts</TabsTrigger>
-              <TabsTrigger value="services">Services</TabsTrigger>
+            <TabsList className="grid bg-primary border-primary/70 text-white w-full max-w-3xl mx-auto grid-cols-3 mb-12">
+              <TabsTrigger value="overview" className="text-white!">
+                Overview
+              </TabsTrigger>
+              <TabsTrigger value="accounts" className="text-white!">
+                Accounts
+              </TabsTrigger>
+              <TabsTrigger value="services" className="text-white!">
+                Services
+              </TabsTrigger>
             </TabsList>
 
             {/* Overview Tab */}
-            <TabsContent value="overview" className="space-y-8">
+            <TabsContent value="overview">
               {/* Platform Features */}
-              <div className="mt-16">
-                <h2 className="text-2xl font-bold mb-6">Key Features</h2>
+              <div className="mt-12">
+                <h2 className="text-3xl font-bold text-center mb-6">
+                  Key Features
+                </h2>
 
                 <div className="grid md:grid-cols-2 gap-8">
                   {(platform.features || []).map((feature, index) => (
-                    <div
-                      key={index}
-                      className="p-6 bg-card rounded-xl border border-border shadow-sm"
-                    >
+                    <div key={index} className="py-3 px-4 bg-card rounded-xl  ">
                       <div className="flex gap-4">
-                        <div
-                          className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
-                          style={{
-                            background: `var(--color-${platform.name.toLowerCase()})20`,
-                          }}
-                        >
-                          {feature.icon ? (
-                            <Image
-                              src={feature.icon.asset.url}
-                              alt={feature.title}
-                              width={24}
-                              height={24}
-                              className="object-contain"
-                            />
-                          ) : (
-                            <CheckCircle
-                              className="w-6 h-6"
-                              style={{
-                                color: `var(--color-${platform.name.toLowerCase()})`,
-                              }}
-                            />
-                          )}
+                        <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0">
+                          {<CheckCircle className="w-6 h-6 text-primary" />}
                         </div>
 
                         <div>
-                          <h3 className="text-xl font-semibold mb-2">
+                          <h3 className="text-md font-semibold mb-2">
                             {feature.title}
                           </h3>
                           {feature.description && (
-                            <p className="text-gray-500 dark:text-gray-400">
+                            <p className="text-muted-foreground text-sm">
                               {feature.description}
                             </p>
                           )}
@@ -249,148 +226,53 @@ export default async function PlatformPage({ params, searchParams }: Props) {
 
               {/* Key Benefits */}
               <div className="mt-16">
-                <h2 className="text-2xl font-bold mb-6 text-center">
+                <h2 className="text-3xl font-bold mb-10 text-center">
                   Why Choose Our {platform.name} Services
                 </h2>
 
                 <div className="grid md:grid-cols-3 gap-8">
-                  <div className="text-center p-6 rounded-xl bg-card border border-border">
-                    <div
-                      className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center"
-                      style={{
-                        background: `var(--color-${platform.name.toLowerCase()})15`,
-                      }}
-                    >
-                      <Shield
-                        className="w-7 h-7"
-                        style={{
-                          color: `var(--color-${platform.name.toLowerCase()})`,
-                        }}
-                      />
+                  <div className="text-center py-2 px-4 rounded-xl bg-card border border-border">
+                    <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center">
+                      <Shield className="w-7 h-7" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-2">
+                    <h3 className="text-md font-semibold mb-2">
                       Secure & Verified
                     </h3>
-                    <p className="text-gray-500 dark:text-gray-400">
+                    <p className="text-muted-foreground text-sm">
                       All accounts are properly verified and ready to use
                       immediately
                     </p>
                   </div>
 
-                  <div className="text-center p-6 rounded-xl bg-card border border-border">
-                    <div
-                      className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center"
-                      style={{
-                        background: `var(--color-${platform.name.toLowerCase()})15`,
-                      }}
-                    >
-                      <Users
-                        className="w-7 h-7"
-                        style={{
-                          color: `var(--color-${platform.name.toLowerCase()})`,
-                        }}
-                      />
+                  <div className="text-center py-2 px-4 rounded-xl bg-card border border-border">
+                    <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center">
+                      <Users className="w-7 h-7" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-2">
+                    <h3 className="text-md font-semibold mb-2">
                       Dedicated Support
                     </h3>
-                    <p className="text-gray-500 dark:text-gray-400">
+                    <p className="text-muted-foreground text-sm">
                       24/7 customer support for all your {platform.name} account
                       needs
                     </p>
                   </div>
 
-                  <div className="text-center p-6 rounded-xl bg-card border border-border">
+                  <div className="text-center py-2 px-4 rounded-xl bg-card border border-border">
                     <div
                       className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center"
                       style={{
                         background: `var(--color-${platform.name.toLowerCase()})15`,
                       }}
                     >
-                      <BarChart
-                        className="w-7 h-7"
-                        style={{
-                          color: `var(--color-${platform.name.toLowerCase()})`,
-                        }}
-                      />
+                      <BarChart className="w-7 h-7" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-2">
+                    <h3 className="text-md font-semibold mb-2">
                       Growth Solutions
                     </h3>
-                    <p className="text-gray-500 dark:text-gray-400">
+                    <p className="text-muted-foreground text-sm">
                       Complete solution for your {platform.name} business
                       expansion
                     </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Stats */}
-              <div
-                className="mt-16 p-8 rounded-xl"
-                style={{
-                  background: `linear-gradient(135deg, var(--color-${platform.name.toLowerCase()})20, var(--color-${platform.name.toLowerCase()})05)`,
-                }}
-              >
-                <h2 className="text-2xl font-bold mb-8 text-center">
-                  Our {platform.name} Service Statistics
-                </h2>
-
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                  <div className="text-center">
-                    <div
-                      className="text-3xl font-bold mb-1"
-                      style={{
-                        color: `var(--color-${platform.name.toLowerCase()})`,
-                      }}
-                    >
-                      500+
-                    </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">
-                      Accounts Delivered
-                    </div>
-                  </div>
-
-                  <div className="text-center">
-                    <div
-                      className="text-3xl font-bold mb-1"
-                      style={{
-                        color: `var(--color-${platform.name.toLowerCase()})`,
-                      }}
-                    >
-                      95%
-                    </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">
-                      Success Rate
-                    </div>
-                  </div>
-
-                  <div className="text-center">
-                    <div
-                      className="text-3xl font-bold mb-1"
-                      style={{
-                        color: `var(--color-${platform.name.toLowerCase()})`,
-                      }}
-                    >
-                      24/7
-                    </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">
-                      Support Available
-                    </div>
-                  </div>
-
-                  <div className="text-center">
-                    <div
-                      className="text-3xl font-bold mb-1"
-                      style={{
-                        color: `var(--color-${platform.name.toLowerCase()})`,
-                      }}
-                    >
-                      30+
-                    </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">
-                      Countries Covered
-                    </div>
                   </div>
                 </div>
               </div>
@@ -530,25 +412,20 @@ export default async function PlatformPage({ params, searchParams }: Props) {
           </Tabs>
 
           {/* Inquiry Forms Section */}
+          <div className="mt-16">
+            <h2 className="text-3xl font-bold mb-6 text-center">
+              Request an Account
+            </h2>
+          </div>
           <div
             id="inquiry-forms"
             className="mt-16 grid md:grid-cols-2 gap-8 scroll-mt-16"
           >
-            <div
-              className="p-6 rounded-xl border border-border"
-              style={{
-                background: `linear-gradient(to bottom, var(--color-${platform.name.toLowerCase()})10, transparent)`,
-              }}
-            >
+            <div className="p-6 rounded-xl">
               <PriceInquiryForm platformName={platform.name} />
             </div>
 
-            <div
-              className="p-6 rounded-xl border border-border"
-              style={{
-                background: `linear-gradient(to bottom, var(--color-${platform.name.toLowerCase()})10, transparent)`,
-              }}
-            >
+            <div className="p-6 rounded-xl ">
               <RequirementsForm
                 platformName={platform.name}
                 fields={

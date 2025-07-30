@@ -33,7 +33,7 @@ export default function TermsOfServicePage() {
                   </p>
                 </div>
 
-                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-primary/20 ">
+                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-slate-200 ">
                   <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
                   Agreement to Terms
                 </h2>
@@ -44,7 +44,7 @@ export default function TermsOfServicePage() {
                   do not agree to these Terms, please do not use our services.
                 </p>
 
-                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-primary/20 ">
+                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-slate-200 ">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
                   Services Description
                 </h2>
@@ -74,7 +74,7 @@ export default function TermsOfServicePage() {
                   </li>
                 </ul>
 
-                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-primary/20 ">
+                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-slate-200 ">
                   <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
                   Account Terms
                 </h2>
@@ -103,7 +103,7 @@ export default function TermsOfServicePage() {
                   </li>
                 </ul>
 
-                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-primary/20 ">
+                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-slate-200 dark:border-slate-600">
                   <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
                   Payment and Refunds
                 </h2>
@@ -131,7 +131,7 @@ export default function TermsOfServicePage() {
                   </li>
                 </ul>
 
-                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-primary/20 ">
+                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-slate-200 dark:border-slate-600">
                   <div className="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
                   Service Guarantees
                 </h2>
@@ -156,7 +156,7 @@ export default function TermsOfServicePage() {
                   </li>
                 </ul>
 
-                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-primary/20 ">
+                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-slate-200 dark:border-slate-600">
                   <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
                   Intellectual Property
                 </h2>
@@ -168,7 +168,7 @@ export default function TermsOfServicePage() {
                   United States and foreign countries.
                 </p>
 
-                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-primary/20 ">
+                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-slate-200 dark:border-slate-600">
                   <div className="w-2 h-2 bg-indigo-500 rounded-full mr-3"></div>
                   Limitation of Liability
                 </h2>
@@ -201,7 +201,7 @@ export default function TermsOfServicePage() {
                   </li>
                 </ul>
 
-                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-primary/20 ">
+                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-slate-200 dark:border-slate-600">
                   <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
                   Governing Law
                 </h2>
@@ -211,7 +211,7 @@ export default function TermsOfServicePage() {
                   conflict of law provisions.
                 </p>
 
-                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-primary/20 ">
+                <h2 className="flex items-center text-2xl font-semibold text-primary mt-12 mb-6 pb-3 border-b-2 border-slate-200 dark:border-slate-600">
                   <div className="w-2 h-2 bg-pink-500 rounded-full mr-3"></div>
                   Changes to Terms
                 </h2>
@@ -223,7 +223,7 @@ export default function TermsOfServicePage() {
                   determined at our sole discretion.
                 </p>
 
-                <h2 className="flex items-center text-2xl font-semibold mt-12 mb-6 pb-3 border-b-2 text-primary border-primary/20">
+                <h2 className="flex items-center text-2xl font-semibold mt-12 mb-6 pb-3 border-b-2 text-primary">
                   <div className="w-2 h-2 bg-cyan-500 rounded-full mr-3"></div>
                   Contact Us
                 </h2>
@@ -236,14 +236,14 @@ export default function TermsOfServicePage() {
                     <span className="font-semibold text-white ">Email:</span>
                     <a
                       href="mailto:handsecommerce@gmail.com"
-                      className="ml-2 text-sm text-white dark:text-blue-400 hover:underline transition-colors"
+                      className="ml-2 text-white dark:text-blue-400 hover:underline transition-colors"
                     >
                       handsecommerce@gmail.com
                     </a>
                   </p>
                   <p className="text-foreground ">
                     <span className="font-semibold text-white ">Phone:</span>
-                    <span className="ml-2 text-white/80 text-sm">
+                    <span className="ml-2 text-white/80">
                       +92 301 0510316 or +44 7955 426807
                     </span>
                   </p>

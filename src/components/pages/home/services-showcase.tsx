@@ -3,41 +3,19 @@
 import { motion } from "framer-motion";
 import { LiaSmileWinkSolid } from "react-icons/lia";
 import {
-  ArrowRight,
+
   ShoppingCart,
   UserCheck,
   LineChart,
   ShieldCheck,
-  Home,
+
   PackageCheckIcon,
 } from "lucide-react";
-import { useColorScheme } from "@/providers/theme-provider";
-import { WobbleCard } from "@/components/ui/wobble-card";
+
 import BentoGrid from "@/components/mvpblocks/bento-grid-2";
 
 export function ServicesShowcase() {
-  const { getPlatformColor, getPlatformGradient } = useColorScheme();
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
 
   const services = [
     {
