@@ -32,7 +32,6 @@ export default async function Home() {
   try {
     const [{ hero }] = await Promise.all([getHomePageData()]);
 
-    // console.log("Fetched home data:", { hero });
 
     return (
       <div className="flex flex-col min-h-screen">

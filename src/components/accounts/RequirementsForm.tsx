@@ -109,7 +109,7 @@ export function RequirementsForm({
       <div className="p-6">
         <div className="flex flex-col md:flex-row items-center justify-start gap-3 mb-6">
           <PlatformBadge
-            platformName={""}
+            platformName={platformName}
             size="md"
             variant="subtle"
           />

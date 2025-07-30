@@ -7,6 +7,7 @@ import { ServiceTestimonials } from "./ServiceTestimonials";
 import { ServiceFAQ } from "./ServiceFAQ";
 import { LucideIcon } from "lucide-react";
 import { Service } from "./ServiceCard";
+import { RequirementsForm } from "../accounts/RequirementsForm";
 interface ServicePageData {
   hero: {
     badge: {
@@ -163,7 +164,9 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
           description={data.faq.description}
           faqs={data.faq.items}
         />
-
+        <div className="p-6 rounded-xl ">
+          <RequirementsForm platformName={data.services.title} fields={[]} />
+        </div>
         <div className="relative">
           <CTASection />
         </div>

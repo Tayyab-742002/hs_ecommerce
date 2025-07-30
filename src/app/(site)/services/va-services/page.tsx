@@ -36,7 +36,6 @@ export const generateMetadata = async (): Promise<Metadata> => {
 export default async function VAServicesPage() {
   // Fetch services data (fallback to empty array if not available)
   const services = await getAllServices();
-  // console.log("Services", services);
   // Transform services to match new Service interface
   const transformedServices = services.map((service: any) => {
     if (!service.isReinstatement) {
@@ -229,6 +228,5 @@ export default async function VAServicesPage() {
       ],
     },
   };
-  console.log("Page Data", pageData);
   return <>{transformedServices && <ServicePageLayout data={pageData} />}</>;
 }
