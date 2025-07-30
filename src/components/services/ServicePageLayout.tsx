@@ -165,7 +165,11 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
           faqs={data.faq.items}
         />
         <div className="p-6 rounded-xl ">
-          <RequirementsForm platformName={data.services.title} fields={[]} />
+          <RequirementsForm
+            platformName={data.services.title}
+            fields={[]}
+            formTitle="Service Requirements"
+          />
         </div>
         <div className="relative">
           <CTASection />
