@@ -48,6 +48,11 @@ const threePLServices = [
     deliveryTime: "24-48 hours setup",
     icon: "🏭",
     category: "Storage Solutions",
+    image: {
+      asset: {
+        url: "/images/services/3pl/3pl-service-1.jpg",
+      },
+    },
   },
   {
     id: "order-fulfillment",
@@ -58,6 +63,11 @@ const threePLServices = [
     deliveryTime: "Same-day processing",
     icon: "📦",
     category: "Fulfillment",
+    image: {
+      asset: {
+        url: "/images/services/3pl/3pl-service-2.jpg",
+      },
+    },
   },
   {
     id: "inventory-management",
@@ -68,6 +78,11 @@ const threePLServices = [
     deliveryTime: "Real-time updates",
     icon: "📊",
     category: "Management",
+    image: {
+      asset: {
+        url: "/images/services/3pl/3pl-service-3.jpg",
+      },
+    },
   },
   {
     id: "shipping-distribution",
@@ -78,6 +93,11 @@ const threePLServices = [
     deliveryTime: "24-hour dispatch",
     icon: "🚚",
     category: "Distribution",
+    image: {
+      asset: {
+        url: "/images/services/3pl/3pl-service-4.jpg",
+      },
+    },
   },
   {
     id: "returns-processing",
@@ -88,6 +108,11 @@ const threePLServices = [
     deliveryTime: "48-hour processing",
     icon: "🔄",
     category: "Returns Management",
+    image: {
+      asset: {
+        url: "/images/services/3pl/3pl-service-5.jpg",
+      },
+    },
   },
   {
     id: "logistics-consulting",
@@ -98,6 +123,11 @@ const threePLServices = [
     deliveryTime: "1-2 weeks analysis",
     icon: "💡",
     category: "Consulting",
+    image: {
+      asset: {
+        url: "/images/services/3pl/3pl-service-6.jpg",
+      },
+    },
   },
 ];
 

@@ -200,6 +200,11 @@ export default async function ReinstatementServicesPage() {
       price: service.price,
       category: service.platform?.name || "Account Recovery",
       platform: service.platform,
+      image: {
+        asset: {
+          url: `/images/services/reinstatement/${service.title}.jpg`,
+        },
+      },
     })
   );
 

@@ -8,7 +8,11 @@ export interface Service {
   description: string;
   price: string;
   deliveryTime?: string;
-
+  image?: {
+    asset: {
+      url: string;
+    };
+  };
   category: string;
   features?: string[];
   icon?: {
@@ -35,6 +39,20 @@ export function ServiceCard({ service, index = 0 }: ServiceCardProps) {
       <div
         className={`relative h-full text-foreground border border-border rounded-lg  transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl overflow-hidden`}
       >
+        {/* Optional Image Banner */}
+        {service.image?.asset?.url && (
+          <div className="relative h-48 overflow-hidden">
+            <Image
+              src={service.image.asset.url}
+              alt={service.title}
+              width={400}
+              height={200}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+          </div>
+        )}
+
         <div className="relative py-6 px-4 h-full flex flex-col">
           {/* Header Section */}
           <div className="mb-6 ">

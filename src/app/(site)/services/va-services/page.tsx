@@ -42,12 +42,17 @@ export default async function VAServicesPage() {
     if (!service.isReinstatement) {
       return {
         id: service._id,
-                        title: service.name,
-                        description: service.shortDescription,
-                        price: service.price,
+        title: service.name,
+        description: service.shortDescription,
+        price: service.price,
         category: service.platform?.name || "Virtual Assistant",
         platform: service.platform,
-                        icon: service.icon,
+        icon: service.icon,
+        image: {
+          asset: {
+            url: `/images/services/vaservices/${service.name}.jpg`,
+          },
+        },
       };
     }
   });
