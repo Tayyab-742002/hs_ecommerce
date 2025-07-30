@@ -3,7 +3,8 @@ import { Platform } from "@/lib/fallback-data";
 import { getPlatforms } from "@/lib/services/platforms";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, Users } from "lucide-react";
+import { TopHeader } from "@/components/common/TopHeader";
 
 export const revalidate = 60;
 
@@ -14,24 +15,21 @@ export default async function PlatformsPage() {
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5">
       {/* Hero Header */}
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5"></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 relative">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4" />
-              Trusted Platforms
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-foreground via-foreground to-foreground/80 bg-clip-text text-transparent mb-6">
-              Our Platforms
-            </h1>
-
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Choose from our premium collection of verified e-commerce
-              platforms. Each account is carefully curated for instant success.
-            </p>
-          </div>
-        </div>
+        <TopHeader
+          title={{
+            main: "Our Platforms",
+            subtitle:
+              "Choose from our premium collection of verified e-commerce platforms. Each account is carefully curated for instant success.",
+          }}
+          description={{
+            text: "Choose from our premium collection of  {highlight1} e-commerce platforms. Each account is carefully curated for instant success.",
+            highlights: [{ text: "verified", color: "primary" }],
+          }}
+          badge={{
+            icon: Users,
+            text: "Our Platforms",
+          }}
+        />
       </div>
 
       {/* Platforms Grid */}

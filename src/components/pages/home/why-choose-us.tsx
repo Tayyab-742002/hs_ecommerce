@@ -15,8 +15,6 @@ import {
 import { HiLockClosed } from "react-icons/hi";
 
 export function WhyChooseUs() {
- 
-
   const features = [
     {
       icon: <ShieldCheck className="w-5 h-5" />,
@@ -61,7 +59,7 @@ export function WhyChooseUs() {
   ];
 
   return (
-    <section className="py-12">
+    <section className="py-8 md:py-12 lg:py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Compact Header */}
         <motion.div

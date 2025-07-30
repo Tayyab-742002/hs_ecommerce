@@ -32,22 +32,23 @@ export async function getAccountsByPlatform(
   options = { useFallback: false }
 ) {
   const query = `*[_type == "account" && platform._ref == $platformId] | order(price asc) {
-    _id,
-    platform->{
-      _id,
-      name,
-      logo {
-        asset->{
-          url
+     _id,
+      title,
+      platform-> {
+        _id,
+        name,
+        logo {
+          asset-> {
+            url
+          }
         }
-      }
-    },
-    category,
-    price,
-    features,
-    metrics,
-    status,
-    createdAt
+      },
+      category,
+      price,
+      features,
+      metrics,
+      status,
+      createdAt
   }`;
 
   // Filter fallback accounts by platformId

@@ -4,9 +4,6 @@ import { ThreePLBanner } from "@/components/layout/ThreePLBanner";
 import { FloatingContact } from "@/components/layout/FloatingContact";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { CookieConsent } from "@/components/ui/cookie-consent";
-import { TracingBeam } from "@/components/ui/tracing-beam";
-import Head from "next/head";
-
 // Add structured data script to help with SEO
 export function JsonLd() {
   return (

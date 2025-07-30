@@ -1,5 +1,5 @@
 import { CTASection } from "@/components/pages/home/cta-section";
-import { ServiceHero } from "./ServiceHero";
+import { TopHeader } from "../common/TopHeader";
 import { ServiceGrid } from "./ServiceGrid";
 import { WhyChooseUs } from "./WhyChooseUs";
 import { HowItWorks } from "./HowItWorks";
@@ -126,7 +126,7 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5 relative overflow-hidden">
       {/* Service Hero Section */}
-      <ServiceHero
+      <TopHeader
         badge={data.hero.badge}
         title={data.hero.title}
         description={data.hero.description}

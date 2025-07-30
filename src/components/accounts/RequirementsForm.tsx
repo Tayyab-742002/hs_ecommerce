@@ -152,7 +152,7 @@ export function RequirementsForm({
               required
               value={formData.fullName || ""}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
             />
           </div>
@@ -168,7 +168,7 @@ export function RequirementsForm({
               required
               value={formData.email || ""}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
             />
           </div>
@@ -184,7 +184,7 @@ export function RequirementsForm({
               required
               value={formData.phone || ""}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
             />
           </div>
@@ -222,7 +222,7 @@ export function RequirementsForm({
                         required={field.required}
                         value={formData[fieldId] || ""}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+                        className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
                         style={
                           { "--ring": platformColor } as React.CSSProperties
                         }
@@ -245,7 +245,7 @@ export function RequirementsForm({
                         required={field.required}
                         value={formData[fieldId] || ""}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+                        className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
                         style={
                           { "--ring": platformColor } as React.CSSProperties
                         }
@@ -270,7 +270,7 @@ export function RequirementsForm({
                           type="checkbox"
                           checked={formData[fieldId] || false}
                           onChange={handleChange}
-                          className="h-4 w-4 rounded border-border focus:ring-offset-1"
+                          className="h-4 w-4 rounded border-muted-foreground/50 focus:ring-offset-1"
                           style={
                             {
                               accentColor: platformColor,
@@ -303,7 +303,7 @@ export function RequirementsForm({
                         required={field.required}
                         value={formData[fieldId] || ""}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+                        className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
                         style={
                           { "--ring": platformColor } as React.CSSProperties
                         }
@@ -328,7 +328,7 @@ export function RequirementsForm({
               name="details"
               value={formData.details || ""}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
               placeholder="Please provide any specific requirements or details about your needs..."
             />

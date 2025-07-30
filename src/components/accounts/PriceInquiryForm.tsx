@@ -150,7 +150,7 @@ export function PriceInquiryForm({
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
             />
           </div>
@@ -166,7 +166,7 @@ export function PriceInquiryForm({
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
             />
           </div>
@@ -181,7 +181,7 @@ export function PriceInquiryForm({
               type="tel"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
             />
           </div>
@@ -199,7 +199,7 @@ export function PriceInquiryForm({
               rows={3}
               value={formData.message}
               onChange={handleChange}
-              className="w-full px-4 py-2.5 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1"
+              className="w-full px-4 py-2.5 bg-background border border-muted-foreground/50 rounded-md focus:border-primary focus:ring-0 focus:ring-offset-0"
               style={{ "--ring": platformColor } as React.CSSProperties}
               placeholder="Any specific requirements or questions..."
             />

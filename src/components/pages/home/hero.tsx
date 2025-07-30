@@ -196,13 +196,13 @@ export function Hero({
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex justify-center lg:justify-end items-center "
+            className="flex justify-center lg:justify-center items-center "
           >
             <Image
               src={backgroundImage?.asset.url || ""}
               alt="Hero Image"
-              width={500}
-              height={500}
+              width={700}
+              height={700}
               className="object-cover rounded-2xl "
             />
           </motion.div>

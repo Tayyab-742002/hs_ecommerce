@@ -8,6 +8,7 @@ import { FAQSection } from "@/components/pages/home/faq-section";
 import { WhyChooseUs } from "@/components/pages/home/why-choose-us";
 import { CTASection } from "@/components/pages/home/cta-section";
 import { getHomePageData } from "@/lib/services/home";
+import { HeroSection } from "@/components/pages/home/herosection/hero-serction";
 
 export const revalidate = 60;
 
@@ -36,8 +37,9 @@ export default async function Home() {
     return (
       <div className="flex flex-col min-h-screen">
         {/* Hero Section */}
-        {hero && <Hero {...(hero as any)} />}
-
+        {/* {hero && <Hero {...(hero as any)} />} */}
+        {hero && <HeroSection {...(hero as any)} />}
+        {/* <HeroSection /> */}
         {/* Stats Section */}
         {/* <StatsSection /> */}
 

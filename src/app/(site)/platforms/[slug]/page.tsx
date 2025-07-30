@@ -7,18 +7,17 @@ import { getReinstatementServicesByPlatform } from "@/lib/services/reinstatement
 import { AccountCard } from "@/components/accounts/AccountCard";
 import { PriceInquiryForm } from "@/components/accounts/PriceInquiryForm";
 import { RequirementsForm } from "@/components/accounts/RequirementsForm";
-import { VAServiceCard } from "@/components/services/VAServiceCard";
+import { ServiceCard } from "@/components/services/ServiceCard";
 import { ReinstatementCard } from "@/components/services/ReinstatementCard";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { PlatformBadgeGroup } from "@/components/ui/platform-badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Users, Shield, BarChart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ContactInfo } from "@/components/platforms/ContactInfo";
 import { Platform, Account, ReinstatementService } from "@/types";
 import { FormField } from "@/types/form";
+import { CTASection } from "@/components/pages/home/cta-section";
 
 // Function to convert portable text to plain text for descriptions
 const getPlainTextDescription = (portableText?: any[]) => {
@@ -101,7 +100,6 @@ export default async function PlatformPage({ params, searchParams }: Props) {
 
   // Ensure platformData has an _id before proceeding
   if (!platformData._id) {
-    console.error("Platform data is missing _id:", platformData);
     throw new Error(`Platform with slug ${slug} has no _id`);
   }
 
@@ -116,7 +114,7 @@ export default async function PlatformPage({ params, searchParams }: Props) {
     const accounts = accountsData as unknown as Account[];
     const reinstatementServices =
       reinstatementServicesData as unknown as ReinstatementService[];
-
+    console.log(`Accounts:`, accountsData);
     // Ensure vaServices exists and is an array
     if (!platform.vaServices) {
       platform.vaServices = [];
@@ -285,13 +283,14 @@ export default async function PlatformPage({ params, searchParams }: Props) {
                   <h2 className="text-2xl font-bold mb-6">
                     Available {platform.name} Accounts
                   </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-items-center">
                     {accounts.map((account) => (
                       <AccountCard
                         key={account._id}
                         account={{
                           _id: account._id,
-                          title: account.title,
+                          title:
+                            account.title || `${account.platform.name} Account`,
                           platform: {
                             _ref: platform._id,
                             name: platform.name,
@@ -350,14 +349,27 @@ export default async function PlatformPage({ params, searchParams }: Props) {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {(platform.vaServices || []).map((service, index) => (
-                      <VAServiceCard
+                      // <VAServiceCard
+                      //   key={index}
+                      //   service={{
+                      //     ...service,
+                      //     // Ensure all required properties exist
+                      //     description: service.description || "",
+                      //     price: service.price || "Contact for pricing",
+                      //     platformName: platform.name,
+                      //   }}
+                      // />
+                      <ServiceCard
                         key={index}
                         service={{
                           ...service,
                           // Ensure all required properties exist
                           description: service.description || "",
                           price: service.price || "Contact for pricing",
-                          platformName: platform.name,
+                          title: service.title,
+                          category: platform.name || "",
+                          id: platform._id || "",
+                          icon: service.icon || undefined,
                         }}
                       />
                     ))}
@@ -435,8 +447,7 @@ export default async function PlatformPage({ params, searchParams }: Props) {
             </div>
           </div>
 
-          {/* Contact Information */}
-          <ContactInfo />
+          <CTASection />
         </div>
       </div>
     );

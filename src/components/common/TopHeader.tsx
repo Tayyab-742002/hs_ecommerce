@@ -1,6 +1,6 @@
 import { LucideIcon } from "lucide-react";
 
-interface ServiceHeroProps {
+interface TopHeaderProps {
   badge: {
     icon: LucideIcon;
     text: string;
@@ -18,10 +18,10 @@ interface ServiceHeroProps {
   };
 }
 
-export function ServiceHero({ title, description }: ServiceHeroProps) {
+export function TopHeader({ title, description }: TopHeaderProps) {
   return (
     <div className="relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12  relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12  relative ">
         <div className="text-center max-w-6xl mx-auto">
           {/* Enhanced Title */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-8 leading-tight">

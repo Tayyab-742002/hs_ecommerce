@@ -3,20 +3,16 @@
 import { motion } from "framer-motion";
 import { LiaSmileWinkSolid } from "react-icons/lia";
 import {
-
   ShoppingCart,
   UserCheck,
   LineChart,
   ShieldCheck,
-
   PackageCheckIcon,
 } from "lucide-react";
 
 import BentoGrid from "@/components/mvpblocks/bento-grid-2";
 
 export function ServicesShowcase() {
-
-
   const services = [
     {
       title: "3PL Services",
@@ -25,7 +21,7 @@ export function ServicesShowcase() {
         "From warehousing to last-mile delivery, we offer end-to-end 3PL services including distribution, inventory management, and fulfillment for platforms like Amazon, eBay, Shopify, and Temu.",
       icon: <PackageCheckIcon className="w-6 h-6" />,
       platform: "Multi-Platform",
-      link: "/services/3pl",
+      link: "/services/3pl-services",
       status: "active",
       tags: [
         "logistics",
@@ -95,28 +91,30 @@ export function ServicesShowcase() {
   ];
 
   return (
-    <section className="py-12">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-8"
-      >
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium mb-3">
-          <LiaSmileWinkSolid className="w-3 h-3" />
-          Our Comprehensive Services
-        </div>
-        <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-          E-commerce Solutions for Sellers
-        </h2>
-        <p className="text-sm text-muted-foreground max-w-xl mx-auto">
-          From account setup to management and optimization, we provide
-          end-to-end services to help you succeed on Amazon, eBay, Walmart,
-          TikTok, and Etsy.
-        </p>
-      </motion.div>
-      <BentoGrid items={services} />
+    <section className="py-8 md:py-12 lg:py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-8"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium mb-3">
+            <LiaSmileWinkSolid className="w-3 h-3" />
+            Our Comprehensive Services
+          </div>
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+            E-commerce Solutions for Sellers
+          </h2>
+          <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+            From account setup to management and optimization, we provide
+            end-to-end services to help you succeed on Amazon, eBay, Walmart,
+            TikTok, and Etsy.
+          </p>
+        </motion.div>
+        <BentoGrid items={services} />
+      </div>
     </section>
   );
 }

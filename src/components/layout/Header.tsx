@@ -36,6 +36,8 @@ import {
 } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import EbayIcon from "@/icons/EbayIcon";
+import { ShimmerButton } from "../magicui/shimmer-button";
+import { useRouter } from "next/navigation";
 
 const platforms = [
   {
@@ -177,7 +179,7 @@ const services = [
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false);
-
+  const router = useRouter();
   React.useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -358,17 +360,15 @@ export default function Header() {
               <span className="font-medium">+44 7955 426807</span>
             </a>
           </div>
-          <Button
-            size="sm"
-            className={cn(
-              "bg-primary text-primary-foreground hover:bg-primary/90",
-              "shadow-sm font-medium px-6 transition-all duration-200",
-              "hover:shadow-md hover:scale-105"
-            )}
-            asChild
+          <ShimmerButton
+            className="text-white! bg-primary! py-1!"
+            background="#fb4141"
+            onClick={() => {
+              router.push("/contact");
+            }}
           >
             <Link href="/contact">Get Started</Link>
-          </Button>
+          </ShimmerButton>
         </div>
 
         {/* Mobile Menu */}
@@ -562,12 +562,15 @@ export default function Header() {
                         +44 7955 426807
                       </span>
                     </a>
-                    <Button
-                      className="w-full mt-4 bg-primary hover:bg-primary/90 font-medium"
-                      asChild
+                    <ShimmerButton
+                      className="text-white! w-full bg-primary! py-1!"
+                      background="#fb4141"
+                      onClick={() => {
+                        router.push("/contact");
+                      }}
                     >
                       <Link href="/contact">Get Started</Link>
-                    </Button>
+                    </ShimmerButton>
                   </div>
                 </div>
               </div>
@@ -652,7 +655,7 @@ const ServiceItem = React.forwardRef<
     ref
   ) => {
     return (
-      <li>
+      <div>
         <NavigationMenuLink asChild>
           <a
             ref={ref}
@@ -699,7 +702,7 @@ const ServiceItem = React.forwardRef<
             </div>
           </a>
         </NavigationMenuLink>
-      </li>
+      </div>
     );
   }
 );
