@@ -16,7 +16,7 @@ export function Testimonials() {
       platformIcon: "/images/platforms/walmart-logo.png",
       platformName: "Walmart Seller",
       platformColor: "var(--color-walmart)",
-      src: "/images/testimonials/sarahjohnson.JPG",
+      src: "/images/testimonials/sarahjohnson.jpg",
     },
     {
       quote:
@@ -27,7 +27,7 @@ export function Testimonials() {
       platformIcon: "/images/platforms/amazon-logo.png",
       platformName: "Amazon Seller",
       platformColor: "var(--color-amazon)",
-      src: "/images/testimonials/jameswilson.JPG",
+      src: "/images/testimonials/jameswilson.jpg",
     },
     {
       quote:
@@ -38,7 +38,7 @@ export function Testimonials() {
       platformIcon: "/images/platforms/tiktok-logo.png",
       platformName: "TikTok Seller",
       platformColor: "var(--color-tiktok)",
-      src: "/images/testimonials/amnailyas.JPG",
+      src: "/images/testimonials/amnailyas.jpg",
     },
     {
       quote:
@@ -49,7 +49,7 @@ export function Testimonials() {
       platformIcon: "/images/platforms/etsy-logo.png",
       platformName: "Etsy Seller",
       platformColor: "var(--color-etsy)",
-      src: "/images/testimonials/michaelrodriguez.JPG",
+      src: "/images/testimonials/michaelrodriguez.jpg",
     },
     {
       quote:
@@ -60,7 +60,7 @@ export function Testimonials() {
       platformIcon: "/images/platforms/ebay-logo.png",
       platformName: "eBay Seller",
       platformColor: "var(--color-ebay)",
-      src: "/images/testimonials/aliraza.JPG",
+      src: "/images/testimonials/aliraza.jpg",
     },
     {
       quote:
@@ -105,7 +105,7 @@ export function Testimonials() {
       platformIcon: "/images/platforms/3pl-logo.png",
       platformName: "3PL Services",
       platformColor: "var(--color-amazon)",
-      src: "/images/testimonials/tahirimtiaz.JPG",
+      src: "/images/testimonials/tahirimtiaz.jpg",
     },
   ];
 
