@@ -174,18 +174,18 @@ export default async function VAServicesPage() {
       data: [
         {
           quote:
-            "Our VA helped us increase sales by 200% in just 3 months. The level of expertise and dedication is unmatched. Highly recommend!",
-          author: "Sarah Johnson",
-          role: "E-commerce Store Owner",
-          initials: "SJ",
+            "The Amazon seller account I got was perfectly set up and ready to use. Their team helped me get started quickly, and the VA services are top-notch! ",
+          author: "James Wilson",
+          role: "E-commerce Entrepreneur",
+          initials: "JW",
           gradient: "from-blue-500/10 to-purple-500/10",
         },
         {
           quote:
-            "Finally found a reliable VA service that understands our business. They handle everything from product listings to customer support flawlessly.",
-          author: "Michael Chen",
-          role: "Amazon Seller",
-          initials: "MC",
+            "I was struggling to get my TikTok account reinstated, but their team helped me through every step. Now I'm back in business and growing!",
+          author: "Amna Ilyas",
+          role: "Online Store Owner",
+          initials: "AI",
           gradient: "from-purple-500/10 to-pink-500/10",
         },
       ],

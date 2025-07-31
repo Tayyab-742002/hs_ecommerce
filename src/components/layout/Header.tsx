@@ -212,7 +212,7 @@ export default function Header() {
               className="transition-transform duration-200 group-hover:scale-105"
             />
           </div>
-          <div className="hidden sm:block">
+          <div className="sm:block">
             <span className="font-bold text-lg leading-tight tracking-tight">
               <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text ">
                 H&S

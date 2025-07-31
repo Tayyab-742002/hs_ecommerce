@@ -59,7 +59,7 @@ const threePLServices = [
     title: "Order Fulfillment",
     description:
       "End-to-end order processing from pick and pack to shipping, ensuring fast and accurate delivery to your customers worldwide.",
-    price: "149",
+    price: "£1 to £5000",
     deliveryTime: "Same-day processing",
     icon: "📦",
     category: "Fulfillment",
@@ -89,7 +89,7 @@ const threePLServices = [
     title: "Shipping & Distribution",
     description:
       "Multi-carrier shipping solutions with discounted rates, route optimization, and delivery tracking for efficient distribution networks.",
-    price: "179",
+    price: "£1 to £1000",
     deliveryTime: "24-hour dispatch",
     icon: "🚚",
     category: "Distribution",
@@ -249,18 +249,18 @@ export default async function ThreePLServicesPage() {
       data: [
         {
           quote:
-            "Their 3PL services revolutionized our fulfillment process. Order accuracy improved to 99.9% and shipping times were cut in half. Outstanding service!",
-          author: "Jennifer Davis",
-          role: "E-commerce Director",
-          initials: "JD",
+            "I used their 3PL services and it was a game-changer for my business. I was able to scale my operations and grow my business without the hassle of managing inventory and logistics. ",
+          author: "Tahir Imtiaz",
+          role: "Ecommerce Entrepreneur",
+          initials: "TI",
           gradient: "from-green-500/10 to-teal-500/10",
         },
         {
           quote:
-            "The real-time inventory management and analytics dashboard gave us complete visibility into our operations. Game-changing logistics partner!",
-          author: "Robert Martinez",
-          role: "Operations Manager",
-          initials: "RM",
+            "The 3PL services they provided were perfect for my business. I was able to scale my operations and grow my business without the hassle of managing inventory and logistics. ",
+          author: "Chika",
+          role: "Ecommerce Entrepreneur",
+          initials: "C",
           gradient: "from-teal-500/10 to-cyan-500/10",
         },
       ],
