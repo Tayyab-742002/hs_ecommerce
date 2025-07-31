@@ -1,18 +1,12 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { 
-  MessageCircle, 
-  Phone, 
-  X, 
-  MessagesSquare,
-  Mail
-} from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from "react";
+import Link from "next/link";
+import { MessageCircle, Phone, X, MessagesSquare, Mail } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function FloatingContact() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="fixed right-6 bottom-6 z-50">
@@ -37,8 +31,8 @@ export function FloatingContact() {
               transition={{ delay: 0.1 }}
             >
               <div className="bg-white p-2 rounded-full">
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   className="w-4 h-4 text-green-600"
                   fill="currentColor"
@@ -65,7 +59,7 @@ export function FloatingContact() {
 
             {/* Email */}
             <motion.a
-              href="mailto:contact@hsecommerce.com"
+              href="mailto:handsecommerce@gmail.com"
               className="flex items-center gap-3 bg-purple-500 text-white py-2 pl-4 pr-5 rounded-full shadow-lg hover:bg-purple-600 transition-colors"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -101,7 +95,9 @@ export function FloatingContact() {
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         className={`flex items-center justify-center w-16 h-16 rounded-full shadow-lg focus:outline-none ${
-          isOpen ? 'bg-red-500 hover:bg-red-600' : 'bg-primary hover:bg-primary/90'
+          isOpen
+            ? "bg-red-500 hover:bg-red-600"
+            : "bg-primary hover:bg-primary/90"
         } text-white transition-colors`}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -113,5 +109,5 @@ export function FloatingContact() {
         )}
       </motion.button>
     </div>
-  )
+  );
 }

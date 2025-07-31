@@ -44,7 +44,7 @@ const threePLServices = [
     title: "Warehousing & Storage",
     description:
       "Secure, climate-controlled warehouse facilities with real-time inventory tracking and management systems for optimal storage conditions.",
-    price: "199",
+    price: "£7",
     deliveryTime: "24-48 hours setup",
     icon: "🏭",
     category: "Storage Solutions",
@@ -74,7 +74,7 @@ const threePLServices = [
     title: "Inventory Management",
     description:
       "Advanced inventory tracking and management systems with automated reorder points and comprehensive reporting for optimal stock levels.",
-    price: "99",
+    price: "£1 to £1000",
     deliveryTime: "Real-time updates",
     icon: "📊",
     category: "Management",
@@ -104,7 +104,7 @@ const threePLServices = [
     title: "Returns Processing",
     description:
       "Comprehensive returns management including inspection, restocking, refurbishment, and customer communication for seamless reverse logistics.",
-    price: "129",
+    price: "£1 to £500",
     deliveryTime: "48-hour processing",
     icon: "🔄",
     category: "Returns Management",
@@ -119,7 +119,7 @@ const threePLServices = [
     title: "Logistics Consulting",
     description:
       "Strategic logistics consulting to optimize your supply chain, reduce costs, and improve efficiency with customized solutions.",
-    price: "299",
+    price: "£100 to £500",
     deliveryTime: "1-2 weeks analysis",
     icon: "💡",
     category: "Consulting",
