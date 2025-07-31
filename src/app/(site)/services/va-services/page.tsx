@@ -174,7 +174,7 @@ export default async function VAServicesPage() {
       data: [
         {
           quote:
-            "The Amazon seller account I got was perfectly set up and ready to use. Their team helped me get started quickly, and the VA services are top-notch! ",
+            "The Amazon account I got was perfectly set up and ready to use. Their team helped me get started quickly, and the VA services are top-notch! ",
           author: "James Wilson",
           role: "E-commerce Entrepreneur",
           initials: "JW",

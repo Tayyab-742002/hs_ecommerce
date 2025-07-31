@@ -114,7 +114,6 @@ export default async function PlatformPage({ params, searchParams }: Props) {
     const accounts = accountsData as unknown as Account[];
     const reinstatementServices =
       reinstatementServicesData as unknown as ReinstatementService[];
-    console.log(`Accounts:`, accountsData);
     // Ensure vaServices exists and is an array
     if (!platform.vaServices) {
       platform.vaServices = [];
@@ -454,7 +453,7 @@ export default async function PlatformPage({ params, searchParams }: Props) {
       </div>
     );
   } catch (error) {
-    console.error("Error fetching accounts or reinstatement services:", error);
+    
     return (
       <div className="flex flex-col items-center justify-center h-screen">
         <h2 className="text-2xl font-bold mb-4">Error Loading Platform Data</h2>
