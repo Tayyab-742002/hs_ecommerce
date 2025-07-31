@@ -44,7 +44,7 @@ const threePLServices = [
     title: "Warehousing & Storage",
     description:
       "Secure, climate-controlled warehouse facilities with real-time inventory tracking and management systems for optimal storage conditions.",
-    price: "199",
+    price: "£7",
     deliveryTime: "24-48 hours setup",
     icon: "🏭",
     category: "Storage Solutions",
@@ -59,7 +59,7 @@ const threePLServices = [
     title: "Order Fulfillment",
     description:
       "End-to-end order processing from pick and pack to shipping, ensuring fast and accurate delivery to your customers worldwide.",
-    price: "149",
+    price: "£1 to £5000",
     deliveryTime: "Same-day processing",
     icon: "📦",
     category: "Fulfillment",
@@ -74,7 +74,7 @@ const threePLServices = [
     title: "Inventory Management",
     description:
       "Advanced inventory tracking and management systems with automated reorder points and comprehensive reporting for optimal stock levels.",
-    price: "99",
+    price: "£1 to £1000",
     deliveryTime: "Real-time updates",
     icon: "📊",
     category: "Management",
@@ -89,7 +89,7 @@ const threePLServices = [
     title: "Shipping & Distribution",
     description:
       "Multi-carrier shipping solutions with discounted rates, route optimization, and delivery tracking for efficient distribution networks.",
-    price: "179",
+    price: "£1 to £1000",
     deliveryTime: "24-hour dispatch",
     icon: "🚚",
     category: "Distribution",
@@ -104,7 +104,7 @@ const threePLServices = [
     title: "Returns Processing",
     description:
       "Comprehensive returns management including inspection, restocking, refurbishment, and customer communication for seamless reverse logistics.",
-    price: "129",
+    price: "£1 to £500",
     deliveryTime: "48-hour processing",
     icon: "🔄",
     category: "Returns Management",
@@ -119,7 +119,7 @@ const threePLServices = [
     title: "Logistics Consulting",
     description:
       "Strategic logistics consulting to optimize your supply chain, reduce costs, and improve efficiency with customized solutions.",
-    price: "299",
+    price: "£100 to £500",
     deliveryTime: "1-2 weeks analysis",
     icon: "💡",
     category: "Consulting",
@@ -249,18 +249,18 @@ export default async function ThreePLServicesPage() {
       data: [
         {
           quote:
-            "Their 3PL services revolutionized our fulfillment process. Order accuracy improved to 99.9% and shipping times were cut in half. Outstanding service!",
-          author: "Jennifer Davis",
-          role: "E-commerce Director",
-          initials: "JD",
+            "I used their 3PL services and it was a game-changer for my business. I was able to scale my operations and grow my business without the hassle of managing inventory and logistics. ",
+          author: "Tahir Imtiaz",
+          role: "Ecommerce Entrepreneur",
+          initials: "TI",
           gradient: "from-green-500/10 to-teal-500/10",
         },
         {
           quote:
-            "The real-time inventory management and analytics dashboard gave us complete visibility into our operations. Game-changing logistics partner!",
-          author: "Robert Martinez",
-          role: "Operations Manager",
-          initials: "RM",
+            "The 3PL services they provided were perfect for my business. I was able to scale my operations and grow my business without the hassle of managing inventory and logistics. ",
+          author: "Chika",
+          role: "Ecommerce Entrepreneur",
+          initials: "C",
           gradient: "from-teal-500/10 to-cyan-500/10",
         },
       ],

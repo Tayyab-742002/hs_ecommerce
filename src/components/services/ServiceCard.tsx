@@ -28,6 +28,10 @@ interface ServiceCardProps {
 }
 
 export function ServiceCard({ service, index = 0 }: ServiceCardProps) {
+  // write a function to check the price, if there is any currency symbol in a string return true and otherwise return false
+  const hasCurrencySymbol = (price: string) => {
+    return price.includes("$") || price.includes("£") || price.includes("€");
+  };
   return (
     <div
       className="group relative"
@@ -90,10 +94,9 @@ export function ServiceCard({ service, index = 0 }: ServiceCardProps) {
                 </span>
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-bold text-primary">
-                    ${service.price}
-                  </span>
-                  <span className="text-muted-foreground font-medium text-sm">
-                    USD
+                    {hasCurrencySymbol(service.price)
+                      ? service.price
+                      : `$${service.price}`}
                   </span>
                 </div>
               </div>

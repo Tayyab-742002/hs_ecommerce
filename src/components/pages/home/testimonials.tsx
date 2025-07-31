@@ -6,20 +6,7 @@ import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import { Shield } from "lucide-react";
 
 export function Testimonials() {
-
-
   const testimonials = [
-    {
-      quote:
-        "The Amazon seller account I got was perfectly set up and ready to use. Their team helped me get started quickly, and the VA services are top-notch!",
-      author: "James Wilson",
-      title: "E-commerce Entrepreneur",
-      rating: 5,
-      platformIcon: "/images/platforms/amazon-logo.png",
-      platformName: "Amazon Seller",
-      platformColor: "var(--color-amazon)",
-      src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
     {
       quote:
         "After my Walmart account was suspended, I thought I'd lost everything. Their reinstatement service got me back online in just 9 days. Highly recommended!",
@@ -29,7 +16,29 @@ export function Testimonials() {
       platformIcon: "/images/platforms/walmart-logo.png",
       platformName: "Walmart Seller",
       platformColor: "var(--color-walmart)",
-      src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "/images/testimonials/sarah-johnson.jpg",
+    },
+    {
+      quote:
+        "The Amazon seller account I got was perfectly set up and ready to use. Their team helped me get started quickly, and the VA services are top-notch!",
+      author: "James Wilson",
+      title: "E-commerce Entrepreneur",
+      rating: 5,
+      platformIcon: "/images/platforms/amazon-logo.png",
+      platformName: "Amazon Seller",
+      platformColor: "var(--color-amazon)",
+      src: "/images/testimonials/james-wilson.jpg",
+    },
+    {
+      quote:
+        "I was struggling to get my TikTok account reinstated, but their team helped me through every step. Now I'm back in business and growing!",
+      author: "Amna Ilyas",
+      title: "Online Store Owner",
+      rating: 5,
+      platformIcon: "/images/platforms/tiktok-logo.png",
+      platformName: "TikTok Seller",
+      platformColor: "var(--color-tiktok)",
+      src: "/images/testimonials/amna-ilyas.jpg",
     },
     {
       quote:
@@ -40,29 +49,63 @@ export function Testimonials() {
       platformIcon: "/images/platforms/etsy-logo.png",
       platformName: "Etsy Seller",
       platformColor: "var(--color-etsy)",
-      src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "/images/testimonials/michael-rodriguez.jpg",
     },
     {
       quote:
-        "The eBay and Etsy accounts they provided were perfect for my handmade business. Their virtual assistant helped me set up listings that really sell.",
-      author: "Michael Rodriguez",
-      title: "Handmade Goods Seller",
+        "I was struggling to get my eBay account reinstated, but their team helped me through every step. Now I'm back in business and growing!",
+      author: "Ali Raza",
+      title: "E-commerce Entrepreneur",
       rating: 5,
-      platformIcon: "/images/platforms/etsy-logo.png",
+      platformIcon: "/images/platforms/ebay-logo.png",
       platformName: "eBay Seller",
       platformColor: "var(--color-ebay)",
-      src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "/images/testimonials/ali-raza.jpg",
     },
     {
       quote:
         "The eBay and Etsy accounts they provided were perfect for my handmade business. Their virtual assistant helped me set up listings that really sell.",
-      author: "Michael Rodriguez",
-      title: "Handmade Goods Seller",
+      author: "Alezander",
+      title: "E-commerce Entrepreneur",
       rating: 5,
       platformIcon: "/images/platforms/etsy-logo.png",
       platformName: "Etsy & eBay Seller",
       platformColor: "var(--color-etsy)",
-      src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "/images/testimonials/alezander.jpg",
+    },
+    {
+      quote:
+        "I was struggling to get my eBay account reinstated, but their team helped me through every step. Now I'm back in business and growing!",
+      author: "Jasmin",
+      title: "Ebay Seller",
+      rating: 5,
+      platformIcon: "/images/platforms/ebay-logo.png",
+      platformName: "eBay Seller",
+      platformColor: "var(--color-ebay)",
+      src: "/images/testimonials/jasmin.jpg",
+    },
+    {
+      quote:
+        "The 3PL services they provided were perfect for my business. I was able to scale my operations and grow my business without the hassle of managing inventory and logistics.",
+      author: "Chika",
+      title: "Ecommerce Entrepreneur",
+      rating: 5,
+      platformIcon: "/images/platforms/3pl-logo.png",
+      platformName: "3PL Services",
+      platformColor: "var(--color-amazon)",
+      src: "/images/testimonials/chika.jpg",
+    },
+    {
+      // I want a pakistani boy to be in this testimonial getting our 3pl services
+      quote:
+        "I used their 3PL services and it was a game-changer for my business. I was able to scale my operations and grow my business without the hassle of managing inventory and logistics.",
+      author: "Tahir Imtiaz",
+      title: "Ecommerce Entrepreneur",
+      rating: 5,
+      platformIcon: "/images/platforms/3pl-logo.png",
+      platformName: "3PL Services",
+      platformColor: "var(--color-amazon)",
+      src: "/images/testimonials/tahir-imtiaz.jpg",
     },
   ];
 

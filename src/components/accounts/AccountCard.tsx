@@ -266,7 +266,7 @@ export function AccountCard({ account }: AccountCardProps) {
                         Platform:
                       </span>
                       <PlatformBadge
-                        platformName={account.platform.name}
+                        platformName={account.platform.name.split(" ")[0]}
                         size="sm"
                       />
                     </div>

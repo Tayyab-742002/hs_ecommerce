@@ -45,7 +45,7 @@ const fallbackReinstatementServices: ReinstatementService[] = [
     ],
     successRate: "87%",
     turnaroundTime: "5-14 days",
-    price: "349",
+    price: "$350",
   },
   {
     _id: "fallback-ebay-reinstatement",
@@ -74,7 +74,7 @@ const fallbackReinstatementServices: ReinstatementService[] = [
     ],
     successRate: "82%",
     turnaroundTime: "7-21 days",
-    price: "299",
+    price: "$350",
   },
   {
     _id: "fallback-walmart-reinstatement",
@@ -103,7 +103,7 @@ const fallbackReinstatementServices: ReinstatementService[] = [
     ],
     successRate: "79%",
     turnaroundTime: "10-28 days",
-    price: "399",
+    price: "$400",
   },
   {
     _id: "fallback-etsy-reinstatement",
@@ -132,7 +132,7 @@ const fallbackReinstatementServices: ReinstatementService[] = [
     ],
     successRate: "84%",
     turnaroundTime: "3-10 days",
-    price: "249",
+    price: "$350",
   },
   {
     _id: "fallback-tiktok-reinstatement",
@@ -161,7 +161,7 @@ const fallbackReinstatementServices: ReinstatementService[] = [
     ],
     successRate: "76%",
     turnaroundTime: "7-18 days",
-    price: "329",
+    price: "$350",
   },
 ];
 
@@ -323,17 +323,17 @@ export default async function ReinstatementServicesPage() {
       data: [
         {
           quote:
-            "Their Amazon reinstatement service was incredible. Account was back online in just 8 days after being suspended for 3 months. Professional and efficient!",
-          author: "Michael Chen",
-          role: "Amazon Seller",
-          initials: "MC",
+            "I was struggling to get my eBay account reinstated, but their team helped me through every step. Now I'm back in business and growing! ",
+          author: "Jasminn",
+          role: "Ebay Seller",
+          initials: "J",
           gradient: "from-red-500/10 to-orange-500/10",
         },
         {
           quote:
-            "The team handled my eBay suspension perfectly. They created a compelling appeal and communicated with eBay on my behalf. Worth every penny!",
+            "After my Walmart account was suspended, I thought I'd lost everything. Their reinstatement service got me back online in just 9 days. Highly recommended! ",
           author: "Sarah Johnson",
-          role: "eBay Entrepreneur",
+          role: "Online Store Owner",
           initials: "SJ",
           gradient: "from-orange-500/10 to-yellow-500/10",
         },
