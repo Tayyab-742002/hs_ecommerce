@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -105,9 +106,30 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t text-center text-sm text-foreground/80">
-          &copy; {new Date().getFullYear()} H&S Ecommerce Agency. All rights
-          reserved.
+        <div className="mt-8 pt-8 border-t text-center space-y-3">
+          <p className="text-sm text-foreground/80">
+            &copy; {new Date().getFullYear()} H&S Ecommerce Agency. All rights
+            reserved.
+          </p>
+
+          {/* Powered by - More Engaging */}
+          <p className="flex justify-center items-center gap-2 text-xs md:place-self-end text-foreground/70">
+            <span>Powered by</span>
+            <Link
+              href="https://www.solvspot.com"
+              className="inline-flex items-center gap-1 text-[#C248EB]  font-medium underline hover:scale-105 transition-transform"
+              target="_blank"
+            >
+              <Image
+                src="/solvspot.png"
+                alt="SolvSpot"
+                width={100}
+                height={100}
+                className="w-4 h-4"
+              />
+              SolvSpot
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

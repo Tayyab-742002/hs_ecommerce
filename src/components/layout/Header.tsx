@@ -29,7 +29,6 @@ import {
   ChevronRight,
   Menu,
   Phone,
-  X,
   Building2,
   Users,
   HeadphonesIcon,
@@ -308,7 +307,7 @@ export default function Header() {
                       Expert assistance for your e-commerce business growth
                     </p>
                   </div>
-                  <div className="grid gap-6 ">
+                  <div className="flex flex-col gap-6 overflow-y-auto max-h-[calc(100vh-200px)]">
                     {services.map((service) => (
                       <ServiceItem
                         key={service.title}
