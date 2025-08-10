@@ -121,6 +121,10 @@ export default function RootLayout({
         />
         <meta name="msapplication-TileColor" content="#0D3D4C" />
         <meta name="theme-color" content="#0D3D4C" />
+        <meta
+          name="facebook-domain-verification"
+          content="3mq0nbk706xpb8hrdysdkan8rvo2ke"
+        />
         <script
           async
           src="https://cloud.umami.is/script.js"
