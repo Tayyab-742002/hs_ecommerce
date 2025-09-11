@@ -18,7 +18,7 @@ export function RequirementsForm({
   fields,
   formTitle,
 }: RequirementsFormProps) {
-  const { getPlatformColor, getPlatformGradient } = useColorScheme();
+  const { getPlatformColor } = useColorScheme();
   const platformColor = getPlatformColor(platformName);
 
   const [formData, setFormData] = useState<Record<string, any>>({});
@@ -87,8 +87,8 @@ export function RequirementsForm({
             Requirements Submitted!
           </h3>
           <p className="text-gray-500 dark:text-gray-400 mb-6">
-            We've received your {platformName} account requirements. Our team
-            will review and get back to you shortly.
+            We&apos;ve received your {platformName} account requirements. Our
+            team will review and get back to you shortly.
           </p>
         </div>
 
@@ -121,8 +121,8 @@ export function RequirementsForm({
         </div>
 
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-          Tell us your specific requirements, and we'll customize it to your
-          needs.
+          Tell us your specific requirements, and we&apos;ll customize it to
+          your needs.
         </p>
 
         {error && (
@@ -352,8 +352,8 @@ export function RequirementsForm({
           </Button>
 
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-3 text-center">
-            We'll contact you shortly to discuss your requirements and provide a
-            quote.
+            We&apos;ll contact you shortly to discuss your requirements and
+            provide a quote.
           </p>
         </form>
       </div>
