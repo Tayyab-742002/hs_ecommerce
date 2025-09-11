@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import { UKWarehouseHero } from "@/components/warehouse/UKWarehouseHero";
-import { UKWarehouseBenefits } from "@/components/warehouse/UKWarehouseBenefits";
+// import { UKWarehouseHero } from "@/components/warehouse/UKWarehouseHero";
+// import { UKWarehouseBenefits } from "@/components/warehouse/UKWarehouseBenefits";
 import { UKWarehouseTrust } from "@/components/warehouse/UKWarehouseTrust";
 import { UKWarehouseConsultationForm } from "@/components/warehouse/UKWarehouseConsultationForm";
 import { UKWarehouseFinalCTA } from "@/components/warehouse/UKWarehouseFinalCTA";
