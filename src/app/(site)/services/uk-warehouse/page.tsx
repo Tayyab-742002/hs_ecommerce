@@ -35,7 +35,7 @@ export default function UKWarehousePage() {
       {/* <UKWarehouseBenefits /> */}
 
       {/* Trust/Social Proof Section */}
-      {/* <UKWarehouseTrust /> */}
+      <UKWarehouseTrust />
 
       {/* Final CTA Section */}
       <UKWarehouseFinalCTA />
