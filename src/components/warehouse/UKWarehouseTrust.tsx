@@ -137,6 +137,48 @@ export function UKWarehouseTrust() {
           </div>
         </motion.div>
 
+        {/* Warehouse Location */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <div className="text-center mb-6">
+            <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+              UK Warehouse Location
+            </p>
+          </div>
+          <div className="flex items-center justify-center gap-3 max-w-2xl mx-auto">
+            <div className="flex items-center justify-center w-10 h-10 bg-primary/10 rounded-xl">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-primary"
+              >
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div className="text-center">
+              <p className="text-lg font-semibold text-foreground">
+                Unit 1, Carlinghurst Business Park
+              </p>
+              <p className="text-sm text-muted-foreground">
+                George St West, Blackburn, BB2 1PQ, UK
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Platform Integration */}
         <motion.div
           variants={containerVariants}
