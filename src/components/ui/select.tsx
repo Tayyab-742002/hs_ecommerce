@@ -17,7 +17,7 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex h-12 w-full items-center justify-between rounded-xl border border-border/50 bg-background px-4 py-3 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 transition-colors duration-200",
+      "flex h-12 w-full items-center justify-between rounded-md border border-border/50 bg-background px-4 py-3 text-sm ring-offset-background placeholder:text-muted-foreground focus:border-primary focus:ring-0 focus:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 transition-colors duration-200",
       className
     )}
     {...props}
@@ -156,5 +156,3 @@ export {
   SelectScrollUpButton,
   SelectScrollDownButton,
 };
-
-

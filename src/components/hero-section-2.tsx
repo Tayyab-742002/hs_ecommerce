@@ -2,6 +2,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
+import { FlowButton } from "./ui/flow-button";
 
 // Icon component for contact details
 const InfoIcon = ({ type }: { type: "website" | "phone" | "address" }) => {
@@ -183,13 +184,14 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
               >
                 {subtitle}
               </motion.p>
-              <motion.a
+              {/* <motion.a
                 href={callToAction.href}
                 className="inline-block text-sm sm:text-base lg:text-lg font-bold tracking-wider text-primary transition-colors hover:text-primary/80 border-b-2 border-primary hover:border-primary/80 pb-1"
                 variants={itemVariants}
               >
                 {callToAction.text}
-              </motion.a>
+              </motion.a> */}
+              <FlowButton text={callToAction.text} href={callToAction.href} />
             </motion.main>
           </div>
 

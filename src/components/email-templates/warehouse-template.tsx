@@ -83,7 +83,7 @@ export const WarehouseTemplate = ({
           {/* Header */}
           <Section style={header}>
             <Heading style={headerTitle}>
-              🇬🇧 UK Warehouse Consultation Request
+              UK Warehouse Consultation Request
             </Heading>
             <Text style={headerSubtitle}>New inquiry from {companyName}</Text>
           </Section>
@@ -92,7 +92,7 @@ export const WarehouseTemplate = ({
 
           {/* Contact Information */}
           <Section style={section}>
-            <Heading style={sectionTitle}>📋 Contact Information</Heading>
+            <Heading style={sectionTitle}>Contact Information</Heading>
 
             <div style={infoGrid}>
               <div style={infoItem}>
@@ -121,7 +121,7 @@ export const WarehouseTemplate = ({
 
           {/* Business Information */}
           <Section style={section}>
-            <Heading style={sectionTitle}>🏢 Business Information</Heading>
+            <Heading style={sectionTitle}>Business Information</Heading>
 
             <div style={infoGrid}>
               <div style={infoItem}>
@@ -147,12 +147,12 @@ export const WarehouseTemplate = ({
 
           {/* Services Interest */}
           <Section style={section}>
-            <Heading style={sectionTitle}>🎯 Services of Interest</Heading>
+            <Heading style={sectionTitle}>Services of Interest</Heading>
 
             <div style={servicesContainer}>
               {interestedServices.map((service, index) => (
                 <div key={index} style={serviceItem}>
-                  <Text style={serviceText}>✅ {service}</Text>
+                  <Text style={serviceText}>{service}</Text>
                 </div>
               ))}
             </div>
@@ -162,11 +162,11 @@ export const WarehouseTemplate = ({
 
           {/* Action Items */}
           <Section style={section}>
-            <Heading style={sectionTitle}>⚡ Next Steps</Heading>
+            <Heading style={sectionTitle}>Next Steps</Heading>
 
             <div style={actionItems}>
               <Text style={actionItem}>
-                1. Review the client's requirements and order volume
+                1. Review the client&apos;s requirements and order volume
               </Text>
               <Text style={actionItem}>
                 2. Prepare a customized quote for their selected services
@@ -186,8 +186,8 @@ export const WarehouseTemplate = ({
           <Section style={prioritySection}>
             <Text style={priorityText}>
               {startTimeline === "immediately"
-                ? "🔥 HIGH PRIORITY"
-                : "📋 STANDARD PRIORITY"}{" "}
+                ? "HIGH PRIORITY"
+                : "STANDARD PRIORITY"}{" "}
               - Client wants to start{" "}
               {getTimelineLabel(startTimeline).toLowerCase()}
             </Text>
@@ -219,7 +219,7 @@ export const WarehouseTemplate = ({
 
 // Styles
 const main = {
-  backgroundColor: "#f6f9fc",
+  backgroundColor: "#f8fafc",
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif',
 };
@@ -234,7 +234,7 @@ const container = {
 
 const header = {
   padding: "32px 24px",
-  backgroundColor: "#1e293b",
+  backgroundColor: "#fb4141",
   textAlign: "center" as const,
 };
 
@@ -246,7 +246,7 @@ const headerTitle = {
 };
 
 const headerSubtitle = {
-  color: "#cbd5e1",
+  color: "#ffedd5",
   fontSize: "16px",
   margin: "0",
 };
@@ -295,28 +295,28 @@ const servicesContainer = {
 };
 
 const serviceItem = {
-  backgroundColor: "#f0f9ff",
+  backgroundColor: "#fff7ed",
   padding: "8px 12px",
   borderRadius: "6px",
-  border: "1px solid #bae6fd",
+  border: "1px solid #fb4141",
 };
 
 const serviceText = {
-  color: "#0c4a6e",
+  color: "#fb4141",
   fontSize: "14px",
   margin: "0",
   fontWeight: "500",
 };
 
 const actionItems = {
-  backgroundColor: "#fef3c7",
+  backgroundColor: "#fff7ed",
   padding: "16px",
   borderRadius: "8px",
-  border: "1px solid #fbbf24",
+  border: "1px solid #fb4141",
 };
 
 const actionItem = {
-  color: "#92400e",
+  color: "#fb4141",
   fontSize: "14px",
   margin: "0 0 8px 0",
   fontWeight: "500",
@@ -324,15 +324,15 @@ const actionItem = {
 
 const prioritySection = {
   padding: "16px 24px",
-  backgroundColor: "#fef2f2",
+  backgroundColor: "#fff7ed",
   textAlign: "center" as const,
-  border: "1px solid #fecaca",
+  border: "1px solid #fb4141",
   borderRadius: "8px",
   margin: "0 24px",
 };
 
 const priorityText = {
-  color: "#b91c1c",
+  color: "#fb4141",
   fontSize: "16px",
   fontWeight: "bold",
   margin: "0",
@@ -354,5 +354,3 @@ const hr = {
   borderColor: "#e2e8f0",
   margin: "0",
 };
-
-

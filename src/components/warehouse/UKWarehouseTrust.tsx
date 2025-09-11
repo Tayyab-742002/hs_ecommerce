@@ -1,53 +1,54 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { FaAmazon, FaEbay, FaShopify } from "react-icons/fa";
-import { Shield, Star, Users, CheckCircle } from "lucide-react";
+import { SiEtsy, SiTiktok } from "react-icons/si";
+import { Shield, Star, Users } from "lucide-react";
 
 export function UKWarehouseTrust() {
   const platforms = [
     {
       name: "Amazon",
-      icon: <FaAmazon className="w-8 h-8 text-[#FF9900]" />,
-      description: "Trusted Amazon Partner",
+      icon: <FaAmazon className="w-6 h-6 text-[#FF9900]" />,
+      description: "Official Partner",
     },
     {
       name: "eBay",
-      icon: <FaEbay className="w-8 h-8 text-[#E53238]" />,
-      description: "eBay Verified Seller Support",
+      icon: <FaEbay className="w-6 h-6 text-[#E53238]" />,
+      description: "Verified Seller",
     },
     {
       name: "Shopify",
-      icon: <FaShopify className="w-8 h-8 text-[#7AB55C]" />,
-      description: "Shopify Plus Partner",
+      icon: <FaShopify className="w-6 h-6 text-[#7AB55C]" />,
+      description: "Plus Partner",
+    },
+    {
+      name: "Etsy",
+      icon: <SiEtsy className="w-6 h-6 text-[#F16521]" />,
+      description: "Trusted Seller",
+    },
+    {
+      name: "TikTok Shop",
+      icon: <SiTiktok className="w-6 h-6 text-[#000000]" />,
+      description: "Verified Partner",
     },
   ];
 
-  const trustMetrics = [
+  const stats = [
     {
-      icon: <Users className="w-6 h-6" />,
-      value: "500+",
-      label: "Pakistani Sellers",
-      description: "Successfully expanded to UK",
+      icon: <Users className="w-5 h-5" />,
+      number: "500+",
+      label: "Active Sellers",
     },
     {
-      icon: <Star className="w-6 h-6" />,
-      value: "4.9/5",
-      label: "Customer Rating",
-      description: "Based on 200+ reviews",
+      icon: <Star className="w-5 h-5" />,
+      number: "99.9%",
+      label: "Satisfaction Rate",
     },
     {
-      icon: <Shield className="w-6 h-6" />,
-      value: "99.9%",
-      label: "Uptime Guarantee",
-      description: "Reliable warehouse operations",
-    },
-    {
-      icon: <CheckCircle className="w-6 h-6" />,
-      value: "24/7",
-      label: "Support Available",
-      description: "Round-the-clock assistance",
+      icon: <Shield className="w-5 h-5" />,
+      number: "5+",
+      label: "Years Experience",
     },
   ];
 
@@ -73,132 +74,102 @@ export function UKWarehouseTrust() {
   };
 
   return (
-    <section className="py-20 lg:py-28 bg-muted/10">
+    <section className="py-16 lg:py-20 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Trust Statement */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm font-medium text-primary mb-6">
             <Shield className="w-4 h-4" />
             Trusted & Verified
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-            Trusted by Pakistani sellers
-            <span className="block text-primary">
-              expanding to the UK market
-            </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Trusted by{" "}
+            <span className="text-primary">500+ Pakistani sellers</span>
           </h2>
 
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Join hundreds of successful sellers who have scaled their business
-            with our reliable UK warehouse and fulfillment infrastructure.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Join successful sellers expanding to the UK market with our reliable
+            infrastructure
           </p>
         </motion.div>
 
-        {/* Platform Logos */}
+        {/* Stats (minimal band, no cards) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-20"
+          className="mb-12"
         >
-          <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
-              INTEGRATED WITH LEADING PLATFORMS
-            </p>
-          </div>
-
-          <div className="flex flex-wrap justify-center items-center gap-6">
-            {platforms.map((platform, index) => (
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+            {stats.map((stat, index) => (
               <motion.div
-                key={platform.name}
+                key={index}
                 variants={itemVariants}
-                className="group flex flex-col items-center gap-4 p-8 bg-background/80 backdrop-blur-sm border border-border/30 rounded-3xl hover:border-primary/40 hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
+                className="flex items-center gap-3"
               >
-                <div className="flex items-center justify-center w-16 h-16 bg-muted/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                  {platform.icon}
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  {stat.icon}
+                </span>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl lg:text-3xl font-bold text-foreground">
+                    {stat.number}
+                  </span>
+                  <span className="text-xs lg:text-sm uppercase tracking-wide text-muted-foreground">
+                    {stat.label}
+                  </span>
                 </div>
-                <div className="text-center">
-                  <div className="font-bold text-foreground mb-2 text-lg">
-                    {platform.name}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    {platform.description}
-                  </div>
-                </div>
+                {index < stats.length - 1 && (
+                  <span
+                    className="hidden md:inline-block h-6 w-px bg-border/60 ml-6"
+                    aria-hidden
+                  />
+                )}
               </motion.div>
             ))}
           </div>
         </motion.div>
 
-        {/* Trust Metrics */}
+        {/* Platform Integration */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {trustMetrics.map((metric, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="group text-center p-8 bg-background/80 backdrop-blur-sm border border-border/30 rounded-3xl hover:border-primary/40 hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
-            >
-              <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                {metric.icon}
-              </div>
+          <div className="text-center mb-8">
+            <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+              Integrated with leading platforms
+            </p>
+          </div>
 
-              <div className="text-4xl font-bold text-primary mb-3">
-                {metric.value}
-              </div>
-
-              <div className="font-bold text-foreground mb-3 text-lg">
-                {metric.label}
-              </div>
-
-              <div className="text-sm text-muted-foreground leading-relaxed">
-                {metric.description}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Additional Trust Elements */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-20 text-center"
-        >
-          <div className="inline-flex flex-wrap justify-center items-center gap-6 px-10 py-6 bg-primary/5 border border-primary/20 rounded-3xl">
-            <div className="flex items-center gap-3 text-primary">
-              <CheckCircle className="w-5 h-5" />
-              <span className="font-semibold">UK Registered Business</span>
-            </div>
-            <span className="text-primary/40">•</span>
-            <div className="flex items-center gap-3 text-primary">
-              <CheckCircle className="w-5 h-5" />
-              <span className="font-semibold">GDPR Compliant</span>
-            </div>
-            <span className="text-primary/40">•</span>
-            <div className="flex items-center gap-3 text-primary">
-              <CheckCircle className="w-5 h-5" />
-              <span className="font-semibold">Insured Warehouse</span>
-            </div>
-            <span className="text-primary/40">•</span>
-            <div className="flex items-center gap-3 text-primary">
-              <CheckCircle className="w-5 h-5" />
-              <span className="font-semibold">ISO Certified</span>
-            </div>
+          <div className="flex flex-wrap justify-center items-center gap-4 max-w-4xl mx-auto">
+            {platforms.map((platform) => (
+              <motion.div
+                key={platform.name}
+                variants={itemVariants}
+                className="group flex items-center gap-3 px-4 py-3 bg-background/80 border border-border/30 rounded-2xl hover:border-primary/40 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="flex items-center justify-center w-10 h-10 bg-muted/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                  {platform.icon}
+                </div>
+                <div className="text-left">
+                  <div className="font-semibold text-foreground text-sm">
+                    {platform.name}
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    {platform.description}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>

@@ -13,7 +13,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { FileText, Send, Loader2, CheckCircle } from "lucide-react";
+import {
+  FileText,
+  Send,
+  Loader2,
+  CheckCircle,
+  Clock,
+  User,
+  Building,
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface FormData {
@@ -148,7 +156,7 @@ export function UKWarehouseConsultationForm() {
         toast({
           title: "Form submitted successfully!",
           description:
-            "We&apos;ll get back to you within 24 hours with a customized plan.",
+            "We'll get back to you within 24 hours with a customized plan.",
         });
       } else {
         throw new Error("Failed to submit form");
@@ -157,8 +165,7 @@ export function UKWarehouseConsultationForm() {
       toast({
         title: "Something went wrong ",
         description: `Please try again or contact us directly via WhatsApp. ${err}`,
-        variant: "destructive", 
-      
+        variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
@@ -167,62 +174,60 @@ export function UKWarehouseConsultationForm() {
 
   if (isSubmitted) {
     return (
-      <section
-        id="consultation-form"
-        className="py-20 lg:py-28 bg-gradient-to-br from-primary/5 to-muted/20"
-      >
+      <section id="consultation-form" className="py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl mx-auto text-center"
+            transition={{ duration: 0.5 }}
+            className="max-w-2xl mx-auto"
           >
-            <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-10 h-10 text-white" />
-            </div>
-
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Thank You for Your Interest!
-            </h2>
-
-            <p className="text-lg text-muted-foreground mb-8">
-              We&apos;ve received your consultation request. Our UK warehouse
-              specialists will review your requirements and get back to you
-              within 24 hours with a customized plan.
-            </p>
-
-            <div className="bg-background border border-border/50 rounded-2xl p-6">
-              <h3 className="font-semibold text-foreground mb-4">
-                What happens next?
-              </h3>
-              <div className="space-y-3 text-left">
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">
-                    1
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    Our team reviews your specific requirements and order volume
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">
-                    2
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    We prepare a customized quote and service plan for your
-                    business
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">
-                    3
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    You&apos;ll receive a detailed proposal within 24 hours via email
-                  </div>
-                </div>
+            <div className="bg-background rounded-2xl border border-border p-12 text-center shadow-sm">
+              <div className="w-16 h-16 bg-emerald-100  rounded-full flex items-center justify-center mx-auto mb-8">
+                <CheckCircle className="w-8 h-8 text-emerald-600 " />
               </div>
+
+              <h2 className="text-2xl font-semibold text-foreground mb-4">
+                Thank You for Your Submission
+              </h2>
+
+              <p className="text-muted-foreground mb-8 leading-relaxed">
+                We&apos;ve received your consultation request and will review
+                your requirements carefully. Our team will contact you within 24
+                hours with a tailored proposal.
+              </p>
+
+              {/* <div className="bg-muted/40 rounded-xl p-6 text-left">
+                <h3 className="font-medium text-foreground mb-4 text-center">
+                  Next Steps
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex gap-4">
+                    <div className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0 text-sm font-medium">
+                      1
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Requirements analysis and custom pricing calculation
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0 text-sm font-medium">
+                      2
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Detailed proposal with service options and pricing
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0 text-sm font-medium">
+                      3
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Follow-up call to discuss your expansion strategy
+                    </div>
+                  </div>
+                </div>
+              </div> */}
             </div>
           </motion.div>
         </div>
@@ -231,244 +236,262 @@ export function UKWarehouseConsultationForm() {
   }
 
   return (
-    <section
-      id="consultation-form"
-      className="py-20 lg:py-28 bg-gradient-to-br from-primary/5 to-muted/20"
-    >
+    <section id="consultation-form" className="py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm font-medium text-primary mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full border border-primary/20 mb-6">
             <FileText className="w-4 h-4" />
             Free Consultation
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-            Get Your
-            <span className="block text-primary">Free Consultation</span>
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+            Get Your Free UK Expansion
+            <span className="block text-primary">Consultation</span>
           </h2>
 
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Tell us about your business needs and we'll create a customized UK 
-            expansion plan tailored specifically for your success.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Share your business details and receive a customized UK market entry
+            strategy within 24 hours.
           </p>
         </motion.div>
 
         {/* Form */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-5xl mx-auto"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="max-w-4xl mx-auto"
         >
-          <div className="bg-background/80 backdrop-blur-sm border border-border/30 rounded-3xl p-10 lg:p-16 shadow-2xl">
+          <div className="bg-background rounded-2xl border border-border p-8 lg:p-12 shadow-sm">
             <form onSubmit={handleSubmit} className="space-y-10">
-              {/* Basic Information */}
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-                    <div className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-bold">
-                      1
-                    </div>
+              {/* Personal Information */}
+              <div className="space-y-6">
+                <div className="flex items-center gap-3 pb-4 border-b border-border/30">
+                  <div className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center">
+                    <User className="w-4 h-4" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground">
                     Personal Information
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-3">
-                      <Label htmlFor="fullName" className="text-sm font-semibold text-foreground">Full Name *</Label>
-                      <Input
-                        id="fullName"
-                        type="text"
-                        placeholder="Enter your full name"
-                        value={formData.fullName}
-                        onChange={(e) =>
-                          setFormData((prev) => ({
-                            ...prev,
-                            fullName: e.target.value,
-                          }))
-                        }
-                        className={`h-12 rounded-xl ${errors.fullName ? "border-red-500" : "border-border/50 focus:border-primary"}`}
-                      />
-                      {errors.fullName && (
-                        <p className="text-sm text-red-500 flex items-center gap-1">
-                          <span className="w-1 h-1 bg-red-500 rounded-full" />
-                          {errors.fullName}
-                        </p>
-                      )}
-                    </div>
+                </div>
 
-                    <div className="space-y-3">
-                      <Label htmlFor="companyName" className="text-sm font-semibold text-foreground">Company Name *</Label>
-                      <Input
-                        id="companyName"
-                        type="text"
-                        placeholder="Enter your company name"
-                        value={formData.companyName}
-                        onChange={(e) =>
-                          setFormData((prev) => ({
-                            ...prev,
-                            companyName: e.target.value,
-                          }))
-                        }
-                        className={`h-12 rounded-xl ${errors.companyName ? "border-red-500" : "border-border/50 focus:border-primary"}`}
-                      />
-                      {errors.companyName && (
-                        <p className="text-sm text-red-500 flex items-center gap-1">
-                          <span className="w-1 h-1 bg-red-500 rounded-full" />
-                          {errors.companyName}
-                        </p>
-                      )}
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="fullName"
+                      className="text-sm font-medium text-foreground"
+                    >
+                      Full Name *
+                    </Label>
+                    <Input
+                      id="fullName"
+                      type="text"
+                      placeholder="Enter your full name"
+                      value={formData.fullName}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          fullName: e.target.value,
+                        }))
+                      }
+                      // className={`h-11 ${errors.fullName ? "border-red-300 focus:border-red-500" : "border-border focus:border-primary"}`}
+                    />
+                    {errors.fullName && (
+                      <p className="text-sm text-red-600">{errors.fullName}</p>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="companyName"
+                      className="text-sm font-medium text-foreground"
+                    >
+                      Company Name *
+                    </Label>
+                    <Input
+                      id="companyName"
+                      type="text"
+                      placeholder="Enter your company name"
+                      value={formData.companyName}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          companyName: e.target.value,
+                        }))
+                      }
+                      // className={`h-11 ${errors.companyName ? "border-red-300 focus:border-red-500" : "border-border focus:border-primary"}`}
+                    />
+                    {errors.companyName && (
+                      <p className="text-sm text-red-600">
+                        {errors.companyName}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
-                {/* Contact Information */}
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-                    <div className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm font-bold">
-                      2
-                    </div>
+
+              {/* Contact Information */}
+              <div className="space-y-6">
+                <div className="flex items-center gap-3 pb-4 border-b border-border/30">
+                  <div className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center">
+                    <Building className="w-4 h-4" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground">
                     Contact Details
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-3">
-                      <Label htmlFor="email" className="text-sm font-semibold text-foreground">Email Address *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="your.email@example.com"
-                        value={formData.email}
-                        onChange={(e) =>
-                          setFormData((prev) => ({
-                            ...prev,
-                            email: e.target.value,
-                          }))
-                        }
-                        className={`h-12 rounded-xl ${errors.email ? "border-red-500" : "border-border/50 focus:border-primary"}`}
-                      />
-                      {errors.email && (
-                        <p className="text-sm text-red-500 flex items-center gap-1">
-                          <span className="w-1 h-1 bg-red-500 rounded-full" />
-                          {errors.email}
-                        </p>
-                      )}
-                    </div>
-
-                    <div className="space-y-3">
-                      <Label htmlFor="whatsappNumber" className="text-sm font-semibold text-foreground">WhatsApp Number *</Label>
-                      <Input
-                        id="whatsappNumber"
-                        type="text"
-                        placeholder="+92 300 1234567"
-                        value={formData.whatsappNumber}
-                        onChange={(e) =>
-                          setFormData((prev) => ({
-                            ...prev,
-                            whatsappNumber: e.target.value,
-                          }))
-                        }
-                        className={`h-12 rounded-xl ${errors.whatsappNumber ? "border-red-500" : "border-border/50 focus:border-primary"}`}
-                      />
-                      {errors.whatsappNumber && (
-                        <p className="text-sm text-red-500 flex items-center gap-1">
-                          <span className="w-1 h-1 bg-red-500 rounded-full" />
-                          {errors.whatsappNumber}
-                        </p>
-                      )}
-                    </div>
-                  </div>
                 </div>
 
-              {/* Business Status */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="sellingStatus">
-                    Are you already selling in the UK or planning to sell in the
-                    UK? *
-                  </Label>
-                  <Select
-                    onValueChange={(value) =>
-                      setFormData((prev) => ({ ...prev, sellingStatus: value }))
-                    }
-                  >
-                    <SelectTrigger
-                      className={errors.sellingStatus ? "border-red-500" : ""}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="email"
+                      className="text-sm font-medium text-foreground"
                     >
-                      <SelectValue placeholder="Select your status" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="already-selling">
-                        Already selling in the UK
-                      </SelectItem>
-                      <SelectItem value="planning-to-sell">
-                        Planning to sell in the UK
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {errors.sellingStatus && (
-                    <p className="text-sm text-red-500">
-                      {errors.sellingStatus}
-                    </p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="monthlyOrderVolume">
-                    What is your monthly order volume? *
-                  </Label>
-                  <Select
-                    onValueChange={(value) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        monthlyOrderVolume: value,
-                      }))
-                    }
-                  >
-                    <SelectTrigger
-                      className={
-                        errors.monthlyOrderVolume ? "border-red-500" : ""
+                      Email Address *
+                    </Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="your.email@example.com"
+                      value={formData.email}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          email: e.target.value,
+                        }))
                       }
+                      // className={`h-11 ${errors.email ? "border-red-300 focus:border-red-500" : "border-border focus:border-primary"}`}
+                    />
+                    {errors.email && (
+                      <p className="text-sm text-red-600">{errors.email}</p>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="whatsappNumber"
+                      className="text-sm font-medium text-foreground"
                     >
-                      <SelectValue placeholder="Select order volume" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="less-than-100">
-                        Less than 100 orders/month
-                      </SelectItem>
-                      <SelectItem value="100-500">
-                        100–500 orders/month
-                      </SelectItem>
-                      <SelectItem value="500-1000">
-                        500–1,000 orders/month
-                      </SelectItem>
-                      <SelectItem value="1000-plus">
-                        1,000+ orders/month
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {errors.monthlyOrderVolume && (
-                    <p className="text-sm text-red-500">
-                      {errors.monthlyOrderVolume}
-                    </p>
-                  )}
+                      WhatsApp Number *
+                    </Label>
+                    <Input
+                      id="whatsappNumber"
+                      type="text"
+                      placeholder="+92 300 1234567"
+                      value={formData.whatsappNumber}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          whatsappNumber: e.target.value,
+                        }))
+                      }
+                      // className={`h-11 ${errors.whatsappNumber ? "border-red-300 focus:border-red-500" : "border-border focus:border-primary"}`}
+                    />
+                    {errors.whatsappNumber && (
+                      <p className="text-sm text-red-600">
+                        {errors.whatsappNumber}
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
 
-              {/* Services Interest */}
+              {/* Business Information */}
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label className="text-sm font-medium text-foreground">
+                      Current UK Market Status *
+                    </Label>
+                    <Select
+                      onValueChange={(value) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          sellingStatus: value,
+                        }))
+                      }
+                    >
+                      <SelectTrigger
+                      // className={`h-11 ${errors.sellingStatus ? "border-red-300" : "border-border"}`}
+                      >
+                        <SelectValue placeholder="Select your status" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="already-selling">
+                          Already selling in the UK
+                        </SelectItem>
+                        <SelectItem value="planning-to-sell">
+                          Planning to sell in the UK
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                    {errors.sellingStatus && (
+                      <p className="text-sm text-red-600">
+                        {errors.sellingStatus}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label className="text-sm font-medium text-foreground">
+                      Monthly Order Volume *
+                    </Label>
+                    <Select
+                      onValueChange={(value) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          monthlyOrderVolume: value,
+                        }))
+                      }
+                    >
+                      <SelectTrigger
+                      // className={`h-11 ${errors.monthlyOrderVolume ? "border-red-300" : "border-border"}`}
+                      >
+                        <SelectValue placeholder="Select order volume" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="less-than-100">
+                          Less than 100 orders/month
+                        </SelectItem>
+                        <SelectItem value="100-500">
+                          100–500 orders/month
+                        </SelectItem>
+                        <SelectItem value="500-1000">
+                          500–1,000 orders/month
+                        </SelectItem>
+                        <SelectItem value="1000-plus">
+                          1,000+ orders/month
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                    {errors.monthlyOrderVolume && (
+                      <p className="text-sm text-red-600">
+                        {errors.monthlyOrderVolume}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Services */}
               <div className="space-y-4">
-                <Label>
-                  Which services are you interested in? * (Select all that
-                  apply)
+                <Label className="text-sm font-medium text-foreground">
+                  Services of Interest * (Select all that apply)
                 </Label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {serviceOptions.map((service) => (
-                    <div key={service} className="flex items-center space-x-3">
+                    <div
+                      key={service}
+                      className="flex items-center space-x-3 p-3 cursor-pointer rounded-lg border border-border/30  hover:bg-primary/20"
+                    >
                       <Checkbox
                         id={service}
                         checked={formData.interestedServices.includes(service)}
@@ -478,7 +501,7 @@ export function UKWarehouseConsultationForm() {
                       />
                       <Label
                         htmlFor={service}
-                        className="text-sm font-normal cursor-pointer"
+                        className="text-sm cursor-pointer flex-1"
                       >
                         {service}
                       </Label>
@@ -486,7 +509,7 @@ export function UKWarehouseConsultationForm() {
                   ))}
                 </div>
                 {errors.interestedServices && (
-                  <p className="text-sm text-red-500">
+                  <p className="text-sm text-red-600">
                     {errors.interestedServices[0]}
                   </p>
                 )}
@@ -494,8 +517,8 @@ export function UKWarehouseConsultationForm() {
 
               {/* Timeline */}
               <div className="space-y-2">
-                <Label htmlFor="startTimeline">
-                  When do you want to start your plan? *
+                <Label className="text-sm font-medium text-foreground">
+                  When would you like to start? *
                 </Label>
                 <Select
                   onValueChange={(value) =>
@@ -503,7 +526,7 @@ export function UKWarehouseConsultationForm() {
                   }
                 >
                   <SelectTrigger
-                    className={errors.startTimeline ? "border-red-500" : ""}
+                  // className={`h-11 ${errors.startTimeline ? "border-red-300" : "border-border"}`}
                   >
                     <SelectValue placeholder="Select timeline" />
                   </SelectTrigger>
@@ -521,33 +544,35 @@ export function UKWarehouseConsultationForm() {
                   </SelectContent>
                 </Select>
                 {errors.startTimeline && (
-                  <p className="text-sm text-red-500">{errors.startTimeline}</p>
+                  <p className="text-sm text-red-600">{errors.startTimeline}</p>
                 )}
               </div>
 
-              {/* Submit Button */}
-              <div className="text-center pt-8">
+              {/* Submit */}
+              <div className="flex flex-col items-center pt-6 border-t border-border/30">
                 <Button
                   type="submit"
                   size="lg"
                   disabled={isSubmitting}
-                  className="bg-primary hover:bg-primary/90 text-white px-16 py-6 text-lg font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                  className="w-full sm:w-auto px-12 cursor-pointer py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-sm hover:shadow transition-all duration-200"
                 >
                   {isSubmitting ? (
                     <>
-                      <Loader2 className="w-6 h-6 mr-3 animate-spin" />
-                      Submitting Your Request...
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Submitting Request...
                     </>
                   ) : (
                     <>
-                      <Send className="w-6 h-6 mr-3" />
-                      Request Free Consultation
+                      <Send className="w-4 h-4 mr-2 " />
+                      Get Free Consultation
                     </>
                   )}
                 </Button>
-                <p className="text-sm text-muted-foreground mt-4">
-                  We&apos;ll respond within 24 hours with a customized plan
-                </p>
+
+                <div className="flex items-center gap-2 mt-4 text-sm text-muted-foreground">
+                  <Clock className="w-4 h-4" />
+                  Response within 24 hours
+                </div>
               </div>
             </form>
           </div>
