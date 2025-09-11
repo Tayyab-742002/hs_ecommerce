@@ -5,7 +5,7 @@ import { HeroSection } from "../hero-section-2";
 export function UKWarehouseHero() {
   return (
     <HeroSection
-      className=" mx-auto px-18  min-h-[90vh]"
+      className="mx-auto w-full min-h-[60vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[65vh] xl:min-h-[70vh]"
       logo={{
         url: "/images/full-logo.png",
         alt: "H&S Ecommerce Logo",
@@ -19,7 +19,7 @@ export function UKWarehouseHero() {
           Services
         </>
       }
-      subtitle="Professional storage, lightning-fast fulfillment, and expert marketing support to help Pakistani sellers dominate the UK market. Trusted by 500+ successful sellers."
+      subtitle="Professional storage, lightning-fast fulfillment, and expert marketing support to help international sellers dominate the UK market. Trusted by 500+ successful sellers."
       callToAction={{
         text: "FREE CONSULTATION",
         href: "#consultation-form",

@@ -91,7 +91,7 @@ export function UKWarehouseTrust() {
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Trusted by{" "}
-            <span className="text-primary">500+ Pakistani sellers</span>
+            <span className="text-primary">500+ international sellers</span>
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">

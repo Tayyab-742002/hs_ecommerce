@@ -14,8 +14,8 @@ export function UKWarehouseFinalCTA() {
         primaryShimmerBackground="#25D366"
         primaryButtonClassName="rounded-full px-6 py-2!"
         primaryTarget="_blank"
-        secondaryText="Explore More"
-        secondaryHref="/"
+        secondaryText="Get Free Consultation"
+        secondaryHref="#consultation-form"
         secondaryButtonClassName="rounded-full"
         contacts={[
           {

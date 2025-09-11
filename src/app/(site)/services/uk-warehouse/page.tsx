@@ -12,13 +12,13 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: "UK Warehouse Services | Storage & Fulfillment | HS Ecommerce",
     description:
-      "Grow your business with UK-based warehouse, pick & pack and marketing services. Affordable storage, fast order fulfillment for Pakistani sellers targeting UK market.",
+      "Grow your business with UK-based warehouse, pick & pack and marketing services. Affordable storage, fast order fulfillment for international sellers targeting UK market.",
     keywords:
-      "uk warehouse, uk fulfillment, pick and pack services, uk storage, ecommerce fulfillment, pakistan to uk, warehouse services, order fulfillment",
+      "uk warehouse, uk fulfillment, pick and pack services, uk storage, ecommerce fulfillment, international shipping, warehouse services, order fulfillment",
     openGraph: {
       title: "UK Warehouse Services | Storage & Fulfillment | HS Ecommerce",
       description:
-        "Professional UK warehouse and fulfillment services for Pakistani sellers. Storage, pick & pack, and marketing support to grow your UK business.",
+        "Professional UK warehouse and fulfillment services for international sellers. Storage, pick & pack, and marketing support to grow your UK business.",
       type: "website",
     },
   };
@@ -28,16 +28,14 @@ export default function UKWarehousePage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <UKWarehouseHero />
-
-      {/* Key Benefits Section */}
-      <UKWarehouseBenefits />
-
-      {/* Trust/Social Proof Section */}
-      <UKWarehouseTrust />
-
+      {/* <UKWarehouseHero /> */}
       {/* Consultation Form Section */}
       <UKWarehouseConsultationForm />
+      {/* Key Benefits Section */}
+      {/* <UKWarehouseBenefits /> */}
+
+      {/* Trust/Social Proof Section */}
+      {/* <UKWarehouseTrust /> */}
 
       {/* Final CTA Section */}
       <UKWarehouseFinalCTA />
