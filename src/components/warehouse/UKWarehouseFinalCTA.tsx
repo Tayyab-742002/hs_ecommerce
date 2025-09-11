@@ -14,14 +14,19 @@ export function UKWarehouseFinalCTA() {
         primaryShimmerBackground="#25D366"
         primaryButtonClassName="rounded-full px-6 py-2!"
         primaryTarget="_blank"
-        secondaryText="Explore More"
-        secondaryHref="/"
+        secondaryText="Get Free Consultation"
+        secondaryHref="#consultation-form"
         secondaryButtonClassName="rounded-full"
         contacts={[
           {
             type: "whatsapp",
             text: "+92 301 0510316",
             href: "https://wa.me/923010510316",
+          },
+          {
+            type: "whatsapp",
+            text: "+92 317 1606703",
+            href: "https://wa.me/923171606703",
           },
           {
             type: "phone",

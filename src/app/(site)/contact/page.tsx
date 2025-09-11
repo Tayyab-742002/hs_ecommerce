@@ -123,6 +123,14 @@ export default function ContactPage() {
                         +92 301 0510316
                       </a>
                     </p>
+                    <p className="text-muted-foreground mb-1">
+                      <a
+                        href="tel:+923171606703"
+                        className="hover:text-primary"
+                      >
+                        +92 317 1606703
+                      </a>
+                    </p>
                     <p className="text-muted-foreground">
                       <a
                         href="tel:+447955426807"
@@ -149,12 +157,20 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-medium mb-1">WhatsApp</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground mb-1">
                       <a
                         href="https://wa.me/923010510316"
                         className="hover:text-primary"
                       >
                         +92 301 0510316
+                      </a>
+                    </p>
+                    <p className="text-muted-foreground">
+                      <a
+                        href="https://wa.me/923171606703"
+                        className="hover:text-primary"
+                      >
+                        +92 317 1606703
                       </a>
                     </p>
                   </div>
@@ -295,8 +311,8 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
                 <p className="text-muted-foreground mb-6">
-                  Thank you for contacting us. We'll get back to you within 24
-                  hours.
+                  Thank you for contacting us. We&apos;ll get back to you within
+                  24 hours.
                 </p>
                 <Button
                   variant="outline"
@@ -325,7 +341,11 @@ export default function ContactPage() {
                   </div>
                 )}
 
-                <form className="space-y-4" onSubmit={handleSubmit}>
+                <form
+                  id="contact-form"
+                  className="space-y-4"
+                  onSubmit={handleSubmit}
+                >
                   <div>
                     <label
                       htmlFor="name"
@@ -440,7 +460,7 @@ export default function ContactPage() {
                   </Button>
 
                   <p className="text-sm text-gray-500 mt-2">
-                    We'll get back to you within 24 hours.
+                    We&apos;ll get back to you within 24 hours.
                   </p>
                 </form>
               </>

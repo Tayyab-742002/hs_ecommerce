@@ -44,6 +44,14 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/services/uk-warehouse"
+                  className="text-sm text-foreground/80 hover:text-foreground"
+                >
+                  UK Warehouse
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/contact"
                   className="text-sm text-foreground/80 hover:text-foreground"
                 >
@@ -88,6 +96,15 @@ export default function Footer() {
                 </a>
               </li>
               <li className="text-sm text-foreground/80">
+                <span className="font-medium">WhatsApp:</span>{" "}
+                <a
+                  href="https://wa.me/923171606703"
+                  className="hover:text-primary"
+                >
+                  +92 317 1606703
+                </a>
+              </li>
+              <li className="text-sm text-foreground/80">
                 <span className="font-medium">Phone:</span>{" "}
                 <a href="tel:+447955426807" className="hover:text-primary">
                   +44 7955 426807
@@ -101,6 +118,13 @@ export default function Footer() {
                 >
                   handsecommerce@gmail.com
                 </a>
+              </li>
+              <li className="text-sm text-foreground/80">
+                <span className="font-medium">UK Warehouse:</span>{" "}
+                <span>
+                  Unit 1, Carlinghurst Business Park, George St West, Blackburn,
+                  BB2 1PQ
+                </span>
               </li>
             </ul>
           </div>

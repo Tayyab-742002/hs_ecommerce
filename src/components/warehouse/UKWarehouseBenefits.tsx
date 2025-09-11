@@ -27,7 +27,7 @@ export function UKWarehouseBenefits() {
     },
     {
       icon: <Users className="w-7 h-7" />,
-      title: "Pakistani Seller Focus",
+      title: "Global Seller Support",
       description: "Start selling in the UK without big upfront costs.",
       iconBg: "bg-primary/10 text-primary",
     },
@@ -73,7 +73,7 @@ export function UKWarehouseBenefits() {
             Why Choose <span className="text-primary">Us</span>
           </h2>
           <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-            Professional UK warehousing built for Pakistani sellers — secure
+            Professional UK warehousing built for international sellers — secure
             storage, fast fulfillment, and growth support you can trust.
           </p>
         </motion.div>
