@@ -69,7 +69,7 @@ export function HeroSection({
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="mt-6 md:mt-8 lg:mt-12 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4"
                 >
-                  <FlowButton text={cta.text} />
+                  <FlowButton text={cta.text} href={cta.link} />
                   <Button
                     asChild
                     size="lg"

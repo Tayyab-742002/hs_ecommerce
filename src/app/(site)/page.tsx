@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import { Hero } from "@/components/pages/home/hero";
+
 import { ServicesShowcase } from "@/components/pages/home/services-showcase";
 import { PlatformsOverview } from "@/components/pages/home/platforms-overview";
-import { StatsSection } from "@/components/pages/home/stats-section";
+
 import { Testimonials } from "@/components/pages/home/testimonials";
 import { FAQSection } from "@/components/pages/home/faq-section";
 import { WhyChooseUs } from "@/components/pages/home/why-choose-us";
