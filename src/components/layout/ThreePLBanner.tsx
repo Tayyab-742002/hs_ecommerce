@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { X, Truck, ArrowRight, Sparkles } from "lucide-react";
+import { X, Phone } from "lucide-react";
 
 export function ThreePLBanner() {
   const [isVisible, setIsVisible] = useState(true);
@@ -66,11 +65,11 @@ export function ThreePLBanner() {
                   className="bg-transparent! text-white border-0 shadow-lg shadow-red-500/25 hover:shadow-red-500/40 transition-all duration-200 text-xs sm:text-sm font-semibold px-4 py-2 rounded-full"
                   asChild
                 >
-                  <Link href="/contact">
-                    <span className="hidden sm:inline">Learn More</span>
-                    <span className="sm:hidden">Learn</span>
-                    <ArrowRight className="ml-1 h-3 w-3" />
-                  </Link>
+                  <a href="tel:+923171606703">
+                    <Phone className="mr-1 h-3 w-3" />
+                    <span className="hidden sm:inline">Call Now</span>
+                    <span className="sm:hidden">Call</span>
+                  </a>
                 </Button>
 
                 <motion.button

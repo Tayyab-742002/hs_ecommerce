@@ -9,9 +9,10 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold mb-4">About H&S Ecommerce</h3>
             <p className="text-sm text-foreground/80">
-              We provide Amazon, eBay, Walmart, TikTok, and Etsy seller and
-              buyer accounts for all countries, along with virtual assistant
-              services and account reinstatement solutions.
+              We provide comprehensive e-commerce solutions including seller
+              accounts for Amazon, eBay, Walmart, TikTok, and Etsy, virtual
+              assistant services, account reinstatement, and professional 3PL
+              warehouse services with UK fulfillment and international shipping.
             </p>
           </div>
 
