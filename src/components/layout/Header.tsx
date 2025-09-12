@@ -206,17 +206,16 @@ export default function Header() {
             <Image
               src="/images/Logo.png"
               alt="H&S Ecommerce Logo"
-              width={48}
-              height={48}
+              width={58}
+              height={58}
               className="transition-transform duration-200 group-hover:scale-105"
             />
           </div>
           <div className="sm:block">
             <span className="font-bold text-lg leading-tight tracking-tight">
-              <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text ">
+              {/* <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text ">
                 H&S
-              </span>
-              <br />
+              </span> */}
               <span className="text-foreground/80 text-sm font-medium">
                 Ecommerce
               </span>
@@ -407,7 +406,7 @@ export default function Header() {
                       height={40}
                     />
                     <span className="font-bold text-lg">
-                      <span className="text-primary">H&S</span>
+                      {/* <span className="text-primary">H&S</span> */}
                       <span className="text-foreground/80 ml-1">Ecommerce</span>
                     </span>
                   </Link>
