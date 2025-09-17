@@ -17,12 +17,12 @@ import {
   FileText,
   Send,
   Loader2,
-  CheckCircle,
   Clock,
   User,
   Building,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 interface FormData {
   fullName: string;
@@ -37,8 +37,8 @@ interface FormData {
 
 export function UKWarehouseConsultationForm() {
   const { toast } = useToast();
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
@@ -152,12 +152,8 @@ export function UKWarehouseConsultationForm() {
       });
 
       if (response.ok) {
-        setIsSubmitted(true);
-        toast({
-          title: "Form submitted successfully!",
-          description:
-            "We'll get back to you within 24 hours with a customized plan.",
-        });
+        router.push("/services/uk-warehouse/thank-you");
+        return;
       } else {
         throw new Error("Failed to submit form");
       }
@@ -171,69 +167,6 @@ export function UKWarehouseConsultationForm() {
       setIsSubmitting(false);
     }
   };
-
-  if (isSubmitted) {
-    return (
-      <section id="consultation-form" className="py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-2xl mx-auto"
-          >
-            <div className="bg-background rounded-2xl border border-border p-12 text-center shadow-sm">
-              <div className="w-16 h-16 bg-emerald-100  rounded-full flex items-center justify-center mx-auto mb-8">
-                <CheckCircle className="w-8 h-8 text-emerald-600 " />
-              </div>
-
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
-                Thank You for Your Submission
-              </h2>
-
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                We&apos;ve received your consultation request and will review
-                your requirements carefully. Our team will contact you within 24
-                hours with a tailored proposal.
-              </p>
-
-              {/* <div className="bg-muted/40 rounded-xl p-6 text-left">
-                <h3 className="font-medium text-foreground mb-4 text-center">
-                  Next Steps
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex gap-4">
-                    <div className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0 text-sm font-medium">
-                      1
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      Requirements analysis and custom pricing calculation
-                    </div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0 text-sm font-medium">
-                      2
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      Detailed proposal with service options and pricing
-                    </div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0 text-sm font-medium">
-                      3
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      Follow-up call to discuss your expansion strategy
-                    </div>
-                  </div>
-                </div>
-              </div> */}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="consultation-form" className="py-24 bg-background">
@@ -302,7 +235,6 @@ export function UKWarehouseConsultationForm() {
                           fullName: e.target.value,
                         }))
                       }
-                      // className={`h-11 ${errors.fullName ? "border-red-300 focus:border-red-500" : "border-border focus:border-primary"}`}
                     />
                     {errors.fullName && (
                       <p className="text-sm text-red-600">{errors.fullName}</p>
@@ -327,7 +259,6 @@ export function UKWarehouseConsultationForm() {
                           companyName: e.target.value,
                         }))
                       }
-                      // className={`h-11 ${errors.companyName ? "border-red-300 focus:border-red-500" : "border-border focus:border-primary"}`}
                     />
                     {errors.companyName && (
                       <p className="text-sm text-red-600">
@@ -368,7 +299,6 @@ export function UKWarehouseConsultationForm() {
                           email: e.target.value,
                         }))
                       }
-                      // className={`h-11 ${errors.email ? "border-red-300 focus:border-red-500" : "border-border focus:border-primary"}`}
                     />
                     {errors.email && (
                       <p className="text-sm text-red-600">{errors.email}</p>
@@ -393,7 +323,6 @@ export function UKWarehouseConsultationForm() {
                           whatsappNumber: e.target.value,
                         }))
                       }
-                      // className={`h-11 ${errors.whatsappNumber ? "border-red-300 focus:border-red-500" : "border-border focus:border-primary"}`}
                     />
                     {errors.whatsappNumber && (
                       <p className="text-sm text-red-600">
@@ -419,9 +348,7 @@ export function UKWarehouseConsultationForm() {
                         }))
                       }
                     >
-                      <SelectTrigger
-                      // className={`h-11 ${errors.sellingStatus ? "border-red-300" : "border-border"}`}
-                      >
+                      <SelectTrigger>
                         <SelectValue placeholder="Select your status" />
                       </SelectTrigger>
                       <SelectContent>
@@ -452,9 +379,7 @@ export function UKWarehouseConsultationForm() {
                         }))
                       }
                     >
-                      <SelectTrigger
-                      // className={`h-11 ${errors.monthlyOrderVolume ? "border-red-300" : "border-border"}`}
-                      >
+                      <SelectTrigger>
                         <SelectValue placeholder="Select order volume" />
                       </SelectTrigger>
                       <SelectContent>
@@ -525,9 +450,7 @@ export function UKWarehouseConsultationForm() {
                     setFormData((prev) => ({ ...prev, startTimeline: value }))
                   }
                 >
-                  <SelectTrigger
-                  // className={`h-11 ${errors.startTimeline ? "border-red-300" : "border-border"}`}
-                  >
+                  <SelectTrigger>
                     <SelectValue placeholder="Select timeline" />
                   </SelectTrigger>
                   <SelectContent>
