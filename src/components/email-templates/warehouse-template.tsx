@@ -19,6 +19,7 @@ interface WarehouseTemplateProps {
   monthlyOrderVolume: string;
   interestedServices: string[];
   startTimeline: string;
+  serviceInquiryConfirmation: string;
 }
 
 export const WarehouseTemplate = ({
@@ -30,6 +31,7 @@ export const WarehouseTemplate = ({
   monthlyOrderVolume,
   interestedServices,
   startTimeline,
+  serviceInquiryConfirmation,
 }: WarehouseTemplateProps) => {
   const getSellingStatusLabel = (status: string) => {
     switch (status) {
@@ -69,6 +71,17 @@ export const WarehouseTemplate = ({
         return "Just researching for now";
       default:
         return timeline;
+    }
+  };
+
+  const getConfirmationLabel = (confirmation: string) => {
+    switch (confirmation) {
+      case "yes":
+        return "✅ Yes - Confirmed this is a service inquiry";
+      case "no":
+        return "❌ No - This is a job application (FORM SHOULD NOT BE SUBMITTED)";
+      default:
+        return confirmation;
     }
   };
 
@@ -113,6 +126,43 @@ export const WarehouseTemplate = ({
               <div style={infoItem}>
                 <Text style={label}>WhatsApp Number:</Text>
                 <Text style={value}>{whatsappNumber}</Text>
+              </div>
+            </div>
+          </Section>
+
+          <Hr style={hr} />
+
+          {/* Service Inquiry Confirmation */}
+          <Section style={section}>
+            <Heading style={sectionTitle}>Service Inquiry Confirmation</Heading>
+
+            <div style={infoGrid}>
+              <div
+                style={{
+                  ...infoItem,
+                  backgroundColor:
+                    serviceInquiryConfirmation === "yes"
+                      ? "#f0fdf4"
+                      : "#fef2f2",
+                  border:
+                    serviceInquiryConfirmation === "yes"
+                      ? "2px solid #22c55e"
+                      : "2px solid #ef4444",
+                }}
+              >
+                <Text style={label}>3PL Service Inquiry Confirmation:</Text>
+                <Text
+                  style={{
+                    ...value,
+                    color:
+                      serviceInquiryConfirmation === "yes"
+                        ? "#16a34a"
+                        : "#dc2626",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {getConfirmationLabel(serviceInquiryConfirmation)}
+                </Text>
               </div>
             </div>
           </Section>

@@ -33,6 +33,7 @@ interface FormData {
   monthlyOrderVolume: string;
   interestedServices: string[];
   startTimeline: string;
+  serviceInquiryConfirmation: string;
 }
 
 export function UKWarehouseConsultationForm() {
@@ -49,9 +50,12 @@ export function UKWarehouseConsultationForm() {
     monthlyOrderVolume: "",
     interestedServices: [],
     startTimeline: "",
+    serviceInquiryConfirmation: "",
   });
 
-  const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof FormData, string | string[]>>
+  >({});
 
   const serviceOptions = [
     "Storage",
@@ -68,7 +72,7 @@ export function UKWarehouseConsultationForm() {
   ];
 
   const validateForm = () => {
-    const newErrors: Partial<FormData> = {};
+    const newErrors: Partial<Record<keyof FormData, string | string[]>> = {};
 
     if (!formData.fullName.trim()) newErrors.fullName = "Full name is required";
     if (!formData.companyName.trim())
@@ -88,6 +92,12 @@ export function UKWarehouseConsultationForm() {
       newErrors.interestedServices = ["Please select at least one service"];
     if (!formData.startTimeline)
       newErrors.startTimeline = "Please select when you want to start";
+    if (!formData.serviceInquiryConfirmation)
+      newErrors.serviceInquiryConfirmation =
+        "Please confirm this is a service inquiry, not a job application";
+    if (formData.serviceInquiryConfirmation === "no")
+      newErrors.serviceInquiryConfirmation =
+        "This form is only for 3PL service inquiries, not job applications";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -546,6 +556,77 @@ export function UKWarehouseConsultationForm() {
                 {errors.startTimeline && (
                   <p className="text-sm text-red-600">{errors.startTimeline}</p>
                 )}
+              </div>
+
+              {/* Service Inquiry Confirmation */}
+              <div
+                className="space-y-4 p-6 rounded-xl shadow-lg"
+                style={{ backgroundColor: "#ffcc00" }}
+              >
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label className="text-sm font-medium text-foreground">
+                      <strong
+                        className="text-base"
+                        style={{ color: "#1f2937" }}
+                      >
+                        ⚠️ This is a 3PL service inquiry form in the UK, not a
+                        job application. Do you understand this?
+                      </strong>
+                    </Label>
+                    <p
+                      className="text-sm font-medium"
+                      style={{ color: "#374151" }}
+                    >
+                      Please confirm that you are inquiring about warehouse and
+                      fulfillment services for your e-commerce business, not
+                      applying for employment.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Select
+                      onValueChange={(value) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          serviceInquiryConfirmation: value,
+                        }))
+                      }
+                      value={formData.serviceInquiryConfirmation}
+                    >
+                      <SelectTrigger
+                        className={`h-11 bg-white ${
+                          formData.serviceInquiryConfirmation === "no"
+                            ? "border-red-500 focus:border-red-500 bg-red-50"
+                            : formData.serviceInquiryConfirmation === "yes"
+                              ? "border-green-500 focus:border-green-500 bg-green-50"
+                              : "border-gray-300 focus:border-gray-500"
+                        }`}
+                      >
+                        <SelectValue placeholder="Please select Yes or No" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem
+                          value="yes"
+                          className="text-green-700 font-medium"
+                        >
+                          Yes
+                        </SelectItem>
+                        <SelectItem
+                          value="no"
+                          className="text-red-700 font-medium"
+                        >
+                          No
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                    {errors.serviceInquiryConfirmation && (
+                      <p className="text-sm text-red-600 font-medium bg-red-50 p-2 rounded border border-red-200">
+                        {errors.serviceInquiryConfirmation}
+                      </p>
+                    )}
+                  </div>
+                </div>
               </div>
 
               {/* Submit */}

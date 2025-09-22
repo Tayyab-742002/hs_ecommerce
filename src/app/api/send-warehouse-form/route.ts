@@ -15,6 +15,7 @@ export async function POST(request: Request) {
       monthlyOrderVolume,
       interestedServices,
       startTimeline,
+      serviceInquiryConfirmation,
     } = body;
 
     // Validate required fields
@@ -26,7 +27,8 @@ export async function POST(request: Request) {
       !sellingStatus ||
       !monthlyOrderVolume ||
       !interestedServices ||
-      !startTimeline
+      !startTimeline ||
+      !serviceInquiryConfirmation
     ) {
       return Response.json(
         { error: "Missing required fields" },
@@ -48,6 +50,17 @@ export async function POST(request: Request) {
       );
     }
 
+    // Validate service inquiry confirmation
+    if (serviceInquiryConfirmation !== "yes") {
+      return Response.json(
+        {
+          error:
+            "This form is only for 3PL service inquiries, not job applications",
+        },
+        { status: 400 }
+      );
+    }
+
     const { data, error } = await resend.emails.send({
       from: "UK Warehouse Consultation <contact@hsecommerce.store>",
       to: [process.env.EMAIL_ADDRESS!],
@@ -62,6 +75,7 @@ export async function POST(request: Request) {
         monthlyOrderVolume,
         interestedServices,
         startTimeline,
+        serviceInquiryConfirmation,
       }),
     });
 
