@@ -7,12 +7,10 @@ import {
   FaAmazon,
   FaTiktok,
   FaEtsy,
-  FaTruckLoading,
-  FaTruck,
 } from "react-icons/fa";
 import { TbBrandWalmart } from "react-icons/tb";
 import { HiRefresh } from "react-icons/hi";
-import { GoNote } from "react-icons/go";
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -21,8 +19,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { BiStore } from "react-icons/bi";
-import { LuBoxes } from "react-icons/lu";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -145,35 +142,35 @@ const services = [
       },
     ],
   },
-  {
-    title: "3PL Services",
-    href: "/services/3pl-services",
-    description: "Warehousing, transportation, and order fulfillment solutions",
-    icon: <FaTruckLoading className="w-5 h-5 text-primary" />,
-    badge: "New",
-    subServices: [
-      {
-        name: "Distribution & Warehousing",
-        icon: <LuBoxes className="w-4 h-4 text-red-400" />,
-        description: "Transportation and inventory management",
-      },
-      {
-        name: "Logistics Optimization",
-        icon: <FaTruck className="w-4 h-4 text-teal-400" />,
-        description: "Enhancing efficiency and streamlining operations",
-      },
-      {
-        name: "Order Fulfillment",
-        icon: <GoNote className="w-4 h-4 text-black" />,
-        description: "Reliable order processing and shipping",
-      },
-      {
-        name: "3PL for Amazon, eBay, Shopify, Temu",
-        icon: <BiStore className="w-4 h-4 text-pink-400" />,
-        description: "Specialized fulfillment for top e-commerce platforms",
-      },
-    ],
-  },
+  // {
+  //   title: "3PL Services",
+  //   href: "/services/3pl-services",
+  //   description: "Warehousing, transportation, and order fulfillment solutions",
+  //   icon: <FaTruckLoading className="w-5 h-5 text-primary" />,
+  //   badge: "New",
+  //   subServices: [
+  //     {
+  //       name: "Distribution & Warehousing",
+  //       icon: <LuBoxes className="w-4 h-4 text-red-400" />,
+  //       description: "Transportation and inventory management",
+  //     },
+  //     {
+  //       name: "Logistics Optimization",
+  //       icon: <FaTruck className="w-4 h-4 text-teal-400" />,
+  //       description: "Enhancing efficiency and streamlining operations",
+  //     },
+  //     {
+  //       name: "Order Fulfillment",
+  //       icon: <GoNote className="w-4 h-4 text-black" />,
+  //       description: "Reliable order processing and shipping",
+  //     },
+  //     {
+  //       name: "3PL for Amazon, eBay, Shopify, Temu",
+  //       icon: <BiStore className="w-4 h-4 text-pink-400" />,
+  //       description: "Specialized fulfillment for top e-commerce platforms",
+  //     },
+  //   ],
+  // },
 ];
 
 export default function Header() {
@@ -591,7 +588,7 @@ const PlatformItem = React.forwardRef<
   }
 >(
   (
-    { className, title, children, icon, description, features, ...props },
+    { className, title, icon, description, features, ...props },
     ref
   ) => {
     return (

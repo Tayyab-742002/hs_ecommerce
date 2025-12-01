@@ -7,35 +7,35 @@ import {
   UserCheck,
   LineChart,
   ShieldCheck,
-  PackageCheckIcon,
+
 } from "lucide-react";
 
 import BentoGrid from "@/components/mvpblocks/bento-grid-2";
 
 export function ServicesShowcase() {
   const services = [
-    {
-      title: "3PL Services",
-      meta: "Third-Party Logistics Solutions",
-      description:
-        "From warehousing to last-mile delivery, we offer end-to-end 3PL services including distribution, inventory management, and fulfillment for platforms like Amazon, eBay, Shopify, and Temu.",
-      icon: <PackageCheckIcon className="w-6 h-6" />,
-      platform: "Multi-Platform",
-      link: "/services/3pl-services",
-      status: "active",
-      tags: [
-        "logistics",
-        "fulfillment",
-        "warehousing",
-        "3PL",
-        "amazon",
-        "ebay",
-        "shopify",
-        "temu",
-      ],
-      colSpan: 2,
-      hasPersistentHover: false,
-    },
+    // {
+    //   title: "3PL Services",
+    //   meta: "Third-Party Logistics Solutions",
+    //   description:
+    //     "From warehousing to last-mile delivery, we offer end-to-end 3PL services including distribution, inventory management, and fulfillment for platforms like Amazon, eBay, Shopify, and Temu.",
+    //   icon: <PackageCheckIcon className="w-6 h-6" />,
+    //   platform: "Multi-Platform",
+    //   link: "/services/3pl-services",
+    //   status: "active",
+    //   tags: [
+    //     "logistics",
+    //     "fulfillment",
+    //     "warehousing",
+    //     "3PL",
+    //     "amazon",
+    //     "ebay",
+    //     "shopify",
+    //     "temu",
+    //   ],
+    //   colSpan: 2,
+    //   hasPersistentHover: false,
+    // },
     {
       title: "Account Services",
       meta: "Professional Account Setup",
@@ -46,7 +46,7 @@ export function ServicesShowcase() {
       link: "/platforms",
       status: "active",
       tags: ["account", "ecommerce", "verified"],
-      colSpan: 1,
+      colSpan: 2,
       hasPersistentHover: false,
     },
     {
@@ -85,7 +85,7 @@ export function ServicesShowcase() {
       link: "/services/reinstatement",
       status: "active",
       tags: ["reinstatement", "account recovery"],
-      colSpan: 1,
+      colSpan: 2,
       hasPersistentHover: false,
     },
   ];
