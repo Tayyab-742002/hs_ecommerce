@@ -123,14 +123,6 @@ export default function ContactPage() {
                         +92 301 0510316
                       </a>
                     </p>
-                    <p className="text-muted-foreground mb-1">
-                      <a
-                        href="tel:+923171606703"
-                        className="hover:text-primary"
-                      >
-                        +92 317 1606703
-                      </a>
-                    </p>
                     <p className="text-muted-foreground">
                       <a
                         href="tel:+447955426807"
@@ -163,14 +155,6 @@ export default function ContactPage() {
                         className="hover:text-primary"
                       >
                         +92 301 0510316
-                      </a>
-                    </p>
-                    <p className="text-muted-foreground">
-                      <a
-                        href="https://wa.me/923171606703"
-                        className="hover:text-primary"
-                      >
-                        +92 317 1606703
                       </a>
                     </p>
                   </div>

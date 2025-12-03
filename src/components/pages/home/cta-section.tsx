@@ -18,11 +18,6 @@ export function CTASection() {
           href: "https://wa.me/923010510316",
         },
         {
-          type: "whatsapp",
-          text: "+92 317 1606703",
-          href: "https://wa.me/923171606703",
-        },
-        {
           type: "phone",
           text: "+44 7955 426807",
           href: "tel:+447955426807",

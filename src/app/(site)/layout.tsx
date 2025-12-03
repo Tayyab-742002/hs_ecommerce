@@ -1,6 +1,5 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { ThreePLBanner } from "@/components/layout/ThreePLBanner";
 import { FloatingContact } from "@/components/layout/FloatingContact";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { CookieConsent } from "@/components/ui/cookie-consent";

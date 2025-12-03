@@ -97,15 +97,6 @@ export default function Footer() {
                 </a>
               </li>
               <li className="text-sm text-foreground/80">
-                <span className="font-medium">WhatsApp:</span>{" "}
-                <a
-                  href="https://wa.me/923171606703"
-                  className="hover:text-primary"
-                >
-                  +92 317 1606703
-                </a>
-              </li>
-              <li className="text-sm text-foreground/80">
                 <span className="font-medium">Phone:</span>{" "}
                 <a href="tel:+447955426807" className="hover:text-primary">
                   +44 7955 426807
