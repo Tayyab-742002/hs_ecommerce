@@ -60,17 +60,6 @@ export function ThreePLBanner() {
 
               {/* CTA Buttons with modern styling */}
               <div className="flex items-center gap-3 flex-shrink-0">
-                <Button
-                  size="sm"
-                  className="bg-transparent! text-white border-0 shadow-lg shadow-red-500/25 hover:shadow-red-500/40 transition-all duration-200 text-xs sm:text-sm font-semibold px-4 py-2 rounded-full"
-                  asChild
-                >
-                  <a href="tel:+923171606703">
-                    <Phone className="mr-1 h-3 w-3" />
-                    <span className="hidden sm:inline">Call Now</span>
-                    <span className="sm:hidden">Call</span>
-                  </a>
-                </Button>
 
                 <motion.button
                   whileHover={{ scale: 1.1 }}
