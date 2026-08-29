@@ -9,7 +9,7 @@ export async function POST(request: Request) {
     const { fullName, email, phone, platformName, fields, ...formData } = body;
 
     const { data, error } = await resend.emails.send({
-      from: "H&S Requirements Form <contact@hsecommerce.store>",
+      from: "H&S Requirements Form <contact@ecommercehs.com>",
       to: [process.env.EMAIL_ADDRESS!],
       subject: `New Requirements: ${platformName} Account`,
       replyTo: email,
