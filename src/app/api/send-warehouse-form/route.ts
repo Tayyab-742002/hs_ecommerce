@@ -62,7 +62,7 @@ export async function POST(request: Request) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: "UK Warehouse Consultation <contact@hsecommerce.store>",
+      from: "UK Warehouse Consultation <contact@ecommercehs.com>",
       to: [process.env.EMAIL_ADDRESS!],
       subject: `New UK Warehouse Consultation Request - ${companyName}`,
       replyTo: email,
